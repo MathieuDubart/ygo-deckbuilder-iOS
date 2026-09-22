@@ -23,8 +23,9 @@ struct DuelBoardView: View {
     let picked: Set<String>
     let handlers: DuelBoardHandlers
 
-    private var actions: [String: [DuelAction]] { state.prompt?.actionsByCard ?? [:] }
-    private var placeable: Set<String> { state.prompt?.placeableZones ?? [] }
+    /// Pendant le replay, le terrain est figé : pas d'actions ni de zones à choisir
+    private var actions: [String: [DuelAction]] { model.playing ? [:] : state.prompt?.actionsByCard ?? [:] }
+    private var placeable: Set<String> { model.playing ? [] : state.prompt?.placeableZones ?? [] }
     private var chainKeys: Set<String> { Set(state.chain.map(\.card.key)) }
 
     var body: some View {
@@ -234,10 +235,19 @@ private struct DuelZoneCell: View {
             shape.strokeBorder(
                 borderColor,
                 style: StrokeStyle(lineWidth: placeable != nil || actionable || inChain ? 2 : 0.5, dash: dashed ? [3] : []))
-            if let card { DuelFieldCard(card: card, model: model).padding(1) }
+            if let card {
+                // Carte qui arrive : elle jaillit (Invocation, pose…)
+                DuelFieldCard(card: card, model: model)
+                    .padding(1)
+                    .id(card.code)
+                    .transition(.asymmetric(
+                        insertion: .scale(scale: 0.3).combined(with: .opacity),
+                        removal: .scale(scale: 1.3).combined(with: .opacity)))
+            }
         }
+        .animation(.spring(duration: 0.45, bounce: 0.45), value: card?.code)
         .aspectRatio(Theme.cardAspect, contentMode: .fit)
-        .shadow(color: actionable ? Color.accentColor.opacity(0.6) : .clear, radius: 5)
+        .modifier(PulseGlow(active: actionable))
         .contentShape(.rect)
         .onTapGesture {
             if let placeable {
@@ -299,7 +309,7 @@ private struct DuelPileCell: View {
         }
         .buttonStyle(.plain)
         .disabled(list.isEmpty)
-        .shadow(color: actionable ? Color.accentColor.opacity(0.6) : .clear, radius: 5)
+        .modifier(PulseGlow(active: actionable))
         .accessibilityLabel("\(t(pile.titleKey)) \(count)")
     }
 }
@@ -381,6 +391,7 @@ private struct DuelHandRow: View {
                                 }
                             }
                             .offset(y: actionable ? -3 : 0)
+                            .modifier(PulseGlow(active: actionable))
                             .onTapGesture { onCard(card.ref) }
                     }
                 }
@@ -399,8 +410,13 @@ private struct DuelHandRow: View {
                 .font(.caption2)
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
-            Text(L10n.shared.number(player.lp))
+            // PV qui défilent pendant le replay
+            let lp = model.lpOverride.flatMap { controller < $0.count ? $0[controller] : nil } ?? player.lp
+            Text(L10n.shared.number(lp))
                 .font(.headline.monospacedDigit())
+                .contentTransition(.numericText(value: Double(lp)))
+                .animation(.snappy(duration: 0.6), value: lp)
+                .foregroundStyle(lp <= 1000 ? Theme.danger : .primary)
             Text(t("duel.board.lp"))
                 .font(.caption2)
                 .foregroundStyle(.secondary)
@@ -408,5 +424,21 @@ private struct DuelHandRow: View {
         .frame(width: 70)
         .padding(.vertical, Spacing.xs)
         .glassEffect(active ? .regular.tint(.accentColor.opacity(0.3)) : .regular, in: .rect(cornerRadius: Radius.s))
+    }
+}
+
+/// Halo doré qui pulse autour d'une carte jouable.
+struct PulseGlow: ViewModifier {
+    let active: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if active {
+            content.phaseAnimator([false, true]) { view, bright in
+                view.shadow(color: Color.accentColor.opacity(bright ? 0.9 : 0.4), radius: bright ? 9 : 3)
+            } animation: { _ in .easeInOut(duration: 0.8) }
+        } else {
+            content
+        }
     }
 }

@@ -98,6 +98,8 @@ private struct DuelTableView: View {
     @State private var picks: [DuelZone] = []
     @State private var showLog = false
     @State private var resultDismissed = false
+    /// Incrémenté à chaque gros coup : relance la secousse du terrain
+    @State private var shakes = 0
 
     private struct PileRef: Identifiable {
         let controller: Int
@@ -116,17 +118,41 @@ private struct DuelTableView: View {
                     handlers: DuelBoardHandlers(
                         onCard: { tap($0) }, onZone: { pickZone($0) },
                         onPile: { pile = PileRef(controller: $0, pile: $1) }))
+                    .keyframeAnimator(initialValue: CGFloat.zero, trigger: shakes) { board, offset in
+                        board.offset(x: offset, y: offset * 0.4)
+                    } keyframes: { _ in
+                        KeyframeTrack {
+                            SpringKeyframe(-9, duration: 0.05)
+                            SpringKeyframe(8, duration: 0.06)
+                            SpringKeyframe(-6, duration: 0.06)
+                            SpringKeyframe(4, duration: 0.07)
+                            SpringKeyframe(-2, duration: 0.08)
+                            SpringKeyframe(0, duration: 0.12)
+                        }
+                    }
             }
             .padding(.horizontal, Spacing.s)
             .padding(.bottom, Spacing.l)
         }
+        .overlay { DuelFxStage(model: model) }
         .overlay {
-            if let result = state.finished, !resultDismissed {
-                resultCard(result)
+            if let result = state.finished, !resultDismissed, !model.playing {
+                ZStack {
+                    if result.winner == 0 { DuelConfetti() }
+                    resultCard(result)
+                }
             }
         }
+        .onChange(of: model.fx?.id) {
+            if model.fx?.shake == true, !UIAccessibility.isReduceMotionEnabled { shakes += 1 }
+        }
+        .onChange(of: state.finished) {
+            guard let result = state.finished else { return }
+            DuelSound.shared.play(result.winner == 0 ? .win : .lose)
+            DuelHaptics.result(won: result.winner == 0)
+        }
         .safeAreaInset(edge: .bottom) {
-            if let prompt = state.prompt, state.finished == nil {
+            if let prompt = state.prompt, state.finished == nil, !model.playing {
                 // Le panneau garde sa hauteur naturelle, et défile au-delà
                 ScrollView {
                     DuelPromptPanel(
@@ -148,6 +174,7 @@ private struct DuelTableView: View {
             menuCard = nil
         }
         .onChange(of: state.finished) { resultDismissed = false }
+        .animation(.spring(duration: 0.35), value: model.playing)
         .confirmationDialog(
             menuCard.map { model.name($0.code) } ?? "", isPresented: Binding(get: { menuCard != nil }, set: { if !$0 { menuCard = nil } }),
             titleVisibility: .visible, presenting: menuCard
@@ -213,6 +240,18 @@ private struct DuelTableView: View {
         }
         ToolbarItem(placement: .topBarTrailing) {
             Menu(t("ios.common.more"), systemImage: "ellipsis") {
+                Toggle(t("duel.controls.sound"), systemImage: "speaker.wave.2", isOn: Binding(
+                    get: { DuelFxSettings.shared.sound },
+                    set: { DuelFxSettings.shared.sound = $0 }))
+                Picker(t("duel.controls.speed.label"), selection: Binding(
+                    get: { DuelFxSettings.shared.speed },
+                    set: { DuelFxSettings.shared.speed = $0 })
+                ) {
+                    ForEach(DuelFxSpeed.allCases) { speed in
+                        Text(t("duel.controls.speed.\(speed.rawValue)")).tag(speed)
+                    }
+                }
+                .pickerStyle(.menu)
                 Picker(t("duel.controls.chains.label"), selection: Binding(
                     get: { state.chainPrompts },
                     set: { mode in Task { await model.setChainPrompts(mode) } })
@@ -222,16 +261,18 @@ private struct DuelTableView: View {
                     }
                 }
                 .pickerStyle(.menu)
+                .disabled(model.busy)
                 Button(t("duel.controls.restart"), systemImage: "arrow.counterclockwise") {
                     Task { await model.start() }
                 }
+                .disabled(model.busy)
                 Button(t("duel.page.rules"), systemImage: "book.closed", action: showRules)
                 Divider()
                 Button(t("duel.controls.leave"), systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
                     Task { await model.leave() }
                 }
+                .disabled(model.busy)
             }
-            .disabled(model.busy)
         }
     }
 
@@ -448,7 +489,7 @@ private struct DuelLogView: View {
             cardLine("duel.log.MOVE", [
                 "card": model.name(code), "from": t("duel.locations.\(from.rawValue)"), "to": t("duel.locations.\(to.rawValue)"),
             ], code: code)
-        case .attack(let code, let target):
+        case .attack(_, let code, let target):
             if let target {
                 cardLine("duel.log.ATTACK", ["card": model.name(code), "target": model.name(target)], code: code)
             } else {

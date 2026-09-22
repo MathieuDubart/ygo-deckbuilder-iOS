@@ -393,6 +393,13 @@
    "leave": "Esci",
    "main2": "Main Phase 2",
    "restart": "Ricomincia",
+   "sound": "Audio",
+   "speed": {
+    "fast": "Veloci",
+    "label": "Animazioni",
+    "normal": "Normali",
+    "off": "Nessuna"
+   },
    "thinking": "Il motore sta risolvendo…"
   },
   "engine": {
@@ -400,6 +407,22 @@
    "loading": "Verifica del motore di duello…",
    "stats": "{cards, number} carte · {scripts, number} script",
    "unavailable": "Il motore di duello non è disponibile su questo server."
+  },
+  "fx": {
+   "activate": "Anello di Catena {link}",
+   "attack": "Attacco!",
+   "direct": "Attacco diretto!",
+   "duel": "Duello!",
+   "negated": "Annullato!",
+   "opponent": "Avv.",
+   "set": "Carta posizionata",
+   "skip": "Salta",
+   "summon": {
+    "FLIP": "Evocazione Scoperta",
+    "NORMAL": "Evocazione Normale",
+    "SPECIAL": "Evocazione Speciale"
+   },
+   "you": "Tu"
   },
   "inspector": {
    "empty": "Passa sopra o tocca una carta per leggerla.",
