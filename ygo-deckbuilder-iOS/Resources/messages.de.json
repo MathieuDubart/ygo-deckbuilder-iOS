@@ -1,0 +1,701 @@
+{
+ "auth": {
+  "errors": {
+   "email": "Gib eine gültige E-Mail-Adresse ein",
+   "passwordLength": "Mindestens 10 Zeichen",
+   "passwordMax": "Maximal 128 Zeichen",
+   "passwordRequired": "Gib dein Passwort ein",
+   "usernameChars": "Nur Buchstaben, Zahlen, _ und -",
+   "usernameLength": "3 bis 32 Zeichen"
+  },
+  "fields": {
+   "email": "E-Mail",
+   "password": "Passwort",
+   "passwordHint": "Mindestens 10 Zeichen",
+   "username": "Benutzername"
+  },
+  "landing": {
+   "description": "Erfasse deine Karten und Structure Decks, baue Listen aus dem, was du wirklich besitzt, und finde heraus, welche Meta-Decks du zusammenstellen kannst – mit dem Preis dessen, was du noch kaufen musst.",
+   "login": "Anmelden",
+   "register": "Konto erstellen",
+   "title": "Deine Sammlung. Deine Decks.<muted>Was dir noch fehlt.</muted>"
+  },
+  "login": {
+   "submit": "Anmelden",
+   "switch": "Noch kein Konto? <link>Registrieren</link>",
+   "title": "Willkommen zurück"
+  },
+  "register": {
+   "submit": "Mein Konto erstellen",
+   "switch": "Schon ein Konto? <link>Anmelden</link>",
+   "title": "Konto erstellen"
+  }
+ },
+ "cards": {
+  "ban": {
+   "Banned": "Verboten",
+   "Forbidden": "Verboten",
+   "Limited": "Limitiert",
+   "Semi-Limited": "Semi-Limitiert"
+  },
+  "collectionForm": {
+   "condition": "Zustand",
+   "firstEdition": "1. Auflage",
+   "language": "Sprache",
+   "print": "Druck",
+   "quantity": "Anz.",
+   "success": "{count, plural, one {# Exemplar zu deiner Sammlung hinzugefügt} other {# Exemplare zu deiner Sammlung hinzugefügt}}",
+   "title": "Zu meiner Sammlung hinzufügen"
+  },
+  "conditions": {
+   "EXCELLENT": "Excellent",
+   "GOOD": "Good",
+   "LIGHT_PLAYED": "Light Played",
+   "MINT": "Mint",
+   "NEAR_MINT": "Near Mint",
+   "PLAYED": "Played",
+   "POOR": "Poor"
+  },
+  "detail": {
+   "banTcg": "TCG: {status}",
+   "fallbackTitle": "Karte",
+   "level": "Stufe {level}",
+   "ownedPrice": "Im Besitz: <strong>{owned}</strong> · Cardmarket ab <strong>{price}</strong>",
+   "printUnspecified": "Druck nicht angegeben",
+   "prints": "Drucke ({count})",
+   "scale": "Skala {scale}"
+  },
+  "interactions": {
+   "byTraits": "(über ihre Eigenschaften)",
+   "byTraitsTitle": "Diese Karten nennen sie nicht beim Namen: Sie zielen auf ihre Stufe, ihr Attribut oder ihren Typ ab",
+   "emptyIndexed": "Keine konkrete Verbindung in den Kartentexten gefunden: Diese Karte zielt auf keinen bestimmten Namen oder Typ ab, und keine Karte zielt gezielt auf sie ab.",
+   "emptyIndexing": "Der Interaktionsindex wird noch aufgebaut, schau in einer Minute wieder vorbei.",
+   "generic": "Breite Effekte (funktionieren mit vielen Karten): {list}",
+   "in": {
+    "MATERIAL": "Material für",
+    "MENTION": "Erwähnt von",
+    "RECOVER": "Zurückgeholt von",
+    "SEARCH": "Gesucht von",
+    "SEND_GY": "Auf den Friedhof gelegt von",
+    "SPECIAL_SUMMON": "Beschworen von",
+    "SUMMON_EXTRA": "Aus dem Extra Deck beschworen von"
+   },
+   "none": "Nichts auf dieser Seite.",
+   "noneMine": "Keine deiner Karten hier.",
+   "onlyMine": "Nur meine Karten",
+   "out": {
+    "MATERIAL": "Mögliche Materialien",
+    "MENTION": "Erwähnt",
+    "RECOVER": "Holt zurück",
+    "SEARCH": "Sucht",
+    "SEND_GY": "Legt auf den Friedhof",
+    "SPECIAL_SUMMON": "Beschwört",
+    "SUMMON_EXTRA": "Beschwört aus dem Extra Deck"
+   },
+   "ownedLinked": "{count} deiner Karten",
+   "tabs": {
+    "in": "Genutzt von",
+    "out": "Was sie macht"
+   },
+   "title": "Interaktionen"
+  },
+  "wishlistForm": {
+   "maxPrice": "Max. Budget (€)",
+   "open": "Auf die Wunschliste",
+   "print": "Gewünschter Druck",
+   "quantity": "Anz.",
+   "success": "Zu deiner Wunschliste hinzugefügt",
+   "title": "Ich suche sie"
+  }
+ },
+ "catalog": {
+  "allCards": "Alle Yu-Gi-Oh!-Karten",
+  "approximate": "Kein exakter Treffer für „{query}“ – hier die ähnlichsten Karten.",
+  "count": "{count, plural, one {# Karte} other {# Karten}}",
+  "empty": {
+   "description": "Versuch einen anderen Namen oder entferne ein paar Filter. Ist der Katalog leer, starte die Synchronisierung (pnpm cards:sync).",
+   "title": "Keine Karten gefunden"
+  },
+  "filters": {
+   "allArchetypes": "Alle Archetypen",
+   "archetype": "Archetyp",
+   "owned": "Im Besitz",
+   "searchPlaceholder": "Name (DE oder EN), Archetyp oder Set-Code (SDBE-DE001)…",
+   "searchPlaceholderCompact": "Name, Archetyp…",
+   "sort": {
+    "atk": "ATK",
+    "def": "DEF",
+    "level": "Stufe",
+    "name": "Name",
+    "newest": "Neueste",
+    "relevance": "Relevanz"
+   },
+   "sortLabel": "Sortierung",
+   "sortOption": "Sortieren: {label}"
+  },
+  "title": "Katalog"
+ },
+ "collection": {
+  "conditions": {
+   "EXCELLENT": "Excellent",
+   "GOOD": "Good",
+   "LIGHT_PLAYED": "Light Played",
+   "MINT": "Mint",
+   "NEAR_MINT": "Near Mint",
+   "PLAYED": "Played",
+   "POOR": "Poor"
+  },
+  "import": {
+   "cardCount": "{count, plural, one {# Karte} other {# Karten}}",
+   "confirm": {
+    "add": "Produkt hinzufügen",
+    "copiesEach": "Exemplare von jeder",
+    "description": "Die <strong>{count, plural, one {# Karte} other {# Karten}}</strong> werden deiner Sammlung hinzugefügt – mit den offiziellen Mengen des Produkts, wenn wir sie finden (Yugipedia-Liste), sonst 1 Exemplar pro Karte. Das Produkt erscheint im Tab „Produkte“ deiner Sammlung.",
+    "language": "Sprache",
+    "releasedOn": "erschienen am {date}",
+    "toast": "{count, plural, one {# Karte} other {# Karten}} aus „{set}“ hinzugefügt",
+    "toastVerified": "{count, plural, one {# Karte} other {# Karten}} aus „{set}“ hinzugefügt (offizielle Mengen)"
+   },
+   "kinds": {
+    "ALL": "Alle",
+    "BOX": "Box-Sets",
+    "OTHER": "Booster & mehr",
+    "STARTER": "Starter Decks",
+    "STRUCTURE": "Structure Decks",
+    "TIN": "Tins"
+   },
+   "kindsLabel": "Produkttyp",
+   "noResults": "Keine Produkte gefunden. Versuch einen anderen Typ, ein Stichwort oder den Code, der auf deinen Karten steht.",
+   "searchPlaceholder": "Filter: „Drache“, „2022“, Set-Code (SDBE)…",
+   "title": "Ganzes Produkt hinzufügen"
+  },
+  "row": {
+   "addCopy": "Ein Exemplar hinzufügen",
+   "removeCopy": "Ein Exemplar entfernen",
+   "unknownPrint": "Druck ?"
+  },
+  "view": {
+   "addCards": "Karten hinzufügen",
+   "addProduct": "Produkt hinzufügen",
+   "description": "Alles, was du besitzt – nach Druck, Zustand und Sprache.",
+   "empty": {
+    "description": "Füge Karten aus dem Katalog hinzu oder importiere ein ganzes Structure Deck auf einmal.",
+    "noMatch": "Keine Treffer",
+    "title": "Deine Sammlung ist leer"
+   },
+   "filterPlaceholder": "Sammlung filtern…",
+   "stats": {
+    "copies": "Exemplare",
+    "distinctCards": "Einzigartige Karten",
+    "estimatedValue": "Geschätzter Wert"
+   },
+   "tabs": {
+    "cards": "Karten",
+    "label": "Sammlungsansicht",
+    "products": "Produkte"
+   },
+   "title": "Meine Sammlung"
+  }
+ },
+ "common": {
+  "actions": {
+   "add": "Hinzufügen",
+   "back": "Zurück",
+   "cancel": "Abbrechen",
+   "close": "Schließen",
+   "copied": "Kopiert",
+   "copy": "Kopieren",
+   "create": "Erstellen",
+   "delete": "Löschen",
+   "remove": "Entfernen",
+   "retry": "Nochmal",
+   "save": "Speichern"
+  },
+  "categories": {
+   "MONSTER": "Monster",
+   "SKILL": "Skills",
+   "SPELL": "Zauber",
+   "TOKEN": "Spielmarken",
+   "TRAP": "Fallen"
+  },
+  "locale": {
+   "label": "Sprache"
+  },
+  "pagination": {
+   "label": "Seitennavigation",
+   "next": "Weiter →",
+   "previous": "← Zurück"
+  },
+  "status": {
+   "error": "Da ist etwas schiefgelaufen",
+   "loading": "Lädt…",
+   "none": "—"
+  },
+  "zones": {
+   "EXTRA": "Extra Deck",
+   "MAIN": "Main Deck",
+   "SIDE": "Side Deck"
+  }
+ },
+ "deckBuilder": {
+  "actions": {
+   "addOne": "Ein Exemplar zum {zone} hinzufügen",
+   "cannotAdd": "Diese Karte kann nicht hinzugefügt werden",
+   "copies": "{total}/{limit, plural, one {# Exemplar} other {# Exemplare}}",
+   "inDeck": "In diesem Deck",
+   "owned": "{owned} im Besitz{toBuy, plural, =0 {} other { · # zu kaufen}}",
+   "removeOne": "Ein Exemplar aus dem {zone} entfernen",
+   "zoneCount": "{count}/{max} Karten"
+  },
+  "add": {
+   "extraDeckMonster": "Dieses Monster gehört ins Extra Deck",
+   "maxCopies": "{limit, plural, one {Maximal # Exemplar} other {Maximal # Exemplare}}",
+   "notExtraDeck": "Nur Fusions-, Synchro-, Xyz- und Link-Monster gehören ins Extra Deck",
+   "zoneFull": "{zone} ist voll"
+  },
+  "header": {
+   "guide": "Guide",
+   "guideDialogTitle": "Guide: {name}",
+   "guideHint": "So spielst du dieses Deck: Spielplan, Combos, Fehler, die du vermeiden solltest",
+   "nameLabel": "Deckname"
+  },
+  "issues": {
+   "title": "Deck nicht legal",
+   "tooManyCopies": "{name}: {count, plural, one {# Exemplar} other {# Exemplare}} (max. {limit})",
+   "wrongZone": "{name} gehört nicht ins {zone}",
+   "zoneTooLarge": "{zone}: {count, plural, one {# Karte} other {# Karten}} (maximal {limit})",
+   "zoneTooSmall": "{zone}: {count, plural, one {# Karte} other {# Karten}} (mindestens {limit})"
+  },
+  "missing": {
+   "addAll": "Alle auf die Wunschliste",
+   "added": "{count, plural, one {# Karte zu deiner Wunschliste hinzugefügt} other {# Karten zu deiner Wunschliste hinzugefügt}}",
+   "summary": "<strong>{count, plural, one {# Exemplar} other {# Exemplare}}</strong> nicht im Besitz · etwa <strong>{cost}</strong>"
+  },
+  "picker": {
+   "noOwnedResults": "Keine deiner Karten passt. Entferne den Haken bei „Im Besitz“, um alle Karten zu durchsuchen.",
+   "noResults": "Keine Ergebnisse.",
+   "search": "Suche",
+   "suggestions": "Vorschläge",
+   "suggestionsCount": "Vorschläge ({count})",
+   "suggestionsEmpty": "Füge ein paar Karten ins Deck ein: Die Vorschläge basieren auf seinen Archetypen.",
+   "suggestionsHint": "Karten aus deiner Sammlung, die einen Archetyp mit deinem Deck teilen oder von ihm erwähnt werden.",
+   "tileTitle": "{name}\nKlick: Details · Strg/⌘+Klick: hinzufügen · Umschalt+Klick: ins Side Deck"
+  },
+  "save": {
+   "dirty": "Ungespeicherte Änderungen",
+   "error": "Speichern fehlgeschlagen – nochmal versuchen",
+   "saved": "Gespeichert",
+   "saving": "Speichert…"
+  },
+  "zone": {
+   "copyTitle": "{name}\nKlick: Details · Strg/⌘+Klick: entfernen",
+   "copyTitleMissing": "{name} – nicht im Besitz\nKlick: Details · Strg/⌘+Klick: entfernen",
+   "empty": "Klick links auf eine Karte, um ihre Details zu sehen und sie hinzuzufügen",
+   "emptySide": "Öffne eine Karte und füge sie dem Side Deck hinzu – oder direkt per Umschalt+Klick",
+   "missingBadge": "FEHLT"
+  }
+ },
+ "decks": {
+  "formats": {
+   "CASUAL": "Casual",
+   "EDISON": "Edison",
+   "GOAT": "GOAT",
+   "OCG": "OCG",
+   "TCG": "TCG"
+  },
+  "new": {
+   "file": ".ydk-Datei",
+   "fileHint": "Wähle eine Datei oder füge ihren Inhalt ein.",
+   "format": "Format",
+   "modes": {
+    "empty": "Leeres Deck",
+    "ydk": ".ydk importieren"
+   },
+   "name": "Name",
+   "submit": {
+    "empty": "Erstellen & bauen",
+    "ydk": "Importieren"
+   },
+   "title": "Neues Deck"
+  },
+  "view": {
+   "confirmDelete": "„{name}“ löschen?",
+   "counts": {
+    "extra": "{count} Extra",
+    "main": "{count} Main",
+    "side": "{count} Side"
+   },
+   "delete": "Löschen",
+   "description": "Bau mit dem, was du hast, und sieh, was fehlt.",
+   "duplicate": "Duplizieren",
+   "duplicated": "Deck dupliziert",
+   "empty": {
+    "description": "Fang bei null an, importiere eine .ydk oder schau in die Vorschläge, um zu sehen, was deine Sammlung schon hergibt.",
+    "title": "Noch keine Decks"
+   },
+   "newDeck": "Neues Deck",
+   "title": "Meine Decks",
+   "updatedOn": "Bearbeitet am {date}"
+  }
+ },
+ "guide": {
+  "aiError": "{error} – stattdessen wird der berechnete Guide angezeigt.",
+  "combo": {
+   "endBoard": "End Board",
+   "hand": "Auf der Hand"
+  },
+  "mode": {
+   "AI": "Von KI",
+   "RULES": "Berechnet",
+   "label": "Guide-Version"
+  },
+  "nothing": "Nichts Besonderes.",
+  "roles": {
+   "BOSS": "Boss",
+   "DRAW": "Ziehen",
+   "EXTENDER": "Extender",
+   "FUSION_ENABLER": "Fusion",
+   "HAND_TRAP": "Hand Trap",
+   "INTERRUPTION": "Unterbrechung",
+   "RECOVERY": "Recovery",
+   "REMOVAL": "Removal",
+   "RITUAL_ENABLER": "Ritual",
+   "SEARCHER": "Searcher",
+   "STARTER": "Starter"
+  },
+  "sections": {
+   "combos": "Wichtige Combos ({count})",
+   "combosDisclaimer": "Vorgeschlagene Lines, ermittelt aus den Karteneffekten: Prüf immer den genauen Kartentext (Bedingungen, Kosten, „einmal pro Spielzug“).",
+   "firstSecond": "Als Erster / als Zweiter",
+   "gamePlan": "Spielplan",
+   "goingFirst": "Als Erster",
+   "goingSecond": "Als Zweiter",
+   "keyCards": "Schlüsselkarten",
+   "mistakes": "Fehler, die du vermeiden solltest",
+   "tips": "Tipps"
+  },
+  "source": {
+   "ai": "Von KI geschrieben",
+   "aiWithModel": "Von KI geschrieben · {model}",
+   "rules": "Aus den Karteneffekten berechnet"
+  },
+  "title": "Deck-Guide",
+  "writing": "Die KI schreibt den Guide… (ein lokales Modell kann ein, zwei Minuten brauchen) – so lange siehst du die berechnete Version."
+ },
+ "ios": {
+  "card": {
+   "zoom": "Karte im Vollbild anzeigen"
+  },
+  "common": {
+   "share": "Teilen"
+  },
+  "deck": {
+   "addCards": "Karten hinzufügen",
+   "emptyZone": "Tippe auf „Karten hinzufügen“ und dann auf eine Karte, um Details zu sehen und sie hinzuzufügen.",
+   "exportYdk": ".ydk exportieren",
+   "moveToSide": "Eine ins Side Deck verschieben"
+  },
+  "errors": {
+   "decoding": "Unerwartete Serverantwort ({detail}). Ist der Server aktuell?",
+   "noServer": "Kein Server eingerichtet."
+  },
+  "products": {
+   "removeWithCards": "Mit seinen Karten entfernen"
+  },
+  "scan": {
+   "addOne": "+1 in meine Sammlung",
+   "addedCount": "{count} hinzugefügt",
+   "alreadyOwned": "Du besitzt schon {count}",
+   "details": "Details",
+   "hint": "Richte die Kamera auf den Code unter dem Artwork (z. B. SDBE-DE001).",
+   "notFound": "Keine Karte für {code} gefunden",
+   "title": "Karten scannen",
+   "unavailable": "Scannen ist nicht verfügbar",
+   "unavailableHint": "Erlaube den Kamerazugriff in den Einstellungen oder nutze ein Gerät mit Kamera."
+  },
+  "server": {
+   "change": "Server wechseln",
+   "connect": "Verbinden",
+   "current": "Server",
+   "description": "YGO Deck Builder ist selbst gehostet: Gib die Adresse deiner Instanz ein (die du im Browser öffnest).",
+   "hint": "Standardmäßig HTTPS. Im lokalen Netz die vollständige Adresse eingeben, z. B. http://192.168.1.20:3000",
+   "invalid": "Das sieht nicht nach einer gültigen Adresse aus.",
+   "notAnInstance": "Dieser Server antwortet nicht wie eine YGO-Deck-Builder-Instanz.",
+   "placeholder": "ygo.example.com",
+   "title": "Dein Server",
+   "unreachable": "{url} ist nicht erreichbar: {error}"
+  },
+  "settings": {
+   "account": "Konto",
+   "credits": "Kartendaten und -bilder: YGOPRODeck. Produktbilder und Setlisten: Yugipedia. Yu-Gi-Oh! ist eine Marke von Konami; diese App ist nicht mit Konami verbunden.",
+   "languageHint": "Gilt auch für Kartennamen und -effekte sowie für erstellte Guides.",
+   "meta": "Meta",
+   "server": "Server",
+   "systemLanguage": "Systemsprache",
+   "title": "Einstellungen"
+  }
+ },
+ "layout": {
+  "appName": "Deck Builder",
+  "logout": "Abmelden",
+  "metaDescription": "Deine Yu-Gi-Oh!-Sammlung, deine Decks und was dir fehlt, um Meta zu spielen.",
+  "metaTitle": "YGO Deck Builder",
+  "nav": {
+   "catalog": "Katalog",
+   "collection": "Sammlung",
+   "decks": "Decks",
+   "suggestions": "Vorschläge",
+   "wishlist": "Wunschliste"
+  },
+  "pages": {
+   "catalog": "Katalog",
+   "collection": "Sammlung",
+   "deckNotFound": "Deck nicht gefunden.",
+   "decks": "Decks",
+   "login": "Anmelden",
+   "register": "Registrieren",
+   "suggestions": "Vorschläge",
+   "wishlist": "Wunschliste"
+  }
+ },
+ "products": {
+  "dialog": {
+   "content": {
+    "all": "Der komplette Inhalt des Produkts, mit dem, was du noch hast.",
+    "forCopies": "Mengen für {count} Produkte.",
+    "missingOnly": "Nur fehlende ({count})",
+    "ownedOf": "{owned} von {needed} im Besitz"
+   },
+   "fallbackTitle": "Produkt",
+   "groups": {
+    "EXTRA": "Extra Deck",
+    "MONSTER": "Monster",
+    "OTHER": "Sonstiges",
+    "SPELL": "Zauber",
+    "TRAP": "Fallen"
+   },
+   "guideIntro": "Guide für das Deck direkt aus der Packung. Um es mit dem Rest deiner Sammlung zu verbessern, erstelle ein Deck daraus und öffne seine Vorschläge.",
+   "header": {
+    "addedOn": "Hinzugefügt am {date}",
+    "cardCount": "{total, plural, one {# Karte} other {# Karten}} · {distinct} einzigartig",
+    "complete": "Alle Karten sind in deiner Sammlung.",
+    "confirmRemove": "„{name}“ aus deinen Produkten entfernen?",
+    "copyFailed": "Kopieren fehlgeschlagen (der Browser hat es blockiert).",
+    "copyList": "Liste kopieren",
+    "createDeck": "Deck daraus erstellen",
+    "listCopied": "Liste kopiert",
+    "missing": "{count, plural, one {# Exemplar ist} other {# Exemplare sind}} nicht mehr in deiner Sammlung (verkauft, getauscht, versehentlich erfasst…).",
+    "productCount": "{count, plural, one {# Produkt} other {# Produkte}} · {language}",
+    "remove": "Entfernen",
+    "removeCardsToo": "Auch die {count, plural, one {# Karte} other {# Karten}} aus meiner Sammlung entfernen (sonst bleiben sie, nur das Produkt verschwindet aus der Liste)",
+    "unverified": "Mengen nicht bestätigt",
+    "unverifiedHint": "Offizielle Liste nicht gefunden: 1 Exemplar pro Karte gezählt",
+    "verified": "Offizielle Mengen"
+   },
+   "tabs": {
+    "content": "Inhalt",
+    "guide": "So spielst du es"
+   },
+   "text": {
+    "header": "{name} – {count, plural, one {# Produkt} other {# Produkte}}"
+   }
+  },
+  "kinds": {
+   "BOX": "Box-Set",
+   "OTHER": "Produkt",
+   "STARTER": "Starter Deck",
+   "STRUCTURE": "Structure Deck",
+   "TIN": "Tin"
+  },
+  "tab": {
+   "addProduct": "Produkt hinzufügen",
+   "cardCount": "{count, plural, one {# Karte} other {# Karten}}",
+   "complete": "Alle Karten sind in deiner Sammlung",
+   "deck": "Deck",
+   "empty": {
+    "description": "Füge ein Structure Deck, eine Tin oder ein Box-Set hinzu: Es erscheint hier mit seinem kompletten Inhalt, bei Decks auch mit einem Spiel-Guide.",
+    "title": "Noch keine Produkte"
+   },
+   "missing": "{count, plural, one {# Exemplar ist} other {# Exemplare sind}} nicht mehr in deiner Sammlung"
+  }
+ },
+ "suggestions": {
+  "generate": {
+   "card": {
+    "allOwned": "Alle im Besitz",
+    "inclusion": "In {percent} der Listen gespielt",
+    "missingBadge": "FEHLT",
+    "toBuy": "{count, plural, one {# Exemplar zu kaufen} other {# Exemplare zu kaufen}}"
+   },
+   "create": "Deck erstellen",
+   "created": "Deck „{name}“ erstellt",
+   "modes": {
+    "META": {
+     "hint": "Die Turnier-Referenzliste, mit dem, was dir fehlt",
+     "label": "Komplette Meta-Liste"
+    },
+    "OWNED": {
+     "hint": "Nur was du besitzt, ergänzt mit deinen Staples",
+     "label": "Mit meinen Karten"
+    }
+   },
+   "modesOfficial": {
+    "META": {
+     "hint": "Das Deck wie verkauft, mit dem, was dir fehlt",
+     "label": "Vollständige offizielle Liste"
+    },
+    "OWNED": {
+     "hint": "Nur was du besitzt, ergänzt durch deine Staples",
+     "label": "Mit meinen Karten"
+    }
+   },
+   "nameLabel": "Deckname",
+   "sources": {
+    "ARCHETYPE": "Archetyp",
+    "FILLER": "Füllkarte",
+    "FLEX": "Flex",
+    "STAPLE": "Staple",
+    "SUPPORT": "Support"
+   },
+   "status": {
+    "fragile": "Komplett, aber wackelig",
+    "incomplete": "Mit deiner Sammlung unvollständig",
+    "playable": "Komplett und mit deinen Karten spielbar"
+   },
+   "summary": {
+    "cost": "Geschätzte Kosten",
+    "counts": "Main / Extra / Side",
+    "missingMain": "{count, plural, one {# Karte fehlt} other {# Karten fehlen}}",
+    "nothing": "Nichts",
+    "playable": "Spielbar",
+    "toBuy": "Zu kaufen",
+    "toBuyValue": "{count, plural, one {# Exemplar} other {# Exemplare}}",
+    "yes": "Ja"
+   },
+   "titleArchetype": "Auto-Deck: {archetype}",
+   "titleMeta": "Bauen: {name}",
+   "titleOfficial": "Offizielles Deck: {name}",
+   "wishlistMissing": "{count, plural, one {Das fehlende Exemplar auf meine Wunschliste setzen} other {Die # fehlenden Exemplare auf meine Wunschliste setzen}}",
+   "zoneCount": "{count, plural, one {# Karte} other {# Karten}}"
+  },
+  "meta": {
+   "card": {
+    "build": "Dieses Deck bauen",
+    "coverage": "Anteil der Referenzliste, den du schon besitzt",
+    "imported": "Importierte Liste",
+    "listCount": "{count, plural, one {# Turnierliste} other {# Turnierlisten}}",
+    "missing": "{owned}/{required} Exemplare · <strong>{cost}</strong> bis komplett",
+    "playable": "Du kannst es so spielen, wie es ist.",
+    "share": "{share} der Meta",
+    "tier": "Tier {tier}",
+    "variant": "auch „{name}“"
+   },
+   "empty": {
+    "description": "Die Meta wird automatisch aus aktuellen Turnier-Topdecks (YGOPRODeck) berechnet. Das erste Update läuft beim Start der API, danach jeden Montag.",
+    "title": "Noch keine Turnierdaten"
+   },
+   "status": {
+    "failed": "Meta aktualisiert am {date} · fehlgeschlagen",
+    "ok": "Meta aktualisiert am {date} · {count, plural, one {# Liste} other {# Listen}}",
+    "refresh": "Aktualisieren",
+    "synced": "{archetypes} Archetypen aus {lists} Listen berechnet"
+   }
+  },
+  "official": {
+   "empty": {
+    "description": "Die offiziellen Decklisten (Structure Decks, Starter Decks, Decks aus Boxen wie Legendary Decks) werden nach dem Start der API im Hintergrund von Yugipedia geladen. Schau in ein paar Minuten wieder vorbei.",
+    "title": "Noch keine offiziellen Decks"
+   },
+   "filterLabel": "Produkttyp",
+   "filters": {
+    "ALL": "Alle",
+    "BOX": "Decks aus Boxen",
+    "STARTER": "Starter Decks",
+    "STRUCTURE": "Structure Decks"
+   },
+   "owned": "In deiner Sammlung",
+   "showMore": "Mehr anzeigen ({count})"
+  },
+  "page": {
+   "archetypeStats": "{cards, plural, one {# Karte} other {# Karten}} · {copies, plural, one {# Exemplar} other {# Exemplare}}",
+   "archetypesEmpty": "Füge Karten zu deiner Sammlung hinzu, um Archetypen zu sehen, die du bauen kannst.",
+   "description": "Die aktuellen Top-Decks, was deine Sammlung schon hergibt und Decks, die für dich gebaut wurden.",
+   "sections": {
+    "archetypes": "Aus deiner Sammlung · ein automatisch gebautes Deck pro Archetyp",
+    "meta": "Meta-Decks · die für dich zugänglichsten",
+    "official": "Offizielle Decks · Structure-, Starter- und Box-Decks zum Nachbauen",
+    "playable": "Sofort spielbar · 100 % deine Karten"
+   },
+   "title": "Vorschläge"
+  },
+  "playable": {
+   "best": "Beste Wahl",
+   "composition": "100 % deine Karten · {main} Main · {extra} Extra",
+   "empty": {
+    "action": "Produkt hinzufügen",
+    "description": "Du brauchst einen gut bestückten Archetyp (etwa zehn verschiedene Karten) oder einen guten Teil eines Meta-Decks. Ein Structure Deck ist oft der beste Einstieg.",
+    "title": "Noch kein komplettes Deck aus deiner Sammlung"
+   },
+   "homebrew": "Homebrew",
+   "metaTier": "Meta · Tier {tier}",
+   "official": "Offizielles Deck",
+   "open": "Ansehen & erstellen"
+  },
+  "score": {
+   "criteria": {
+    "consistency": {
+     "hint": "Engine-Karten, die 3-mal gespielt werden",
+     "label": "Konstanz"
+    },
+    "engine": {
+     "hint": "Anteil des Main Decks, den der Archetyp einnimmt",
+     "label": "Engine"
+    },
+    "filler": {
+     "hint": "Generische Karten, um auf 40 zu kommen",
+     "label": "Füllkarten"
+    },
+    "staples": {
+     "hint": "Hand Traps und generische Meta-Karten",
+     "label": "Staples"
+    },
+    "starters": {
+     "hint": "Exemplare von Karten, die deine Combos allein starten",
+     "label": "Starter"
+    },
+    "synergy": {
+     "hint": "Karten, die sich gegenseitig suchen / beschwören, Starter, tatsächlich beschwörbares Extra Deck",
+     "label": "Synergie"
+    }
+   },
+   "hint": "Stärkewertung: Synergie der Karten, Engine, Staples, Konstanz, Anteil generischer Füllkarten",
+   "label": "Stärke"
+  }
+ },
+ "wishlist": {
+  "priorities": {
+   "HIGH": "Dringend",
+   "LOW": "Irgendwann",
+   "MEDIUM": "Normal"
+  },
+  "row": {
+   "acquired": "Hab ich",
+   "acquiredToast": "Zu deiner Sammlung hinzugefügt 🎉",
+   "budget": "Budget {price}",
+   "priority": "Priorität",
+   "remove": "Entfernen"
+  },
+  "view": {
+   "description": "Karten, die du jagst – mit dem gewünschten Druck und deinem Budget.",
+   "empty": {
+    "description": "Füge Karten über ihre Detailseite hinzu oder schick alles, was einem Deck fehlt, mit einem Klick hierher.",
+    "title": "Deine Wunschliste ist leer"
+   },
+   "stats": {
+    "cards": "Karten",
+    "estimatedCost": "Geschätzte Kosten"
+   },
+   "title": "Wunschliste"
+  }
+ }
+}

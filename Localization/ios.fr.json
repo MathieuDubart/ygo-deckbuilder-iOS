@@ -1,0 +1,53 @@
+{
+  "server": {
+    "title": "Ton serveur",
+    "description": "YGO Deck Builder s'auto-héberge : entre l'adresse de ton instance (celle que tu ouvres dans ton navigateur).",
+    "placeholder": "ygo.example.com",
+    "hint": "HTTPS par défaut. Sur ton réseau local, tape l'adresse complète, ex. http://192.168.1.20:3000",
+    "connect": "Se connecter",
+    "invalid": "Cette adresse n'a pas l'air valide.",
+    "unreachable": "Impossible de joindre {url} : {error}",
+    "notAnInstance": "Ce serveur ne répond pas comme une instance YGO Deck Builder.",
+    "current": "Serveur",
+    "change": "Changer de serveur"
+  },
+  "settings": {
+    "title": "Réglages",
+    "account": "Compte",
+    "systemLanguage": "Langue du système",
+    "languageHint": "S'applique aussi aux noms et effets des cartes, et aux guides générés.",
+    "server": "Serveur",
+    "meta": "Meta",
+    "credits": "Données et images des cartes : YGOPRODeck. Visuels et listes des produits : Yugipedia. Yu-Gi-Oh! est une marque de Konami ; cette app n'est pas affiliée à Konami."
+  },
+  "scan": {
+    "title": "Scanner des cartes",
+    "hint": "Vise le code imprimé sous l'illustration (ex. SDBE-FR001).",
+    "details": "Détails",
+    "addOne": "+1 dans ma collection",
+    "addedCount": "{count, plural, one {# ajoutée} other {# ajoutées}}",
+    "alreadyOwned": "Tu en as déjà {count}",
+    "notFound": "Aucune carte trouvée pour {code}",
+    "unavailable": "Le scan n'est pas disponible",
+    "unavailableHint": "Autorise l'accès à la caméra dans les Réglages, ou utilise un appareil qui en a une."
+  },
+  "card": {
+    "zoom": "Afficher la carte en plein écran"
+  },
+  "common": {
+    "share": "Partager"
+  },
+  "deck": {
+    "addCards": "Ajouter des cartes",
+    "emptyZone": "Touche « Ajouter des cartes », puis une carte pour voir son détail et l'ajouter.",
+    "exportYdk": "Exporter en .ydk",
+    "moveToSide": "En passer une au Side Deck"
+  },
+  "products": {
+    "removeWithCards": "Le retirer avec ses cartes"
+  },
+  "errors": {
+    "noServer": "Aucun serveur configuré.",
+    "decoding": "Réponse inattendue du serveur ({detail}). Le serveur est-il à jour ?"
+  }
+}
