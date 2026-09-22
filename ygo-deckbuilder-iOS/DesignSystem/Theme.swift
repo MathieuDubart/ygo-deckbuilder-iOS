@@ -48,9 +48,10 @@ struct Pill: View {
         .labelStyle(PillLabelStyle(hasIcon: systemImage != nil))
         .font(.caption2.weight(.semibold))
         .foregroundStyle(tint)
-        .padding(.horizontal, 7)
+        .padding(.horizontal, Spacing.s)
         .padding(.vertical, 3)
         .background(tint.opacity(0.14), in: .capsule)
+        .fixedSize()
     }
 }
 
@@ -58,7 +59,7 @@ private struct PillLabelStyle: LabelStyle {
     let hasIcon: Bool
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 3) {
-            if hasIcon { configuration.icon }
+            if hasIcon { configuration.icon.imageScale(.small) }
             configuration.title
         }
     }
@@ -72,23 +73,23 @@ struct StatTile: View {
     var systemImage: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: Spacing.xxs) {
             Text(label)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
-            HStack(spacing: 4) {
+                .minimumScaleFactor(0.85)
+            HStack(spacing: Spacing.xxs) {
                 if let systemImage { Image(systemName: systemImage).font(.caption) }
                 Text(value)
-                    .font(.headline.monospacedDigit())
+                    .font(.title3.weight(.semibold).monospacedDigit())
                     .lineLimit(1)
-                    .minimumScaleFactor(0.7)
+                    .minimumScaleFactor(0.6)
             }
             .foregroundStyle(tint)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(12)
-        .background(.fill.quaternary, in: .rect(cornerRadius: 14))
+        .tileSurface()
     }
 }
 
@@ -157,7 +158,7 @@ struct ScoreBreakdown: View {
     }
 
     var body: some View {
-        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 3), spacing: 6) {
+        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: Spacing.xs), count: 3), spacing: Spacing.xs) {
             ForEach(items, id: \.key) { item in
                 VStack(spacing: 2) {
                     Text(t("suggestions.score.criteria.\(item.key).label"))
@@ -168,8 +169,8 @@ struct ScoreBreakdown: View {
                         .font(.caption.weight(.semibold).monospacedDigit())
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 6)
-                .background(.fill.quaternary, in: .rect(cornerRadius: 8))
+                .padding(.vertical, Spacing.s)
+                .background(.fill.quaternary, in: .rect(cornerRadius: Radius.s - 4, style: .continuous))
                 .accessibilityElement(children: .combine)
                 .accessibilityHint(t("suggestions.score.criteria.\(item.key).hint"))
             }
@@ -189,8 +190,8 @@ struct FilterChip<Content: View>: View {
                 .lineLimit(1)
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(isOn ? Color.accentColor : Color.primary)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 7)
+                .padding(.horizontal, Spacing.m + 2)
+                .padding(.vertical, Spacing.s)
                 .glassEffect(isOn ? .regular.tint(.accentColor.opacity(0.25)).interactive() : .regular.interactive(), in: .capsule)
         }
         .buttonStyle(.plain)

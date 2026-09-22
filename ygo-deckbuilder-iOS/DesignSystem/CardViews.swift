@@ -18,7 +18,7 @@ struct CardArt: View {
             }
         }
         .aspectRatio(Theme.cardAspect, contentMode: .fit)
-        .clipShape(.rect(cornerRadius: 5))
+        .clipShape(.rect(cornerRadius: Radius.card, style: .continuous))
         .opacity(dimmed ? 0.45 : 1)
         .accessibilityLabel(card.name)
     }
@@ -70,10 +70,10 @@ struct CardRow<Trailing: View>: View {
     }
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: Spacing.m) {
             CardArt(card: card, width: .thumb)
                 .frame(width: 44)
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 3) {
                 Text(card.name)
                     .font(.subheadline.weight(.medium))
                     .lineLimit(2)
@@ -82,9 +82,10 @@ struct CardRow<Trailing: View>: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
             }
-            Spacer(minLength: 8)
+            Spacer(minLength: Spacing.s)
             trailing()
         }
+        .padding(.vertical, 2)
         .contentShape(.rect)
     }
 }
@@ -116,11 +117,11 @@ struct ProductCover: View {
 /// Grille adaptative de cartes.
 struct CardGrid<Item: Identifiable, Cell: View>: View {
     let items: [Item]
-    var minWidth: CGFloat = 100
+    var minWidth: CGFloat = GridWidth.card
     @ViewBuilder var cell: (Item) -> Cell
 
     var body: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: minWidth), spacing: 10)], spacing: 12) {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: minWidth), spacing: Spacing.m)], spacing: Spacing.l) {
             ForEach(items) { cell($0) }
         }
     }
