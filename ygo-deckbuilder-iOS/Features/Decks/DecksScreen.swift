@@ -54,6 +54,7 @@ struct DecksScreen: View {
                     Text(error).foregroundStyle(Theme.danger).font(.footnote)
                 }
             }
+            .listRowSpacing(Spacing.xxs)
             .navigationTitle(t("decks.view.title"))
             .navigationDestination(for: DeckRoute.self) { DeckBuilderScreen(deckId: $0.id) }
             .toolbar {
@@ -115,18 +116,18 @@ private struct DeckRow: View {
     let deck: DeckListItem
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: Spacing.m) {
             RemoteImage([deck.coverURL], width: .thumb) {
-                RoundedRectangle(cornerRadius: 5).fill(.fill.tertiary)
+                RoundedRectangle(cornerRadius: Radius.card, style: .continuous).fill(.fill.tertiary)
                     .overlay(Image(systemName: "rectangle.stack").foregroundStyle(.tertiary))
             }
             .aspectRatio(Theme.cardAspect, contentMode: .fit)
-            .frame(width: 44)
-            .clipShape(.rect(cornerRadius: 5))
+            .frame(width: 48)
+            .clipShape(.rect(cornerRadius: Radius.card, style: .continuous))
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: Spacing.xs) {
                 Text(deck.name).font(.headline).lineLimit(2)
-                HStack(spacing: 6) {
+                HStack(spacing: Spacing.xs) {
                     Pill(text: t("decks.formats.\(deck.format.rawValue)"))
                     Text([
                         t("decks.view.counts.main", ["count": deck.mainCount]),
@@ -141,5 +142,6 @@ private struct DeckRow: View {
                     .foregroundStyle(.tertiary)
             }
         }
+        .padding(.vertical, Spacing.xxs)
     }
 }

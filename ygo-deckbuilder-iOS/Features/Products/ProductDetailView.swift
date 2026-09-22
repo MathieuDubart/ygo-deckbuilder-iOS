@@ -22,7 +22,7 @@ struct ProductDetailView: View {
     var body: some View {
         ScrollView {
             LoadableView(state: product, retry: load) { product in
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: Spacing.xl) {
                     header(product)
                     if product.isDeck {
                         Picker("", selection: $tab) {
@@ -40,7 +40,8 @@ struct ProductDetailView: View {
                         content(product)
                     }
                 }
-                .padding()
+                .padding(.horizontal, Spacing.l)
+                .padding(.bottom, Spacing.xl)
             }
         }
         .navigationTitle(product.value?.set.name ?? t("products.dialog.fallbackTitle"))
@@ -70,10 +71,10 @@ struct ProductDetailView: View {
 
     @ViewBuilder
     private func header(_ p: OwnedProductDetail) -> some View {
-        HStack(alignment: .top, spacing: 16) {
+        HStack(alignment: .top, spacing: Spacing.l) {
             ProductCover(set: p.set, width: .medium)
                 .frame(width: 110, height: 110)
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: Spacing.xs) {
                 Pill(text: t("products.kinds.\(p.set.kind.rawValue)"), tint: .accentColor)
                 Text(t("products.dialog.header.productCount", ["count": p.copies, "language": p.language.rawValue]))
                     .font(.subheadline)
@@ -98,8 +99,8 @@ struct ProductDetailView: View {
             .font(.subheadline)
             .foregroundStyle(p.completeness >= 1 ? Theme.success : Theme.warning)
 
-        GlassEffectContainer(spacing: 8) {
-            HStack(spacing: 8) {
+        GlassEffectContainer(spacing: Spacing.s) {
+            HStack(spacing: Spacing.s) {
                 if p.isDeck {
                     Button {
                         Task { await createDeck(p) }
@@ -161,9 +162,12 @@ struct ProductDetailView: View {
         ForEach(Self.groups, id: \.key) { group in
             let cards = p.cards.filter(group.match).filter { !missingOnly || $0.owned < $0.needed }
             if !cards.isEmpty {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("\(t("products.dialog.groups.\(group.key)")) (\(cards.reduce(0) { $0 + $1.needed }))")
-                        .font(.headline)
+                VStack(alignment: .leading, spacing: Spacing.s) {
+                    SectionHeader(t("products.dialog.groups.\(group.key)")) {
+                        Text("\(cards.reduce(0) { $0 + $1.needed })")
+                            .font(.subheadline.monospacedDigit())
+                            .foregroundStyle(.secondary)
+                    }
                     ForEach(cards, id: \.card.id) { c in
                         Button { selected = CardLink(cardId: c.card.id, printHint: c.printCode) } label: {
                             CardRow(card: c.card, subtitle: "\(c.printCode) · \(c.rarity)") {

@@ -11,20 +11,20 @@ struct ServerSetupView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
+                VStack(alignment: .leading, spacing: Spacing.xl) {
                     Image(systemName: "server.rack")
                         .font(.system(size: 44))
                         .foregroundStyle(.tint)
                         .padding(.top, 32)
 
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: Spacing.s) {
                         Text(t("ios.server.title"))
                             .font(.largeTitle.bold())
                         Text(t("ios.server.description"))
                             .foregroundStyle(.secondary)
                     }
 
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: Spacing.s) {
                         TextField(t("ios.server.placeholder"), text: $address)
                             .textContentType(.URL)
                             .keyboardType(.URL)

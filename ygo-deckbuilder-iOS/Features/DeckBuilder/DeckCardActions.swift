@@ -13,7 +13,7 @@ struct DeckCardActions: View {
         let limit = builder.limit(for: card)
         let owned = card.owned
 
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: Spacing.m) {
             HStack(alignment: .firstTextBaseline) {
                 Text(t("deckBuilder.actions.inDeck")).font(.headline)
                 Text(t("deckBuilder.actions.copies", ["total": total, "limit": limit])
@@ -29,7 +29,7 @@ struct DeckCardActions: View {
             ForEach(zones) { zone in
                 let n = builder.quantity(of: card.id, in: zone)
                 let label = t("common.zones.\(zone.rawValue)")
-                HStack(spacing: 12) {
+                HStack(spacing: Spacing.m) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(label).font(.subheadline.weight(.medium))
                         Text(t("deckBuilder.actions.zoneCount", [
@@ -59,8 +59,7 @@ struct DeckCardActions: View {
                     .buttonStyle(.glassProminent)
                     .disabled(total >= limit)
                 }
-                .padding(10)
-                .background(.fill.quaternary, in: .rect(cornerRadius: 12))
+                .tileSurface(padding: Spacing.s + 2)
             }
 
             if let error {
@@ -69,9 +68,9 @@ struct DeckCardActions: View {
                     .foregroundStyle(Theme.danger)
             }
         }
-        .padding(14)
-        .background(Color.accentColor.opacity(0.08), in: .rect(cornerRadius: 16))
-        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.accentColor.opacity(0.3)))
+        .padding(Spacing.l)
+        .background(Color.accentColor.opacity(0.08), in: .rect(cornerRadius: Radius.m, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).strokeBorder(Color.accentColor.opacity(0.3)))
         .sensoryFeedback(.selection, trigger: total)
         .animation(.snappy, value: total)
     }

@@ -15,17 +15,19 @@ struct SuggestionsScreen: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 28) {
+                VStack(alignment: .leading, spacing: Spacing.section) {
                     Text(t("suggestions.page.description"))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
+                        .padding(.bottom, -Spacing.m)
 
                     section(t("suggestions.page.sections.playable"), systemImage: "checkmark.shield") { playableSection }
                     section(t("suggestions.page.sections.meta"), systemImage: "trophy") { metaSection }
                     section(t("suggestions.page.sections.official"), systemImage: "shippingbox") { officialSection }
                     section(t("suggestions.page.sections.archetypes"), systemImage: "sparkles") { archetypeSection }
                 }
-                .padding()
+                .padding(.horizontal, Spacing.l)
+                .padding(.vertical, Spacing.s)
             }
             .navigationTitle(t("suggestions.page.title"))
             .toolbar {
@@ -55,9 +57,8 @@ struct SuggestionsScreen: View {
     private func loadOfficial() async { official = await .fetch(official) { try await app.api.officialDecks(kind: officialKind) } }
 
     private func section(_ title: String, systemImage: String, @ViewBuilder content: () -> some View) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Label(title, systemImage: systemImage)
-                .font(.headline)
+        VStack(alignment: .leading, spacing: Spacing.m) {
+            SectionHeader(title, systemImage: systemImage)
             content()
         }
     }
@@ -78,16 +79,18 @@ struct SuggestionsScreen: View {
                 }
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 12) {
+                    LazyHStack(alignment: .top, spacing: Spacing.m) {
                         ForEach(Array(decks.enumerated()), id: \.offset) { index, deck in
                             PlayableDeckCard(deck: deck, best: index == 0) { target = deck.target }
-                                .frame(width: 290)
+                                .containerRelativeFrame(.horizontal) { length, _ in min(length * 0.84, 360) }
                         }
                     }
                     .scrollTargetLayout()
                 }
+                .contentMargins(.horizontal, Spacing.l, for: .scrollContent)
                 .scrollTargetBehavior(.viewAligned)
                 .scrollClipDisabled()
+                .padding(.horizontal, -Spacing.l)
             }
         }
     }
@@ -101,7 +104,7 @@ struct SuggestionsScreen: View {
                 ContentUnavailableView(t("suggestions.meta.empty.title"), systemImage: "trophy",
                                        description: Text(t("suggestions.meta.empty.description")))
             } else {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 12)], spacing: 12) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: GridWidth.panel), spacing: Spacing.m)], spacing: Spacing.m) {
                     ForEach(decks) { deck in
                         MetaDeckCard(deck: deck) { target = .meta(metaDeckId: deck.metaDeckId, name: deck.name) }
                     }
@@ -115,17 +118,20 @@ struct SuggestionsScreen: View {
     @ViewBuilder
     private var officialSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 8) {
+            HStack(spacing: Spacing.s) {
                 officialChip(nil)
                 ForEach(OfficialDeckKind.allCases) { officialChip($0) }
             }
         }
+        .contentMargins(.horizontal, Spacing.l, for: .scrollContent)
+        .scrollClipDisabled()
+        .padding(.horizontal, -Spacing.l)
         LoadableView(state: official, retry: loadOfficial) { decks in
             if decks.isEmpty {
                 ContentUnavailableView(t("suggestions.official.empty.title"), systemImage: "shippingbox",
                                        description: Text(t("suggestions.official.empty.description")))
             } else {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 12)], spacing: 12) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: GridWidth.panel), spacing: Spacing.m)], spacing: Spacing.m) {
                     ForEach(decks.prefix(officialShown)) { deck in
                         OfficialDeckCard(deck: deck) {
                             target = .official(productDeckId: deck.productDeckId, name: deck.displayName)
@@ -159,7 +165,7 @@ struct SuggestionsScreen: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             } else {
-                FlowLayout(spacing: 8) {
+                FlowLayout(spacing: Spacing.s) {
                     ForEach(items) { item in
                         Button {
                             target = .archetype(item.archetype)
@@ -170,9 +176,9 @@ struct SuggestionsScreen: View {
                                     .font(.caption2)
                                     .foregroundStyle(.secondary)
                             }
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 8)
-                            .glassEffect(.regular.interactive(), in: .rect(cornerRadius: 14))
+                            .padding(.horizontal, Spacing.m + 2)
+                            .padding(.vertical, Spacing.s + 2)
+                            .glassEffect(.regular.interactive(), in: .rect(cornerRadius: Radius.s + 4, style: .continuous))
                         }
                         .buttonStyle(.plain)
                     }
@@ -190,7 +196,7 @@ private struct PlayableDeckCard: View {
     let onOpen: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: Spacing.m) {
             ZStack(alignment: .topLeading) {
                 HStack(spacing: -22) {
                     ForEach(Array(deck.highlights.enumerated()), id: \.offset) { index, card in
@@ -202,10 +208,11 @@ private struct PlayableDeckCard: View {
                             .shadow(color: .black.opacity(0.3), radius: 4, y: 2)
                     }
                 }
-                .frame(maxWidth: .infinity, minHeight: 120)
-                .padding(.top, 12)
+                .frame(maxWidth: .infinity, minHeight: 124)
+                .padding(.top, Spacing.xl)
+                .padding(.bottom, Spacing.xs)
 
-                HStack(spacing: 4) {
+                HStack(spacing: Spacing.xxs) {
                     if best { Pill(text: t("suggestions.playable.best"), tint: .accentColor) }
                     switch deck.target {
                     case .official:
@@ -220,8 +227,8 @@ private struct PlayableDeckCard: View {
                 }
             }
 
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 2) {
+            HStack(alignment: .top, spacing: Spacing.m) {
+                VStack(alignment: .leading, spacing: Spacing.xxs) {
                     Text(deck.name).font(.headline).lineLimit(1)
                     Label(t("suggestions.playable.composition", ["main": deck.counts.MAIN, "extra": deck.counts.EXTRA]),
                           systemImage: "checkmark.shield")
@@ -240,9 +247,10 @@ private struct PlayableDeckCard: View {
                 openButton.buttonStyle(.glass)
             }
         }
-        .padding(14)
-        .background(.background.secondary, in: .rect(cornerRadius: 22))
-        .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(best ? Color.accentColor.opacity(0.5) : .clear))
+        .surface()
+        .overlay(
+            RoundedRectangle(cornerRadius: Radius.m, style: .continuous)
+                .strokeBorder(best ? Color.accentColor.opacity(0.5) : .clear))
     }
 
     private var openButton: some View {
@@ -258,25 +266,25 @@ private struct MetaDeckCard: View {
     let onBuild: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: Spacing.m) {
             ZStack(alignment: .topLeading) {
                 RemoteImage([deck.coverURL], width: .medium) { Rectangle().fill(.fill.tertiary) }
-                    .frame(height: 90)
+                    .frame(height: 96)
                     .frame(maxWidth: .infinity)
                     .clipped()
                     .overlay(LinearGradient(colors: [.clear, .black.opacity(0.5)], startPoint: .top, endPoint: .bottom))
-                HStack(spacing: 4) {
+                HStack(spacing: Spacing.xxs) {
                     if let tier = deck.tier { Pill(text: t("suggestions.meta.card.tier", ["tier": tier]), tint: .accentColor) }
                     if deck.source == "tournaments", let share = deck.share {
                         Pill(text: t("suggestions.meta.card.share", ["share": L10n.shared.percent(share)]), tint: .white)
                     }
                 }
-                .padding(8)
+                .padding(Spacing.s)
             }
-            .clipShape(.rect(cornerRadius: 14))
+            .clipShape(.rect(cornerRadius: Radius.s, style: .continuous))
 
-            HStack(alignment: .top, spacing: 12) {
-                VStack(alignment: .leading, spacing: 2) {
+            HStack(alignment: .top, spacing: Spacing.m) {
+                VStack(alignment: .leading, spacing: Spacing.xxs) {
                     Text(deck.name).font(.headline).lineLimit(1)
                     Text(deck.listCount > 0 ? t("suggestions.meta.card.listCount", ["count": deck.listCount]) : t("suggestions.meta.card.imported"))
                         .font(.caption)
@@ -308,8 +316,7 @@ private struct MetaDeckCard: View {
             }
             .buttonStyle(.glass)
         }
-        .padding(12)
-        .background(.background.secondary, in: .rect(cornerRadius: 22))
+        .surface(padding: Spacing.m)
     }
 }
 
@@ -318,40 +325,52 @@ private struct OfficialDeckCard: View {
     let onBuild: () -> Void
 
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
-            ProductCover(set: deck.product, width: .tile)
-                .frame(width: 84, height: 100)
-            VStack(alignment: .leading, spacing: 6) {
-                if let deckName = deck.deckName {
-                    Text(deckName).font(.headline).lineLimit(2)
-                    Text(deck.product.name).font(.caption).foregroundStyle(.secondary).lineLimit(2)
-                } else {
-                    Text(deck.product.name).font(.headline).lineLimit(2)
+        VStack(alignment: .leading, spacing: Spacing.m) {
+            HStack(alignment: .top, spacing: Spacing.m) {
+                ProductCover(set: deck.product, width: .tile)
+                    .frame(width: 72, height: 88)
+                VStack(alignment: .leading, spacing: Spacing.xxs) {
+                    Text(deck.deckName ?? deck.product.name)
+                        .font(.headline)
+                        .lineLimit(2)
+                    if deck.deckName != nil {
+                        Text(deck.product.name)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(2)
+                    }
                 }
-                HStack(spacing: 4) {
-                    if let code = deck.product.code { Pill(text: code) }
-                    if let archetype = deck.archetype { Pill(text: archetype, tint: .accentColor) }
-                    if deck.productOwned { Pill(text: t("suggestions.official.owned"), tint: Theme.success, systemImage: "checkmark") }
+                Spacer(minLength: Spacing.s)
+                CoverageRing(value: deck.coverage, size: 48)
+            }
+
+            FlowLayout(spacing: Spacing.xs) {
+                if let code = deck.product.code { Pill(text: code) }
+                if let archetype = deck.archetype { Pill(text: archetype, tint: .accentColor) }
+                if deck.productOwned {
+                    Pill(text: t("suggestions.official.owned"), tint: Theme.success, systemImage: "checkmark")
                 }
+            }
+
+            Group {
                 if deck.coverage >= 1 {
-                    Text(t("suggestions.meta.card.playable")).font(.caption).foregroundStyle(Theme.success)
+                    Label(t("suggestions.meta.card.playable"), systemImage: "checkmark.circle.fill")
+                        .foregroundStyle(Theme.success)
                 } else {
                     Text(L10n.shared.rich("suggestions.meta.card.missing", [
                         "owned": deck.ownedCopies, "required": deck.requiredCopies,
                         "cost": L10n.shared.price(deck.estimatedCostToComplete),
                     ]))
-                    .font(.caption)
                 }
-                Button(action: onBuild) {
-                    Label(t("suggestions.meta.card.build"), systemImage: "wand.and.stars")
-                }
-                .buttonStyle(.glass)
-                .controlSize(.small)
             }
-            Spacer(minLength: 0)
-            CoverageRing(value: deck.coverage, size: 46)
+            .font(.caption)
+
+            Button(action: onBuild) {
+                Label(t("suggestions.meta.card.build"), systemImage: "wand.and.stars")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.glass)
         }
-        .padding(12)
-        .background(.background.secondary, in: .rect(cornerRadius: 22))
+        .surface(padding: Spacing.m)
     }
 }

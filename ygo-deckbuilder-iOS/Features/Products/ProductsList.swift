@@ -12,7 +12,7 @@ struct ProductsList<Header: View>: View {
         List {
             Section {
                 header
-                    .listRowInsets(EdgeInsets())
+                    .listRowInsets(EdgeInsets(top: Spacing.s, leading: 0, bottom: Spacing.s, trailing: 0))
                     .listRowBackground(Color.clear)
             }
 
@@ -37,6 +37,7 @@ struct ProductsList<Header: View>: View {
             }
         }
         .listStyle(.insetGrouped)
+        .listSectionSpacing(Spacing.l)
         .task(id: app.collectionVersion) { await load() }
         .refreshable { await load() }
     }
@@ -50,14 +51,14 @@ private struct OwnedProductRow: View {
     let product: OwnedProduct
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: Spacing.m) {
             ProductCover(set: product.set, width: .thumb)
-                .frame(width: 60, height: 60)
-            VStack(alignment: .leading, spacing: 4) {
+                .frame(width: 64, height: 64)
+            VStack(alignment: .leading, spacing: Spacing.xs) {
                 Text(product.set.name)
                     .font(.subheadline.weight(.medium))
                     .lineLimit(2)
-                HStack(spacing: 4) {
+                FlowLayout(spacing: Spacing.xxs) {
                     Pill(text: t("products.kinds.\(product.set.kind.rawValue)"))
                     if product.isDeck { Pill(text: t("products.tab.deck"), tint: .accentColor) }
                     if product.copies > 1 { Pill(text: "×\(product.copies)") }
@@ -73,5 +74,6 @@ private struct OwnedProductRow: View {
                 .font(.caption.monospacedDigit())
                 .foregroundStyle(.secondary)
         }
+        .padding(.vertical, Spacing.xxs)
     }
 }

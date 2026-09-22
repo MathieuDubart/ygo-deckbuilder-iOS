@@ -51,7 +51,8 @@ struct CardDetailView: View {
             LoadableView(state: card, retry: load) { card in
                 content(card)
             }
-            .padding()
+            .padding(.horizontal, Spacing.l)
+            .padding(.bottom, Spacing.xl)
         }
         .navigationTitle(card.value?.name ?? t("cards.detail.fallbackTitle"))
         .navigationBarTitleDisplayMode(.inline)
@@ -67,11 +68,11 @@ struct CardDetailView: View {
 
     @ViewBuilder
     private func content(_ card: CardDetail) -> some View {
-        VStack(alignment: .leading, spacing: 24) {
-            HStack(alignment: .top, spacing: 16) {
+        VStack(alignment: .leading, spacing: Spacing.xl) {
+            HStack(alignment: .top, spacing: Spacing.l) {
                 Button { zoomed = true } label: {
                     CardArt(card: card.summary, width: .medium)
-                        .frame(width: 150)
+                        .frame(width: 140)
                         .shadow(color: .black.opacity(0.25), radius: 8, y: 4)
                 }
                 .buttonStyle(.plain)
@@ -82,8 +83,10 @@ struct CardDetailView: View {
 
             Text(card.desc)
                 .font(.callout)
+                .lineSpacing(3)
                 .textSelection(.enabled)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .tileSurface(padding: Spacing.l)
 
             if let builder, card.category != .skill, card.category != .token {
                 DeckCardActions(card: card.summary, builder: builder)
@@ -106,8 +109,8 @@ private struct CardFacts: View {
     let card: CardDetail
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            FlowLayout(spacing: 6) {
+        VStack(alignment: .leading, spacing: Spacing.m) {
+            FlowLayout(spacing: Spacing.xs) {
                 Pill(text: card.type, tint: Theme.color(for: card.summary))
                 if let attribute = card.attribute { Pill(text: attribute) }
                 if let race = card.race { Pill(text: race) }
@@ -124,7 +127,7 @@ private struct CardFacts: View {
             }
 
             if card.category == .monster, card.atk != nil || card.def != nil {
-                HStack(spacing: 16) {
+                HStack(spacing: Spacing.l) {
                     stat("ATK", card.atk.map(String.init) ?? "?")
                     if card.linkVal == nil { stat("DEF", card.def.map(String.init) ?? "?") }
                 }
@@ -179,13 +182,12 @@ private struct PrintsSection: View {
                             .font(.subheadline.monospacedDigit())
                             .foregroundStyle(.secondary)
                     }
-                    .padding(.vertical, 8)
+                    .padding(.vertical, Spacing.s + 2)
                     Divider()
                 }
             }
         } label: {
-            Text(t("cards.detail.prints", ["count": prints.count]))
-                .font(.headline)
+            SectionHeader(t("cards.detail.prints", ["count": prints.count]), systemImage: "square.stack")
         }
     }
 }

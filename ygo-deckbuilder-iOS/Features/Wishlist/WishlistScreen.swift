@@ -14,11 +14,11 @@ struct WishlistScreen: View {
             List {
                 LoadableView(state: wishlist, retry: load) { list in
                     Section {
-                        HStack(spacing: 8) {
+                        HStack(spacing: Spacing.s) {
                             StatTile(label: t("wishlist.view.stats.cards"), value: L10n.shared.number(list.items.reduce(0) { $0 + $1.quantity }))
                             StatTile(label: t("wishlist.view.stats.estimatedCost"), value: L10n.shared.price(list.totalEstimated), tint: .accentColor)
                         }
-                        .listRowInsets(EdgeInsets())
+                        .listRowInsets(EdgeInsets(top: Spacing.s, leading: 0, bottom: Spacing.s, trailing: 0))
                         .listRowBackground(Color.clear)
                     }
 
@@ -41,6 +41,7 @@ struct WishlistScreen: View {
                     Text(message).font(.footnote).foregroundStyle(.secondary)
                 }
             }
+            .listSectionSpacing(Spacing.l)
             .navigationTitle(t("wishlist.view.title"))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) { SettingsButton() }

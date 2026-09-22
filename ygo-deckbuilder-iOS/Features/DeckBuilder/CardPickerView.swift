@@ -25,8 +25,8 @@ struct CardPickerView: View {
                          ?? t("deckBuilder.picker.suggestions")).tag(Tab.suggestions)
                 }
                 .pickerStyle(.segmented)
-                .padding(.horizontal)
-                .padding(.bottom, 8)
+                .padding(.horizontal, Spacing.l)
+                .padding(.bottom, Spacing.s)
 
                 switch tab {
                 case .search:
@@ -46,10 +46,10 @@ struct CardPickerView: View {
                 if let feedback {
                     Text(feedback)
                         .font(.footnote.weight(.medium))
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 8)
+                        .padding(.horizontal, Spacing.l)
+                        .padding(.vertical, Spacing.s + 2)
                         .glassEffect(.regular, in: .capsule)
-                        .padding(.bottom, 12)
+                        .padding(.bottom, Spacing.l)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                         .task(id: added) {
                             try? await Task.sleep(for: .seconds(2))
@@ -96,7 +96,7 @@ struct CardPickerView: View {
                     ContentUnavailableView(t("deckBuilder.picker.suggestions"), systemImage: "sparkles",
                                            description: Text(t("deckBuilder.picker.suggestionsEmpty")))
                 } else {
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: Spacing.m) {
                         Text(t("deckBuilder.picker.suggestionsHint"))
                             .font(.footnote)
                             .foregroundStyle(.secondary)
@@ -104,7 +104,8 @@ struct CardPickerView: View {
                             PickerTile(card: card, inDeck: model.totalCopies(of: card.id), onOpen: { open(card) }, onAdd: { add(card) })
                         }
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, Spacing.l)
+                    .padding(.bottom, Spacing.xl)
                 }
             }
         }
@@ -118,13 +119,13 @@ private struct SearchPane: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: Spacing.m) {
                 CardFiltersBar(query: $search.query)
                 if search.items.isEmpty && !search.loading {
                     Text(t(search.query.owned ? "deckBuilder.picker.noOwnedResults" : "deckBuilder.picker.noResults"))
                         .font(.footnote)
                         .foregroundStyle(.secondary)
-                        .padding(.top, 24)
+                        .padding(.top, Spacing.xl)
                 }
                 CardGrid(items: search.items, minWidth: 90) { card in
                     PickerTile(card: card, inDeck: 0, onOpen: { onOpen(card) }, onAdd: { onAdd(card) })
@@ -133,7 +134,8 @@ private struct SearchPane: View {
                         }
                 }
             }
-            .padding(.horizontal)
+            .padding(.horizontal, Spacing.l)
+            .padding(.bottom, Spacing.xl)
         }
         .searchable(text: $search.query.q, placement: .navigationBarDrawer(displayMode: .always),
                     prompt: t("catalog.filters.searchPlaceholderCompact"))
