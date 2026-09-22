@@ -1,0 +1,53 @@
+{
+  "server": {
+    "title": "Il tuo server",
+    "description": "YGO Deck Builder è self-hosted: inserisci l'indirizzo della tua istanza (quella che apri nel browser).",
+    "placeholder": "ygo.example.com",
+    "hint": "HTTPS di default. Sulla rete locale, digita l'indirizzo completo, es. http://192.168.1.20:3000",
+    "connect": "Connetti",
+    "invalid": "Questo indirizzo non sembra valido.",
+    "unreachable": "Impossibile raggiungere {url}: {error}",
+    "notAnInstance": "Questo server non risponde come un'istanza di YGO Deck Builder.",
+    "current": "Server",
+    "change": "Cambia server"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "account": "Account",
+    "systemLanguage": "Lingua di sistema",
+    "languageHint": "Vale anche per nomi ed effetti delle carte e per le guide generate.",
+    "server": "Server",
+    "meta": "Meta",
+    "credits": "Dati e immagini delle carte: YGOPRODeck. Immagini e liste dei prodotti: Yugipedia. Yu-Gi-Oh! è un marchio di Konami; questa app non è affiliata a Konami."
+  },
+  "scan": {
+    "title": "Scansiona carte",
+    "hint": "Inquadra il codice stampato sotto l'illustrazione (es. SDBE-IT001).",
+    "details": "Dettagli",
+    "addOne": "+1 alla collezione",
+    "addedCount": "{count, plural, one {# aggiunta} other {# aggiunte}}",
+    "alreadyOwned": "Ne possiedi già {count}",
+    "notFound": "Nessuna carta trovata per {code}",
+    "unavailable": "La scansione non è disponibile",
+    "unavailableHint": "Consenti l'accesso alla fotocamera nelle Impostazioni o usa un dispositivo che ne abbia una."
+  },
+  "card": {
+    "zoom": "Mostra la carta a schermo intero"
+  },
+  "common": {
+    "share": "Condividi"
+  },
+  "deck": {
+    "addCards": "Aggiungi carte",
+    "emptyZone": "Tocca «Aggiungi carte», poi una carta per vederne i dettagli e aggiungerla.",
+    "exportYdk": "Esporta .ydk",
+    "moveToSide": "Spostane una nel Side Deck"
+  },
+  "products": {
+    "removeWithCards": "Rimuovilo con le sue carte"
+  },
+  "errors": {
+    "noServer": "Nessun server configurato.",
+    "decoding": "Risposta inattesa del server ({detail}). Il server è aggiornato?"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "server": {
+    "title": "Your server",
+    "description": "YGO Deck Builder is self-hosted: enter the address of your instance (the one you open in your browser).",
+    "placeholder": "ygo.example.com",
+    "hint": "HTTPS by default. On your local network, type the full address, e.g. http://192.168.1.20:3000",
+    "connect": "Connect",
+    "invalid": "That doesn't look like a valid address.",
+    "unreachable": "Couldn't reach {url}: {error}",
+    "notAnInstance": "This server doesn't answer like a YGO Deck Builder instance.",
+    "current": "Server",
+    "change": "Change server"
+  },
+  "settings": {
+    "title": "Settings",
+    "account": "Account",
+    "systemLanguage": "System language",
+    "languageHint": "Also applies to card names and effects, and to generated guides.",
+    "server": "Server",
+    "meta": "Meta",
+    "credits": "Card data and images: YGOPRODeck. Box art and set lists: Yugipedia. Yu-Gi-Oh! is a trademark of Konami; this app is not affiliated with Konami."
+  },
+  "scan": {
+    "title": "Scan cards",
+    "hint": "Point the camera at the code printed under the artwork (e.g. SDBE-FR001).",
+    "details": "Details",
+    "addOne": "Add 1 to my collection",
+    "addedCount": "{count, plural, one {# added} other {# added}}",
+    "alreadyOwned": "You already own {count}",
+    "notFound": "No card found for {code}",
+    "unavailable": "Scanning isn't available",
+    "unavailableHint": "Allow camera access in Settings, or use a device with a camera."
+  },
+  "card": {
+    "zoom": "Show the card full screen"
+  },
+  "common": {
+    "share": "Share"
+  },
+  "deck": {
+    "addCards": "Add cards",
+    "emptyZone": "Tap “Add cards”, then a card to see its details and add it.",
+    "exportYdk": "Export .ydk",
+    "moveToSide": "Move one to the Side Deck"
+  },
+  "products": {
+    "removeWithCards": "Remove it and its cards"
+  },
+  "errors": {
+    "noServer": "No server configured.",
+    "decoding": "Unexpected server response ({detail}). Is the server up to date?"
+  }
+}

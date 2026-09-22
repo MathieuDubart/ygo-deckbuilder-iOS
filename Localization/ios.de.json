@@ -1,0 +1,53 @@
+{
+  "server": {
+    "title": "Dein Server",
+    "description": "YGO Deck Builder ist selbst gehostet: Gib die Adresse deiner Instanz ein (die du im Browser öffnest).",
+    "placeholder": "ygo.example.com",
+    "hint": "Standardmäßig HTTPS. Im lokalen Netz die vollständige Adresse eingeben, z. B. http://192.168.1.20:3000",
+    "connect": "Verbinden",
+    "invalid": "Das sieht nicht nach einer gültigen Adresse aus.",
+    "unreachable": "{url} ist nicht erreichbar: {error}",
+    "notAnInstance": "Dieser Server antwortet nicht wie eine YGO-Deck-Builder-Instanz.",
+    "current": "Server",
+    "change": "Server wechseln"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "account": "Konto",
+    "systemLanguage": "Systemsprache",
+    "languageHint": "Gilt auch für Kartennamen und -effekte sowie für erstellte Guides.",
+    "server": "Server",
+    "meta": "Meta",
+    "credits": "Kartendaten und -bilder: YGOPRODeck. Produktbilder und Setlisten: Yugipedia. Yu-Gi-Oh! ist eine Marke von Konami; diese App ist nicht mit Konami verbunden."
+  },
+  "scan": {
+    "title": "Karten scannen",
+    "hint": "Richte die Kamera auf den Code unter dem Artwork (z. B. SDBE-DE001).",
+    "details": "Details",
+    "addOne": "+1 in meine Sammlung",
+    "addedCount": "{count} hinzugefügt",
+    "alreadyOwned": "Du besitzt schon {count}",
+    "notFound": "Keine Karte für {code} gefunden",
+    "unavailable": "Scannen ist nicht verfügbar",
+    "unavailableHint": "Erlaube den Kamerazugriff in den Einstellungen oder nutze ein Gerät mit Kamera."
+  },
+  "card": {
+    "zoom": "Karte im Vollbild anzeigen"
+  },
+  "common": {
+    "share": "Teilen"
+  },
+  "deck": {
+    "addCards": "Karten hinzufügen",
+    "emptyZone": "Tippe auf „Karten hinzufügen“ und dann auf eine Karte, um Details zu sehen und sie hinzuzufügen.",
+    "exportYdk": ".ydk exportieren",
+    "moveToSide": "Eine ins Side Deck verschieben"
+  },
+  "products": {
+    "removeWithCards": "Mit seinen Karten entfernen"
+  },
+  "errors": {
+    "noServer": "Kein Server eingerichtet.",
+    "decoding": "Unerwartete Serverantwort ({detail}). Ist der Server aktuell?"
+  }
+}
