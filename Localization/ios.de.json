@@ -35,13 +35,15 @@
     "zoom": "Karte im Vollbild anzeigen"
   },
   "common": {
-    "share": "Teilen"
+    "share": "Teilen",
+    "more": "Mehr"
   },
   "deck": {
     "addCards": "Karten hinzufügen",
     "emptyZone": "Tippe auf „Karten hinzufügen“ und dann auf eine Karte, um Details zu sehen und sie hinzuzufügen.",
     "exportYdk": ".ydk exportieren",
-    "moveToSide": "Eine ins Side Deck verschieben"
+    "moveToSide": "Eine ins Side Deck verschieben",
+    "testInDuel": "Im Duell testen"
   },
   "products": {
     "removeWithCards": "Mit seinen Karten entfernen"
