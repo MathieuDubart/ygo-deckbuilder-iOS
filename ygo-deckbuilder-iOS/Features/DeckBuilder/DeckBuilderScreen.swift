@@ -57,7 +57,7 @@ private struct DeckBuilderContent: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: Spacing.xl) {
                 header
                 IssuesView(model: model)
                 MissingView(model: model, message: $wishlistMessage)
@@ -65,7 +65,8 @@ private struct DeckBuilderContent: View {
                     ZoneSection(model: model, zone: zone) { selected = CardLink(cardId: $0) }
                 }
             }
-            .padding()
+            .padding(.horizontal, Spacing.l)
+            .padding(.bottom, Spacing.xl)
         }
         .navigationTitle(model.name)
         .navigationBarTitleDisplayMode(.inline)
@@ -86,11 +87,11 @@ private struct DeckBuilderContent: View {
             } label: {
                 Label(t("ios.deck.addCards"), systemImage: "plus")
                     .font(.headline)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 4)
+                    .padding(.horizontal, Spacing.m)
+                    .padding(.vertical, Spacing.xxs)
             }
             .buttonStyle(.glassProminent)
-            .padding(.bottom, 8)
+            .padding(.bottom, Spacing.s)
         }
         .onAppear { name = model.name }
         .sheet(isPresented: $picking) { CardPickerView(model: model) }
@@ -101,7 +102,7 @@ private struct DeckBuilderContent: View {
                         pendingLink = CardLink(cardId: id)
                         showingGuide = false
                     }
-                    .padding()
+                    .padding(Spacing.l)
                 }
                 .navigationTitle(t("deckBuilder.header.guideDialogTitle", ["name": model.name]))
                 .navigationBarTitleDisplayMode(.inline)
@@ -124,7 +125,7 @@ private struct DeckBuilderContent: View {
     }
 
     private var header: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: Spacing.m) {
             TextField(t("deckBuilder.header.nameLabel"), text: $name)
                 .font(.title2.bold())
                 .focused($editingName)
@@ -132,7 +133,7 @@ private struct DeckBuilderContent: View {
                 .onSubmit { model.rename(name) }
                 .onChange(of: editingName) { _, focused in if !focused { model.rename(name) } }
 
-            HStack(spacing: 8) {
+            HStack(spacing: Spacing.s) {
                 Menu {
                     Picker(t("decks.new.format"), selection: Binding(get: { model.format }, set: { model.setFormat($0) })) {
                         ForEach(DeckFormat.allCases) { Text(t("decks.formats.\($0.rawValue)")).tag($0) }
@@ -192,7 +193,7 @@ private struct IssuesView: View {
     var body: some View {
         let issues = model.issues
         if !issues.isEmpty {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: Spacing.xxs) {
                 Label(t("deckBuilder.issues.title"), systemImage: "exclamationmark.triangle.fill")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Theme.warning)
@@ -201,8 +202,8 @@ private struct IssuesView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(12)
-            .background(Theme.warning.opacity(0.1), in: .rect(cornerRadius: 12))
+            .padding(Spacing.m)
+            .background(Theme.warning.opacity(0.1), in: .rect(cornerRadius: Radius.s, style: .continuous))
         }
     }
 
@@ -229,7 +230,7 @@ private struct MissingView: View {
     var body: some View {
         let missing = model.missing
         if !missing.isEmpty {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: Spacing.s) {
                 Text(L10n.shared.rich("deckBuilder.missing.summary", [
                     "count": missing.reduce(0) { $0 + $1.missing },
                     "cost": L10n.shared.price(model.missingCost),
@@ -251,8 +252,7 @@ private struct MissingView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(12)
-            .background(.fill.quaternary, in: .rect(cornerRadius: 12))
+            .tileSurface()
         }
     }
 
@@ -279,18 +279,19 @@ private struct ZoneSection: View {
 
     var body: some View {
         let entries = model.cards(in: zone)
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(t("common.zones.\(zone.rawValue)")).font(.headline)
-                Text("\(model.count(zone))").font(.headline.monospacedDigit()).foregroundStyle(.secondary)
-                Spacer()
+        VStack(alignment: .leading, spacing: Spacing.m) {
+            SectionHeader(t("common.zones.\(zone.rawValue)")) {
+                let range = DeckRules.range(zone)
+                Text("\(model.count(zone))/\(zone == .main ? range.lowerBound : range.upperBound)")
+                    .font(.subheadline.monospacedDigit())
+                    .foregroundStyle(zone == .main && model.count(zone) < range.lowerBound ? Theme.warning : .secondary)
             }
             if entries.isEmpty {
                 Text(t(zone == .side ? "deckBuilder.zone.emptySide" : "ios.deck.emptyZone"))
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             } else {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 72), spacing: 8)], spacing: 10) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: GridWidth.compactCard), spacing: Spacing.s)], spacing: Spacing.m) {
                     ForEach(entries) { entry in
                         Button { onOpen(entry.card.id) } label: {
                             CardTile(

@@ -15,26 +15,28 @@ struct ImportProductView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: Spacing.l) {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 8) {
+                        HStack(spacing: Spacing.s) {
                             kindChip(nil)
                             ForEach(ProductKind.allCases) { kindChip($0) }
                         }
-                        .padding(.horizontal)
+                        .padding(.horizontal, Spacing.l)
+                        .padding(.vertical, Spacing.xxs)
                     }
+                    .scrollClipDisabled()
 
                     LoadableView(state: sets, retry: load) { sets in
                         if sets.isEmpty {
                             ContentUnavailableView(t("collection.import.noResults"), systemImage: "shippingbox")
                         } else {
-                            LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 12)], spacing: 16) {
+                            LazyVGrid(columns: [GridItem(.adaptive(minimum: GridWidth.product), spacing: Spacing.m)], spacing: Spacing.m) {
                                 ForEach(sets) { set in
                                     Button { chosen = set } label: { ProductTile(set: set) }
                                         .buttonStyle(.plain)
                                 }
                             }
-                            .padding(.horizontal)
+                            .padding(.horizontal, Spacing.l)
                         }
                     }
                 }
@@ -76,14 +78,14 @@ private struct ProductTile: View {
     let set: CardSet
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: Spacing.s) {
             ProductCover(set: set)
-                .frame(height: 150)
+                .frame(height: 140)
                 .frame(maxWidth: .infinity)
             Text(set.name)
                 .font(.caption.weight(.medium))
                 .lineLimit(2)
-            HStack(spacing: 4) {
+            HStack(spacing: Spacing.xxs) {
                 if let code = set.code { Text(code).font(.caption2.monospaced()) }
                 if let date = set.tcgDate { Text(String(date.prefix(4))).font(.caption2) }
                 Spacer()
@@ -91,8 +93,7 @@ private struct ProductTile: View {
             }
             .foregroundStyle(.secondary)
         }
-        .padding(8)
-        .background(.fill.quaternary, in: .rect(cornerRadius: 14))
+        .tileSurface(padding: Spacing.s + 2, radius: Radius.s + 4)
     }
 }
 

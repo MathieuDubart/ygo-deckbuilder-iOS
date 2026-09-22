@@ -16,7 +16,7 @@ struct AddToCollectionSection: View {
 
     var body: some View {
         GroupBox {
-            VStack(spacing: 12) {
+            VStack(spacing: Spacing.m) {
                 PrintPicker(prints: card.prints, selection: $printId)
                 Stepper(value: $quantity, in: 1...99) {
                     LabeledContent(t("cards.collectionForm.quantity"), value: "\(quantity)")
@@ -88,7 +88,7 @@ struct AddToWishlistSection: View {
     var body: some View {
         GroupBox {
             DisclosureGroup(isExpanded: $expanded) {
-                VStack(spacing: 12) {
+                VStack(spacing: Spacing.m) {
                     PrintPicker(prints: card.prints, selection: $printId, label: t("cards.wishlistForm.print"))
                     Stepper(value: $quantity, in: 1...3) {
                         LabeledContent(t("cards.wishlistForm.quantity"), value: "\(quantity)")
@@ -115,7 +115,7 @@ struct AddToWishlistSection: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
-                .padding(.top, 8)
+                .padding(.top, Spacing.m)
             } label: {
                 Label(t("cards.wishlistForm.title"), systemImage: "heart")
             }

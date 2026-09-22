@@ -65,9 +65,9 @@ struct CardScannerView: View {
 
     @ViewBuilder
     private var panel: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: Spacing.m) {
             if let hit {
-                HStack(spacing: 12) {
+                HStack(spacing: Spacing.m) {
                     CardArt(card: hit.card, width: .thumb)
                         .frame(width: 56)
                     VStack(alignment: .leading, spacing: 2) {
@@ -81,7 +81,7 @@ struct CardScannerView: View {
                     }
                     Spacer(minLength: 0)
                 }
-                HStack(spacing: 10) {
+                HStack(spacing: Spacing.m) {
                     Button(t("ios.scan.details"), systemImage: "info.circle") {
                         onOpen(hit.code, hit.card.id)
                     }
@@ -113,8 +113,8 @@ struct CardScannerView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(16)
-        .glassEffect(.regular, in: .rect(cornerRadius: 24))
+        .padding(Spacing.l)
+        .glassEffect(.regular, in: .rect(cornerRadius: Radius.l, style: .continuous))
         .animation(.snappy, value: hit?.code)
     }
 

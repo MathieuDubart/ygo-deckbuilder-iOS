@@ -52,7 +52,7 @@ private struct CatalogResults: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: Spacing.m) {
                 CardFiltersBar(query: $model.query)
 
                 HStack {
@@ -86,7 +86,8 @@ private struct CatalogResults: View {
                     }
                 }
             }
-            .padding(.horizontal)
+            .padding(.horizontal, Spacing.l)
+            .padding(.bottom, Spacing.xl)
         }
         .searchable(text: $model.query.q, prompt: t("catalog.filters.searchPlaceholder"))
         .autocorrectionDisabled()
@@ -104,7 +105,7 @@ struct CardFiltersBar: View {
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 8) {
+            HStack(spacing: Spacing.s) {
                 if showsOwnedToggle {
                     FilterChip(t("catalog.filters.owned"), systemImage: "checkmark.circle", isOn: query.owned) {
                         query.owned.toggle()
@@ -136,8 +137,11 @@ struct CardFiltersBar: View {
                         systemImage: "arrow.up.arrow.down", isOn: query.sort != nil)
                 }
             }
-            .padding(.vertical, 2)
+            .padding(.vertical, Spacing.xxs)
         }
+        .contentMargins(.horizontal, Spacing.l, for: .scrollContent)
+        .scrollClipDisabled()
+        .padding(.horizontal, -Spacing.l)
         .task {
             if archetypes.isEmpty { archetypes = (try? await app.api.archetypes()) ?? [] }
         }
@@ -155,8 +159,8 @@ private struct MenuChip: View {
             .lineLimit(1)
             .font(.subheadline.weight(.medium))
             .foregroundStyle(isOn ? Color.accentColor : Color.primary)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 7)
+            .padding(.horizontal, Spacing.m + 2)
+            .padding(.vertical, Spacing.s)
             .glassEffect(isOn ? .regular.tint(.accentColor.opacity(0.25)).interactive() : .regular.interactive(), in: .capsule)
     }
 }

@@ -31,7 +31,7 @@ struct GeneratedDeckView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: Spacing.xl) {
                     if target.hasModes {
                         Picker("", selection: $mode) {
                             ForEach([GenerationMode.owned, .meta]) { m in
@@ -48,7 +48,8 @@ struct GeneratedDeckView: View {
                         content(deck)
                     }
                 }
-                .padding()
+                .padding(.horizontal, Spacing.l)
+                .padding(.bottom, Spacing.xl)
             }
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
@@ -75,7 +76,7 @@ struct GeneratedDeckView: View {
 
     @ViewBuilder
     private func content(_ deck: GeneratedDeck) -> some View {
-        LazyVGrid(columns: [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)], spacing: 8) {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: Spacing.s), GridItem(.flexible(), spacing: Spacing.s)], spacing: Spacing.s) {
             StatTile(
                 label: t("suggestions.generate.summary.counts"),
                 value: "\(deck.counts.MAIN) / \(deck.counts.EXTRA) / \(deck.counts.SIDE)",
@@ -100,9 +101,9 @@ struct GeneratedDeckView: View {
         }
 
         if deck.mode != GenerationMode.meta.rawValue {
-            HStack(alignment: .top, spacing: 12) {
+            HStack(alignment: .top, spacing: Spacing.m) {
                 ScoreBadge(score: deck.score.score)
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: Spacing.s) {
                     Text(deck.score.playable
                          ? t("suggestions.generate.status.playable")
                          : deck.complete ? t("suggestions.generate.status.fragile") : t("suggestions.generate.status.incomplete"))
@@ -114,7 +115,7 @@ struct GeneratedDeckView: View {
         }
 
         if !deck.notes.isEmpty {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: Spacing.xxs) {
                 ForEach(deck.notes, id: \.self) { note in
                     Text("· \(note)").font(.caption).foregroundStyle(.secondary)
                 }
@@ -124,14 +125,13 @@ struct GeneratedDeckView: View {
         ForEach(DeckZone.allCases) { zone in
             let cards = deck.cards.filter { $0.zone == zone }
             if !cards.isEmpty {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Text(t("common.zones.\(zone.rawValue)")).font(.headline)
+                VStack(alignment: .leading, spacing: Spacing.s) {
+                    SectionHeader(t("common.zones.\(zone.rawValue)")) {
                         Text(t("suggestions.generate.zoneCount", ["count": deck.counts[zone]]))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 72), spacing: 8)], spacing: 10) {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: GridWidth.compactCard), spacing: Spacing.s)], spacing: Spacing.m) {
                         ForEach(cards, id: \.card.id) { entry in
                             Button { selected = CardLink(cardId: entry.card.id) } label: {
                                 GeneratedCardTile(entry: entry)
@@ -152,10 +152,10 @@ struct GeneratedDeckView: View {
     // MARK: - Création
 
     private func createBar(_ deck: GeneratedDeck) -> some View {
-        VStack(spacing: 10) {
+        VStack(spacing: Spacing.m) {
             TextField(t("suggestions.generate.nameLabel"), text: $name)
-                .padding(10)
-                .background(.fill.tertiary, in: .rect(cornerRadius: 12))
+                .padding(Spacing.m)
+                .background(.fill.tertiary, in: .rect(cornerRadius: Radius.s, style: .continuous))
             if deck.missingCopies > 0 {
                 Toggle(t("suggestions.generate.wishlistMissing", ["count": deck.missingCopies]), isOn: $wishlistMissing)
                     .font(.footnote)
@@ -174,10 +174,10 @@ struct GeneratedDeckView: View {
             .buttonStyle(.glassProminent)
             .disabled(saving)
         }
-        .padding(14)
-        .glassEffect(.regular, in: .rect(cornerRadius: 24))
-        .padding(.horizontal)
-        .padding(.bottom, 4)
+        .padding(Spacing.l)
+        .glassEffect(.regular, in: .rect(cornerRadius: Radius.l, style: .continuous))
+        .padding(.horizontal, Spacing.m)
+        .padding(.bottom, Spacing.xxs)
     }
 
     private func create(_ deck: GeneratedDeck) async {

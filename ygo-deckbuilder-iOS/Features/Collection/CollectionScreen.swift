@@ -66,8 +66,8 @@ struct CollectionScreen: View {
     }
 
     private var header: some View {
-        VStack(spacing: 12) {
-            HStack(spacing: 8) {
+        VStack(spacing: Spacing.l) {
+            HStack(spacing: Spacing.s) {
                 StatTile(label: t("collection.view.stats.copies"), value: stats.value.map { L10n.shared.number($0.totalCopies) } ?? "—")
                 StatTile(label: t("collection.view.stats.distinctCards"), value: stats.value.map { L10n.shared.number($0.distinctCards) } ?? "—")
                 StatTile(label: t("collection.view.stats.estimatedValue"), value: L10n.shared.price(stats.value?.estimatedValue), tint: .accentColor)
@@ -102,7 +102,7 @@ private struct CollectionCardsList<Header: View>: View {
         List {
             Section {
                 header
-                    .listRowInsets(EdgeInsets())
+                    .listRowInsets(EdgeInsets(top: Spacing.s, leading: 0, bottom: Spacing.s, trailing: 0))
                     .listRowBackground(Color.clear)
             }
 
@@ -137,6 +137,7 @@ private struct CollectionCardsList<Header: View>: View {
             }
         }
         .listStyle(.insetGrouped)
+        .listSectionSpacing(Spacing.l)
         .searchable(text: $filter, prompt: t("collection.view.filterPlaceholder"))
         .task(id: TaskKey(filter: filter, version: app.collectionVersion)) {
             if !filter.isEmpty { try? await Task.sleep(for: .milliseconds(250)) }
@@ -200,14 +201,14 @@ private struct CollectionRow: View {
     let change: (Int) -> Void
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(alignment: .center, spacing: Spacing.m) {
             CardArt(card: item.card, width: .thumb)
-                .frame(width: 44)
-            VStack(alignment: .leading, spacing: 4) {
+                .frame(width: 48)
+            VStack(alignment: .leading, spacing: Spacing.xs) {
                 Text(item.card.name)
-                    .font(.subheadline.weight(.medium))
+                    .font(.subheadline.weight(.semibold))
                     .lineLimit(2)
-                FlowLayout(spacing: 4) {
+                FlowLayout(spacing: Spacing.xxs) {
                     Pill(text: item.print.map { "\($0.printCode) · \($0.rarity)" } ?? t("collection.row.unknownPrint"))
                     Pill(text: item.language)
                     Pill(text: t("collection.conditions.\(item.condition)"))
@@ -217,19 +218,36 @@ private struct CollectionRow: View {
                     .font(.caption.monospacedDigit())
                     .foregroundStyle(.secondary)
             }
-            Spacer(minLength: 4)
-            HStack(spacing: 6) {
-                Button(t("collection.row.removeCopy"), systemImage: "minus") { change(-1) }
-                Text("\(item.quantity)")
-                    .font(.headline.monospacedDigit())
-                    .frame(minWidth: 22)
-                    .contentTransition(.numericText())
-                Button(t("collection.row.addCopy"), systemImage: "plus") { change(1) }
-            }
-            .labelStyle(.iconOnly)
-            .buttonStyle(.borderless)
-            .disabled(busy)
+            Spacer(minLength: Spacing.xs)
+            QuantityStepper(quantity: item.quantity, busy: busy, change: change)
         }
-        .animation(.snappy, value: item.quantity)
+        .padding(.vertical, Spacing.xxs)
+    }
+}
+
+/// − quantité + dans une capsule compacte.
+struct QuantityStepper: View {
+    let quantity: Int
+    var busy = false
+    let change: (Int) -> Void
+
+    var body: some View {
+        HStack(spacing: 0) {
+            Button(t("collection.row.removeCopy"), systemImage: "minus") { change(-1) }
+                .frame(width: 32, height: 32)
+            Text("\(quantity)")
+                .font(.subheadline.weight(.semibold).monospacedDigit())
+                .frame(minWidth: 22)
+                .contentTransition(.numericText())
+            Button(t("collection.row.addCopy"), systemImage: "plus") { change(1) }
+                .frame(width: 32, height: 32)
+        }
+        .labelStyle(.iconOnly)
+        .buttonStyle(.borderless)
+        .font(.footnote.weight(.semibold))
+        .background(.fill.tertiary, in: .capsule)
+        .disabled(busy)
+        .opacity(busy ? 0.5 : 1)
+        .animation(.snappy, value: quantity)
     }
 }

@@ -28,7 +28,7 @@ struct DeckGuideView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: Spacing.l) {
             HStack(alignment: .firstTextBaseline) {
                 Label(t("guide.title"), systemImage: "book.pages")
                     .font(.title3.bold())
@@ -51,7 +51,7 @@ struct DeckGuideView: View {
             }
 
             if wantsAI && writing {
-                HStack(spacing: 8) {
+                HStack(spacing: Spacing.s) {
                     ProgressView()
                     Text(t("guide.writing")).font(.footnote).foregroundStyle(.secondary)
                 }
@@ -136,19 +136,19 @@ private struct GuideBody: View {
     let onInspect: (Int) -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: Spacing.xl) {
             Text(guide.summary)
                 .font(.callout)
                 .textSelection(.enabled)
 
             if !guide.styles.isEmpty {
-                FlowLayout(spacing: 6) {
+                FlowLayout(spacing: Spacing.xs) {
                     ForEach(guide.styles, id: \.self) { Pill(text: $0, tint: .accentColor) }
                 }
             }
 
             if !guide.stats.isEmpty {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100), spacing: 8)], spacing: 8) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100), spacing: Spacing.s)], spacing: Spacing.s) {
                     ForEach(guide.stats, id: \.label) { stat in
                         StatTile(label: stat.label, value: stat.value, tint: tone(stat.tone))
                             .accessibilityHint(stat.hint)
@@ -159,7 +159,7 @@ private struct GuideBody: View {
             section(t("guide.sections.gamePlan"), systemImage: "flag.checkered", items: guide.gamePlan, numbered: true)
 
             if !guide.combos.isEmpty {
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: Spacing.m) {
                     Label(t("guide.sections.combos", ["count": guide.combos.count]), systemImage: "point.3.connected.trianglepath.dotted")
                         .font(.headline)
                     Text(t("guide.sections.combosDisclaimer"))
@@ -172,16 +172,16 @@ private struct GuideBody: View {
             }
 
             if !guide.keyCards.isEmpty {
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: Spacing.m) {
                     Label(t("guide.sections.keyCards"), systemImage: "key.fill").font(.headline)
                     ForEach(guide.keyCards, id: \.cardId) { key in
                         if let card = guide.card(key.cardId) {
                             Button { onInspect(key.cardId) } label: {
-                                HStack(alignment: .top, spacing: 12) {
+                                HStack(alignment: .top, spacing: Spacing.m) {
                                     CardArt(card: card, width: .thumb).frame(width: 44)
-                                    VStack(alignment: .leading, spacing: 4) {
+                                    VStack(alignment: .leading, spacing: Spacing.xxs) {
                                         Text(card.name).font(.subheadline.weight(.semibold))
-                                        FlowLayout(spacing: 4) {
+                                        FlowLayout(spacing: Spacing.xxs) {
                                             ForEach(key.roles.filter { $0 != .unknown }, id: \.self) { role in
                                                 Pill(text: t("guide.roles.\(role.rawValue)"), tint: .accentColor)
                                             }
@@ -198,7 +198,7 @@ private struct GuideBody: View {
             }
 
             if !guide.goingFirst.isEmpty || !guide.goingSecond.isEmpty {
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: Spacing.m) {
                     Label(t("guide.sections.firstSecond"), systemImage: "arrow.left.arrow.right").font(.headline)
                     subsection(t("guide.sections.goingFirst"), guide.goingFirst)
                     subsection(t("guide.sections.goingSecond"), guide.goingSecond)
@@ -223,13 +223,13 @@ private struct GuideBody: View {
 
     @ViewBuilder
     private func section(_ title: String, systemImage: String, items: [String], numbered: Bool = false, tint: Color = .accentColor) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: Spacing.s) {
             Label(title, systemImage: systemImage).font(.headline)
             if items.isEmpty {
                 Text(t("guide.nothing")).font(.callout).foregroundStyle(.secondary)
             }
             ForEach(Array(items.enumerated()), id: \.offset) { index, item in
-                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                HStack(alignment: .firstTextBaseline, spacing: Spacing.s) {
                     Text(numbered ? "\(index + 1)." : "•")
                         .font(.callout.monospacedDigit().bold())
                         .foregroundStyle(tint)
@@ -242,10 +242,10 @@ private struct GuideBody: View {
     @ViewBuilder
     private func subsection(_ title: String, _ items: [String]) -> some View {
         if !items.isEmpty {
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: Spacing.xs) {
                 Text(title).font(.subheadline.weight(.semibold))
                 ForEach(Array(items.enumerated()), id: \.offset) { _, item in
-                    HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    HStack(alignment: .firstTextBaseline, spacing: Spacing.s) {
                         Text("•").foregroundStyle(Color.accentColor)
                         Text(item).font(.callout)
                     }
@@ -270,15 +270,15 @@ private struct ComboView: View {
 
     var body: some View {
         DisclosureGroup(isExpanded: $expanded) {
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: Spacing.m) {
                 cardStrip(t("guide.combo.hand"), ids: combo.handIds)
                 ForEach(Array(combo.steps.enumerated()), id: \.offset) { index, step in
-                    HStack(alignment: .top, spacing: 10) {
+                    HStack(alignment: .top, spacing: Spacing.m) {
                         Text("\(index + 1)")
                             .font(.caption.bold().monospacedDigit())
                             .frame(width: 22, height: 22)
                             .background(Color.accentColor.opacity(0.2), in: .circle)
-                        VStack(alignment: .leading, spacing: 6) {
+                        VStack(alignment: .leading, spacing: Spacing.xs) {
                             Text(step.text).font(.callout)
                             if !step.cardIds.isEmpty { thumbs(step.cardIds, size: 34) }
                         }
@@ -286,18 +286,17 @@ private struct ComboView: View {
                 }
                 cardStrip(t("guide.combo.endBoard"), ids: combo.endBoardIds)
             }
-            .padding(.top, 8)
+            .padding(.top, Spacing.m)
         } label: {
             Text(combo.title).font(.subheadline.weight(.semibold)).multilineTextAlignment(.leading)
         }
-        .padding(12)
-        .background(.fill.quaternary, in: .rect(cornerRadius: 14))
+        .tileSurface()
     }
 
     @ViewBuilder
     private func cardStrip(_ title: String, ids: [Int]) -> some View {
         if !ids.isEmpty {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: Spacing.xxs) {
                 Text(title).font(.caption.weight(.semibold)).foregroundStyle(.secondary).textCase(.uppercase)
                 thumbs(ids, size: 44)
             }
@@ -306,7 +305,7 @@ private struct ComboView: View {
 
     private func thumbs(_ ids: [Int], size: CGFloat) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 6) {
+            HStack(spacing: Spacing.xs) {
                 ForEach(Array(ids.enumerated()), id: \.offset) { _, id in
                     if let card = guide.card(id) {
                         Button { onInspect(id) } label: { CardArt(card: card, width: .thumb).frame(width: size) }

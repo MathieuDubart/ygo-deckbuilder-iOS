@@ -11,9 +11,8 @@ struct CardInteractionsSection: View {
     @State private var onlyMine = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text(t("cards.interactions.title")).font(.headline)
+        VStack(alignment: .leading, spacing: Spacing.m) {
+            SectionHeader(t("cards.interactions.title"), systemImage: "point.3.connected.trianglepath.dotted") {
                 if let owned = data.value?.ownedLinked, owned > 0 {
                     Pill(text: t("cards.interactions.ownedLinked", ["count": owned]), tint: Theme.success)
                 }
@@ -85,25 +84,27 @@ private struct InteractionGroupRow: View {
     let group: CardInteractionGroup
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 4) {
-                Text(t("cards.interactions.\(group.direction == .out ? "out" : "in").\(group.verb.rawValue)"))
-                    .font(.subheadline.weight(.semibold))
-                if let target = group.target {
-                    Text(target).font(.subheadline).foregroundStyle(.secondary).lineLimit(2)
+        VStack(alignment: .leading, spacing: Spacing.s) {
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: Spacing.xs) {
+                    Text(t("cards.interactions.\(group.direction == .out ? "out" : "in").\(group.verb.rawValue)"))
+                        .font(.subheadline.weight(.semibold))
+                    if group.direction == .in, group.precision == .precise {
+                        Text(t("cards.interactions.byTraits"))
+                            .font(.caption)
+                            .foregroundStyle(.tertiary)
+                            .accessibilityHint(t("cards.interactions.byTraitsTitle"))
+                    }
                 }
-                if group.direction == .in, group.precision == .precise {
-                    Text(t("cards.interactions.byTraits"))
-                        .font(.caption)
-                        .foregroundStyle(.tertiary)
-                        .accessibilityHint(t("cards.interactions.byTraitsTitle"))
+                if let target = group.target {
+                    Text(target).font(.footnote).foregroundStyle(.secondary).lineLimit(2)
                 }
             }
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 8) {
+                LazyHStack(alignment: .top, spacing: Spacing.m) {
                     ForEach(group.cards) { card in
                         NavigationLink(value: CardLink(cardId: card.id)) {
-                            VStack(spacing: 4) {
+                            VStack(spacing: Spacing.xxs) {
                                 CardTile(card: card, quantity: card.owned, dimmed: card.ownedQuantity == 0)
                                     .frame(width: 64)
                                 Text(card.name)
@@ -120,10 +121,13 @@ private struct InteractionGroupRow: View {
                         Text("+\(more)")
                             .font(.caption.bold())
                             .foregroundStyle(.secondary)
-                            .frame(width: 44)
+                            .frame(width: 44, height: 94)
                     }
                 }
             }
+            .contentMargins(.horizontal, Spacing.l, for: .scrollContent)
+            .scrollClipDisabled()
+            .padding(.horizontal, -Spacing.l)
         }
     }
 }
