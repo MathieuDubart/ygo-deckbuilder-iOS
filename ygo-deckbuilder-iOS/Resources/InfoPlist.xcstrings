@@ -1,111 +1,123 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "CFBundleDisplayName": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deck Builder"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleDisplayName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deck Builder"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deck Builder"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deck Builder"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deck Builder"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deck Builder"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deck Builder"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deck Builder"
           }
         },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deck Builder"
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deck Builder"
           }
         }
       }
     },
-    "NSCameraUsageDescription": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The camera reads the code printed on your cards to add them to your collection."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La caméra lit le code imprimé sur tes cartes pour les ajouter à ta collection."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Kamera liest den auf deinen Karten gedruckten Code, um sie deiner Sammlung hinzuzufügen."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La fotocamera legge il codice stampato sulle tue carte per aggiungerle alla collezione."
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A câmara lê o código impresso nas tuas cartas para as adicionar à tua coleção."
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ygo-deckbuilder-iOS"
           }
         }
       }
     },
-    "NSLocalNetworkUsageDescription": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Used to reach your YGO Deck Builder server on your local network."
+    "NSCameraUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Kamera liest den auf deinen Karten gedruckten Code, um sie deiner Sammlung hinzuzufügen."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pour joindre ton serveur YGO Deck Builder sur ton réseau local."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The camera reads the code printed on your cards to add them to your collection."
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Um deinen YGO-Deck-Builder-Server im lokalen Netzwerk zu erreichen."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La caméra lit le code imprimé sur tes cartes pour les ajouter à ta collection."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Per raggiungere il tuo server YGO Deck Builder sulla rete locale."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La fotocamera legge il codice stampato sulle tue carte per aggiungerle alla collezione."
           }
         },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Para contactar o teu servidor YGO Deck Builder na rede local."
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A câmara lê o código impresso nas tuas cartas para as adicionar à tua coleção."
+          }
+        }
+      }
+    },
+    "NSLocalNetworkUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um deinen YGO-Deck-Builder-Server im lokalen Netzwerk zu erreichen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Used to reach your YGO Deck Builder server on your local network."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour joindre ton serveur YGO Deck Builder sur ton réseau local."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per raggiungere il tuo server YGO Deck Builder sulla rete locale."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para contactar o teu servidor YGO Deck Builder na rede local."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
