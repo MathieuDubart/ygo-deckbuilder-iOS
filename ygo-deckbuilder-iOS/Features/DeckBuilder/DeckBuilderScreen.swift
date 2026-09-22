@@ -72,6 +72,15 @@ private struct DeckBuilderContent: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
+                Button(t("ios.deck.testInDuel"), systemImage: "bolt.shield") {
+                    Task {
+                        await model.flush()
+                        app.testInDuel(model.deckId)
+                    }
+                }
+                .disabled(model.entries.isEmpty)
+            }
+            ToolbarItem(placement: .topBarTrailing) {
                 Button(t("deckBuilder.header.guide"), systemImage: "book.pages") { showingGuide = true }
                     .disabled(model.entries.isEmpty)
             }

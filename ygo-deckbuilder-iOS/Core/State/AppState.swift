@@ -24,6 +24,8 @@ final class AppState {
     /// Deck à ouvrir dans l'onglet Decks (après création depuis une suggestion ou un produit).
     var pendingDeckId: String?
     var selectedTab: AppTab = .collection
+    /// Deck à tester dans l'onglet Duel (depuis le deck builder).
+    var pendingDuelDeckId: String?
 
     init() {
         api = APIClient(server: server, tokens: TokenStore())
@@ -97,6 +99,11 @@ final class AppState {
         wishlistVersion += 1
     }
 
+    func testInDuel(_ deckId: String) {
+        pendingDuelDeckId = deckId
+        selectedTab = .duel
+    }
+
     func openDeck(_ id: String) {
         decksChanged()
         pendingDeckId = id
@@ -105,5 +112,5 @@ final class AppState {
 }
 
 enum AppTab: Hashable {
-    case collection, decks, suggestions, wishlist, search
+    case collection, decks, suggestions, wishlist, duel, search
 }
