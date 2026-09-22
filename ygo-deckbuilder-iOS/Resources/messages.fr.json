@@ -393,6 +393,13 @@
    "leave": "Quitter",
    "main2": "Main Phase 2",
    "restart": "Recommencer",
+   "sound": "Son",
+   "speed": {
+    "fast": "Rapides",
+    "label": "Animations",
+    "normal": "Normales",
+    "off": "Aucune"
+   },
    "thinking": "Le moteur résout…"
   },
   "engine": {
@@ -400,6 +407,22 @@
    "loading": "Vérification du moteur de duel…",
    "stats": "{cards, number} cartes · {scripts, number} scripts",
    "unavailable": "Le moteur de duel n’est pas disponible sur ce serveur."
+  },
+  "fx": {
+   "activate": "Maillon {link}",
+   "attack": "Attaque !",
+   "direct": "Attaque directe !",
+   "duel": "Duel !",
+   "negated": "Annulé !",
+   "opponent": "Adv.",
+   "set": "Carte posée",
+   "skip": "Passer",
+   "summon": {
+    "FLIP": "Invocation Flip",
+    "NORMAL": "Invocation Normale",
+    "SPECIAL": "Invocation Spéciale"
+   },
+   "you": "Toi"
   },
   "inspector": {
    "empty": "Survole ou touche une carte pour la lire.",

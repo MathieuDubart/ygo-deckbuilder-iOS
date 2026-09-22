@@ -246,7 +246,7 @@ nonisolated struct DuelEvent: Decodable, Hashable, Sendable, Identifiable {
         case activate(player: Int, code: Int, link: Int, description: String?)
         case chainNegated(link: Int)
         case move(code: Int, from: DuelLocation, to: DuelLocation)
-        case attack(code: Int, target: Int?)
+        case attack(player: Int, code: Int, target: Int?)
         case damage(player: Int, amount: Int, cost: Bool)
         case recover(player: Int, amount: Int)
         case coin([Bool])
@@ -295,7 +295,7 @@ nonisolated struct DuelEvent: Decodable, Hashable, Sendable, Identifiable {
         case "CHAIN_NEGATED": kind = .chainNegated(link: try c.decode(Int.self, forKey: .chainLink))
         case "MOVE":
             kind = .move(code: code, from: try c.decode(DuelLocation.self, forKey: .from), to: try c.decode(DuelLocation.self, forKey: .to))
-        case "ATTACK": kind = .attack(code: code, target: try c.decodeIfPresent(Int.self, forKey: .target))
+        case "ATTACK": kind = .attack(player: player, code: code, target: try c.decodeIfPresent(Int.self, forKey: .target))
         case "DAMAGE":
             kind = .damage(player: player, amount: try c.decode(Int.self, forKey: .amount), cost: try c.decode(Bool.self, forKey: .cost))
         case "RECOVER": kind = .recover(player: player, amount: try c.decode(Int.self, forKey: .amount))

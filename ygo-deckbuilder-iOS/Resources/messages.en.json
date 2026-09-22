@@ -393,6 +393,13 @@
    "leave": "Leave",
    "main2": "Main Phase 2",
    "restart": "Restart",
+   "sound": "Sound",
+   "speed": {
+    "fast": "Fast",
+    "label": "Animations",
+    "normal": "Normal",
+    "off": "Off"
+   },
    "thinking": "The engine is resolving…"
   },
   "engine": {
@@ -400,6 +407,22 @@
    "loading": "Checking the duel engine…",
    "stats": "{cards, number} cards · {scripts, number} scripts",
    "unavailable": "The duel engine is unavailable on this server."
+  },
+  "fx": {
+   "activate": "Chain Link {link}",
+   "attack": "Attack!",
+   "direct": "Direct attack!",
+   "duel": "Duel!",
+   "negated": "Negated!",
+   "opponent": "Opp.",
+   "set": "Card set",
+   "skip": "Skip",
+   "summon": {
+    "FLIP": "Flip Summon",
+    "NORMAL": "Normal Summon",
+    "SPECIAL": "Special Summon"
+   },
+   "you": "You"
   },
   "inspector": {
    "empty": "Hover over or tap a card to read it.",

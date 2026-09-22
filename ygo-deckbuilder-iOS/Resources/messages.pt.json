@@ -393,6 +393,13 @@
    "leave": "Sair",
    "main2": "Main Phase 2",
    "restart": "Recomeçar",
+   "sound": "Som",
+   "speed": {
+    "fast": "Rápidas",
+    "label": "Animações",
+    "normal": "Normais",
+    "off": "Nenhuma"
+   },
    "thinking": "O motor está resolvendo…"
   },
   "engine": {
@@ -400,6 +407,22 @@
    "loading": "Verificando o motor de duelo…",
    "stats": "{cards, number} cards · {scripts, number} scripts",
    "unavailable": "O motor de duelo não está disponível neste servidor."
+  },
+  "fx": {
+   "activate": "Elo de Corrente {link}",
+   "attack": "Ataque!",
+   "direct": "Ataque direto!",
+   "duel": "Duelo!",
+   "negated": "Negado!",
+   "opponent": "Opon.",
+   "set": "Carta baixada",
+   "skip": "Pular",
+   "summon": {
+    "FLIP": "Invocação-Virar",
+    "NORMAL": "Invocação-Normal",
+    "SPECIAL": "Invocação-Especial"
+   },
+   "you": "Você"
   },
   "inspector": {
    "empty": "Passe o mouse ou toque em um card para lê-lo.",

@@ -393,6 +393,13 @@
    "leave": "Verlassen",
    "main2": "Main Phase 2",
    "restart": "Neu starten",
+   "sound": "Ton",
+   "speed": {
+    "fast": "Schnell",
+    "label": "Animationen",
+    "normal": "Normal",
+    "off": "Aus"
+   },
    "thinking": "Die Engine rechnet…"
   },
   "engine": {
@@ -400,6 +407,22 @@
    "loading": "Duell-Engine wird geprüft…",
    "stats": "{cards, number} Karten · {scripts, number} Skripte",
    "unavailable": "Die Duell-Engine ist auf diesem Server nicht verfügbar."
+  },
+  "fx": {
+   "activate": "Kettenglied {link}",
+   "attack": "Angriff!",
+   "direct": "Direkter Angriff!",
+   "duel": "Duell!",
+   "negated": "Annulliert!",
+   "opponent": "Gegner",
+   "set": "Karte gesetzt",
+   "skip": "Überspringen",
+   "summon": {
+    "FLIP": "Flippbeschwörung",
+    "NORMAL": "Normalbeschwörung",
+    "SPECIAL": "Spezialbeschwörung"
+   },
+   "you": "Du"
   },
   "inspector": {
    "empty": "Fahre über eine Karte oder tippe sie an, um sie zu lesen.",
