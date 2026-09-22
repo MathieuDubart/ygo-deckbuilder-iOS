@@ -338,6 +338,309 @@
    "updatedOn": "Bearbeitet am {date}"
   }
  },
+ "duel": {
+  "actions": {
+   "ACTIVATE": "Aktivieren",
+   "ATTACK": "Angreifen",
+   "ATTACK_DIRECT": "Direkt angreifen",
+   "REPOSITION": "Position ändern",
+   "SET_MONSTER": "Setzen",
+   "SET_SPELL": "Setzen",
+   "SPSUMMON": "Spezialbeschwörung",
+   "SUMMON": "Normalbeschwörung",
+   "available": "{count, plural, one {# Aktion} other {# Aktionen}}",
+   "inspect": "Karte ansehen"
+  },
+  "attributes": {
+   "DARK": "FINSTERNIS",
+   "DIVINE": "GÖTTLICH",
+   "EARTH": "ERDE",
+   "FIRE": "FEUER",
+   "LIGHT": "LICHT",
+   "WATER": "WASSER",
+   "WIND": "WIND"
+  },
+  "board": {
+   "actionable": "Aktionen verfügbar",
+   "banished": "Verbannt",
+   "cardCount": "{count, plural, one {# Karte} other {# Karten}}",
+   "chain": "Kette",
+   "chainLink": "Glied {link}",
+   "counters": "{count, plural, one {# Zählmarke} other {# Zählmarken}}",
+   "deck": "Deck",
+   "emptyPile": "Leer.",
+   "extra": "Extra-Deck",
+   "field": "Spielfeld",
+   "grave": "Friedhof",
+   "hand": "Hand",
+   "lp": "LP",
+   "materials": "{count, plural, one {# Material} other {# Materialien}}",
+   "opponent": "Gegner",
+   "opponentTurn": "Spielzug des Gegners",
+   "turn": "Spielzug {turn}",
+   "you": "Du",
+   "yourTurn": "Dein Spielzug"
+  },
+  "controls": {
+   "battle": "Battle Phase",
+   "chains": {
+    "ALWAYS": "Immer",
+    "SMART": "Auto",
+    "hint": "Auto: Du wirst nur nach einer Aktion des Gegners (oder wenn es Pflicht ist) gefragt, ob du kettest. Immer: bei jedem Kettenfenster, wie in EDOPro.",
+    "label": "Ketten"
+   },
+   "end": "Spielzug beenden",
+   "leave": "Verlassen",
+   "main2": "Main Phase 2",
+   "restart": "Neu starten",
+   "thinking": "Die Engine rechnet…"
+  },
+  "engine": {
+   "downloading": "Der Server lädt die Kartenskripte herunter (beim ersten Mal ein paar Minuten). Die Seite aktualisiert sich von selbst.",
+   "loading": "Duell-Engine wird geprüft…",
+   "stats": "{cards, number} Karten · {scripts, number} Skripte",
+   "unavailable": "Die Duell-Engine ist auf diesem Server nicht verfügbar."
+  },
+  "inspector": {
+   "empty": "Fahre über eine Karte oder tippe sie an, um sie zu lesen.",
+   "hidden": "Verdeckte Karte."
+  },
+  "locations": {
+   "BANISHED": "Verbannung",
+   "DECK": "Deck",
+   "EXTRA": "Extra-Deck",
+   "GRAVE": "Friedhof",
+   "HAND": "Hand",
+   "MZONE": "Monsterzone",
+   "OVERLAY": "Xyz-Material",
+   "SZONE": "Zauber- & Fallenzone"
+  },
+  "log": {
+   "ACTIVATE": "Kettenglied {link}: {player, select, you {du aktivierst} other {dein Gegner aktiviert}} <c>{card}</c>",
+   "ATTACK": "<c>{card}</c> greift <t>{target}</t> an",
+   "ATTACK_direct": "<c>{card}</c> greift direkt an",
+   "CHAIN_NEGATED": "Kettenglied {link} wird annulliert",
+   "COIN": "Münzwurf: {results}",
+   "DAMAGE": "{player, select, you {Du erhältst} other {Dein Gegner erhält}} {amount} Schaden",
+   "DAMAGE_cost": "{player, select, you {Du zahlst} other {Dein Gegner zahlt}} {amount} LP",
+   "DICE": "Würfelwurf: {results}",
+   "DRAW": "{player, select, you {Du ziehst} other {Dein Gegner zieht}} {cards}",
+   "DRAW_hidden": "{player, select, you {Du ziehst} other {Dein Gegner zieht}} {count, plural, one {# Karte} other {# Karten}}",
+   "MOVE": "<c>{card}</c>: {from} → {to}",
+   "PHASE": "{phase}",
+   "RECOVER": "{player, select, you {Du erhältst} other {Dein Gegner erhält}} {amount} LP",
+   "SET": "{player, select, you {Du setzt eine Karte} other {Dein Gegner setzt eine Karte}}",
+   "SUMMON_FLIP": "{player, select, you {Du beschwörst <c>{card}</c> als Flippbeschwörung} other {Dein Gegner beschwört <c>{card}</c> als Flippbeschwörung}}",
+   "SUMMON_NORMAL": "{player, select, you {Du beschwörst <c>{card}</c> als Normalbeschwörung} other {Dein Gegner beschwört <c>{card}</c> als Normalbeschwörung}}",
+   "SUMMON_SPECIAL": "{player, select, you {Du beschwörst <c>{card}</c> als Spezialbeschwörung} other {Dein Gegner beschwört <c>{card}</c> als Spezialbeschwörung}}",
+   "TURN": "Spielzug {turn} — {player, select, you {dein Zug} other {Zug des Gegners}}",
+   "WIN": "{player, select, you {Du gewinnst das Duell} other {Dein Gegner gewinnt das Duell}}",
+   "WIN_draw": "Das Duell endet unentschieden",
+   "empty": "Noch nichts.",
+   "heads": "Kopf",
+   "hidden": "eine Karte",
+   "tails": "Zahl",
+   "title": "Duellprotokoll"
+  },
+  "page": {
+   "description": "Teste deine Combos und spiele echte Duelle mit den echten Karteneffekten (EDOPro-Engine).",
+   "rules": "Regeln im Überblick",
+   "source": "Quellcode (AGPL-3.0)",
+   "title": "Duell-Simulator"
+  },
+  "phaseShort": {
+   "BATTLE": "BP",
+   "DRAW": "DP",
+   "END": "EP",
+   "MAIN1": "M1",
+   "MAIN2": "M2",
+   "STANDBY": "SP"
+  },
+  "phases": {
+   "BATTLE": "Battle Phase",
+   "DRAW": "Draw Phase",
+   "END": "End Phase",
+   "MAIN1": "Main Phase 1",
+   "MAIN2": "Main Phase 2",
+   "STANDBY": "Standby Phase"
+  },
+  "positions": {
+   "ATK": "Offene Angriffsposition",
+   "DEF": "Offene Verteidigungsposition",
+   "FD_ATK": "Verdeckte Angriffsposition",
+   "FD_DEF": "Verdeckte Verteidigungsposition"
+  },
+  "prompt": {
+   "ANNOUNCE_ATTRIBUTE": {
+    "title": "Nenne eine Eigenschaft"
+   },
+   "ANNOUNCE_CARD": {
+    "search": "Karte suchen…",
+    "title": "Nenne einen Kartennamen"
+   },
+   "ANNOUNCE_NUMBER": {
+    "title": "Nenne eine Zahl"
+   },
+   "ANNOUNCE_RACE": {
+    "title": "Nenne einen Monstertyp"
+   },
+   "BATTLE": "Wähle einen Angreifer, aktiviere einen Effekt oder verlasse die Battle Phase.",
+   "CHAIN": {
+    "forced": "Du musst einen dieser Effekte aktivieren.",
+    "pass": "Nicht aktivieren",
+    "title": "Karte oder Effekt aktivieren?"
+   },
+   "IDLE": "Klicke auf eine markierte Karte, um sie zu spielen, oder wechsle die Phase.",
+   "OPTION": {
+    "title": "Wähle eine Option"
+   },
+   "PLACE": {
+    "disable": "Wähle eine Zone, die unbenutzbar wird",
+    "title": "Wähle eine Zone auf dem Spielfeld",
+    "titleMany": "Wähle {count} Zonen auf dem Spielfeld"
+   },
+   "POSITION": {
+    "title": "Wähle eine Kampfposition"
+   },
+   "SELECT_CARDS": {
+    "CARD": "Wähle Karten",
+    "SUM": "Wähle Karten, deren Summe {sum} erreicht",
+    "TRIBUTE": "Wähle die Monster, die du als Tribut anbietest",
+    "always": "Immer enthalten",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "selected": "{count} gewählt",
+    "total": "Summe: {total} / {sum}"
+   },
+   "SELECT_UNSELECT": {
+    "cancel": "Abbrechen",
+    "finish": "Fertig",
+    "selected": "Gewählt (zum Entfernen klicken)",
+    "title": "Wähle die Karten nacheinander"
+   },
+   "SORT": {
+    "confirm": "Bestätigen",
+    "hint": "Klicke die Karten in der gewünschten Reihenfolge an (erste = oben).",
+    "keep": "Diese Reihenfolge behalten",
+    "reset": "Zurücksetzen",
+    "title": "Wähle die Reihenfolge"
+   },
+   "YESNO": {
+    "no": "Nein",
+    "title": "Bestätigen",
+    "yes": "Ja"
+   },
+   "choose": "Wähle {count, plural, one {# Wert} other {# Werte}}",
+   "confirm": "Bestätigen",
+   "opponent": "Wahl des Gegners",
+   "range": {
+    "between": "Wähle {min} bis {max}",
+    "exact": "Wähle {count}",
+    "upTo": "Wähle bis zu {max}"
+   },
+   "waiting": "Warte auf den Gegner…"
+  },
+  "races": {
+   "AQUA": "Aqua",
+   "BEAST": "Ungeheuer",
+   "BEASTWARRIOR": "Ungeheuer-Krieger",
+   "CELESTIALWARRIOR": "Himmelskrieger",
+   "CREATORGOD": "Schöpfergott",
+   "CYBERSE": "Cyberse",
+   "CYBORG": "Cyborg",
+   "DINOSAUR": "Dinosaurier",
+   "DIVINE": "Göttliches Ungeheuer",
+   "DRAGON": "Drache",
+   "FAIRY": "Fee",
+   "FIEND": "Unterweltler",
+   "FISH": "Fisch",
+   "GALAXY": "Galaxie",
+   "HIGHDRAGON": "Hochdrache",
+   "ILLUSION": "Illusion",
+   "INSECT": "Insekt",
+   "MACHINE": "Maschine",
+   "MAGICALKNIGHT": "Magischer Ritter",
+   "OMEGAPSYCHIC": "Omega-Psi",
+   "PLANT": "Pflanze",
+   "PSYCHIC": "Psi",
+   "PYRO": "Pyro",
+   "REPTILE": "Reptil",
+   "ROCK": "Fels",
+   "SEASERPENT": "Seeschlange",
+   "SPELLCASTER": "Hexer",
+   "THUNDER": "Donner",
+   "WARRIOR": "Krieger",
+   "WINGEDBEAST": "Geflügeltes Ungeheuer",
+   "WYRM": "Wyrm",
+   "ZOMBIE": "Zombie"
+  },
+  "result": {
+   "draw": "Unentschieden",
+   "lose": "Niederlage",
+   "newSetup": "Neues Setup",
+   "rematch": "Mit gleichem Setup neu spielen",
+   "review": "Spielfeld ansehen",
+   "win": "Sieg!"
+  },
+  "setup": {
+   "board": {
+    "auto": "Auto",
+    "empty": "Keine Karten: Der Gegner beginnt mit leerem Spielfeld.",
+    "full": "Diese Zone ist voll.",
+    "hint": "Karten, die beim Duellstart schon auf der Seite des Gegners liegen: Monster, gesetzte Karten, Handtraps, Friedhof…",
+    "label": "Board des Gegners",
+    "locations": {
+     "BANISHED": "Verbannt",
+     "FZONE": "Spielfeldzone",
+     "GRAVE": "Friedhof",
+     "HAND": "Hand",
+     "MZONE": "Monsterzone",
+     "SZONE": "Zauber- & Fallenzone"
+    },
+    "noResults": "Keine Karte gefunden.",
+    "positions": {
+     "ATTACK": "Angriff",
+     "DEFENSE": "Verteidigung",
+     "FACE_UP": "Offen",
+     "SET": "Verdeckt"
+    },
+    "remove": "Entfernen",
+    "search": "Karte zum Hinzufügen suchen…",
+    "zone": "Zone"
+   },
+   "deck": "Dein Deck",
+   "deckPlaceholder": "Wähle ein Deck",
+   "first": {
+    "label": "Wer beginnt",
+    "me": "Ich",
+    "opponent": "Gegner"
+   },
+   "hand": {
+    "clear": "Leeren",
+    "count": "{count}/{max} gewählt",
+    "hint": "Lege Karten für deine Starthand fest (der Rest wird zufällig gezogen).",
+    "label": "Starthand"
+   },
+   "lp": "Lebenspunkte",
+   "noDecks": "Baue zuerst ein Deck, um es hier zu testen.",
+   "opponent": {
+    "BOT": "Bot",
+    "BOT_hint": "Spielt das gegnerische Deck selbst: baut sein Spielfeld auf, greift an, wenn es sich lohnt, und kontert deine Züge mit Handtraps und Fallen.",
+    "ME": "Von mir gesteuert",
+    "ME_hint": "Du triffst alle Entscheidungen für beide Spieler: Interaktionen, Handtraps, Spielzüge.",
+    "PASSIVE": "Passiv",
+    "PASSIVE_hint": "Macht nichts: ideal, um Combos gegen ein Board zu testen, das du vorbereitest.",
+    "label": "Gegner"
+   },
+   "opponentDeck": {
+    "copy": "Eine Kopie meines Decks",
+    "label": "Deck des Gegners"
+   },
+   "resume": "Duell wird fortgesetzt…",
+   "start": "Duell starten",
+   "title": "Neues Duell"
+  }
+ },
  "guide": {
   "aiError": "{error} – stattdessen wird der berechnete Guide angezeigt.",
   "combo": {
@@ -387,13 +690,15 @@
    "zoom": "Karte im Vollbild anzeigen"
   },
   "common": {
+   "more": "Mehr",
    "share": "Teilen"
   },
   "deck": {
    "addCards": "Karten hinzufügen",
    "emptyZone": "Tippe auf „Karten hinzufügen“ und dann auf eine Karte, um Details zu sehen und sie hinzuzufügen.",
    "exportYdk": ".ydk exportieren",
-   "moveToSide": "Eine ins Side Deck verschieben"
+   "moveToSide": "Eine ins Side Deck verschieben",
+   "testInDuel": "Im Duell testen"
   },
   "errors": {
    "decoding": "Unerwartete Serverantwort ({detail}). Ist der Server aktuell?",
@@ -444,6 +749,8 @@
    "catalog": "Katalog",
    "collection": "Sammlung",
    "decks": "Decks",
+   "duel": "Duell",
+   "rules": "Regeln",
    "suggestions": "Vorschläge",
    "wishlist": "Wunschliste"
   },
@@ -452,8 +759,10 @@
    "collection": "Sammlung",
    "deckNotFound": "Deck nicht gefunden.",
    "decks": "Decks",
+   "duel": "Duell-Simulator",
    "login": "Anmelden",
    "register": "Registrieren",
+   "rules": "Regeln",
    "suggestions": "Vorschläge",
    "wishlist": "Wunschliste"
   }
@@ -518,6 +827,277 @@
    },
    "missing": "{count, plural, one {# Exemplar ist} other {# Exemplare sind}} nicht mehr in deiner Sammlung"
   }
+ },
+ "rules": {
+  "description": "Die offiziellen Regeln des Yu-Gi-Oh! TCG nach der aktuellen Master Rule, vom Aufbau eines Duells bis zur Abhandlung von Ketten.",
+  "labels": {
+   "example": "Beispiel",
+   "openDuel": "Im Simulator ausprobieren",
+   "points": "Wichtig"
+  },
+  "sections": [
+   {
+    "example": "",
+    "icon": "BookOpen",
+    "id": "basics",
+    "paragraphs": [
+     "Yu-Gi-Oh! ist ein Duell zwischen zwei Spielern. Jeder Spieler beginnt mit 8000 Lebenspunkten (LP) und zieht 5 Karten. Dein Ziel ist es, die LP deines Gegners mit Monstern, Zaubern und Fallen auf 0 zu bringen.",
+     "Vor dem ersten Duell wird zufällig bestimmt (zum Beispiel per Münzwurf), welcher Spieler entscheidet, ob er beginnt oder als Zweiter spielt. In einem Match trifft der Verlierer des vorherigen Duells diese Wahl für das nächste."
+    ],
+    "points": [
+     "Du gewinnst, wenn die LP deines Gegners 0 erreichen. Erreichen beide Spieler gleichzeitig 0, endet das Duell unentschieden.",
+     "Du gewinnst, wenn dein Gegner eine Karte ziehen muss, sein Deck aber leer ist.",
+     "Manche Karten haben eine eigene Siegbedingung, etwa alle fünf Teile von Exodia auf der Hand zu haben.",
+     "Main Deck: 40 bis 60 Karten. Extra Deck: 0 bis 15 Karten. Side Deck: 0 bis 15 Karten.",
+     "Von einer Karte mit demselben Namen darfst du in Main Deck, Extra Deck und Side Deck zusammen höchstens 3 Exemplare haben.",
+     "Die Liste verbotener und limitierter Karten schränkt manche Karten weiter ein: Verboten (0 Exemplare), Limitiert (1 Exemplar), Semi-Limitiert (2 Exemplare)."
+    ],
+    "title": "Grundlagen"
+   },
+   {
+    "example": "",
+    "icon": "LayoutGrid",
+    "id": "field",
+    "paragraphs": [
+     "Deine Spielfeldseite hat 5 Hauptmonsterzonen, 5 Zauber- & Fallenzonen und 1 Spielfeldzone. Die 2 Extra-Monsterzonen liegen zwischen beiden Spielern und werden geteilt.",
+     "Du kannst immer nur eine Extra-Monsterzone benutzen, außer ein Karteneffekt erlaubt dir die andere. Wenn dein Monster sie verlässt, kannst du wieder eine der beiden benutzen.",
+     "Deine äußerste linke und äußerste rechte Zauber- & Fallenzone sind zugleich deine Pendelzonen. In der Spielfeldzone liegt dein Spielfeldzauber."
+    ],
+    "points": [
+     "Deck: verdeckter Stapel; du ziehst die oberste Karte.",
+     "Extra Deck: enthält deine Fusions-, Synchro-, Xyz- und Linkmonster sowie Pendelmonster, die während des Duells offen dorthin gelegt werden.",
+     "Friedhof: offener Stapel benutzter und zerstörter Karten; beide Spieler dürfen ihn jederzeit ansehen.",
+     "Verbannte Karten sind aus dem Spiel entfernt, meist offen, und werden getrennt vom Friedhof abgelegt.",
+     "Monster sind in Angriffsposition (senkrecht) oder Verteidigungsposition (waagerecht). Ein verdecktes Monster ist immer in Verteidigungsposition, und du darfst dir deine eigenen verdeckten Karten ansehen."
+    ],
+    "title": "Das Spielfeld"
+   },
+   {
+    "example": "",
+    "icon": "Clock",
+    "id": "turn",
+    "paragraphs": [
+     "Jeder Spielzug durchläuft die folgenden Phasen in dieser Reihenfolge. Der Spieler, der am Zug ist, ist der „Spieler am Zug“.",
+     "Für den ersten Spielzug des Duells gelten zwei Einschränkungen: Der beginnende Spieler zieht keine Karte, und niemand kann eine Battle Phase durchführen."
+    ],
+    "points": [
+     "Draw Phase: Ziehe 1 Karte. Der beginnende Spieler zieht im ersten Spielzug des Duells nicht.",
+     "Standby Phase: Effekte, die „während der Standby Phase“ stattfinden, etwa Unterhaltskosten, werden angewendet oder aktiviert.",
+     "Main Phase 1: Beschwöre oder setze Monster, ändere Kampfpositionen, aktiviere Karten und setze Zauber und Fallen.",
+     "Battle Phase: optional. Greife mit deinen Monstern an. Sie kann im ersten Spielzug des Duells nicht durchgeführt werden.",
+     "Main Phase 2: nur, wenn du eine Battle Phase durchgeführt hast. Du kannst dasselbe tun wie in der Main Phase 1.",
+     "End Phase: Effekte, die „während der End Phase“ stattfinden, werden angewendet. Hast du mehr als 6 Karten auf der Hand, wirf ab, bis du 6 hast."
+    ],
+    "title": "Ablauf eines Spielzugs"
+   },
+   {
+    "example": "Du kontrollierst 1 Monster. Um ein Monster der Stufe 6 als Normalbeschwörung zu beschwören, biete es als Tribut an. Damit ist deine Normalbeschwörung des Spielzugs verbraucht, du kannst also kein weiteres Monster setzen.",
+    "icon": "ArrowUp",
+    "id": "normal-summon",
+    "paragraphs": [
+     "Einmal pro Spielzug kannst du während deiner Main Phase ein Monster von deiner Hand entweder als Normalbeschwörung in offene Angriffsposition beschwören oder es verdeckt in Verteidigungsposition setzen. Beides verbraucht deine einzige Normalbeschwörung des Spielzugs.",
+     "Monster höherer Stufe benötigen Tribute: Du legst Monster, die du kontrollierst, auf den Friedhof. Das ist eine Tributbeschwörung (oder ein Tributsetzen), eine Form der Normalbeschwörung.",
+     "Während deiner Main Phase kannst du außerdem Zauber und Fallen verdeckt in deine Zauber- & Fallenzonen setzen, so viele, wie du freie Zonen hast."
+    ],
+    "points": [
+     "Stufe 1 bis 4: kein Tribut.",
+     "Stufe 5 oder 6: 1 Tribut.",
+     "Stufe 7 oder höher: 2 Tribute.",
+     "Flippbeschwörung: Ändere während deiner Main Phase ein verdecktes Monster in Verteidigungsposition in offene Angriffsposition. Das ist nicht in dem Spielzug möglich, in dem das Monster gesetzt wurde.",
+     "Während deiner Main Phase kannst du die Kampfposition jedes Monsters einmal pro Spielzug ändern, aber nicht in dem Spielzug, in dem es beschworen oder gesetzt wurde, und nicht, nachdem es in diesem Spielzug angegriffen hat. Eine Flippbeschwörung zählt als diese Änderung."
+    ],
+    "title": "Normalbeschwörung und Setzen"
+   },
+   {
+    "example": "Ein Monster sagt: „Kann nicht als Normalbeschwörung beschworen/gesetzt werden. Muss zuerst als Spezialbeschwörung von deiner Hand beschworen werden, indem du 2 Monster von deinem Friedhof verbannst.“ Hast du es so beschworen und wird es zerstört, kann eine Wiederbelebungskarte es zurückholen. Wurde es nur von der Hand abgeworfen, kann es nicht wiederbelebt werden.",
+    "icon": "Sparkles",
+    "id": "special-summon",
+    "paragraphs": [
+     "Eine Spezialbeschwörung verbraucht nicht deine Normalbeschwörung. Du kannst so viele durchführen, wie deine Karten erlauben, auch im Spielzug deines Gegners, wenn ein Effekt es zulässt.",
+     "Manche Monster haben ein eigenes Verfahren, etwa „Kann nicht als Normalbeschwörung beschworen/gesetzt werden. Muss zuerst als Spezialbeschwörung beschworen werden…“ oder „Du kannst diese Karte als Spezialbeschwörung von deiner Hand beschwören, indem…“. Dieses Verfahren startet keine Kette, kann aber von Karten annulliert werden, die Beschwörungen annullieren.",
+     "Andere Spezialbeschwörungen sind der Effekt einer Karte, zum Beispiel „Beschwöre 1 Monster als Spezialbeschwörung von deinem Friedhof“. Sie werden als Teil einer Kette abgehandelt."
+    ],
+    "points": [
+     "Fusions-, Ritual-, Synchro-, Xyz-, Pendel- und Linkbeschwörungen sind alles Spezialbeschwörungen.",
+     "Extra-Deck-Monster, Ritualmonster und Monster, die „zuerst als Spezialbeschwörung beschworen werden müssen“, müssen ordnungsgemäß beschworen worden sein, bevor ein anderer Effekt sie vom Friedhof oder aus dem Verbannten als Spezialbeschwörung beschwören kann.",
+     "Steht im Text eines Monsters, dass es „nicht auf andere Weise als Spezialbeschwörung beschworen werden kann“, kann es nur mit seinem eigenen Verfahren beschworen werden."
+    ],
+    "title": "Spezialbeschwörung"
+   },
+   {
+    "example": "Mit „Polymerisation“ kannst du eine Fusionsbeschwörung mit Monstern von deiner Hand oder deinem Spielfeld durchführen. Du legst die zwei auf dem Fusionsmonster genannten Monster von deiner Hand auf den Friedhof und beschwörst dann dieses Fusionsmonster als Spezialbeschwörung.",
+    "icon": "Combine",
+    "id": "fusion",
+    "paragraphs": [
+     "Fusionsmonster liegen in deinem Extra Deck. Ihr Text nennt die benötigten Fusionsmaterialien, zum Beispiel zwei Monster mit Namen oder „1 FINSTERNIS-Monster + 1 Krieger-Monster“.",
+     "Die meisten Fusionsbeschwörungen nutzen eine Karte wie „Polymerisation“: Lege die genannten Materialien von deiner Hand oder deinem Spielfeld auf den Friedhof und beschwöre dann das Fusionsmonster als Spezialbeschwörung aus deinem Extra Deck. Die Fusionskarte legt fest, woher die Materialien kommen dürfen.",
+     "Manche Fusionsmonster beschreiben ein eigenes Verfahren (etwa eine Kontaktfusion, bei der die Materialien ins Deck gemischt werden). Folge dem Kartentext; er bestimmt auch, ob das als Fusionsbeschwörung zählt."
+    ],
+    "points": [
+     "Die Materialien müssen genau dem Text entsprechen. Ein Ersatzmaterial funktioniert nur, wenn sein eigener Text das sagt.",
+     "Die Materialien werden auf den Friedhof gelegt, außer die benutzte Karte sagt etwas anderes, zum Beispiel sie zu verbannen oder ins Deck zu mischen.",
+     "Wird die Fusionsbeschwörung annulliert, bleiben die Materialien verbraucht und das Fusionsmonster wird zerstört."
+    ],
+    "title": "Fusionsbeschwörung"
+   },
+   {
+    "example": "Dein Ritualmonster hat Stufe 8 und der Ritualzauber verlangt Stufen, die zusammen gleich oder höher als 8 sind. Du bietest ein Monster der Stufe 4 von deiner Hand und ein Monster der Stufe 5 von deinem Spielfeld als Tribut an (zusammen 9) und beschwörst dann das Ritualmonster als Spezialbeschwörung.",
+    "icon": "Flame",
+    "id": "ritual",
+    "paragraphs": [
+     "Ritualmonster liegen in deinem Main Deck und werden meist von deiner Hand beschworen. Du brauchst einen Ritualzauber, der sie beschwören kann; die beiden Karten nennen sich meist gegenseitig.",
+     "Aktiviere den Ritualzauber, biete dann Monster von deiner Hand und/oder deinem Spielfeld als Tribut an, deren Stufen zusammen die Bedingung auf dem Ritualzauber erfüllen, und beschwöre das Ritualmonster als Spezialbeschwörung."
+    ],
+    "points": [
+     "Die meisten Ritualzauber verlangen Stufen, die zusammen „gleich oder höher“ als die Stufe des Ritualmonsters sind; manche verlangen „genau gleich“. Lies den Ritualzauber.",
+     "Das Ritualmonster, das du beschwörst, kann nicht als Tribut verwendet werden.",
+     "Ritualmonster können nicht als Normalbeschwörung beschworen oder gesetzt werden.",
+     "Manche Karten nutzen andere Quellen, etwa Monster vom Deck auf den Friedhof zu legen oder vom Friedhof zu verbannen; folge dem Text."
+    ],
+    "title": "Ritualbeschwörung"
+   },
+   {
+    "example": "Ein Empfänger der Stufe 3 und ein Nicht-Empfänger der Stufe 4 ergeben 7: Du kannst ein Synchromonster der Stufe 7 als Synchrobeschwörung beschwören.",
+    "icon": "Zap",
+    "id": "synchro",
+    "paragraphs": [
+     "Synchromonster liegen in deinem Extra Deck. Lege während deiner Main Phase 1 Empfänger und 1 oder mehr offene Nicht-Empfänger-Monster, die du kontrollierst, auf den Friedhof. Ihre Stufen müssen zusammen genau der Stufe des Synchromonsters entsprechen. Beschwöre es dann als Spezialbeschwörung.",
+     "Der Text des Synchromonsters nennt seine Materialien, zum Beispiel „1 Empfänger + 1+ Nicht-Empfänger-Monster“. Manche verlangen einen bestimmten Empfänger oder Nicht-Empfänger oder mehr als einen Empfänger."
+    ],
+    "points": [
+     "Die Materialien müssen offene Monster sein, die du kontrollierst, außer eine Karte sagt etwas anderes.",
+     "Ein Empfänger hat „Empfänger“ in seiner Typenzeile stehen.",
+     "Xyz- und Linkmonster haben keine Stufe und können daher normalerweise kein Synchromaterial sein.",
+     "Eine Synchrobeschwörung startet keine Kette, kann aber von Karten annulliert werden, die Beschwörungen annullieren."
+    ],
+    "title": "Synchrobeschwörung"
+   },
+   {
+    "example": "Zwei Monster der Stufe 4, die du kontrollierst, können für die Xyz-Beschwörung eines Xyz-Monsters mit Rang 4 verwendet werden, das „2 Monster der Stufe 4“ verlangt.",
+    "icon": "Layers",
+    "id": "xyz",
+    "paragraphs": [
+     "Xyz-Monster liegen in deinem Extra Deck. Staple während deiner Main Phase die offenen Monster, die du kontrollierst und die das Xyz-Monster verlangt (meist 2 oder mehr mit derselben Stufe), und lege das Xyz-Monster darauf. Die Monster darunter werden zu Xyz-Material.",
+     "Xyz-Monster haben einen Rang, keine Stufe. Effekte, die sich auf Stufen beziehen, gelten nicht für sie, und sie können normalerweise nicht für eine Synchrobeschwörung verwendet werden.",
+     "Xyz-Material gilt nicht als Monster auf dem Spielfeld. Verlässt das Xyz-Monster das Spielfeld, wird sein Material auf den Friedhof gelegt."
+    ],
+    "points": [
+     "Viele Xyz-Monster zahlen Kosten, indem sie Xyz-Material abhängen: Du legst es unter der Karte hervor auf den Friedhof.",
+     "Spielmarken können nicht als Xyz-Material verwendet werden.",
+     "Ein Xyz-Monster ohne Material bleibt auf dem Spielfeld; es kann nur keine Abhängkosten mehr zahlen."
+    ],
+    "title": "Xyz-Beschwörung"
+   },
+   {
+    "example": "",
+    "icon": "Scale",
+    "id": "pendulum",
+    "paragraphs": [
+     "Pendelmonster liegen in deinem Main Deck. Sie können nicht nur als Monster beschworen, sondern auch als Zauber in deinen Pendelzonen aktiviert werden (deiner äußersten linken und äußersten rechten Zauber- & Fallenzone). Dort sind sie Zauberkarten und nutzen ihren Pendelbereich und ihren Pendeleffekt.",
+     "Einmal pro Spielzug kannst du während deiner Main Phase, wenn in beiden Pendelzonen eine Karte liegt, eine Pendelbeschwörung durchführen: Beschwöre gleichzeitig beliebig viele Monster von deiner Hand und/oder offene Pendelmonster aus deinem Extra Deck als Spezialbeschwörung, deren Stufe echt zwischen den beiden Bereichen liegt.",
+     "Würde ein Pendelmonster auf deinem Spielfeld auf den Friedhof gelegt werden, wird es stattdessen offen in dein Extra Deck gelegt."
+    ],
+    "points": [
+     "Mit den Bereichen 1 und 8 kannst du Monster der Stufen 2 bis 7 als Pendelbeschwörung beschwören.",
+     "Monster von deiner Hand kommen in Hauptmonsterzonen. Offene Pendelmonster aus deinem Extra Deck kommen in eine Extra-Monsterzone oder in eine Hauptmonsterzone, auf die ein Linkmonster zeigt.",
+     "Eine Pendelbeschwörung startet keine Kette, kann aber von Karten annulliert werden, die Beschwörungen annullieren."
+    ],
+    "title": "Pendelbeschwörung"
+   },
+   {
+    "example": "Ein LINK-3-Monster braucht 3 Materialien: Du kannst 3 Monster verwenden oder ein LINK-2-Monster, das als 2 Materialien zählt, plus 1 weiteres Monster.",
+    "icon": "Link",
+    "id": "link",
+    "paragraphs": [
+     "Linkmonster liegen in deinem Extra Deck. Lege während deiner Main Phase offene Monster, die du kontrollierst und die die genannten Anforderungen erfüllen, als Linkmaterial auf den Friedhof und beschwöre dann das Linkmonster als Spezialbeschwörung.",
+     "Die Anzahl der Materialien muss der Link-Bewertung entsprechen (LINK-1, LINK-2…). Ein Linkmonster, das als Material verwendet wird, kann als 1 Material oder als so viele Materialien zählen, wie seine Link-Bewertung beträgt.",
+     "Linkpfeile zeigen auf angrenzende Zonen. Ein Monster in einer Zone, auf die ein Linkpfeil zeigt, ist mit diesem Linkmonster „verlinkt“. Zwei Linkmonster, die aufeinander zeigen, sind „gegenseitig verlinkt“."
+    ],
+    "points": [
+     "Linkmonster haben keine Stufe und keine DEF; sie sind immer in offener Angriffsposition.",
+     "Sie können nicht gesetzt, in Verteidigungsposition gebracht oder verdeckt gedreht werden.",
+     "Spielmarken können als Linkmaterial verwendet werden.",
+     "Aus einer Extra-Monsterzone können Linkpfeile auf Hauptmonsterzonen auf beiden Seiten des Spielfelds zeigen."
+    ],
+    "title": "Linkbeschwörung"
+   },
+   {
+    "example": "Dein Spielfeld ist leer. Du führst eine Synchrobeschwörung in eine Hauptmonsterzone durch und hältst die Extra-Monsterzone frei. Danach beschwörst du per Linkbeschwörung ein LINK-2-Monster mit Pfeilen nach unten links und unten rechts in die Extra-Monsterzone. Diese Pfeile zeigen auf zwei deiner Hauptmonsterzonen, also kannst du dort dein nächstes Linkmonster oder offene Pendelmonster aus deinem Extra Deck platzieren.",
+    "icon": "LayoutDashboard",
+    "id": "extra-deck-zones",
+    "paragraphs": [
+     "Seit der Überarbeitung der Master Rule im April 2020 hängt die Zone, die ein aus dem Extra Deck beschworenes Monster nutzen kann, von seinem Kartentyp ab.",
+     "Fusions-, Synchro- und Xyz-Monster, einschließlich Pendelmonster dieser Typen, die verdeckt aus dem Extra Deck beschworen werden, können in jede deiner freien Hauptmonsterzonen oder in eine Extra-Monsterzone.",
+     "Linkmonster sowie Pendelmonster, die offen aus dem Extra Deck als Spezialbeschwörung beschworen werden, müssen in eine Extra-Monsterzone oder in eine deiner Hauptmonsterzonen, auf die ein Linkmonster zeigt."
+    ],
+    "points": [
+     "Du kannst weiterhin nur eine Extra-Monsterzone benutzen, außer ein Karteneffekt erlaubt etwas anderes.",
+     "Legst du ein Fusions-, Synchro- oder Xyz-Monster in eine Hauptmonsterzone, bleibt die Extra-Monsterzone für ein Linkmonster frei.",
+     "Diese Einschränkungen gelten nur für Monster, die aus dem Extra Deck beschworen werden; Monster von der Hand, aus dem Deck oder vom Friedhof kommen in Hauptmonsterzonen."
+    ],
+    "title": "Extra Deck und Extra-Monsterzonen"
+   },
+   {
+    "example": "Du aktivierst einen normalen Zauber (Kettenglied 1). Dein Gegner antwortet mit einer normalen Falle (Kettenglied 2). Du antwortest mit einer Konterfalle, die sie annulliert (Kettenglied 3). Die Konterfalle wird zuerst abgehandelt und annulliert die Falle, danach wird dein Zauber abgehandelt.",
+    "icon": "ListOrdered",
+    "id": "chains",
+    "paragraphs": [
+     "Wird eine Karte oder ein Effekt aktiviert, wird daraus Kettenglied 1. Die Spieler können mit Zaubergeschwindigkeit 2 oder höher antworten, gleich oder höher als das letzte Kettenglied, und so weitere Glieder hinzufügen. Passen beide Spieler, wird die Kette in umgekehrter Reihenfolge abgehandelt: das letzte Glied zuerst.",
+     "Kosten (abwerfen, LP zahlen, abhängen, als Tribut anbieten…) werden bei der Aktivierung gezahlt und nicht zurückgegeben, wenn die Aktivierung annulliert wird. Im Kartentext ist, was vor einem Doppelpunkt (:) steht, eine Bedingung, was vor einem Semikolon (;) steht, Kosten oder ein Ziel, und der Rest ist der Effekt."
+    ],
+    "points": [
+     "Zaubergeschwindigkeit 1: normale Zauber, Ausrüstungs-, permanente, Spielfeld- und Ritualzauber; Zünd-, Trigger- und FLIPP-Effekte. Sie können nicht als Antwort aktiviert werden, außer bei gleichzeitigen Triggern.",
+     "Zaubergeschwindigkeit 2: Schnellzauber, normale und permanente Fallen, Schnelleffekte.",
+     "Zaubergeschwindigkeit 3: Konterfallen. Nur eine andere Zaubergeschwindigkeit 3 kann auf sie antworten.",
+     "Gleichzeitige Trigger (SEGOC) werden in dieser Reihenfolge verkettet: verpflichtende des Spielers am Zug, verpflichtende des Gegners, optionale des Spielers am Zug, optionale des Gegners.",
+     "Ein optionaler Effekt „Wenn… kannst du“ verpasst das Timing, wenn sein Ereignis nicht das Letzte war, was passiert ist. „Falls… kannst du“ und verpflichtende Effekte verpassen es nicht.",
+     "Gesetzte Fallen und gesetzte Schnellzauber können nicht in dem Spielzug aktiviert werden, in dem sie gesetzt wurden, außer eine Karte erlaubt es.",
+     "„Einmal pro Spielzug“: jedes Exemplar einmal pro Spielzug, zurückgesetzt, wenn es das Spielfeld verlässt. „Du kannst diesen Effekt von [Karte] nur einmal pro Spielzug verwenden“: einmal pro Spielzug für alle Exemplare."
+    ],
+    "title": "Ketten und Zaubergeschwindigkeit"
+   },
+   {
+    "example": "Dein Monster mit 2000 ATK greift ein Monster mit 1500 ATK in Angriffsposition an: Es wird zerstört und dein Gegner erhält 500 Schaden. Gegen ein Monster mit 2500 DEF in Verteidigungsposition wird nichts zerstört und du erhältst 500 Schaden.",
+    "icon": "Swords",
+    "id": "battle",
+    "paragraphs": [
+     "Die Battle Phase besteht aus Start Step, Battle Step, Damage Step und End Step. Jedes offene Monster in Angriffsposition, das du kontrollierst, kann einmal pro Battle Phase angreifen.",
+     "Battle Step: Wähle eines deiner Monster und erkläre einen Angriff auf ein Monster deines Gegners. Kontrolliert dein Gegner keine Monster, kannst du direkt angreifen, und er erhält Schaden in Höhe der ATK deines Monsters. Ändert sich die Anzahl der Monster deines Gegners vor dem Damage Step, kommt es zu einer Wiederholung (Replay): Wähle ein neues Ziel, greife direkt an, falls er nun keine Monster mehr hat, oder brich den Angriff ab.",
+     "Damage Step: Verdeckte Monster werden aufgedeckt, dann wird der Schaden berechnet. Aktiviert werden können nur Konterfallen, Karten, die ATK oder DEF direkt verändern, Effekte, die eine Aktivierung annullieren, und Effekte, deren Text es erlaubt."
+    ],
+    "points": [
+     "Angriff gegen Angriffsposition: Das Monster mit der niedrigeren ATK wird zerstört und sein Beherrscher erhält die Differenz als Schaden. Gleiche ATK: Beide werden zerstört, kein Schaden. Haben beide 0 ATK, wird keines zerstört.",
+     "Angriff gegen Verteidigungsposition: Ist die ATK höher als die DEF, wird der Verteidiger zerstört und niemand erhält Schaden, außer der Angreifer fügt durchschlagenden Kampfschaden zu. Ist die ATK niedriger, erhält der Beherrscher des Angreifers die Differenz. Bei Gleichstand passiert nichts.",
+     "Ein angegriffenes verdecktes Monster wird aufgedeckt; sein FLIPP-Effekt wird nach der Schadensberechnung aktiviert.",
+     "Durch Kampf zerstörte Monster werden am Ende des Damage Step auf den Friedhof gelegt."
+    ],
+    "title": "Kampf"
+   },
+   {
+    "example": "",
+    "icon": "Wand",
+    "id": "spells-traps",
+    "paragraphs": [
+     "Aktiviere Zauber während deiner Main Phase von deiner Hand oder setze sie, um sie später zu aktivieren. Fallen müssen zuerst gesetzt werden und können ab dem nächsten Spielzug aktiviert werden, im Spielzug jedes Spielers. Normale Zauber und normale Fallen werden nach der Abhandlung auf den Friedhof gelegt; permanente, Ausrüstungs- und Spielfeldkarten bleiben auf dem Spielfeld.",
+     "„Hand Traps“ sind Monster, deren Effekt du von deiner Hand aktivierst, oft indem du sie abwirfst, meist als Schnelleffekt im Spielzug jedes Spielers."
+    ],
+    "points": [
+     "Normaler Zauber: einmaliger Effekt, Zaubergeschwindigkeit 1.",
+     "Schnellzauber: von der Hand nur während deines eigenen Spielzugs, in jeder Phase; gesetzt im Spielzug jedes Spielers, aber nicht in dem Spielzug, in dem er gesetzt wurde.",
+     "Permanenter Zauber: bleibt auf dem Spielfeld und wirkt weiter.",
+     "Ausrüstungszauber: wird an ein offenes Monster angelegt; er wird zerstört, wenn dieses Monster das Spielfeld verlässt oder verdeckt gedreht wird.",
+     "Spielfeldzauber: kommt in deine Spielfeldzone, 1 pro Spieler. Legst du einen neuen hin, wird dein vorheriger auf den Friedhof gelegt.",
+     "Ritualzauber: dient der Ritualbeschwörung.",
+     "Normale Falle: einmaliger Effekt, Zaubergeschwindigkeit 2.",
+     "Permanente Falle: bleibt auf dem Spielfeld, Zaubergeschwindigkeit 2.",
+     "Konterfalle: Zaubergeschwindigkeit 3, annulliert meist eine Aktivierung oder eine Beschwörung."
+    ],
+    "title": "Zauber und Fallen"
+   }
+  ],
+  "source": "Diese Seite fasst das offizielle Regelbuch (aktuelle Master Rule) zusammen; wenn der Text einer Karte oder ein offizielles Ruling etwas anderes sagt, haben Karte und Ruling Vorrang.",
+  "title": "Regeln",
+  "tocLabel": "Auf dieser Seite"
  },
  "suggestions": {
   "generate": {

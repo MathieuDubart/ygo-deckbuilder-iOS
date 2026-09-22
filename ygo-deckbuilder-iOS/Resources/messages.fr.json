@@ -338,6 +338,309 @@
    "updatedOn": "Modifié le {date}"
   }
  },
+ "duel": {
+  "actions": {
+   "ACTIVATE": "Activer",
+   "ATTACK": "Attaquer",
+   "ATTACK_DIRECT": "Attaque directe",
+   "REPOSITION": "Changer de position",
+   "SET_MONSTER": "Poser",
+   "SET_SPELL": "Poser",
+   "SPSUMMON": "Invocation Spéciale",
+   "SUMMON": "Invocation Normale",
+   "available": "{count, plural, one {# action} other {# actions}}",
+   "inspect": "Voir la carte"
+  },
+  "attributes": {
+   "DARK": "TÉNÈBRES",
+   "DIVINE": "DIVIN",
+   "EARTH": "TERRE",
+   "FIRE": "FEU",
+   "LIGHT": "LUMIÈRE",
+   "WATER": "EAU",
+   "WIND": "VENT"
+  },
+  "board": {
+   "actionable": "Actions disponibles",
+   "banished": "Bannies",
+   "cardCount": "{count, plural, one {# carte} other {# cartes}}",
+   "chain": "Chaîne",
+   "chainLink": "Maillon {link}",
+   "counters": "{count, plural, one {# compteur} other {# compteurs}}",
+   "deck": "Deck",
+   "emptyPile": "Vide.",
+   "extra": "Extra Deck",
+   "field": "Terrain",
+   "grave": "Cimetière",
+   "hand": "Main",
+   "lp": "PV",
+   "materials": "{count, plural, one {# matériel} other {# matériels}}",
+   "opponent": "Adversaire",
+   "opponentTurn": "Tour adverse",
+   "turn": "Tour {turn}",
+   "you": "Toi",
+   "yourTurn": "Ton tour"
+  },
+  "controls": {
+   "battle": "Battle Phase",
+   "chains": {
+    "ALWAYS": "Toujours",
+    "SMART": "Auto",
+    "hint": "Auto : on ne te propose de chaîner qu’après une action adverse (ou si c’est obligatoire). Toujours : à chaque fenêtre de chaîne, comme sur EDOPro.",
+    "label": "Chaînes"
+   },
+   "end": "Finir le tour",
+   "leave": "Quitter",
+   "main2": "Main Phase 2",
+   "restart": "Recommencer",
+   "thinking": "Le moteur résout…"
+  },
+  "engine": {
+   "downloading": "Le serveur télécharge les scripts des cartes (quelques minutes la première fois). La page se met à jour toute seule.",
+   "loading": "Vérification du moteur de duel…",
+   "stats": "{cards, number} cartes · {scripts, number} scripts",
+   "unavailable": "Le moteur de duel n’est pas disponible sur ce serveur."
+  },
+  "inspector": {
+   "empty": "Survole ou touche une carte pour la lire.",
+   "hidden": "Carte face verso."
+  },
+  "locations": {
+   "BANISHED": "bannissement",
+   "DECK": "Deck",
+   "EXTRA": "Extra Deck",
+   "GRAVE": "Cimetière",
+   "HAND": "main",
+   "MZONE": "Zone Monstre",
+   "OVERLAY": "Matériels Xyz",
+   "SZONE": "Zone Magie & Piège"
+  },
+  "log": {
+   "ACTIVATE": "Maillon {link} : {player, select, you {tu actives} other {l’adversaire active}} <c>{card}</c>",
+   "ATTACK": "<c>{card}</c> attaque <t>{target}</t>",
+   "ATTACK_direct": "<c>{card}</c> attaque directement",
+   "CHAIN_NEGATED": "Le Maillon {link} est annulé",
+   "COIN": "Pile ou face : {results}",
+   "DAMAGE": "{player, select, you {Tu subis} other {L’adversaire subit}} {amount} points de dégâts",
+   "DAMAGE_cost": "{player, select, you {Tu paies} other {L’adversaire paie}} {amount} PV",
+   "DICE": "Lancer de dé : {results}",
+   "DRAW": "{player, select, you {Tu pioches} other {L’adversaire pioche}} {cards}",
+   "DRAW_hidden": "{player, select, you {Tu pioches} other {L’adversaire pioche}} {count, plural, one {# carte} other {# cartes}}",
+   "MOVE": "<c>{card}</c> passe de {from} à {to}",
+   "PHASE": "{phase}",
+   "RECOVER": "{player, select, you {Tu gagnes} other {L’adversaire gagne}} {amount} PV",
+   "SET": "{player, select, you {Tu poses une carte} other {L’adversaire pose une carte}}",
+   "SUMMON_FLIP": "{player, select, you {Tu Invoques par Flip} other {L’adversaire Invoque par Flip}} <c>{card}</c>",
+   "SUMMON_NORMAL": "{player, select, you {Tu Invoques Normalement} other {L’adversaire Invoque Normalement}} <c>{card}</c>",
+   "SUMMON_SPECIAL": "{player, select, you {Tu Invoques Spécialement} other {L’adversaire Invoque Spécialement}} <c>{card}</c>",
+   "TURN": "Tour {turn} — {player, select, you {à toi} other {à l’adversaire}}",
+   "WIN": "{player, select, you {Tu remportes le duel} other {L’adversaire remporte le duel}}",
+   "WIN_draw": "Le duel se termine sur une égalité",
+   "empty": "Rien pour l’instant.",
+   "heads": "Face",
+   "hidden": "une carte",
+   "tails": "Pile",
+   "title": "Journal du duel"
+  },
+  "page": {
+   "description": "Teste tes combos et joue de vrais duels avec les vrais effets des cartes (moteur EDOPro).",
+   "rules": "Rappel des règles",
+   "source": "Code source (AGPL-3.0)",
+   "title": "Simulateur de duel"
+  },
+  "phaseShort": {
+   "BATTLE": "BP",
+   "DRAW": "DP",
+   "END": "EP",
+   "MAIN1": "M1",
+   "MAIN2": "M2",
+   "STANDBY": "SP"
+  },
+  "phases": {
+   "BATTLE": "Battle Phase",
+   "DRAW": "Draw Phase",
+   "END": "End Phase",
+   "MAIN1": "Main Phase 1",
+   "MAIN2": "Main Phase 2",
+   "STANDBY": "Standby Phase"
+  },
+  "positions": {
+   "ATK": "Attaque recto",
+   "DEF": "Défense recto",
+   "FD_ATK": "Attaque verso",
+   "FD_DEF": "Défense verso"
+  },
+  "prompt": {
+   "ANNOUNCE_ATTRIBUTE": {
+    "title": "Déclare un Attribut"
+   },
+   "ANNOUNCE_CARD": {
+    "search": "Cherche une carte…",
+    "title": "Déclare un nom de carte"
+   },
+   "ANNOUNCE_NUMBER": {
+    "title": "Déclare un nombre"
+   },
+   "ANNOUNCE_RACE": {
+    "title": "Déclare un Type de monstre"
+   },
+   "BATTLE": "Choisis un attaquant, active un effet ou quitte la Battle Phase.",
+   "CHAIN": {
+    "forced": "Tu dois activer l’un de ces effets.",
+    "pass": "Ne rien activer",
+    "title": "Activer une carte ou un effet ?"
+   },
+   "IDLE": "Clique une carte en surbrillance pour la jouer, ou change de phase.",
+   "OPTION": {
+    "title": "Choisis une option"
+   },
+   "PLACE": {
+    "disable": "Choisis une zone qui deviendra inutilisable",
+    "title": "Choisis une zone sur le Terrain",
+    "titleMany": "Choisis {count} zones sur le Terrain"
+   },
+   "POSITION": {
+    "title": "Choisis une position de combat"
+   },
+   "SELECT_CARDS": {
+    "CARD": "Sélectionne des cartes",
+    "SUM": "Sélectionne des cartes dont le total atteint {sum}",
+    "TRIBUTE": "Sélectionne les monstres à Sacrifier",
+    "always": "Toujours incluses",
+    "cancel": "Annuler",
+    "confirm": "Valider",
+    "selected": "{count} sélectionnée(s)",
+    "total": "Total : {total} / {sum}"
+   },
+   "SELECT_UNSELECT": {
+    "cancel": "Annuler",
+    "finish": "Terminer",
+    "selected": "Sélectionnées (clique pour retirer)",
+    "title": "Sélectionne les cartes une par une"
+   },
+   "SORT": {
+    "confirm": "Valider",
+    "hint": "Clique les cartes dans l’ordre voulu (la première = le dessus).",
+    "keep": "Garder cet ordre",
+    "reset": "Recommencer",
+    "title": "Choisis l’ordre"
+   },
+   "YESNO": {
+    "no": "Non",
+    "title": "Confirmer",
+    "yes": "Oui"
+   },
+   "choose": "Choisis-en {count}",
+   "confirm": "Valider",
+   "opponent": "Choix de l’adversaire",
+   "range": {
+    "between": "Choisis-en de {min} à {max}",
+    "exact": "Choisis-en {count}",
+    "upTo": "Choisis-en jusqu’à {max}"
+   },
+   "waiting": "L’adversaire réfléchit…"
+  },
+  "races": {
+   "AQUA": "Aqua",
+   "BEAST": "Bête",
+   "BEASTWARRIOR": "Bête-Guerrier",
+   "CELESTIALWARRIOR": "Guerrier Céleste",
+   "CREATORGOD": "Dieu Créateur",
+   "CYBERSE": "Cyberse",
+   "CYBORG": "Cyborg",
+   "DINOSAUR": "Dinosaure",
+   "DIVINE": "Bête Divine",
+   "DRAGON": "Dragon",
+   "FAIRY": "Elfe",
+   "FIEND": "Démon",
+   "FISH": "Poisson",
+   "GALAXY": "Galaxie",
+   "HIGHDRAGON": "Dragon Suprême",
+   "ILLUSION": "Illusion",
+   "INSECT": "Insecte",
+   "MACHINE": "Machine",
+   "MAGICALKNIGHT": "Chevalier Magique",
+   "OMEGAPSYCHIC": "Oméga Psychique",
+   "PLANT": "Plante",
+   "PSYCHIC": "Psychique",
+   "PYRO": "Pyro",
+   "REPTILE": "Reptile",
+   "ROCK": "Rocher",
+   "SEASERPENT": "Serpent de Mer",
+   "SPELLCASTER": "Magicien",
+   "THUNDER": "Tonnerre",
+   "WARRIOR": "Guerrier",
+   "WINGEDBEAST": "Bête Ailée",
+   "WYRM": "Wyrm",
+   "ZOMBIE": "Zombie"
+  },
+  "result": {
+   "draw": "Égalité",
+   "lose": "Défaite",
+   "newSetup": "Nouvelle config",
+   "rematch": "Rejouer avec la même config",
+   "review": "Regarder le Terrain",
+   "win": "Victoire !"
+  },
+  "setup": {
+   "board": {
+    "auto": "Auto",
+    "empty": "Aucune carte : l’adversaire commence avec un Terrain vide.",
+    "full": "Cette zone est pleine.",
+    "hint": "Les cartes déjà en place chez l’adversaire au début du duel : monstres, cartes posées, hand traps, Cimetière…",
+    "label": "Plateau adverse",
+    "locations": {
+     "BANISHED": "Bannie",
+     "FZONE": "Zone Terrain",
+     "GRAVE": "Cimetière",
+     "HAND": "Main",
+     "MZONE": "Zone Monstre",
+     "SZONE": "Zone Magie & Piège"
+    },
+    "noResults": "Aucune carte trouvée.",
+    "positions": {
+     "ATTACK": "Attaque",
+     "DEFENSE": "Défense",
+     "FACE_UP": "Face recto",
+     "SET": "Face verso"
+    },
+    "remove": "Retirer",
+    "search": "Cherche une carte à ajouter…",
+    "zone": "Zone"
+   },
+   "deck": "Ton deck",
+   "deckPlaceholder": "Choisis un deck",
+   "first": {
+    "label": "Qui commence",
+    "me": "Moi",
+    "opponent": "L’adversaire"
+   },
+   "hand": {
+    "clear": "Vider",
+    "count": "{count}/{max} choisies",
+    "hint": "Impose des cartes dans ta main de départ (le reste est pioché au hasard).",
+    "label": "Main de départ"
+   },
+   "lp": "Points de Vie",
+   "noDecks": "Crée d’abord un deck pour pouvoir le tester ici.",
+   "opponent": {
+    "BOT": "Bot",
+    "BOT_hint": "Joue le deck adverse tout seul : développe son Terrain, attaque quand ça vaut le coup et répond à tes actions avec ses hand traps et ses pièges.",
+    "ME": "Contrôlé par moi",
+    "ME_hint": "Tu fais tous les choix des deux joueurs : interactions, hand traps, lignes de jeu.",
+    "PASSIVE": "Passif",
+    "PASSIVE_hint": "Il ne fait rien : idéal pour tester tes combos contre un plateau que tu prépares.",
+    "label": "Adversaire"
+   },
+   "opponentDeck": {
+    "copy": "Une copie de mon deck",
+    "label": "Deck adverse"
+   },
+   "resume": "Reprise du duel…",
+   "start": "Lancer le duel",
+   "title": "Nouveau duel"
+  }
+ },
  "guide": {
   "aiError": "{error} — guide calculé affiché à la place.",
   "combo": {
@@ -387,13 +690,15 @@
    "zoom": "Afficher la carte en plein écran"
   },
   "common": {
+   "more": "Plus",
    "share": "Partager"
   },
   "deck": {
    "addCards": "Ajouter des cartes",
    "emptyZone": "Touche « Ajouter des cartes », puis une carte pour voir son détail et l'ajouter.",
    "exportYdk": "Exporter en .ydk",
-   "moveToSide": "En passer une au Side Deck"
+   "moveToSide": "En passer une au Side Deck",
+   "testInDuel": "Tester en duel"
   },
   "errors": {
    "decoding": "Réponse inattendue du serveur ({detail}). Le serveur est-il à jour ?",
@@ -444,6 +749,8 @@
    "catalog": "Catalogue",
    "collection": "Collection",
    "decks": "Decks",
+   "duel": "Duel",
+   "rules": "Règles",
    "suggestions": "Suggestions",
    "wishlist": "Wishlist"
   },
@@ -452,8 +759,10 @@
    "collection": "Collection",
    "deckNotFound": "Deck introuvable.",
    "decks": "Decks",
+   "duel": "Simulateur de duel",
    "login": "Connexion",
    "register": "Inscription",
+   "rules": "Règles",
    "suggestions": "Suggestions",
    "wishlist": "Wishlist"
   }
@@ -518,6 +827,277 @@
    },
    "missing": "{count, plural, one {# exemplaire n’est plus} other {# exemplaires ne sont plus}} dans ta collection"
   }
+ },
+ "rules": {
+  "description": "Les règles officielles du JCC Yu-Gi-Oh! selon la Master Rule actuelle, de la préparation d’un duel à la résolution des Chaînes.",
+  "labels": {
+   "example": "Exemple",
+   "openDuel": "Essayer dans le simulateur",
+   "points": "À retenir"
+  },
+  "sections": [
+   {
+    "example": "",
+    "icon": "BookOpen",
+    "id": "basics",
+    "paragraphs": [
+     "Yu-Gi-Oh! est un duel entre deux joueurs. Chaque joueur commence avec 8000 Life Points (LP) et pioche 5 cartes. Votre objectif est de réduire les LP de votre adversaire à 0 à l’aide de monstres, de Magies et de Pièges.",
+     "Avant le premier duel, déterminez au hasard (par exemple à pile ou face) quel joueur choisit de commencer ou non. Dans un Match, le perdant du duel précédent fait ce choix pour le duel suivant."
+    ],
+    "points": [
+     "Vous gagnez lorsque les LP de votre adversaire tombent à 0. Si les deux joueurs tombent à 0 en même temps, le duel est nul.",
+     "Vous gagnez lorsque votre adversaire doit piocher une carte alors que son Deck est vide.",
+     "Certaines cartes ont leur propre condition de victoire, comme réunir dans votre main les cinq pièces d’Exodia.",
+     "Main Deck : 40 à 60 cartes. Extra Deck : 0 à 15 cartes. Side Deck : 0 à 15 cartes.",
+     "Vous pouvez avoir au maximum 3 exemplaires d’une carte du même nom dans l’ensemble de votre Main Deck, Extra Deck et Side Deck.",
+     "La liste des cartes Interdites & Limitées restreint certaines cartes : Interdite (0 exemplaire), Limitée (1 exemplaire), Semi-Limitée (2 exemplaires)."
+    ],
+    "title": "Les bases"
+   },
+   {
+    "example": "",
+    "icon": "LayoutGrid",
+    "id": "field",
+    "paragraphs": [
+     "Votre côté du Terrain comporte 5 Zones Monstre Principales, 5 Zones Magie & Piège et 1 Zone Terrain. Les 2 Zones Monstre Extra se trouvent entre les deux joueurs et sont partagées.",
+     "Vous ne pouvez utiliser qu’une seule Zone Monstre Extra à la fois, sauf si l’effet d’une carte vous permet d’utiliser l’autre. Lorsque votre monstre la quitte, vous pouvez à nouveau utiliser l’une ou l’autre.",
+     "Vos Zones Magie & Piège situées le plus à gauche et le plus à droite sont aussi vos Zones Pendule. La Zone Terrain accueille votre Magie Terrain."
+    ],
+    "points": [
+     "Deck : pile face verso ; vous piochez la carte du dessus.",
+     "Extra Deck : contient vos Monstres Fusion, Synchro, Xyz et Lien, ainsi que les Monstres Pendule envoyés face recto pendant le duel.",
+     "Cimetière : pile face recto des cartes utilisées et détruites ; les deux joueurs peuvent la consulter à tout moment.",
+     "Les cartes bannies sont retirées du jeu, généralement face recto, et gardées à part du Cimetière.",
+     "Les monstres sont en Position d’Attaque (verticale) ou en Position de Défense (horizontale). Un monstre face verso est toujours en Position de Défense, et vous pouvez regarder vos propres cartes face verso."
+    ],
+    "title": "Le Terrain"
+   },
+   {
+    "example": "",
+    "icon": "Clock",
+    "id": "turn",
+    "paragraphs": [
+     "Chaque tour passe par les phases ci-dessous, dans cet ordre. Le joueur dont c’est le tour est le « joueur du tour ».",
+     "Le premier tour du duel a deux restrictions : le joueur qui commence ne pioche pas, et personne ne peut effectuer de Battle Phase."
+    ],
+    "points": [
+     "Draw Phase : piochez 1 carte. Le joueur qui commence ne pioche pas lors du premier tour du duel.",
+     "Standby Phase : les effets qui ont lieu « durant la Standby Phase », comme les coûts de maintien, sont appliqués ou activés.",
+     "Main Phase 1 : Invoquez ou Posez des monstres, changez leur position de combat, activez des cartes et Posez des Magies et des Pièges.",
+     "Battle Phase : facultative. Attaquez avec vos monstres. Elle ne peut pas avoir lieu lors du premier tour du duel.",
+     "Main Phase 2 : uniquement si vous avez effectué une Battle Phase. Vous pouvez faire les mêmes actions qu’en Main Phase 1.",
+     "End Phase : les effets qui ont lieu « durant la End Phase » sont appliqués. Si vous avez plus de 6 cartes en main, défaussez-vous jusqu’à en avoir 6."
+    ],
+    "title": "Déroulement d’un tour"
+   },
+   {
+    "example": "Vous contrôlez 1 monstre. Pour Invoquer Normalement un monstre de Niveau 6, vous le Sacrifiez. Cela utilise votre Invocation Normale du tour : vous ne pouvez donc pas Poser d’autre monstre.",
+    "icon": "ArrowUp",
+    "id": "normal-summon",
+    "paragraphs": [
+     "Une fois par tour, durant votre Main Phase, vous pouvez soit Invoquer Normalement un monstre depuis votre main en Position d’Attaque face recto, soit le Poser en Position de Défense face verso. Ces deux actions utilisent votre unique Invocation Normale du tour.",
+     "Les monstres de Niveau élevé demandent des Sacrifices : vous envoyez au Cimetière des monstres que vous contrôlez. C’est une Invocation Sacrifice (ou une Pose Sacrifice), qui est une forme d’Invocation Normale.",
+     "Durant votre Main Phase, vous pouvez aussi Poser des Magies et des Pièges face verso dans vos Zones Magie & Piège, autant que vous avez de zones libres."
+    ],
+    "points": [
+     "Niveau 1 à 4 : aucun Sacrifice.",
+     "Niveau 5 ou 6 : 1 Sacrifice.",
+     "Niveau 7 ou plus : 2 Sacrifices.",
+     "Invocation Flip : durant votre Main Phase, faites passer un monstre en Position de Défense face verso en Position d’Attaque face recto. Impossible le tour où ce monstre a été Posé.",
+     "Durant votre Main Phase, vous pouvez changer la position de combat de chaque monstre une fois par tour, mais pas le tour où il a été Invoqué ou Posé, ni après qu’il a attaqué ce tour. Une Invocation Flip compte comme ce changement."
+    ],
+    "title": "Invocation Normale et Pose"
+   },
+   {
+    "example": "Un monstre indique « Ne peut pas être Invoqué Normalement/Posé. Doit d’abord être Invoqué Spécialement depuis votre main en bannissant 2 monstres de votre Cimetière. » Si vous l’Invoquez ainsi et qu’il est détruit, une carte de réanimation peut le ramener. S’il a simplement été défaussé depuis votre main, il ne peut pas être réanimé.",
+    "icon": "Sparkles",
+    "id": "special-summon",
+    "paragraphs": [
+     "Une Invocation Spéciale n’utilise pas votre Invocation Normale. Vous pouvez en effectuer autant que vos cartes le permettent, y compris pendant le tour de votre adversaire si un effet l’autorise.",
+     "Certains monstres ont leur propre procédure, par exemple « Ne peut pas être Invoqué Normalement/Posé. Doit d’abord être Invoqué Spécialement… » ou « Vous pouvez Invoquer Spécialement cette carte depuis votre main en… ». Cette procédure ne démarre pas de Chaîne, mais les cartes qui annulent une Invocation peuvent l’arrêter.",
+     "Les autres Invocations Spéciales sont l’effet d’une carte, par exemple « Invoquez Spécialement 1 monstre depuis votre Cimetière ». Elles se résolvent dans une Chaîne."
+    ],
+    "points": [
+     "Les Invocations Fusion, Rituelle, Synchro, Xyz, Pendule et Lien sont toutes des Invocations Spéciales.",
+     "Les monstres de l’Extra Deck, les Monstres Rituels et les monstres qui « doivent d’abord être Invoqués Spécialement » doivent être Invoqués correctement avant qu’un autre effet puisse les Invoquer Spécialement depuis le Cimetière ou depuis les cartes bannies.",
+     "Si le texte d’un monstre indique qu’il « ne peut pas être Invoqué Spécialement d’une autre façon », il ne peut être Invoqué que par sa propre procédure."
+    ],
+    "title": "Invocation Spéciale"
+   },
+   {
+    "example": "« Polymérisation » vous permet d’Invoquer par Fusion en utilisant des monstres de votre main ou de votre Terrain. Vous envoyez au Cimetière depuis votre main les deux monstres indiqués sur le Monstre Fusion, puis vous Invoquez Spécialement ce Monstre Fusion.",
+    "icon": "Combine",
+    "id": "fusion",
+    "paragraphs": [
+     "Les Monstres Fusion se trouvent dans votre Extra Deck. Leur texte indique les Matériels de Fusion requis, par exemple deux monstres nommés ou « 1 monstre TÉNÈBRES + 1 monstre de Type Guerrier ».",
+     "La plupart des Invocations Fusion utilisent une carte comme « Polymérisation » : envoyez au Cimetière les matériels indiqués depuis votre main ou votre Terrain, puis Invoquez Spécialement le Monstre Fusion depuis votre Extra Deck. La carte de Fusion précise d’où peuvent venir les matériels.",
+     "Certains Monstres Fusion décrivent leur propre procédure (comme une Fusion de Contact qui remélange les matériels dans le Deck). Suivez le texte de la carte ; c’est aussi lui qui indique si cela compte comme une Invocation Fusion."
+    ],
+    "points": [
+     "Les matériels doivent correspondre exactement au texte. Un matériel de substitution ne fonctionne que si son propre texte le dit.",
+     "Les matériels sont envoyés au Cimetière, sauf si la carte utilisée indique autre chose, par exemple les bannir ou les remélanger dans le Deck.",
+     "Si l’Invocation Fusion est annulée, les matériels restent utilisés et le Monstre Fusion est détruit."
+    ],
+    "title": "Invocation Fusion"
+   },
+   {
+    "example": "Votre Monstre Rituel est de Niveau 8 et la Magie Rituelle demande un total de Niveaux égal ou supérieur à 8. Vous Sacrifiez un monstre de Niveau 4 de votre main et un monstre de Niveau 5 de votre Terrain (total 9), puis vous Invoquez Spécialement le Monstre Rituel.",
+    "icon": "Flame",
+    "id": "ritual",
+    "paragraphs": [
+     "Les Monstres Rituels se trouvent dans votre Main Deck et sont généralement Invoqués depuis votre main. Il vous faut une Magie Rituelle capable de les Invoquer ; les deux cartes se nomment généralement l’une l’autre.",
+     "Activez la Magie Rituelle, puis Sacrifiez depuis votre main et/ou votre Terrain des monstres dont le total des Niveaux respecte la condition écrite sur la Magie Rituelle, et Invoquez Spécialement le Monstre Rituel."
+    ],
+    "points": [
+     "La plupart des Magies Rituelles demandent un total de Niveaux « égal ou supérieur » au Niveau du Monstre Rituel ; certaines demandent un total « exactement égal ». Lisez la Magie Rituelle.",
+     "Le Monstre Rituel que vous Invoquez ne peut pas faire partie des Sacrifices.",
+     "Les Monstres Rituels ne peuvent pas être Invoqués Normalement ni Posés.",
+     "Certaines cartes utilisent d’autres sources, comme envoyer des monstres depuis le Deck ou les bannir depuis le Cimetière ; suivez le texte."
+    ],
+    "title": "Invocation Rituelle"
+   },
+   {
+    "example": "Un Syntoniseur de Niveau 3 plus un non-Syntoniseur de Niveau 4 font 7 : vous pouvez Invoquer par Synchro un Monstre Synchro de Niveau 7.",
+    "icon": "Zap",
+    "id": "synchro",
+    "paragraphs": [
+     "Les Monstres Synchro se trouvent dans votre Extra Deck. Durant votre Main Phase, envoyez au Cimetière 1 Syntoniseur et 1 monstre non-Syntoniseur ou plus face recto que vous contrôlez. Le total de leurs Niveaux doit être exactement égal au Niveau du Monstre Synchro. Invoquez-le ensuite Spécialement.",
+     "Le texte du Monstre Synchro indique ses matériels, par exemple « 1 Syntoniseur + 1+ monstre non-Syntoniseur ». Certains exigent un Syntoniseur ou un non-Syntoniseur précis, ou plus d’un Syntoniseur."
+    ],
+    "points": [
+     "Les matériels doivent être des monstres face recto que vous contrôlez, sauf si une carte indique autre chose.",
+     "Un Syntoniseur porte la mention « Syntoniseur » dans sa ligne de Type.",
+     "Les Monstres Xyz et Lien n’ont pas de Niveau : ils ne peuvent normalement pas servir de Matériel de Synchro.",
+     "Une Invocation Synchro ne démarre pas de Chaîne, mais les cartes qui annulent une Invocation peuvent l’arrêter."
+    ],
+    "title": "Invocation Synchro"
+   },
+   {
+    "example": "Deux monstres de Niveau 4 que vous contrôlez peuvent servir à Invoquer par Xyz un Monstre Xyz de Rang 4 qui demande « 2 monstres de Niveau 4 ».",
+    "icon": "Layers",
+    "id": "xyz",
+    "paragraphs": [
+     "Les Monstres Xyz se trouvent dans votre Extra Deck. Durant votre Main Phase, empilez les monstres face recto que vous contrôlez requis par le Monstre Xyz (généralement 2 ou plus de même Niveau), puis placez le Monstre Xyz par-dessus. Les monstres en dessous deviennent des Matériels Xyz.",
+     "Les Monstres Xyz ont un Rang, pas un Niveau. Les effets qui se réfèrent au Niveau ne s’appliquent pas à eux, et ils ne peuvent normalement pas servir pour une Invocation Synchro.",
+     "Les Matériels Xyz ne sont pas des monstres sur le Terrain. Lorsque le Monstre Xyz quitte le Terrain, ses matériels sont envoyés au Cimetière."
+    ],
+    "points": [
+     "Beaucoup de Monstres Xyz paient un coût en détachant des Matériels Xyz : vous les envoyez de sous la carte au Cimetière.",
+     "Les Jetons ne peuvent pas être utilisés comme Matériel Xyz.",
+     "Un Monstre Xyz sans matériel reste sur le Terrain ; il ne peut simplement plus payer de coût de détachement."
+    ],
+    "title": "Invocation Xyz"
+   },
+   {
+    "example": "",
+    "icon": "Scale",
+    "id": "pendulum",
+    "paragraphs": [
+     "Les Monstres Pendule se trouvent dans votre Main Deck. En plus d’être Invoqués comme monstres, ils peuvent être activés comme Magies dans vos Zones Pendule (vos Zones Magie & Piège situées le plus à gauche et le plus à droite). Ils y sont des Cartes Magie et utilisent leur Échelle Pendule et leur Effet Pendule.",
+     "Une fois par tour, durant votre Main Phase, si vous avez une carte dans chacune de vos Zones Pendule, vous pouvez Invoquer par Pendule : Invoquez Spécialement, en même temps, autant de monstres que vous voulez depuis votre main et/ou de Monstres Pendule face recto depuis votre Extra Deck, dont le Niveau est strictement compris entre les deux Échelles.",
+     "Lorsqu’un Monstre Pendule sur votre Terrain devrait être envoyé au Cimetière, il est placé face recto dans votre Extra Deck à la place."
+    ],
+    "points": [
+     "Avec des Échelles 1 et 8, vous pouvez Invoquer par Pendule des monstres de Niveau 2 à 7.",
+     "Les monstres de votre main vont dans des Zones Monstre Principales. Les Monstres Pendule face recto de votre Extra Deck vont dans une Zone Monstre Extra ou dans une Zone Monstre Principale pointée par un Monstre Lien.",
+     "Une Invocation Pendule ne démarre pas de Chaîne, mais les cartes qui annulent une Invocation peuvent l’arrêter."
+    ],
+    "title": "Invocation Pendule"
+   },
+   {
+    "example": "Un Monstre LINK-3 demande 3 matériels : vous pouvez utiliser 3 monstres, ou un Monstre LINK-2 comptant pour 2 matériels plus 1 autre monstre.",
+    "icon": "Link",
+    "id": "link",
+    "paragraphs": [
+     "Les Monstres Lien se trouvent dans votre Extra Deck. Durant votre Main Phase, envoyez au Cimetière comme Matériels de Lien des monstres face recto que vous contrôlez qui remplissent les conditions indiquées, puis Invoquez Spécialement le Monstre Lien.",
+     "Le nombre de matériels doit être égal à la valeur Lien (LINK-1, LINK-2…). Un Monstre Lien utilisé comme matériel peut compter pour 1 matériel ou pour un nombre de matériels égal à sa valeur Lien.",
+     "Les Flèches Lien pointent vers les zones adjacentes. Un monstre situé dans une zone pointée par une Flèche Lien est « lié » à ce Monstre Lien. Deux Monstres Lien qui pointent l’un vers l’autre sont « co-liés »."
+    ],
+    "points": [
+     "Les Monstres Lien n’ont ni Niveau ni DEF ; ils sont toujours en Position d’Attaque face recto.",
+     "Ils ne peuvent pas être Posés, mis en Position de Défense ni retournés face verso.",
+     "Les Jetons peuvent être utilisés comme Matériel de Lien.",
+     "Depuis une Zone Monstre Extra, les Flèches Lien peuvent pointer vers des Zones Monstre Principales des deux côtés du Terrain."
+    ],
+    "title": "Invocation Lien"
+   },
+   {
+    "example": "Votre Terrain est vide. Vous Invoquez par Synchro dans une Zone Monstre Principale, ce qui garde la Zone Monstre Extra libre. Ensuite, vous Invoquez par Lien dans la Zone Monstre Extra un Monstre LINK-2 avec des flèches en bas à gauche et en bas à droite. Ces flèches pointent vers deux de vos Zones Monstre Principales : votre prochain Monstre Lien ou des Monstres Pendule face recto de votre Extra Deck peuvent y être placés.",
+    "icon": "LayoutDashboard",
+    "id": "extra-deck-zones",
+    "paragraphs": [
+     "Depuis la révision de la Master Rule d’avril 2020, la zone qu’un monstre Invoqué depuis l’Extra Deck peut occuper dépend de son type de carte.",
+     "Les Monstres Fusion, Synchro et Xyz, y compris les Monstres Pendule de ces types Invoqués alors qu’ils étaient face verso dans l’Extra Deck, peuvent aller dans n’importe laquelle de vos Zones Monstre Principales libres ou dans une Zone Monstre Extra.",
+     "Les Monstres Lien, ainsi que les Monstres Pendule Invoqués Spécialement face recto depuis l’Extra Deck, doivent aller dans une Zone Monstre Extra ou dans l’une de vos Zones Monstre Principales pointées par un Monstre Lien."
+    ],
+    "points": [
+     "Vous ne pouvez toujours utiliser qu’une seule Zone Monstre Extra, sauf si l’effet d’une carte le permet.",
+     "Placer un Monstre Fusion, Synchro ou Xyz dans une Zone Monstre Principale garde la Zone Monstre Extra libre pour un Monstre Lien.",
+     "Ces restrictions ne s’appliquent qu’aux monstres Invoqués depuis l’Extra Deck ; les monstres venant de la main, du Deck ou du Cimetière vont dans les Zones Monstre Principales."
+    ],
+    "title": "Extra Deck et Zones Monstre Extra"
+   },
+   {
+    "example": "Vous activez une Magie Normale (Maillon 1). Votre adversaire répond avec un Piège Normal (Maillon 2). Vous répondez avec un Piège Contre qui l’annule (Maillon 3). Le Piège Contre se résout en premier et annule le Piège, puis votre Magie se résout.",
+    "icon": "ListOrdered",
+    "id": "chains",
+    "paragraphs": [
+     "Lorsqu’une carte ou un effet est activé, il devient le Maillon de Chaîne 1. Les joueurs peuvent répondre avec une Vitesse de Sort de 2 ou plus, égale ou supérieure à celle du dernier Maillon, en ajoutant des Maillons. Quand les deux joueurs passent, la Chaîne se résout dans l’ordre inverse : le dernier Maillon en premier.",
+     "Les coûts (défausser, payer des LP, détacher, Sacrifier…) sont payés à l’activation et ne sont pas rendus si l’activation est annulée. Dans le texte d’une carte, ce qui précède les deux-points (:) est une condition, ce qui précède le point-virgule (;) est un coût ou une cible, et le reste est l’effet."
+    ],
+    "points": [
+     "Vitesse de Sort 1 : Magies Normales, Équipement, Continues, Terrain et Rituelles ; effets d’Ignition, de Déclenchement et FLIP. Elles ne peuvent pas être activées en réponse, sauf les déclenchements simultanés.",
+     "Vitesse de Sort 2 : Magies Jeu-Rapide, Pièges Normaux et Continus, Effets Rapides.",
+     "Vitesse de Sort 3 : Pièges Contre. Seule une autre Vitesse de Sort 3 peut leur répondre.",
+     "Les déclenchements simultanés (SEGOC) sont chaînés dans cet ordre : obligatoires du joueur du tour, obligatoires de l’adversaire, facultatifs du joueur du tour, facultatifs de l’adversaire.",
+     "Un effet facultatif « Lorsque… vous pouvez » rate le timing si son événement n’est pas la dernière chose qui s’est produite. Les effets « Si… vous pouvez » et les effets obligatoires ne le ratent pas.",
+     "Les Pièges Posés et les Magies Jeu-Rapide Posées ne peuvent pas être activés le tour où ils ont été Posés, sauf si une carte le permet.",
+     "« Une fois par tour » : chaque exemplaire une fois par tour, remis à zéro s’il quitte le Terrain. « Vous ne pouvez utiliser cet effet de [carte] qu’une fois par tour » : une fois par tour pour tous les exemplaires."
+    ],
+    "title": "Chaînes et Vitesse de Sort"
+   },
+   {
+    "example": "Votre monstre de 2000 ATK attaque un monstre de 1500 ATK en Position d’Attaque : celui-ci est détruit et votre adversaire subit 500 points de dommage. Contre un monstre de 2500 DEF en Position de Défense, rien n’est détruit et vous subissez 500 points de dommage.",
+    "icon": "Swords",
+    "id": "battle",
+    "paragraphs": [
+     "La Battle Phase comprend la Start Step, la Battle Step, la Damage Step et la End Step. Chaque monstre en Position d’Attaque face recto que vous contrôlez peut attaquer une fois par Battle Phase.",
+     "Battle Step : choisissez un de vos monstres et déclarez une attaque contre un monstre adverse. Si votre adversaire ne contrôle aucun monstre, vous pouvez attaquer directement : il subit des dommages égaux à l’ATK de votre monstre. Si le nombre de monstres contrôlés par votre adversaire change avant la Damage Step, il y a « replay » : choisissez une nouvelle cible, attaquez directement s’il n’en a plus, ou arrêtez l’attaque.",
+     "Damage Step : les monstres face verso sont retournés face recto, puis les dommages sont calculés. Seuls les Pièges Contre, les cartes qui modifient directement l’ATK ou la DEF, les effets qui annulent une activation et les effets dont le texte le permet peuvent être activés."
+    ],
+    "points": [
+     "Attaque contre Position d’Attaque : le monstre avec l’ATK la plus faible est détruit et son contrôleur subit la différence. ATK égales : les deux sont détruits, aucun dommage. Si les deux ont 0 d’ATK, aucun n’est détruit.",
+     "Attaque contre Position de Défense : si l’ATK dépasse la DEF, le défenseur est détruit et aucun dommage n’est infligé, sauf si l’attaquant inflige des dommages perçants. Si l’ATK est inférieure, le contrôleur de l’attaquant subit la différence. En cas d’égalité, rien ne se passe.",
+     "Un monstre face verso attaqué est retourné face recto ; son effet FLIP s’active après le calcul des dommages.",
+     "Les monstres détruits au combat sont envoyés au Cimetière à la fin de la Damage Step."
+    ],
+    "title": "Combat"
+   },
+   {
+    "example": "",
+    "icon": "Wand",
+    "id": "spells-traps",
+    "paragraphs": [
+     "Activez les Magies depuis votre main durant votre Main Phase, ou Posez-les pour les activer plus tard. Les Pièges doivent d’abord être Posés et peuvent être activés à partir du tour suivant, pendant le tour de n’importe quel joueur. Les Magies Normales et Pièges Normaux vont au Cimetière après leur résolution ; les cartes Continues, Équipement et Terrain restent sur le Terrain.",
+     "Les « hand traps » sont des monstres dont vous activez l’effet depuis votre main, souvent en les défaussant, généralement comme Effets Rapides pendant le tour de n’importe quel joueur."
+    ],
+    "points": [
+     "Magie Normale : effet unique, Vitesse de Sort 1.",
+     "Magie Jeu-Rapide : depuis la main, uniquement pendant votre propre tour, dans n’importe quelle phase ; si elle est Posée, pendant le tour de n’importe quel joueur, mais pas le tour où elle a été Posée.",
+     "Magie Continue : reste sur le Terrain et continue de s’appliquer.",
+     "Magie Équipement : équipée à un monstre face recto ; elle est détruite si ce monstre quitte le Terrain ou est retourné face verso.",
+     "Magie Terrain : va dans votre Zone Terrain, 1 par joueur. Si vous en placez une nouvelle, la précédente est envoyée au Cimetière.",
+     "Magie Rituelle : sert à Invoquer par Rituel.",
+     "Piège Normal : effet unique, Vitesse de Sort 2.",
+     "Piège Continu : reste sur le Terrain, Vitesse de Sort 2.",
+     "Piège Contre : Vitesse de Sort 3, annule généralement une activation ou une Invocation."
+    ],
+    "title": "Magies et Pièges"
+   }
+  ],
+  "source": "Cette page résume le livret de règles officiel (Master Rule actuelle) ; lorsque le texte d’une carte ou une décision officielle indique autre chose, la carte et la décision prévalent.",
+  "title": "Règles",
+  "tocLabel": "Sur cette page"
  },
  "suggestions": {
   "generate": {

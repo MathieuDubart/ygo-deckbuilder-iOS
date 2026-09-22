@@ -35,13 +35,15 @@
     "zoom": "Show the card full screen"
   },
   "common": {
-    "share": "Share"
+    "share": "Share",
+    "more": "More"
   },
   "deck": {
     "addCards": "Add cards",
     "emptyZone": "Tap “Add cards”, then a card to see its details and add it.",
     "exportYdk": "Export .ydk",
-    "moveToSide": "Move one to the Side Deck"
+    "moveToSide": "Move one to the Side Deck",
+    "testInDuel": "Test in a duel"
   },
   "products": {
     "removeWithCards": "Remove it and its cards"
