@@ -50,6 +50,9 @@ final class L10n {
 
     private(set) var current: AppLocale = .en
     private var messages: [String: String] = [:]
+    /// Arbre JSON complet de la langue courante (contenus structurés : règles…)
+    @ObservationIgnored private var tree: [String: Any] = [:]
+    @ObservationIgnored private var fallbackTree: [String: Any] = [:]
     @ObservationIgnored private var fallback: [String: String] = [:]
     @ObservationIgnored private var compiled: [String: ICUMessage] = [:]
     @ObservationIgnored private let isoFull: ISO8601DateFormatter = {
@@ -66,7 +69,8 @@ final class L10n {
 
     private init() {
         preference = UserDefaults.standard.string(forKey: Self.preferenceKey).flatMap(AppLocale.init(rawValue:))
-        fallback = Self.read(.en)
+        fallbackTree = Self.readTree(.en)
+        fallback = Self.flatten(fallbackTree)
         load()
     }
 
@@ -74,16 +78,21 @@ final class L10n {
 
     private func load() {
         current = preference ?? AppLocale.best(from: Bundle.main.preferredLocalizations + Locale.preferredLanguages)
-        messages = current == .en ? fallback : Self.read(current)
+        tree = current == .en ? fallbackTree : Self.readTree(current)
+        messages = current == .en ? fallback : Self.flatten(tree)
         compiled = [:]
     }
 
-    private static func read(_ locale: AppLocale) -> [String: String] {
+    private static func readTree(_ locale: AppLocale) -> [String: Any] {
         guard
             let url = Bundle.main.url(forResource: "messages.\(locale.rawValue)", withExtension: "json"),
             let data = try? Data(contentsOf: url),
             let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
         else { return [:] }
+        return json
+    }
+
+    private static func flatten(_ json: [String: Any]) -> [String: String] {
         var flat: [String: String] = [:]
         flatten(json, prefix: "", into: &flat)
         return flat
@@ -108,6 +117,21 @@ final class L10n {
         return m
     }
 
+    /// Contenu structuré (tableaux, objets) décodé tel quel, ex. les sections des règles.
+    func raw<T: Decodable>(_ key: String, as type: T.Type = T.self) -> T? {
+        func find(_ root: [String: Any]) -> Any? {
+            var node: Any? = root
+            for part in key.split(separator: ".") {
+                node = (node as? [String: Any])?[String(part)]
+            }
+            return node
+        }
+        guard let node = find(tree) ?? find(fallbackTree), JSONSerialization.isValidJSONObject(node),
+              let data = try? JSONSerialization.data(withJSONObject: node)
+        else { return nil }
+        return try? JSONDecoder().decode(T.self, from: data)
+    }
+
     func has(_ key: String) -> Bool { messages[key] != nil || fallback[key] != nil }
 
     /// Texte brut (les balises <strong>… sont retirées).
@@ -122,7 +146,8 @@ final class L10n {
         var out = AttributedString()
         for run in m.runs(args, locale: locale) {
             var part = AttributedString(run.text)
-            if run.tags.contains(where: { $0 == "strong" || $0 == "b" }) {
+            // <c> / <t> : noms de cartes dans le journal du duel
+            if run.tags.contains(where: { $0 == "strong" || $0 == "b" || $0 == "c" || $0 == "t" }) {
                 part.inlinePresentationIntent = .stronglyEmphasized
             }
             if run.tags.contains("muted") { part.swiftUI.foregroundColor = Color.secondary }
