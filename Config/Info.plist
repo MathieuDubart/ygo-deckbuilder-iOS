@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Complété par les réglages INFOPLIST_KEY_* du projet (GENERATE_INFOPLIST_FILE = YES).
+  Ici seulement ce qui ne peut pas s'exprimer en réglage de build.
+-->
+<plist version="1.0">
+<dict>
+	<!-- Langues de l'app : active le choix de langue par app dans Réglages -->
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>fr</string>
+		<string>de</string>
+		<string>it</string>
+		<string>pt</string>
+	</array>
+	<!-- Instance auto-hébergée : l'adresse est choisie par l'utilisateur, parfois en HTTP
+	     sur le réseau local ou un VPN (Tailscale…). -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+</dict>
+</plist>
