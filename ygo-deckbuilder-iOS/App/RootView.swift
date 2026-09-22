@@ -43,6 +43,9 @@ struct MainTabView: View {
             Tab(t("layout.nav.wishlist"), systemImage: "heart.fill", value: AppTab.wishlist) {
                 WishlistScreen()
             }
+            Tab(t("layout.nav.duel"), systemImage: "bolt.shield.fill", value: AppTab.duel) {
+                DuelScreen()
+            }
             Tab(t("layout.nav.catalog"), systemImage: "magnifyingglass", value: AppTab.search, role: .search) {
                 CatalogScreen()
             }
