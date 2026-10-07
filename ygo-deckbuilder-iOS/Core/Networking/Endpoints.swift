@@ -206,4 +206,65 @@ extension APIClient {
     }
 
     func syncMeta() async throws -> MetaSyncResult { try await send(.post, "meta-decks/sync") }
+
+    // MARK: Profils et amis
+
+    func myProfile() async throws -> ProfileView { try await get("me/profile") }
+
+    func profile(of username: String) async throws -> ProfileView {
+        try await get("users/\(encoded(username))/profile")
+    }
+
+    func updateUsername(_ username: String) async throws {
+        try await perform(.patch, "me/profile", body: UpdateProfileBody(username: username))
+    }
+
+    func setProfileCards(_ printIds: [String]) async throws -> [ProfileCard] {
+        try await send(.put, "me/profile/cards", body: ProfileCardsBody(printIds: printIds))
+    }
+
+    /// `kind` vaut "avatar" ou "banner". L'image part telle quelle : le serveur la réencode.
+    func uploadProfileImage(_ kind: String, data: Data, mimeType: String) async throws -> UploadedImage {
+        try await upload("me/profile/\(kind)", fileName: "image", mimeType: mimeType, data: data)
+    }
+
+    func removeProfileImage(_ kind: String) async throws {
+        try await perform(.delete, "me/profile/\(kind)")
+    }
+
+    func searchUsers(_ query: String) async throws -> [UserSearchResult] {
+        try await get("users/search", query: [.init(name: "q", value: query)])
+    }
+
+    func friends() async throws -> [Friend] { try await get("friends") }
+
+    func friendRequests() async throws -> [FriendRequest] { try await get("friends/requests") }
+
+    func requestFriend(username: String) async throws -> UserSearchResult {
+        try await send(.post, "friends/requests", body: FriendRequestBody(username: username))
+    }
+
+    func respondToRequest(_ id: String, accept: Bool) async throws {
+        try await perform(.post, "friends/requests/\(id)/\(accept ? "accept" : "decline")")
+    }
+
+    /// Retire l'ami ou annule la demande envoyée : c'est le même geste.
+    func removeFriend(_ userId: String) async throws {
+        try await perform(.delete, "friends/\(userId)")
+    }
+
+    /// Avancement des amis sur les extensions affichées : une requête pour toute la page.
+    func friendsProgress(setIds: [String]) async throws -> FriendsProgress {
+        guard !setIds.isEmpty else { return [:] }
+        return try await get("friends/releases", query: [.init(name: "setIds", value: setIds.joined(separator: ","))])
+    }
+
+    func setFriends(_ setId: String) async throws -> SetFriends {
+        try await get("friends/releases/\(setId)")
+    }
+
+    /// Un pseudo ne contient que des caractères sûrs, mais il voyage dans un chemin.
+    private func encoded(_ value: String) -> String {
+        value.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? value
+    }
 }

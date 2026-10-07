@@ -755,13 +755,16 @@
     },
     "errors": {
       "decoding": "Unerwartete Serverantwort ({detail}). Ist der Server aktuell?",
-      "noServer": "Kein Server eingerichtet."
+      "noServer": "Kein Server eingerichtet.",
+      "imageUnreadable": "Dieses Bild konnte nicht gelesen werden"
     },
     "more": {
       "catalog": "Den gesamten Katalog durchsuchen",
       "duel": "Ein Deck gegen den Simulator testen",
       "rules": "Alle offiziellen Regeln, illustriert",
-      "wishlist": "Die Karten, die dir noch fehlen"
+      "wishlist": "Die Karten, die dir noch fehlen",
+      "profile": "Dein Profil und deine hervorgehobenen Karten",
+      "friends": "Vergleiche deine Sets mit Freunden"
     },
     "nav": {
       "more": "Mehr"
@@ -823,6 +826,9 @@
       "server": "Server",
       "systemLanguage": "Systemsprache",
       "title": "Einstellungen"
+    },
+    "social": {
+      "friendCounters": "{cards} Karten · {sets} Sets vollständig"
     }
   },
   "layout": {
@@ -837,7 +843,9 @@
       "duel": "Duell",
       "rules": "Regeln",
       "suggestions": "Vorschläge",
-      "wishlist": "Wunschliste"
+      "wishlist": "Wunschliste",
+      "friends": "Freunde",
+      "profile": "Profil"
     },
     "pages": {
       "catalog": "Katalog",
@@ -849,7 +857,9 @@
       "register": "Registrieren",
       "rules": "Regeln",
       "suggestions": "Vorschläge",
-      "wishlist": "Wunschliste"
+      "wishlist": "Wunschliste",
+      "friends": "Freunde",
+      "profile": "Profil"
     }
   },
   "products": {
@@ -1563,6 +1573,94 @@
     "source": "Diese Seite fasst das offizielle Regelbuch (aktuelle Master Rule) zusammen; wenn der Text einer Karte oder ein offizielles Ruling etwas anderes sagt, haben Karte und Ruling Vorrang.",
     "title": "Regeln",
     "tocLabel": "Auf dieser Seite"
+  },
+  "social": {
+    "profile": {
+      "title": "Profil",
+      "myTitle": "Mein Profil",
+      "edit": "Profil bearbeiten",
+      "username": "Benutzername",
+      "usernameHint": "Buchstaben, Zahlen, Punkt, Bindestrich und Unterstrich. So finden dich Freunde.",
+      "save": "Speichern",
+      "avatar": "Profilbild",
+      "banner": "Banner",
+      "upload": "Bild hochladen",
+      "replace": "Ersetzen",
+      "remove": "Entfernen",
+      "imageHint": "PNG, JPEG oder WebP, bis 8 MB. Wird automatisch verkleinert und umgewandelt.",
+      "memberSince": "Mitglied seit {date}",
+      "friendsSince": "Freunde seit {date}",
+      "friendCount": "{count, plural, =0 {Keine Freunde} one {# Freund} other {# Freunde}}",
+      "openFriends": "Freunde",
+      "hidden": {
+        "title": "Dieses Profil ist privat",
+        "description": "{username} und du seid noch keine Freunde. Sende eine Anfrage, um dieses Profil zu sehen und eure Sets zu vergleichen.",
+        "sent": "Anfrage gesendet. Du siehst dieses Profil, sobald sie angenommen wird.",
+        "received": "{username} hat dir eine Freundschaftsanfrage gesendet."
+      },
+      "stats": {
+        "distinctCards": "Verschiedene Karten",
+        "copies": "Exemplare",
+        "sets": "Begonnene Sets",
+        "completedSets": "Vollständige Sets"
+      },
+      "showcase": {
+        "title": "Hervorgehobene Karten",
+        "empty": "Noch keine hervorgehobene Karte",
+        "emptyHint": "Wähle einige Karten aus deiner Sammlung, um sie hier zu zeigen.",
+        "emptyOther": "{username} hat noch keine Karte gewählt",
+        "choose": "Karten wählen",
+        "dialogTitle": "Hervorgehobene Karten",
+        "dialogHint": "Bis zu {max} Karten aus deiner Sammlung. Klicken zum Hinzufügen oder Entfernen; die Reihenfolge bleibt erhalten.",
+        "search": "In deiner Sammlung suchen…",
+        "selected": "{count} von {max} gewählt",
+        "noResults": "Keine Karte deiner Sammlung passt",
+        "done": "Fertig"
+      }
+    },
+    "friends": {
+      "title": "Freunde",
+      "description": "Freunde sehen dein Profil und deinen Fortschritt in jedem Set.",
+      "search": {
+        "label": "Jemanden finden",
+        "placeholder": "Benutzername…",
+        "hint": "Mindestens 2 Zeichen",
+        "noResults": "Kein Konto passt zu „{q}“"
+      },
+      "requests": {
+        "incoming": "Erhaltene Anfragen",
+        "outgoing": "Gesendete Anfragen",
+        "accept": "Annehmen",
+        "decline": "Ablehnen",
+        "cancel": "Anfrage zurückziehen"
+      },
+      "list": {
+        "title": "Deine Freunde",
+        "empty": "Noch keine Freunde",
+        "emptyDescription": "Suche oben einen Benutzernamen, um deine erste Anfrage zu senden."
+      },
+      "actions": {
+        "add": "Als Freund hinzufügen",
+        "remove": "Freund entfernen",
+        "confirmRemove": "{username} aus deinen Freunden entfernen?",
+        "view": "Profil ansehen"
+      },
+      "state": {
+        "FRIENDS": "Freunde",
+        "REQUEST_SENT": "Anfrage gesendet",
+        "REQUEST_RECEIVED": "Möchte dein Freund sein"
+      }
+    },
+    "releases": {
+      "friends": "Freunde",
+      "none": "Füge Freunde hinzu, um euren Fortschritt zu vergleichen",
+      "onThisSet": "Freunde in diesem Set",
+      "nobodyStarted": "Kein Freund hat dieses Set begonnen",
+      "ownedBy": "{count, plural, one {# Freund hat sie} other {# Freunde haben sie}}",
+      "ownedElsewhere": "{count, plural, one {# Freund hat sie in einer anderen Auflage} other {# Freunde haben sie in einer anderen Auflage}}",
+      "nobody": "Kein Freund hat diese Karte",
+      "legend": "Ein Punkt neben einer Karte heißt, ein Freund hat sie. Für Details antippen."
+    }
   },
   "suggestions": {
     "generate": {

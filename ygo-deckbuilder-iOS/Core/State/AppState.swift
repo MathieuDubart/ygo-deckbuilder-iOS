@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import SwiftUI
 
 /// État global : serveur, session, et « versions » des données partagées entre écrans.
 /// Un écran qui dépend de la collection se recharge avec `.task(id: app.collectionVersion)` ;
@@ -22,6 +23,10 @@ final class AppState {
     private(set) var wishlistVersion = 0
     /// Étiquettes personnelles : création, renommage, pose ou retrait.
     private(set) var tagsVersion = 0
+    /// Profil, amitiés, demandes : tout ce qui change ce que l'on voit des autres.
+    private(set) var socialVersion = 0
+    /// Demandes d'ami reçues : le seul chiffre de l'app qui appelle une action.
+    private(set) var pendingRequests = 0
     /// Les étiquettes de l'utilisateur, chargées une fois pour toute l'app : c'est un petit
     /// référentiel que cinq écrans affichent, pas la peine que chacun le redemande.
     private(set) var tags: [Tag] = []
@@ -33,7 +38,10 @@ final class AppState {
     var pendingDeckId: String?
     var selectedTab: AppTab = .collection
     /// Pile de navigation de l'onglet « Autre » (règles, wishlist, duel, catalogue).
-    var morePath: [MoreRoute] = []
+    /// Hétérogène : la pile « Autre » empile des `MoreRoute`, mais aussi des `ProfileRoute`
+    /// quand on ouvre le profil de quelqu'un depuis la liste d'amis. Un chemin typé ne peut
+    /// porter qu'un seul type, et les liens des autres types y seraient inertes.
+    var morePath = NavigationPath()
     /// Incrémenté quand on retape l'onglet où on est déjà : l'écran racine concerné revient
     /// en haut de sa pile (réflexe iOS). Chaque écran vérifie que c'est bien le sien.
     private(set) var rootTaps = 0
@@ -91,9 +99,10 @@ final class AppState {
     func signOut() async {
         await api.signOut()
         session = .signedOut
-        morePath = []
+        morePath = NavigationPath()
         tags = []
         tagsById = [:]
+        pendingRequests = 0
         show(.collection)
     }
 
@@ -107,6 +116,18 @@ final class AppState {
     func decksChanged() { decksVersion += 1 }
 
     func wishlistChanged() { wishlistVersion += 1 }
+
+    /// Profil modifié, amitié nouée ou rompue, demande envoyée ou traitée.
+    func socialChanged() {
+        socialVersion += 1
+    }
+
+    /// Recharge le compteur de demandes reçues (écran racine, sur `socialVersion`).
+    func loadPendingRequests() async {
+        guard case .signedIn = session else { return }
+        guard let requests = try? await api.friendRequests() else { return }
+        pendingRequests = requests.count { $0.direction == .incoming }
+    }
 
     /// Une étiquette posée ou retirée change ce que les listes filtrées renvoient.
     func tagsChanged() {
@@ -172,7 +193,7 @@ final class AppState {
 
     /// Ouvre un écran de l'onglet « Autre » (remplace la pile en cours).
     func openMore(_ route: MoreRoute) {
-        morePath = [route]
+        morePath = NavigationPath([route])
         show(.more)
     }
 
@@ -189,5 +210,5 @@ enum AppTab: Hashable {
 
 /// Écrans regroupés sous l'onglet « Autre ».
 enum MoreRoute: Hashable {
-    case rules, wishlist, duel, catalog
+    case rules, wishlist, duel, catalog, friends, profile
 }

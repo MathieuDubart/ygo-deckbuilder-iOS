@@ -755,13 +755,16 @@
     },
     "errors": {
       "decoding": "Réponse inattendue du serveur ({detail}). Le serveur est-il à jour ?",
-      "noServer": "Aucun serveur configuré."
+      "noServer": "Aucun serveur configuré.",
+      "imageUnreadable": "Impossible de lire cette image"
     },
     "more": {
       "catalog": "Chercher dans tout le catalogue",
       "duel": "Tester un deck contre le simulateur",
       "rules": "Toutes les règles officielles, illustrées",
-      "wishlist": "Les cartes qui te manquent"
+      "wishlist": "Les cartes qui te manquent",
+      "profile": "Ton profil et tes cartes mises en avant",
+      "friends": "Compare tes extensions avec tes amis"
     },
     "nav": {
       "more": "Autre"
@@ -823,6 +826,9 @@
       "server": "Serveur",
       "systemLanguage": "Langue du système",
       "title": "Réglages"
+    },
+    "social": {
+      "friendCounters": "{cards} cartes · {sets} extensions complètes"
     }
   },
   "layout": {
@@ -837,7 +843,9 @@
       "duel": "Duel",
       "rules": "Règles",
       "suggestions": "Suggestions",
-      "wishlist": "Wishlist"
+      "wishlist": "Wishlist",
+      "friends": "Amis",
+      "profile": "Profil"
     },
     "pages": {
       "catalog": "Catalogue",
@@ -849,7 +857,9 @@
       "register": "Inscription",
       "rules": "Règles",
       "suggestions": "Suggestions",
-      "wishlist": "Wishlist"
+      "wishlist": "Wishlist",
+      "friends": "Amis",
+      "profile": "Profil"
     }
   },
   "products": {
@@ -1623,6 +1633,94 @@
     "source": "Cette page résume le livret de règles officiel (Master Rule actuelle) ; lorsque le texte d’une carte ou une décision officielle indique autre chose, la carte et la décision prévalent.",
     "title": "Règles",
     "tocLabel": "Sur cette page"
+  },
+  "social": {
+    "profile": {
+      "title": "Profil",
+      "myTitle": "Mon profil",
+      "edit": "Modifier le profil",
+      "username": "Pseudo",
+      "usernameHint": "Lettres, chiffres, point, tiret et souligné. C’est avec ça qu’on te trouve.",
+      "save": "Enregistrer",
+      "avatar": "Photo de profil",
+      "banner": "Bannière",
+      "upload": "Envoyer une image",
+      "replace": "Remplacer",
+      "remove": "Retirer",
+      "imageHint": "PNG, JPEG ou WebP, 8 Mo maximum. Redimensionnée et convertie automatiquement.",
+      "memberSince": "Inscrit depuis {date}",
+      "friendsSince": "Amis depuis {date}",
+      "friendCount": "{count, plural, =0 {Aucun ami} one {# ami} other {# amis}}",
+      "openFriends": "Amis",
+      "hidden": {
+        "title": "Ce profil est privé",
+        "description": "{username} et toi n’êtes pas encore amis. Envoie une demande pour voir ce profil et comparer vos extensions.",
+        "sent": "Demande envoyée. Tu verras ce profil dès qu’elle sera acceptée.",
+        "received": "{username} t’a envoyé une demande d’ami."
+      },
+      "stats": {
+        "distinctCards": "Cartes distinctes",
+        "copies": "Exemplaires",
+        "sets": "Extensions entamées",
+        "completedSets": "Extensions complètes"
+      },
+      "showcase": {
+        "title": "Cartes mises en avant",
+        "empty": "Aucune carte mise en avant",
+        "emptyHint": "Choisis quelques cartes de ta collection pour les afficher ici.",
+        "emptyOther": "{username} n’a pas encore choisi de carte",
+        "choose": "Choisir des cartes",
+        "dialogTitle": "Cartes mises en avant",
+        "dialogHint": "Jusqu’à {max} cartes, choisies dans ta collection. Clique pour ajouter ou retirer ; l’ordre est conservé.",
+        "search": "Chercher dans ta collection…",
+        "selected": "{count} sur {max} choisies",
+        "noResults": "Aucune carte de ta collection ne correspond",
+        "done": "Terminé"
+      }
+    },
+    "friends": {
+      "title": "Amis",
+      "description": "Tes amis voient ton profil et ton avancement sur chaque extension.",
+      "search": {
+        "label": "Trouver quelqu’un",
+        "placeholder": "Pseudo…",
+        "hint": "2 caractères minimum",
+        "noResults": "Aucun compte ne correspond à « {q} »"
+      },
+      "requests": {
+        "incoming": "Demandes reçues",
+        "outgoing": "Demandes envoyées",
+        "accept": "Accepter",
+        "decline": "Refuser",
+        "cancel": "Annuler la demande"
+      },
+      "list": {
+        "title": "Tes amis",
+        "empty": "Aucun ami pour l’instant",
+        "emptyDescription": "Cherche un pseudo ci-dessus pour envoyer ta première demande."
+      },
+      "actions": {
+        "add": "Ajouter en ami",
+        "remove": "Retirer de mes amis",
+        "confirmRemove": "Retirer {username} de tes amis ?",
+        "view": "Voir le profil"
+      },
+      "state": {
+        "FRIENDS": "Amis",
+        "REQUEST_SENT": "Demande envoyée",
+        "REQUEST_RECEIVED": "Veut être ton ami"
+      }
+    },
+    "releases": {
+      "friends": "Amis",
+      "none": "Ajoute des amis pour comparer vos avancements",
+      "onThisSet": "Tes amis sur cette extension",
+      "nobodyStarted": "Aucun ami n’a commencé cette extension",
+      "ownedBy": "{count, plural, one {# ami l’a} other {# amis l’ont}}",
+      "ownedElsewhere": "{count, plural, one {# ami l’a dans une autre édition} other {# amis l’ont dans une autre édition}}",
+      "nobody": "Aucun ami n’a cette carte",
+      "legend": "Un point à côté d’une carte veut dire qu’un ami l’a. Touche une carte pour le détail."
+    }
   },
   "suggestions": {
     "generate": {

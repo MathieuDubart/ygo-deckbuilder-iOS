@@ -14,6 +14,7 @@ struct ReleaseDetailView: View {
     @State private var shown: Shown = .all
     @State private var rarity: String?
     @State private var selected: CardLink?
+    @State private var friends: SetFriends = .empty
 
     var body: some View {
         ScrollView {
@@ -27,6 +28,9 @@ struct ReleaseDetailView: View {
                     } else {
                         progress(detail)
                         rarities(detail)
+                        if !friends.friends.isEmpty {
+                            FriendProgressPanel(friends: friends.friends, anyEdition: anyEdition)
+                        }
                         legend
                         filters(detail)
                         grid(detail)
@@ -39,6 +43,9 @@ struct ReleaseDetailView: View {
         .navigationTitle(release.value?.set.name ?? t("releases.title"))
         .navigationBarTitleDisplayMode(.inline)
         .task(id: app.collectionVersion) { await load() }
+        .task(id: app.socialVersion) {
+            friends = (try? await app.api.setFriends(setId)) ?? .empty
+        }
         .cardDetailSheet($selected)
     }
 
@@ -179,6 +186,7 @@ struct ReleaseDetailView: View {
                     || (shown == .owned ? card.isOwned(anyEdition: anyEdition)
                         : !card.isOwned(anyEdition: anyEdition)))
         }
+        let byId = friends.byId
         if cards.isEmpty {
             Text(t("releases.noCardsShown"))
                 .font(.callout)
@@ -191,7 +199,11 @@ struct ReleaseDetailView: View {
             ) {
                 ForEach(cards) { card in
                     Button { selected = CardLink(cardId: card.card.id) } label: {
-                        PrintTile(card: card, anyEdition: anyEdition)
+                        PrintTile(
+                            card: card, anyEdition: anyEdition,
+                            owners: friends.owners[card.printId],
+                            elsewhere: friends.ownersAnyEdition[card.printId],
+                            friendsById: byId)
                     }
                     .buttonStyle(.plain)
                 }
@@ -203,6 +215,9 @@ struct ReleaseDetailView: View {
 private struct PrintTile: View {
     let card: ReleaseCard
     let anyEdition: Bool
+    let owners: [String]?
+    let elsewhere: [String]?
+    let friendsById: [String: PublicProfile]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
@@ -216,6 +231,7 @@ private struct PrintTile: View {
                 .font(.system(size: 9))
                 .foregroundStyle(.secondary)
                 .lineLimit(2)
+            PrintOwners(owners: owners, elsewhere: elsewhere, byId: friendsById)
         }
         .accessibilityElement(children: .combine)
         .accessibilityValue(

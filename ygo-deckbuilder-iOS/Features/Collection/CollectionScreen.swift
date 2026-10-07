@@ -34,6 +34,10 @@ struct CollectionScreen: View {
             .navigationDestination(for: ReleaseRoute.self) {
                 ReleaseDetailView(setId: $0.setId, anyEdition: $anyEdition)
             }
+            // Le profil d'un ami s'ouvre depuis le bloc de comparaison d'une extension
+            .navigationDestination(for: ProfileRoute.self) {
+                ProfileScreen(username: $0.username, embedded: true)
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) { SettingsButton() }
                 ToolbarItem(placement: .topBarTrailing) {

@@ -20,6 +20,7 @@ struct RootView: View {
                         .task(id: TagLoad(tags: app.tagsVersion, collection: app.collectionVersion)) {
                             await app.loadTags()
                         }
+                        .task(id: app.socialVersion) { await app.loadPendingRequests() }
                 }
             }
         }

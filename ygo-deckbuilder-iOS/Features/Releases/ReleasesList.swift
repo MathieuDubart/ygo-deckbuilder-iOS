@@ -20,6 +20,8 @@ struct ReleasesList<Header: View>: View {
     @State private var total = 0
     @State private var totalPages = 1
     @State private var spotlight: ReleaseSpotlight?
+    /// Avancement des amis sur la page affichée : une requête, pas une par ligne.
+    @State private var friends: FriendsProgress = [:]
     @State private var facets: ReleaseFacets?
     @State private var loading = false
     @State private var error: String?
@@ -59,7 +61,8 @@ struct ReleasesList<Header: View>: View {
             Section {
                 ForEach(items) { release in
                     NavigationLink(value: ReleaseRoute(setId: release.set.id)) {
-                        ReleaseRow(release: release, anyEdition: anyEdition)
+                        ReleaseRow(
+                            release: release, anyEdition: anyEdition, friends: friends[release.set.id])
                     }
                     .onAppear {
                         if release.id == items.last?.id { wantsMore = true }
@@ -91,6 +94,10 @@ struct ReleasesList<Header: View>: View {
             await loadMore()
         }
         .task(id: app.collectionVersion) { spotlight = try? await app.api.releaseSpotlight() }
+        // Les amis affichés suivent la page chargée et l'état des amitiés
+        .task(id: FriendsKey(ids: items.map(\.id), version: app.socialVersion)) {
+            friends = (try? await app.api.friendsProgress(setIds: items.map(\.id))) ?? [:]
+        }
         .task(id: app.collectionVersion) { facets = try? await app.api.releaseFacets() }
         .refreshable {
             refreshToken += 1
@@ -117,6 +124,11 @@ struct ReleasesList<Header: View>: View {
     }
 
     private var reloadKey: Reload { Reload(query: query, version: app.collectionVersion) }
+
+    private struct FriendsKey: Equatable {
+        let ids: [String]
+        let version: Int
+    }
 
     /// La demande de page porte l'identité du rechargement : changer de filtre doit vraiment
     /// annuler la page en vol. Surtout, elle ne porte PAS `loading` : `loadMore` modifie
@@ -260,6 +272,7 @@ struct ReleasesList<Header: View>: View {
 private struct ReleaseRow: View {
     let release: Release
     let anyEdition: Bool
+    let friends: [FriendSetProgress]?
 
     var body: some View {
         HStack(alignment: .top, spacing: Spacing.m) {
@@ -283,6 +296,7 @@ private struct ReleaseRow: View {
                         .foregroundStyle(.secondary)
                 } else {
                     ProgressLine(progress: release.progress, anyEdition: anyEdition)
+                    FriendProgressStrip(friends: friends, anyEdition: anyEdition)
                 }
             }
         }

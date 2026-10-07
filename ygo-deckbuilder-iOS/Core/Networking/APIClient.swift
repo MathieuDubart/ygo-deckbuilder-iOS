@@ -72,6 +72,40 @@ final class APIClient {
         _ = try await data(method, path, query: query, body: body)
     }
 
+    /// Envoi d'un fichier en multipart (image de profil). Même traitement du 401 que le reste.
+    func upload<T: Decodable>(
+        _ path: String, fileName: String, mimeType: String, data payload: Data, as type: T.Type = T.self
+    ) async throws -> T {
+        let boundary = "ygo.\(UUID().uuidString)"
+        var body = Data()
+        func append(_ text: String) { body.append(Data(text.utf8)) }
+        append("--\(boundary)\r\n")
+        append("Content-Disposition: form-data; name=\"file\"; filename=\"\(fileName)\"\r\n")
+        append("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(payload)
+        append("\r\n--\(boundary)--\r\n")
+
+        let contentType = "multipart/form-data; boundary=\(boundary)"
+        var (data, status) = try await raw(.post, path, query: [], payload: body, contentType: contentType, authenticated: true)
+        if status == 401 {
+            if await refreshSession() {
+                (data, status) = try await raw(.post, path, query: [], payload: body, contentType: contentType, authenticated: true)
+            } else {
+                onSessionExpired?()
+            }
+        }
+        guard (200..<300).contains(status) else { throw APIError.from(status: status, data: data) }
+        return try decode(data)
+    }
+
+    /// URL absolue d'une ressource servie par l'API (`/uploads/…`). Les images de profil ne
+    /// passent PAS par l'optimiseur du front : elles sont déjà au bon format et à la bonne
+    /// taille, et l'optimiseur refuse une URL de son propre hôte.
+    func absoluteURL(_ path: String?) -> URL? {
+        guard let path, let base = server.url else { return nil }
+        return base.appending(path: "api").appending(path: path.hasPrefix("/") ? String(path.dropFirst()) : path)
+    }
+
     func text(_ path: String) async throws -> String {
         String(decoding: try await data(.get, path), as: UTF8.self)
     }
@@ -95,7 +129,8 @@ final class APIClient {
     }
 
     private func raw(
-        _ method: HTTPMethod, _ path: String, query: [URLQueryItem], payload: Data?, authenticated: Bool
+        _ method: HTTPMethod, _ path: String, query: [URLQueryItem], payload: Data?,
+        contentType: String = "application/json", authenticated: Bool
     ) async throws -> (Data, Int) {
         guard let base = server.url else { throw APIError(status: 0, message: t("ios.errors.noServer")) }
         var components = URLComponents(url: base.appending(path: "api").appending(path: path), resolvingAgainstBaseURL: false)
@@ -109,7 +144,7 @@ final class APIClient {
         request.setValue("token", forHTTPHeaderField: "X-Auth-Mode")
         if let payload {
             request.httpBody = payload
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue(contentType, forHTTPHeaderField: "Content-Type")
         }
         if authenticated, let token = tokens.accessToken {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")

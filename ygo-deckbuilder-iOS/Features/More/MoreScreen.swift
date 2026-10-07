@@ -11,6 +11,12 @@ struct MoreScreen: View {
         NavigationStack(path: $app.morePath) {
             List {
                 Section {
+                    row(.profile, title: t("layout.nav.profile"), systemImage: "person.crop.circle",
+                        subtitle: t("ios.more.profile"))
+                    row(.friends, title: t("layout.nav.friends"), systemImage: "person.2",
+                        subtitle: t("ios.more.friends"), badge: app.pendingRequests)
+                }
+                Section {
                     row(.rules, title: t("layout.nav.rules"), systemImage: "book.closed",
                         subtitle: t("ios.more.rules"))
                     row(.wishlist, title: t("layout.nav.wishlist"), systemImage: "heart",
@@ -33,19 +39,36 @@ struct MoreScreen: View {
                 case .wishlist: WishlistScreen(embedded: true)
                 case .duel: DuelScreen(embedded: true)
                 case .catalog: CatalogScreen(embedded: true)
+                case .friends: FriendsScreen(embedded: true)
+                case .profile: ProfileScreen(embedded: true)
                 }
+            }
+            .navigationDestination(for: ProfileRoute.self) { route in
+                ProfileScreen(username: route.username, embedded: true)
             }
         }
         .onChange(of: app.rootTaps) {
-            if app.selectedTab == .more { app.morePath = [] }
+            if app.selectedTab == .more { app.morePath = NavigationPath() }
         }
     }
 
-    private func row(_ route: MoreRoute, title: String, systemImage: String, subtitle: String) -> some View {
+    private func row(
+        _ route: MoreRoute, title: String, systemImage: String, subtitle: String, badge: Int = 0
+    ) -> some View {
         NavigationLink(value: route) {
             Label {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(title)
+                    HStack(spacing: Spacing.xs) {
+                        Text(title)
+                        if badge > 0 {
+                            Text("\(badge)")
+                                .font(.caption2.monospacedDigit().weight(.bold))
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 5)
+                                .padding(.vertical, 1)
+                                .background(Color.accentColor, in: .capsule)
+                        }
+                    }
                     Text(subtitle)
                         .font(.caption)
                         .foregroundStyle(.secondary)

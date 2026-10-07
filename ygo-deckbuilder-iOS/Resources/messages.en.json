@@ -755,13 +755,16 @@
     },
     "errors": {
       "decoding": "Unexpected server response ({detail}). Is the server up to date?",
-      "noServer": "No server configured."
+      "noServer": "No server configured.",
+      "imageUnreadable": "Could not read this image"
     },
     "more": {
       "catalog": "Search the whole catalogue",
       "duel": "Test a deck against the simulator",
       "rules": "Every official rule, illustrated",
-      "wishlist": "The cards you are still missing"
+      "wishlist": "The cards you are still missing",
+      "profile": "Your profile and featured cards",
+      "friends": "Compare your sets with friends"
     },
     "nav": {
       "more": "More"
@@ -823,6 +826,9 @@
       "server": "Server",
       "systemLanguage": "System language",
       "title": "Settings"
+    },
+    "social": {
+      "friendCounters": "{cards} cards · {sets} sets completed"
     }
   },
   "layout": {
@@ -837,7 +843,9 @@
       "duel": "Duel",
       "rules": "Rules",
       "suggestions": "Suggestions",
-      "wishlist": "Wishlist"
+      "wishlist": "Wishlist",
+      "friends": "Friends",
+      "profile": "Profile"
     },
     "pages": {
       "catalog": "Catalog",
@@ -849,7 +857,9 @@
       "register": "Sign up",
       "rules": "Rules",
       "suggestions": "Suggestions",
-      "wishlist": "Wishlist"
+      "wishlist": "Wishlist",
+      "friends": "Friends",
+      "profile": "Profile"
     }
   },
   "products": {
@@ -1563,6 +1573,94 @@
     "source": "This page summarizes the official rulebook (current Master Rule); when a card’s text or an official ruling says otherwise, the card and the ruling take precedence.",
     "title": "Rules",
     "tocLabel": "On this page"
+  },
+  "social": {
+    "profile": {
+      "title": "Profile",
+      "myTitle": "My profile",
+      "edit": "Edit profile",
+      "username": "Username",
+      "usernameHint": "Letters, digits, dot, dash and underscore. This is how friends find you.",
+      "save": "Save",
+      "avatar": "Profile picture",
+      "banner": "Banner",
+      "upload": "Upload an image",
+      "replace": "Replace",
+      "remove": "Remove",
+      "imageHint": "PNG, JPEG or WebP, up to 8 MB. Resized and converted automatically.",
+      "memberSince": "Member since {date}",
+      "friendsSince": "Friends since {date}",
+      "friendCount": "{count, plural, =0 {No friends} one {# friend} other {# friends}}",
+      "openFriends": "Friends",
+      "hidden": {
+        "title": "This profile is private",
+        "description": "You and {username} are not friends yet. Send a friend request to see this profile and compare your sets.",
+        "sent": "Friend request sent. You will see this profile once it is accepted.",
+        "received": "{username} sent you a friend request."
+      },
+      "stats": {
+        "distinctCards": "Distinct cards",
+        "copies": "Copies",
+        "sets": "Sets started",
+        "completedSets": "Sets completed"
+      },
+      "showcase": {
+        "title": "Featured cards",
+        "empty": "No featured card yet",
+        "emptyHint": "Pick a few cards from your collection to show them here.",
+        "emptyOther": "{username} has not picked any card yet",
+        "choose": "Choose cards",
+        "dialogTitle": "Featured cards",
+        "dialogHint": "Up to {max} cards, picked from your collection. Click to add or remove; the order is kept.",
+        "search": "Search your collection…",
+        "selected": "{count} of {max} selected",
+        "noResults": "No card in your collection matches",
+        "done": "Done"
+      }
+    },
+    "friends": {
+      "title": "Friends",
+      "description": "Friends see your profile and your progress on each set.",
+      "search": {
+        "label": "Find someone",
+        "placeholder": "Username…",
+        "hint": "At least 2 characters",
+        "noResults": "No account matches “{q}”"
+      },
+      "requests": {
+        "incoming": "Requests received",
+        "outgoing": "Requests sent",
+        "accept": "Accept",
+        "decline": "Decline",
+        "cancel": "Cancel request"
+      },
+      "list": {
+        "title": "Your friends",
+        "empty": "No friends yet",
+        "emptyDescription": "Search for a username above to send your first friend request."
+      },
+      "actions": {
+        "add": "Add as friend",
+        "remove": "Remove friend",
+        "confirmRemove": "Remove {username} from your friends?",
+        "view": "View profile"
+      },
+      "state": {
+        "FRIENDS": "Friends",
+        "REQUEST_SENT": "Request sent",
+        "REQUEST_RECEIVED": "Wants to be your friend"
+      }
+    },
+    "releases": {
+      "friends": "Friends",
+      "none": "Add friends to compare your progress",
+      "onThisSet": "Friends on this set",
+      "nobodyStarted": "No friend has started this set",
+      "ownedBy": "{count, plural, one {# friend has it} other {# friends have it}}",
+      "ownedElsewhere": "{count, plural, one {# friend has it in another edition} other {# friends have it in another edition}}",
+      "nobody": "No friend has this card",
+      "legend": "A dot next to a card means a friend has it. Tap a card for the details."
+    }
   },
   "suggestions": {
     "generate": {
