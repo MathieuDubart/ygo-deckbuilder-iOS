@@ -26,6 +26,9 @@ final class AppState {
     var selectedTab: AppTab = .collection
     /// Pile de navigation de l'onglet « Autre » (règles, wishlist, duel, catalogue).
     var morePath: [MoreRoute] = []
+    /// Incrémenté quand on retape l'onglet où on est déjà : l'écran racine concerné revient
+    /// en haut de sa pile (réflexe iOS). Chaque écran vérifie que c'est bien le sien.
+    private(set) var rootTaps = 0
     /// Deck à tester dans l'onglet Duel (depuis le deck builder).
     var pendingDuelDeckId: String?
 
@@ -105,6 +108,12 @@ final class AppState {
     func testInDuel(_ deckId: String) {
         pendingDuelDeckId = deckId
         openMore(.duel)
+    }
+
+    /// Sélection depuis la barre d'onglets : retaper l'onglet actif demande un retour en haut.
+    func selectTab(_ tab: AppTab) {
+        if tab == selectedTab { rootTaps += 1 }
+        selectedTab = tab
     }
 
     /// Ouvre un écran de l'onglet « Autre » (remplace la pile en cours).

@@ -28,9 +28,14 @@ struct RootView: View {
 struct MainTabView: View {
     @Environment(AppState.self) private var app
 
+    /// Passe par `selectTab` pour que retaper l'onglet actif soit détecté : SwiftUI appelle
+    /// le `set` même quand la valeur ne change pas.
+    private var selection: Binding<AppTab> {
+        Binding(get: { app.selectedTab }, set: { app.selectTab($0) })
+    }
+
     var body: some View {
-        @Bindable var app = app
-        TabView(selection: $app.selectedTab) {
+        TabView(selection: selection) {
             Tab(t("layout.nav.collection"), systemImage: "square.stack.3d.up.fill", value: AppTab.collection) {
                 CollectionScreen()
             }

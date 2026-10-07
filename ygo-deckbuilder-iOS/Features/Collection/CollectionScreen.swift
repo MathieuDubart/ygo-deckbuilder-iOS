@@ -51,6 +51,9 @@ struct CollectionScreen: View {
         .fullScreenCover(isPresented: $scanning) {
             CardScannerView()
         }
+        .onChange(of: app.rootTaps) {
+            if app.selectedTab == .collection { path = NavigationPath() }
+        }
     }
 
     private var header: some View {
