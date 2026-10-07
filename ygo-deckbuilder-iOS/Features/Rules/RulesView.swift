@@ -45,6 +45,8 @@ struct RulesView: View {
     /// Ordre d'affichage des groupes (les libellés viennent de `rules.groups`).
     private static let groupOrder = ["basics", "summons", "playing", "advanced"]
 
+    /// Déjà dans une pile de navigation : pas de bouton « Fermer ».
+    var embedded = false
     @Environment(\.dismiss) private var dismiss
     @State private var query = ""
     private let sections = L10n.shared.raw("rules.sections", as: [RuleSection].self) ?? []
@@ -98,8 +100,10 @@ struct RulesView: View {
         .searchable(text: $query, prompt: Text(t("rules.labels.search")))
         .navigationTitle(t("rules.title"))
         .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button(t("common.actions.close"), systemImage: "xmark") { dismiss() }
+            if !embedded {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(t("common.actions.close"), systemImage: "xmark") { dismiss() }
+                }
             }
         }
     }

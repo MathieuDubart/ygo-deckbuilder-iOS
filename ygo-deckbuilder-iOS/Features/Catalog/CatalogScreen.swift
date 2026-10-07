@@ -2,46 +2,42 @@ import SwiftUI
 
 /// Onglet recherche : tout le catalogue, filtres, et scan d'une carte par son code imprimé.
 struct CatalogScreen: View {
+    /// Déjà dans une pile de navigation (onglet « Autre ») : ne pas en ouvrir une seconde.
+    var embedded = false
     @Environment(AppState.self) private var app
     @State private var model: CardSearchModel?
     @State private var selected: CardLink?
     @State private var scanning = false
-    @State private var pendingLink: CardLink?
 
     var body: some View {
-        NavigationStack {
-            Group {
-                if let model {
-                    CatalogResults(model: model, selected: $selected)
-                } else {
-                    ProgressView()
-                }
-            }
-            .navigationTitle(t("catalog.title"))
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(t("ios.scan.title"), systemImage: "camera.viewfinder") { scanning = true }
-                }
-            }
+        Group {
+            if embedded { content } else { NavigationStack { content } }
         }
         .task(id: app.collectionVersion) {
             if model == nil { model = CardSearchModel(api: app.api) }
             await model?.reload()
         }
         .cardDetailSheet($selected)
-        .fullScreenCover(isPresented: $scanning, onDismiss: openPending) {
-            CardScannerView { code, cardId in
-                pendingLink = CardLink(cardId: cardId, printHint: code)
-                scanning = false
-            }
+        .fullScreenCover(isPresented: $scanning) {
+            CardScannerView()
         }
     }
 
-    /// La fiche s'ouvre une fois le scanner fermé (une seule présentation à la fois).
-    private func openPending() {
-        if let link = pendingLink {
-            pendingLink = nil
-            selected = link
+    /// Le contenu seul : empilé tel quel dans l'onglet « Autre ».
+    @ViewBuilder
+    private var content: some View {
+        Group {
+            if let model {
+                CatalogResults(model: model, selected: $selected)
+            } else {
+                ProgressView()
+            }
+        }
+        .navigationTitle(t("catalog.title"))
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(t("ios.scan.title"), systemImage: "camera.viewfinder") { scanning = true }
+            }
         }
     }
 }

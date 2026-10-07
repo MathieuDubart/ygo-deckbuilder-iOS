@@ -3,6 +3,8 @@ import SwiftUI
 /// Cartes à trouver : impression visée, budget, priorité, deck qui en a besoin.
 /// « Je l'ai » la déplace dans la collection.
 struct WishlistScreen: View {
+    /// Déjà dans une pile de navigation (onglet « Autre ») : ne pas en ouvrir une seconde.
+    var embedded = false
     @Environment(AppState.self) private var app
     @State private var wishlist: Loadable<Wishlist> = .idle
     @State private var selected: CardLink?
@@ -10,47 +12,55 @@ struct WishlistScreen: View {
     @State private var message: String?
 
     var body: some View {
-        NavigationStack {
-            List {
-                LoadableView(state: wishlist, retry: load) { list in
-                    Section {
-                        HStack(spacing: Spacing.s) {
-                            StatTile(label: t("wishlist.view.stats.cards"), value: L10n.shared.number(list.items.reduce(0) { $0 + $1.quantity }))
-                            StatTile(label: t("wishlist.view.stats.estimatedCost"), value: L10n.shared.price(list.totalEstimated), tint: .accentColor)
-                        }
-                        .listRowInsets(EdgeInsets(top: Spacing.s, leading: 0, bottom: Spacing.s, trailing: 0))
-                        .listRowBackground(Color.clear)
-                    }
-
-                    if list.items.isEmpty {
-                        ContentUnavailableView(t("wishlist.view.empty.title"), systemImage: "heart",
-                                               description: Text(t("wishlist.view.empty.description")))
-                            .listRowBackground(Color.clear)
-                    } else {
-                        ForEach(WishlistPriority.allCases.reversed()) { priority in
-                            let items = list.items.filter { $0.priority == priority }
-                            if !items.isEmpty {
-                                Section(t("wishlist.priorities.\(priority.rawValue)")) {
-                                    ForEach(items) { item in row(item) }
-                                }
-                            }
-                        }
-                    }
-                }
-                if let message {
-                    Text(message).font(.footnote).foregroundStyle(.secondary)
-                }
-            }
-            .listSectionSpacing(Spacing.l)
-            .navigationTitle(t("wishlist.view.title"))
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) { SettingsButton() }
-            }
-            .refreshable { await load() }
+        Group {
+            if embedded { content } else { NavigationStack { content } }
         }
         .task(id: app.wishlistVersion) { await load() }
         .cardDetailSheet($selected)
         .sensoryFeedback(.success, trigger: message)
+    }
+
+    /// Le contenu seul : empilé tel quel dans l'onglet « Autre ».
+    @ViewBuilder
+    private var content: some View {
+        List {
+            LoadableView(state: wishlist, retry: load) { list in
+                Section {
+                    HStack(spacing: Spacing.s) {
+                        StatTile(label: t("wishlist.view.stats.cards"), value: L10n.shared.number(list.items.reduce(0) { $0 + $1.quantity }))
+                        StatTile(label: t("wishlist.view.stats.estimatedCost"), value: L10n.shared.price(list.totalEstimated), tint: .accentColor)
+                    }
+                    .listRowInsets(EdgeInsets(top: Spacing.s, leading: 0, bottom: Spacing.s, trailing: 0))
+                    .listRowBackground(Color.clear)
+                }
+
+                if list.items.isEmpty {
+                    ContentUnavailableView(t("wishlist.view.empty.title"), systemImage: "heart",
+                                           description: Text(t("wishlist.view.empty.description")))
+                        .listRowBackground(Color.clear)
+                } else {
+                    ForEach(WishlistPriority.allCases.reversed()) { priority in
+                        let items = list.items.filter { $0.priority == priority }
+                        if !items.isEmpty {
+                            Section(t("wishlist.priorities.\(priority.rawValue)")) {
+                                ForEach(items) { item in row(item) }
+                            }
+                        }
+                    }
+                }
+            }
+            if let message {
+                Text(message).font(.footnote).foregroundStyle(.secondary)
+            }
+        }
+        .listSectionSpacing(Spacing.l)
+        .navigationTitle(t("wishlist.view.title"))
+        .toolbar {
+            if !embedded {
+                ToolbarItem(placement: .topBarLeading) { SettingsButton() }
+            }
+        }
+        .refreshable { await load() }
     }
 
     private func load() async {
