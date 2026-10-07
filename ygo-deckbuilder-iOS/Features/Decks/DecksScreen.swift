@@ -87,6 +87,9 @@ struct DecksScreen: View {
             app.pendingDeckId = nil
             path = [DeckRoute(id: id)]
         }
+        .onChange(of: app.rootTaps) {
+            if app.selectedTab == .decks { path = [] }
+        }
     }
 
     private func load() async {

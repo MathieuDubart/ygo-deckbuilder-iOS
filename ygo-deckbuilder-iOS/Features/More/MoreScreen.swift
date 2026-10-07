@@ -36,6 +36,9 @@ struct MoreScreen: View {
                 }
             }
         }
+        .onChange(of: app.rootTaps) {
+            if app.selectedTab == .more { app.morePath = [] }
+        }
     }
 
     private func row(_ route: MoreRoute, title: String, systemImage: String, subtitle: String) -> some View {
