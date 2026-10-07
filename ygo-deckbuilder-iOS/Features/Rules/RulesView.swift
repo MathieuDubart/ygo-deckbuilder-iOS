@@ -123,27 +123,30 @@ struct RulesView: View {
         }
     }
 
-    /// Sommaire horizontal, regroupé comme sur le web.
+    /// Sommaire : les chapitres passent à la ligne, groupe par groupe. Une bande qui défile
+    /// horizontalement obligeait à balayer dix-huit chapitres pour atteindre le dernier, et
+    /// se battait avec le défilement vertical de la page.
     private func toc(_ proxy: ScrollViewProxy) -> some View {
-        ScrollView(.horizontal) {
-            HStack(spacing: Spacing.xs) {
-                ForEach(grouped) { group in
+        VStack(alignment: .leading, spacing: Spacing.m) {
+            ForEach(grouped) { group in
+                VStack(alignment: .leading, spacing: Spacing.xs) {
                     Text(group.label)
                         .font(.caption2.weight(.semibold))
                         .textCase(.uppercase)
                         .foregroundStyle(.tertiary)
-                        .padding(.leading, group.id == Self.groupOrder.first ? 0 : Spacing.s)
-                    ForEach(group.items) { section in
-                        Button(section.title) {
-                            withAnimation { proxy.scrollTo(section.id, anchor: .top) }
+                    FlowLayout(spacing: Spacing.xs) {
+                        ForEach(group.items) { section in
+                            Button(section.title) {
+                                withAnimation { proxy.scrollTo(section.id, anchor: .top) }
+                            }
+                            .buttonStyle(.glass)
+                            .controlSize(.small)
                         }
-                        .buttonStyle(.glass)
-                        .controlSize(.small)
                     }
                 }
             }
         }
-        .scrollIndicators(.hidden)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityLabel(t("rules.tocLabel"))
     }
 
