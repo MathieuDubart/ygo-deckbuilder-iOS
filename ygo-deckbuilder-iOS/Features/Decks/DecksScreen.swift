@@ -8,6 +8,8 @@ struct DecksScreen: View {
     @State private var decks: Loadable<[DeckListItem]> = .idle
     @State private var path: [DeckRoute] = []
     @State private var creating = false
+    /// Deck tout juste créé, à ouvrir dès que la feuille de création est refermée.
+    @State private var created: String?
     @State private var toDelete: DeckListItem?
     @State private var error: String?
 
@@ -23,7 +25,7 @@ struct DecksScreen: View {
                         } actions: {
                             Button(t("decks.view.newDeck")) { creating = true }
                                 .buttonStyle(.glassProminent)
-                            Button(t("layout.nav.suggestions")) { app.selectedTab = .suggestions }
+                            Button(t("layout.nav.suggestions")) { app.show(.suggestions) }
                                 .buttonStyle(.glass)
                         }
                         .listRowBackground(Color.clear)
@@ -64,11 +66,8 @@ struct DecksScreen: View {
                 }
             }
             .refreshable { await load() }
-            .sheet(isPresented: $creating) {
-                NewDeckView { deck in
-                    app.decksChanged()
-                    path.append(DeckRoute(id: deck.id))
-                }
+            .sheet(isPresented: $creating, onDismiss: openCreated) {
+                NewDeckView { created = $0.id }
             }
             .confirmationDialog(
                 t("decks.view.confirmDelete", ["name": toDelete?.name ?? ""]),
@@ -82,11 +81,7 @@ struct DecksScreen: View {
             }
         }
         .task(id: app.decksVersion) { await load() }
-        .onChange(of: app.pendingDeckId, initial: true) { _, id in
-            guard let id else { return }
-            app.pendingDeckId = nil
-            path = [DeckRoute(id: id)]
-        }
+        .task(id: app.pendingDeckId) { openPending() }
         .onChange(of: app.rootTaps) {
             if app.selectedTab == .decks { path = [] }
         }
@@ -94,6 +89,26 @@ struct DecksScreen: View {
 
     private func load() async {
         decks = await .fetch(decks) { try await app.api.decks() }
+    }
+
+    /// Deck créé ici : on l'ouvre une fois la feuille refermée. Poussée depuis la même
+    /// transaction que la fermeture, la destination est avalée par SwiftUI.
+    private func openCreated() {
+        guard let id = created else { return }
+        created = nil
+        app.decksChanged()
+        path = [DeckRoute(id: id)]
+    }
+
+    /// Deck à ouvrir demandé par un autre onglet (suggestion générée, deck d'un produit).
+    /// Dans une tâche et non un `onChange(initial:)` : on y touche à l'état global en dehors
+    /// du cycle de rendu. Surtout, aucune suspension avant la poussée : remettre
+    /// `pendingDeckId` à nil annule cette tâche, puisque c'est son identité, et tout ce qui
+    /// suivrait un `await` serait perdu.
+    private func openPending() {
+        guard let id = app.pendingDeckId else { return }
+        app.pendingDeckId = nil
+        path = [DeckRoute(id: id)]
     }
 
     private func duplicate(_ deck: DeckListItem) async {

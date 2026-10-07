@@ -4,6 +4,9 @@ import SwiftUI
 /// entre la liste complète et la version « avec mes cartes ».
 struct GeneratedDeckView: View {
     let target: GenerationTarget
+    /// Identifiant du deck créé, annoncé avant la fermeture : c'est l'écran d'en face qui
+    /// l'ouvre une fois la feuille refermée.
+    var onCreated: (String) -> Void
 
     @Environment(AppState.self) private var app
     @Environment(\.dismiss) private var dismiss
@@ -198,8 +201,8 @@ struct GeneratedDeckView: View {
                 }
                 if !byCard.isEmpty { app.wishlistChanged() }
             }
+            onCreated(created.id)
             dismiss()
-            app.openDeck(created.id)
         } catch {
             createError = error.localizedDescription
         }

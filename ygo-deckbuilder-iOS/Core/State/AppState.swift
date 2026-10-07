@@ -83,8 +83,8 @@ final class AppState {
     func signOut() async {
         await api.signOut()
         session = .signedOut
-        selectedTab = .collection
         morePath = []
+        show(.collection)
     }
 
     // MARK: - Invalidation
@@ -110,22 +110,46 @@ final class AppState {
         openMore(.duel)
     }
 
+    /// Dernier onglet choisi par le code, et quand. La barre d'onglets réécrit parfois la
+    /// sélection derrière nous (elle resynchronise son contrôleur) : sans ce témoin on
+    /// prendrait cet écho pour un tap sur l'onglet déjà actif, et la pile de l'onglet se
+    /// viderait juste après qu'un écran y a poussé sa destination.
+    @ObservationIgnored private var programmaticTab: (tab: AppTab, at: Date)?
+
+    /// Un écho arrive dans la foulée du changement programmatique ; un vrai re-tap vient
+    /// plus tard. Sans cette fenêtre, le témoin resterait armé et avalerait le prochain
+    /// re-tap sur l'onglet où l'on vient justement d'envoyer l'utilisateur.
+    private static let echoWindow: TimeInterval = 0.6
+
+    /// Changement d'onglet venu du code, jamais de la barre d'onglets.
+    func show(_ tab: AppTab) {
+        programmaticTab = (tab, Date())
+        selectedTab = tab
+    }
+
     /// Sélection depuis la barre d'onglets : retaper l'onglet actif demande un retour en haut.
     func selectTab(_ tab: AppTab) {
-        if tab == selectedTab { rootTaps += 1 }
+        // Le témoin survit à l'écho (la barre peut réécrire deux fois) et meurt au vrai tap.
+        let echo = programmaticTab.map {
+            $0.tab == tab && Date().timeIntervalSince($0.at) < Self.echoWindow
+        } ?? false
+        if !echo {
+            programmaticTab = nil
+            if tab == selectedTab { rootTaps += 1 }
+        }
         selectedTab = tab
     }
 
     /// Ouvre un écran de l'onglet « Autre » (remplace la pile en cours).
     func openMore(_ route: MoreRoute) {
         morePath = [route]
-        selectedTab = .more
+        show(.more)
     }
 
     func openDeck(_ id: String) {
         decksChanged()
         pendingDeckId = id
-        selectedTab = .decks
+        show(.decks)
     }
 }
 
