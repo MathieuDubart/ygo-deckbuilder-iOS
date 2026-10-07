@@ -711,7 +711,9 @@
  "ios": {
   "card": {
    "foil": "Rarity",
-   "rotateHint": "Drag to tilt the card. Double-tap to straighten it, tap to close.",
+   "rotateHint": "Drag to turn the card. Double-tap to lay it flat, tap to close.",
+   "showcaseFailed": "3D view unavailable",
+   "showcaseFailedHint": "The card image could not be loaded, or this device cannot render the card in 3D.",
    "zoom": "Show the card full screen"
   },
   "common": {

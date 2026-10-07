@@ -711,7 +711,9 @@
  "ios": {
   "card": {
    "foil": "Raridade",
-   "rotateHint": "Arrasta para inclinar a carta. Toca duas vezes para a endireitar, uma vez para fechar.",
+   "rotateHint": "Arrasta para girar a carta. Toca duas vezes para a deitar, uma vez para fechar.",
+   "showcaseFailed": "Vista 3D indisponível",
+   "showcaseFailedHint": "Não foi possível carregar a imagem da carta, ou este aparelho não consegue mostrá-la em 3D.",
    "zoom": "Mostrar a carta em ecrã inteiro"
   },
   "common": {

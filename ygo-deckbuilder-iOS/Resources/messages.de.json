@@ -711,7 +711,9 @@
  "ios": {
   "card": {
    "foil": "Seltenheit",
-   "rotateHint": "Zieh, um die Karte zu neigen. Doppeltippen richtet sie auf, Tippen schließt.",
+   "rotateHint": "Zieh, um die Karte zu drehen. Doppeltippen legt sie flach, Tippen schließt.",
+   "showcaseFailed": "3D-Ansicht nicht verfügbar",
+   "showcaseFailedHint": "Das Kartenbild konnte nicht geladen werden, oder dieses Gerät kann die Karte nicht in 3D darstellen.",
    "zoom": "Karte im Vollbild anzeigen"
   },
   "common": {

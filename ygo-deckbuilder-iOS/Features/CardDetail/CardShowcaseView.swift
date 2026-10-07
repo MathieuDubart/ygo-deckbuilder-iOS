@@ -1,60 +1,30 @@
+import RealityKit
+import simd
 import SwiftUI
 
-/// Effet de brillance reproduit selon la rareté de l'impression.
-nonisolated enum CardFoil: Int, CaseIterable, Identifiable, Sendable {
-    case none = 0
-    case gloss = 1
-    case holo = 2
-    case secret = 3
-    case prismatic = 4
-
-    var id: Int { rawValue }
-
-    /// Libellé de rareté (« Secret Rare », « Starlight Rare »…) → effet le plus proche.
-    /// Les raretés les plus spectaculaires sont testées en premier : « Prismatic Secret Rare »
-    /// contient « secret », « Quarter Century Secret Rare » aussi.
-    static func matching(_ rarity: String?) -> CardFoil {
-        guard let rarity else { return .none }
-        let text = rarity.lowercased()
-        if text.contains("starlight") || text.contains("ghost") || text.contains("collector")
-            || text.contains("quarter century") || text.contains("prismatic") {
-            return .prismatic
-        }
-        if text.contains("secret") || text.contains("ultimate") {
-            return .secret
-        }
-        if text.contains("ultra") || text.contains("super") || text.contains("gold")
-            || text.contains("platinum") || text.contains("starfoil") || text.contains("mosaic")
-            || text.contains("duel terminal") {
-            return .holo
-        }
-        if text.contains("rare") {
-            return .gloss
-        }
-        return .none
-    }
+/// Orientation visée par la carte. Un abonnement par image l'interpole, ce qui donne du
+/// poids à l'objet et rend le retour à plat fluide sans animation SwiftUI. Volontairement
+/// hors du système d'observation : `body` ne la lit jamais, seule la boucle de rendu le fait.
+final class CardSpin {
+    var target = simd_quatf(angle: 0, axis: SIMD3<Float>(0, 1, 0))
 }
 
-/// Carte en grand qu'on peut incliner au doigt, avec la brillance de sa rareté.
-/// L'inclinaison est bornée : on tourne la carte comme dans la main, on ne la retourne pas
-/// (le dos des cartes n'est pas une image qu'on possède).
+/// La carte en vrai objet 3D : épaisseur, tranche, dos, et la brillance de sa rareté calculée
+/// à partir de l'angle de vue réel. On la tourne au doigt sur 360°, double-tap pour la
+/// remettre à plat, tap pour fermer.
 struct CardShowcaseView: View {
     let card: CardSummary
     /// Raretés disponibles pour cette carte (une par impression, doublons retirés).
     var rarities: [String] = []
-    /// Rareté sélectionnée au départ (code d'impression scanné, par exemple).
+    /// Rareté sélectionnée au départ (celle de l'impression scannée, par exemple).
     var initialRarity: String?
 
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var tilt: CGSize = .zero
-    @State private var resting: CGSize = .zero
+    @State private var spin = CardSpin()
+    @State private var entity: ModelEntity?
     @State private var rarity: String?
-    @State private var started = false
-    /// L'utilisateur a pris la main : l'animation d'ouverture ne remet plus la carte droite.
-    @State private var touched = false
-
-    private static let limit: CGFloat = 70
+    @State private var resting: CGSize = .zero
+    @State private var failed = false
 
     private var foil: CardFoil { CardFoil.matching(rarity) }
 
@@ -64,16 +34,25 @@ struct CardShowcaseView: View {
                 .contentShape(.rect)
                 .onTapGesture { dismiss() }
 
-            VStack(spacing: Spacing.l) {
-                Spacer(minLength: 0)
-                cardBody
-                Spacer(minLength: 0)
-                if rarities.count > 1 {
-                    raritySwitcher
+            if failed || !CardScene.isAvailable {
+                ContentUnavailableView(
+                    t("ios.card.showcaseFailed"), systemImage: "cube.transparent",
+                    description: Text(t("ios.card.showcaseFailedHint")))
+                    .foregroundStyle(.white)
+            } else {
+                scene
+                if entity == nil {
+                    ProgressView().tint(.white)
                 }
+            }
+
+            VStack {
+                Spacer(minLength: 0)
+                if rarities.count > 1 { raritySwitcher }
                 Text(t("ios.card.rotateHint"))
                     .font(.footnote)
                     .foregroundStyle(.white.opacity(0.5))
+                    .multilineTextAlignment(.center)
             }
             .padding(Spacing.l)
         }
@@ -84,80 +63,73 @@ struct CardShowcaseView: View {
                 .padding(Spacing.l)
         }
         .statusBarHidden()
-        .task {
-            guard !started else { return }
-            started = true
-            rarity = initialRarity ?? rarities.first
-            // Petite bascule à l'ouverture : on voit tout de suite que la carte bouge
-            guard !reduceMotion else { return }
-            withAnimation(.spring(response: 1.1, dampingFraction: 0.55)) {
-                tilt = CGSize(width: 16, height: -8)
-            }
-            try? await Task.sleep(for: .milliseconds(700))
-            guard !touched else { return }
-            withAnimation(.spring(response: 1.2, dampingFraction: 0.75)) { tilt = .zero }
-        }
+        .task { rarity = initialRarity ?? rarities.first }
+        .onChange(of: rarity) { CardScene.applyFoil(foil, to: entity) }
     }
 
-    private var cardBody: some View {
-        TimelineView(.animation(minimumInterval: 1.0 / 30.0, paused: foil == .none || reduceMotion)) { timeline in
-            let time = timeline.date.timeIntervalSinceReferenceDate
-            CardArt(card: card, width: .large)
-                .overlay {
-                    if foil != .none {
-                        shine(time: time)
-                    }
-                }
-                .shadow(color: .black.opacity(0.6), radius: 24, y: 16)
-                .rotation3DEffect(.degrees(Double(tilt.width)), axis: (x: 0, y: 1, z: 0), perspective: 0.55)
-                .rotation3DEffect(.degrees(Double(-tilt.height)), axis: (x: 1, y: 0, z: 0), perspective: 0.55)
+    private var scene: some View {
+        RealityView { content in
+            content.camera = .virtual
+
+            let camera = PerspectiveCamera()
+            camera.camera.fieldOfViewInDegrees = 45
+            camera.look(at: .zero, from: SIMD3<Float>(0, 0, 1.95), relativeTo: nil)
+            content.add(camera)
+
+            // Une lumière principale en haut à droite, une douce à l'opposé : la dorure a
+            // besoin d'un contraste marqué pour que la bande lumineuse se voie.
+            for (position, intensity) in [
+                (SIMD3<Float>(0.9, 1.1, 1.5), Float(2800)),
+                (SIMD3<Float>(-1.3, -0.5, 1.1), Float(1100)),
+            ] {
+                let light = DirectionalLight()
+                light.light.intensity = intensity
+                light.look(at: .zero, from: position, relativeTo: nil)
+                content.add(light)
+            }
+
+            guard let front = await CardScene.image(at: card.imageURL) else {
+                failed = true
+                return
+            }
+            let back = await CardScene.backImage()
+            guard let model = await CardScene.makeCard(
+                front: front, back: back, foil: CardFoil.matching(rarity ?? initialRarity ?? rarities.first))
+            else {
+                failed = true
+                return
+            }
+            entity = model
+            content.add(model)
+
+            // Interpolation vers l'orientation visée : la carte a de l'inertie
+            _ = content.subscribe(to: SceneEvents.Update.self) { event in
+                let factor = min(Float(event.deltaTime) * 11, 1)
+                model.orientation = simd_slerp(model.orientation, spin.target, factor)
+            }
         }
-        .frame(maxWidth: 420)
         .gesture(rotation)
-        // Deux taps remettent la carte droite, un seul referme : il faut les composer
+        // Deux taps remettent la carte à plat, un seul referme : il faut les composer
         // explicitement, sinon le tap simple part dès le premier doigt posé.
         .gesture(
             TapGesture(count: 2).onEnded {
-                withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) { tilt = .zero }
                 resting = .zero
+                spin.target = Self.orientation(for: .zero)
             }
             .exclusively(before: TapGesture().onEnded { dismiss() }))
-        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: .ignore)
         .accessibilityLabel(card.name)
         .accessibilityHint(t("ios.card.rotateHint"))
-    }
-
-    /// Reflet dessiné par le shader Metal (`CardFoil.metal`), ajouté en lumière.
-    private func shine(time: TimeInterval) -> some View {
-        let kind = Float(foil.rawValue)
-        let clock = Float(time.truncatingRemainder(dividingBy: 600))
-        // Inclinaison déjà ramenée à -1…1 : le shader n'a pas à connaître la limite
-        let lean = CGSize(width: tilt.width / Self.limit, height: tilt.height / Self.limit)
-        return Rectangle()
-            .visualEffect { effect, proxy in
-                effect.colorEffect(
-                    ShaderLibrary.cardFoil(
-                        .float2(proxy.size), .float2(lean), .float(kind), .float(clock)))
-            }
-            // `CardArt` arrondit ses coins : le reflet doit suivre, sinon il déborde
-            .clipShape(.rect(cornerRadius: Radius.card, style: .continuous))
-            .blendMode(.plusLighter)
-            .allowsHitTesting(false)
     }
 
     private var rotation: some Gesture {
         DragGesture()
             .onChanged { value in
-                touched = true
-                tilt = CGSize(
-                    width: Self.clamp(resting.width + value.translation.width * 0.35),
-                    height: Self.clamp(resting.height + value.translation.height * 0.35))
+                spin.target = Self.orientation(for: Self.offset(resting, value.translation))
             }
             .onEnded { value in
-                resting = CGSize(
-                    width: Self.clamp(resting.width + value.translation.width * 0.35),
-                    height: Self.clamp(resting.height + value.translation.height * 0.35))
-                tilt = resting
+                resting = Self.offset(resting, value.translation)
+                spin.target = Self.orientation(for: resting)
             }
     }
 
@@ -165,12 +137,10 @@ struct CardShowcaseView: View {
         ScrollView(.horizontal) {
             HStack(spacing: Spacing.xs) {
                 ForEach(rarities, id: \.self) { value in
-                    Button(value) {
-                        withAnimation(.snappy) { rarity = value }
-                    }
-                    .buttonStyle(.glass)
-                    .controlSize(.small)
-                    .tint(rarity == value ? Color.accentColor : nil)
+                    Button(value) { rarity = value }
+                        .buttonStyle(.glass)
+                        .controlSize(.small)
+                        .tint(rarity == value ? Color.accentColor : nil)
                 }
             }
             .padding(.horizontal, 2)
@@ -179,7 +149,16 @@ struct CardShowcaseView: View {
         .accessibilityLabel(t("ios.card.foil"))
     }
 
-    private static func clamp(_ value: CGFloat) -> CGFloat {
-        min(max(value, -limit), limit)
+    private static func offset(_ base: CGSize, _ translation: CGSize) -> CGSize {
+        CGSize(width: base.width + translation.width, height: base.height + translation.height)
+    }
+
+    /// Glissement horizontal → rotation libre sur 360° (on voit le dos) ; vertical → bascule
+    /// bornée à ±75°, pour ne pas passer par les pôles.
+    private static func orientation(for offset: CGSize) -> simd_quatf {
+        let yaw = Float(offset.width) * 0.009
+        let pitch = min(max(Float(offset.height) * 0.009, -1.31), 1.31)
+        return simd_quatf(angle: pitch, axis: SIMD3<Float>(1, 0, 0))
+            * simd_quatf(angle: yaw, axis: SIMD3<Float>(0, 1, 0))
     }
 }
