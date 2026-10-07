@@ -853,14 +853,166 @@
  },
  "rules": {
   "description": "Le regole ufficiali del GCC Yu-Gi-Oh! secondo la Master Rule attuale, dalla preparazione di un duello alla risoluzione delle Catene.",
-  "labels": {
-   "example": "Esempio",
-   "openDuel": "Provalo nel simulatore",
-   "points": "Da ricordare"
+  "diagrams": {
+   "activate": "Attivazione",
+   "attached": "attaccati sotto",
+   "between": "Livelli evocabili",
+   "chainLink": "Anello",
+   "counters": "segnalini",
+   "damage": "danni",
+   "deck": "Deck",
+   "destroyed": "distrutto",
+   "extraDeck": "Extra Deck",
+   "extraZones": "Zone Mostri Extra",
+   "fieldZone": "Zona Terreno",
+   "fromHandDeck": "dalla mano o dal Deck",
+   "fusion": "Fusion",
+   "grave": "Cimitero",
+   "hand": "Mano",
+   "level": "Livello",
+   "link": "Link",
+   "linkRating": "LINK",
+   "materials": "Materiali",
+   "monsterZones": "Zone Mostri",
+   "noDamage": "nessun danno",
+   "noTribute": "nessun Tributo",
+   "nonTuner": "non-Tuner",
+   "notFirstTurn": "non al 1° turno",
+   "opponentSide": "Avversario",
+   "optional": "facoltativa",
+   "pointed": "zone indicate",
+   "rank": "Rango",
+   "remove": "rimuovi",
+   "removed": "rimosso dal gioco",
+   "resolution": "Risoluzione",
+   "ritual": "Rituale",
+   "sameLevel": "stesso Livello",
+   "scale": "Scala",
+   "shared": "condivise",
+   "spell": "Magia",
+   "spellZones": "Zone Magie & Trappole",
+   "sum": "totale",
+   "synchro": "Synchro",
+   "token": "Segna-Mostro",
+   "tribute": "Tributo",
+   "tributes": "Tributi",
+   "tuner": "Tuner",
+   "xyz": "Xyz",
+   "youSide": "Tu"
   },
+  "glossary": [
+   {
+    "definition": "Il momento in cui annunci una carta o un effetto e ne paghi il costo. Un’attivazione annullata ti costa comunque quello che hai pagato.",
+    "term": "Attivazione"
+   },
+   {
+    "definition": "Impedire che un’attivazione o un effetto si applichi. Annullare non è distruggere: una carta annullata può restare sul Terreno.",
+    "term": "Annullare"
+   },
+   {
+    "definition": "Rimuovere una carta dal gioco, tenendola separata dal Cimitero. Alcune carte bandiscono coperta: in quel caso nessuno può guardarla.",
+    "term": "Bandire"
+   },
+   {
+    "definition": "La pila delle carte e degli effetti attivati in risposta uno all’altro. L’ultimo attivato si risolve per primo.",
+    "term": "Catena"
+   },
+   {
+    "definition": "Designare una carta precisa all’attivazione. Una carta che «non può essere bersagliata» non può essere scelta, anche se l’effetto potrebbe colpirla.",
+    "term": "Bersagliare"
+   },
+   {
+    "definition": "Un contrassegno che un effetto mette su una carta e che sparisce insieme a lei.",
+    "term": "Segnalino"
+   },
+   {
+    "definition": "Ciò che paghi all’attivazione: scartare, pagare LP, offrire un Tributo, staccare un Materiale. Un costo non viene mai restituito.",
+    "term": "Costo"
+   },
+   {
+    "definition": "Un effetto che si applica in permanenza finché la carta è sul Terreno, senza attivazione e senza Anello di Catena.",
+    "term": "Effetto Continuo"
+   },
+   {
+    "definition": "Un effetto che si attiva quando avviene un evento preciso, per esempio «Quando questa carta viene Evocata».",
+    "term": "Effetto a Innesco"
+   },
+   {
+    "definition": "Un effetto che attivi tu, durante la tua Main Phase.",
+    "term": "Effetto ad Attivazione Manuale"
+   },
+   {
+    "definition": "Un effetto di Velocità di Magia 2, che puoi attivare durante il turno dell’avversario o in risposta a un’attivazione.",
+    "term": "Effetto Rapido"
+   },
+   {
+    "definition": "Un effetto che si attiva quando il mostro passa da coperto a scoperto.",
+    "term": "Effetto SCOPRI"
+   },
+   {
+    "definition": "Un mostro il cui effetto si attiva dalla mano, spesso scartandolo, per disturbare l’avversario durante il suo turno.",
+    "term": "Hand trap"
+   },
+   {
+    "definition": "Un mostro creato da un effetto, che non è una carta e svanisce appena lascia il Terreno.",
+    "term": "Segna-Mostro"
+   },
+   {
+    "definition": "Le carte usate per un’Evocazione dall’Extra Deck: Fusion, Synchro, Xyz o Link.",
+    "term": "Materiale"
+   },
+   {
+    "definition": "Mandare al Cimitero un mostro che controlli per pagare un’Evocazione o un costo.",
+    "term": "Tributo"
+   },
+   {
+    "definition": "Un effetto facoltativo «Quando… puoi» non può più attivarsi se il suo evento non è stata l’ultima cosa accaduta.",
+    "term": "Tempismo perso"
+   },
+   {
+    "definition": "La priorità di un effetto in una Catena: solo un effetto di Velocità uguale o superiore può rispondere.",
+    "term": "Velocità di Magia"
+   }
+  ],
+  "groups": {
+   "advanced": "Andare oltre",
+   "basics": "Le basi",
+   "playing": "Giocare le carte",
+   "summons": "Le Evocazioni"
+  },
+  "labels": {
+   "clear": "Cancella",
+   "example": "Esempio",
+   "exampleCards": "Carte citate",
+   "glossary": "Glossario",
+   "glossaryHint": "Le parole che tornano continuamente sulle carte.",
+   "links": "Risorse ufficiali",
+   "linksHint": "Le regole complete e i tutorial video pubblicati da Konami.",
+   "noResults": "Nessuna regola corrisponde a questa ricerca.",
+   "openDuel": "Provalo nel simulatore",
+   "points": "Da ricordare",
+   "search": "Cerca una regola, una parola…"
+  },
+  "links": [
+   {
+    "description": "Le regole complete pubblicate da Konami, Evocazione Link inclusa.",
+    "label": "Regolamento ufficiale (PDF, in inglese)",
+    "url": "https://img.yugioh-card.com/en/downloads/rulebook/SD_RuleBook_EN_10.pdf"
+   },
+   {
+    "description": "La serie ufficiale: come si svolge un duello, la battaglia, le Catene e ogni tipo di Evocazione.",
+    "label": "Tutorial video (in inglese)",
+    "url": "https://www.yugioh-card.com/eu/videotutorials/"
+   },
+   {
+    "description": "Lo spazio ufficiale in italiano per chi inizia, con tutorial e consigli di partenza.",
+    "label": "Yu-Gi-Oh! per principianti",
+    "url": "https://www.yugioh-card.com/eu/it/perprincipianti/"
+   }
+  ],
   "sections": [
    {
-    "example": "",
+    "group": "basics",
     "icon": "BookOpen",
     "id": "basics",
     "paragraphs": [
@@ -875,10 +1027,12 @@
      "Puoi avere al massimo 3 copie di una carta con lo stesso nome tra Main Deck, Extra Deck e Side Deck messi insieme.",
      "La Lista delle carte Proibite e Limitate restringe ulteriormente alcune carte: Proibita (0 copie), Limitata (1 copia), Semi-Limitata (2 copie)."
     ],
+    "summary": "Due duellanti, 8000 LP ciascuno: vinci portando a 0 quelli dell’avversario.",
     "title": "Le basi"
    },
    {
-    "example": "",
+    "diagram": "field",
+    "group": "basics",
     "icon": "LayoutGrid",
     "id": "field",
     "paragraphs": [
@@ -893,10 +1047,12 @@
      "Le carte bandite sono rimosse dal gioco, di solito scoperte, e tenute separate dal Cimitero.",
      "I mostri sono in Posizione di Attacco (verticale) o in Posizione di Difesa (orizzontale). Un mostro coperto è sempre in Posizione di Difesa, e puoi guardare le tue carte coperte."
     ],
+    "summary": "5 Zone Mostri, 5 Zone Magie & Trappole e 1 Zona Terreno per giocatore; le 2 Zone Mostri Extra sono condivise.",
     "title": "Il Terreno"
    },
    {
-    "example": "",
+    "diagram": "turn",
+    "group": "basics",
     "icon": "Clock",
     "id": "turn",
     "paragraphs": [
@@ -911,10 +1067,16 @@
      "Main Phase 2: solo se hai effettuato la Battle Phase. Puoi fare le stesse cose della Main Phase 1.",
      "End Phase: gli effetti che avvengono «durante la End Phase» vengono applicati. Se hai più di 6 carte in mano, scartane finché ne hai 6."
     ],
+    "summary": "Sei fasi in ordine, tra cui la Battle Phase — facoltativa e vietata nel primo turno.",
     "title": "Struttura del turno"
    },
    {
+    "cards": [
+     "Summoned Skull"
+    ],
+    "diagram": "tributes",
     "example": "Controlli 1 mostro. Per Evocare Normalmente un mostro di Livello 6, lo offri come Tributo. Questo usa la tua Evocazione Normale del turno, quindi non puoi Posizionare un altro mostro.",
+    "group": "summons",
     "icon": "ArrowUp",
     "id": "normal-summon",
     "paragraphs": [
@@ -929,10 +1091,16 @@
      "Evocazione di Scoperta: durante la tua Main Phase, cambia un mostro coperto in Posizione di Difesa in Posizione di Attacco scoperta. Non puoi farlo nel turno in cui quel mostro è stato Posizionato.",
      "Durante la tua Main Phase puoi cambiare la posizione di battaglia di ogni mostro una volta per turno, ma non nel turno in cui è stato Evocato o Posizionato, né dopo che ha attaccato in quel turno. Un’Evocazione di Scoperta conta come quel cambio."
     ],
+    "summary": "Una sola Evocazione Normale o un Posizionamento per turno, con Tributi dal Livello 5 in su.",
     "title": "Evocazione Normale e Posizionamento"
    },
    {
+    "cards": [
+     "Monster Reborn",
+     "Cyber Dragon"
+    ],
     "example": "Un mostro dice «Non può essere Evocato Normalmente/Posizionato. Deve prima essere Evocato Specialmente dalla tua mano bandendo 2 mostri dal tuo Cimitero.» Se lo Evochi in quel modo e viene distrutto, una carta di rianimazione può riportarlo indietro. Se è stato solo scartato dalla tua mano, non può essere rianimato.",
+    "group": "summons",
     "icon": "Sparkles",
     "id": "special-summon",
     "paragraphs": [
@@ -945,10 +1113,18 @@
      "I mostri dell’Extra Deck, i Mostri Rituali e i mostri che «devono prima essere Evocati Specialmente» devono essere Evocati correttamente prima che un altro effetto possa Evocarli Specialmente dal Cimitero o da tra le carte bandite.",
      "Se il testo di un mostro dice che «non può essere Evocato Specialmente in altri modi», può essere Evocato solo con la propria procedura."
     ],
+    "summary": "Tante Evocazioni Speciali quante le tue carte ne permettono, ognuna secondo il proprio testo.",
     "title": "Evocazione Speciale"
    },
    {
+    "cards": [
+     "Polymerization",
+     "Blue-Eyes White Dragon",
+     "Blue-Eyes Ultimate Dragon"
+    ],
+    "diagram": "fusion",
     "example": "«Polimerizzazione» ti permette di Evocare tramite Fusione usando mostri dalla tua mano o dal tuo Terreno. Mandi al Cimitero dalla tua mano i due mostri indicati sul Mostro Fusion, poi Evochi Specialmente quel Mostro Fusion.",
+    "group": "summons",
     "icon": "Combine",
     "id": "fusion",
     "paragraphs": [
@@ -961,10 +1137,17 @@
      "I materiali vengono mandati al Cimitero, a meno che la carta usata dica altrimenti, per esempio di bandirli o di rimescolarli nel Deck.",
      "Se l’Evocazione Fusion viene annullata, i materiali restano usati e il Mostro Fusion viene distrutto."
     ],
+    "summary": "I Materiali indicati vanno al Cimitero e il Mostro Fusion arriva dall’Extra Deck.",
     "title": "Evocazione Fusion"
    },
    {
+    "cards": [
+     "Black Luster Ritual",
+     "Black Luster Soldier"
+    ],
+    "diagram": "ritual",
     "example": "Il tuo Mostro Rituale è di Livello 8 e la Magia Rituale richiede Livelli totali uguali o superiori a 8. Offri come Tributo un mostro di Livello 4 dalla tua mano e un mostro di Livello 5 dal tuo Terreno (totale 9), poi Evochi Specialmente il Mostro Rituale.",
+    "group": "summons",
     "icon": "Flame",
     "id": "ritual",
     "paragraphs": [
@@ -977,10 +1160,17 @@
      "I Mostri Rituali non possono essere Evocati Normalmente né Posizionati.",
      "Alcune carte usano altre fonti, come mandare mostri dal Deck o bandirli dal Cimitero; segui il testo."
     ],
+    "summary": "Una Magia Rituale più Tributi i cui Livelli totali corrispondono al mostro che stai Evocando.",
     "title": "Evocazione Rituale"
    },
    {
+    "cards": [
+     "Junk Synchron",
+     "Stardust Dragon"
+    ],
+    "diagram": "synchro",
     "example": "Un Tuner di Livello 3 più un non-Tuner di Livello 4 fanno 7: puoi Evocare tramite Synchro un Mostro Synchro di Livello 7.",
+    "group": "summons",
     "icon": "Zap",
     "id": "synchro",
     "paragraphs": [
@@ -993,10 +1183,16 @@
      "I Mostri Xyz e Link non hanno Livello, quindi normalmente non possono essere Materiali Synchro.",
      "Un’Evocazione Synchro non avvia una Catena, ma le carte che annullano un’Evocazione possono fermarla."
     ],
+    "summary": "1 Tuner più non-Tuner i cui Livelli sommati danno esattamente il Livello del Mostro Synchro.",
     "title": "Evocazione Synchro"
    },
    {
+    "cards": [
+     "Number 39: Utopia"
+    ],
+    "diagram": "xyz",
     "example": "Due mostri di Livello 4 che controlli possono essere usati per Evocare tramite Xyz un Mostro Xyz di Rango 4 che richiede «2 mostri di Livello 4».",
+    "group": "summons",
     "icon": "Layers",
     "id": "xyz",
     "paragraphs": [
@@ -1009,10 +1205,15 @@
      "I Segna-Mostro non possono essere usati come Materiali Xyz.",
      "Un Mostro Xyz senza materiali resta sul Terreno; semplicemente non può pagare costi che richiedono di staccare materiali."
     ],
+    "summary": "Due o più mostri dello stesso Livello si attaccano sotto un mostro di Rango uguale.",
     "title": "Evocazione Xyz"
    },
    {
-    "example": "",
+    "cards": [
+     "Performapal Hip Hippo"
+    ],
+    "diagram": "pendulum",
+    "group": "summons",
     "icon": "Scale",
     "id": "pendulum",
     "paragraphs": [
@@ -1025,10 +1226,16 @@
      "I mostri dalla tua mano vanno nelle Zone Mostri Principali. I Mostri Pendulum scoperti dal tuo Extra Deck vanno in una Zona Mostri Extra o in una Zona Mostri Principale indicata da un Mostro Link.",
      "Un’Evocazione Pendulum non avvia una Catena, ma le carte che annullano un’Evocazione possono fermarla."
     ],
+    "summary": "Due Scale nelle tue Zone Pendulum aprono un’Evocazione multipla tra i due valori.",
     "title": "Evocazione Pendulum"
    },
    {
+    "cards": [
+     "Decode Talker"
+    ],
+    "diagram": "link",
     "example": "Un Mostro LINK-3 richiede 3 materiali: puoi usare 3 mostri, oppure un Mostro LINK-2 che conta come 2 materiali più 1 altro mostro.",
+    "group": "summons",
     "icon": "Link",
     "id": "link",
     "paragraphs": [
@@ -1042,10 +1249,13 @@
      "I Segna-Mostro possono essere usati come Materiali Link.",
      "Da una Zona Mostri Extra, le Frecce Link possono indicare Zone Mostri Principali su entrambi i lati del Terreno."
     ],
+    "summary": "I Materiali vanno al Cimitero e le frecce aprono zone per gli altri tuoi mostri.",
     "title": "Evocazione Link"
    },
    {
+    "diagram": "emz",
     "example": "Il tuo Terreno è vuoto. Evochi tramite Synchro in una Zona Mostri Principale, lasciando libera la Zona Mostri Extra. Poi Evochi tramite Link nella Zona Mostri Extra un Mostro LINK-2 con frecce in basso a sinistra e in basso a destra. Quelle frecce indicano due tue Zone Mostri Principali, quindi il tuo prossimo Mostro Link o i Mostri Pendulum scoperti dal tuo Extra Deck possono essere messi lì.",
+    "group": "summons",
     "icon": "LayoutDashboard",
     "id": "extra-deck-zones",
     "paragraphs": [
@@ -1058,10 +1268,41 @@
      "Mettere un Mostro Fusion, Synchro o Xyz in una Zona Mostri Principale lascia libera la Zona Mostri Extra per un Mostro Link.",
      "Queste restrizioni valgono solo per i mostri Evocati dall’Extra Deck; i mostri dalla mano, dal Deck o dal Cimitero vanno nelle Zone Mostri Principali."
     ],
+    "summary": "I Mostri Link passano da una Zona Mostri Extra; gli altri possono usare anche le tue zone principali.",
     "title": "Extra Deck e Zone Mostri Extra"
    },
    {
+    "cards": [
+     "Scapegoat"
+    ],
+    "diagram": "tokens",
+    "example": "Una carta Evoca Specialmente 4 Segna-Mostro Pecora in Posizione di Difesa scoperta. Riempiono 4 delle tue 5 Zone Mostri: puoi usarli come Materiali Link, ma ti resta una sola zona per Evocare altro.",
+    "group": "summons",
+    "icon": "Shapes",
+    "id": "tokens",
+    "paragraphs": [
+     "Un Segna-Mostro è un mostro creato dall’effetto di una carta. Non esiste nel tuo Deck: nome, Tipo, Attributo, Livello, ATK e DEF vengono tutti dall’effetto che lo crea. Lo rappresenti con un contrassegno riconoscibile: una carta Segna-Mostro ufficiale, una moneta, un dado.",
+     "Sul Terreno un Segna-Mostro si comporta come un mostro: occupa una Zona Mostri, può attaccare, essere distrutto in battaglia, cambiare posizione di battaglia, essere offerto come Tributo o essere usato come Materiale. Se non c’è nessuna Zona Mostri libera, non può nemmeno essere Evocato.",
+     "Appena un Segna-Mostro lascia il Terreno — distrutto, mandato al Cimitero, bandito, rimandato in mano — viene rimosso dal gioco. Non arriva mai davvero al Cimitero, quindi gli effetti che si attivano «quando una carta viene mandata al Cimitero» non lo vedono."
+    ],
+    "points": [
+     "Un Segna-Mostro non è una carta: gli effetti che parlano di «carte» in mano, nel Deck o nel Cimitero non lo contano mai.",
+     "Può essere offerto come Tributo per un’Evocazione Tramite Offerta e usato come Materiale Fusion, Synchro o Link.",
+     "Non può essere usato come Materiale Xyz: i Materiali si attaccano sotto il mostro, quindi il Segna-Mostro lascerebbe il Terreno e svanirebbe subito.",
+     "Più Segna-Mostro possono avere lo stesso nome, e ognuno occupa la propria Zona Mostri.",
+     "Un Segna-Mostro appare solo se una carta lo crea: non puoi mai Evocarne uno di tua iniziativa."
+    ],
+    "summary": "Un Segna-Mostro non è una carta: occupa una Zona Mostri e svanisce nell’istante in cui lascia il Terreno.",
+    "title": "Segna-Mostro"
+   },
+   {
+    "cards": [
+     "Mystical Space Typhoon",
+     "Solemn Judgment"
+    ],
+    "diagram": "chain",
     "example": "Attivi una Magia Normale (Anello 1). Il tuo avversario risponde con una Trappola Normale (Anello 2). Tu rispondi con una Contro-Trappola che la annulla (Anello 3). La Contro-Trappola si risolve per prima e annulla la Trappola, poi si risolve la tua Magia.",
+    "group": "playing",
     "icon": "ListOrdered",
     "id": "chains",
     "paragraphs": [
@@ -1077,10 +1318,36 @@
      "Le Trappole Posizionate e le Magie Rapide Posizionate non possono essere attivate nel turno in cui sono state Posizionate, a meno che una carta lo permetta.",
      "«Una volta per turno»: ogni copia una volta per turno, azzerato se lascia il Terreno. «Puoi usare questo effetto di [carta] solo una volta per turno»: una volta per turno per tutte le copie."
     ],
+    "summary": "Le risposte si impilano e si risolvono in ordine inverso, seguendo la Velocità di Magia.",
     "title": "Catene e Velocità di Magia"
    },
    {
+    "cards": [
+     "Royal Magical Library"
+    ],
+    "diagram": "counters",
+    "example": "Un mostro guadagna 1 Segnalino Magia ogni volta che una Magia viene attivata, poi rimuovi 3 di quei segnalini per pescare una carta. I segnalini spariscono già all’attivazione, anche se la pescata viene poi annullata.",
+    "group": "playing",
+    "icon": "Hash",
+    "id": "counters",
+    "paragraphs": [
+     "Alcune carte mettono segnalini — Segnalini Magia, Segnalini Bushido e molti altri — su se stesse o su altre carte. Un segnalino non è una carta: è un contrassegno che metti sulla carta interessata.",
+     "Un segnalino può essere messo solo se il testo di una carta lo dice, e solo su una carta che può riceverlo. Se quella carta lascia il Terreno o viene girata coperta, i suoi segnalini vengono rimossi e non tornano con lei.",
+     "Rimuovere segnalini è quasi sempre un costo: li rimuovi al momento dell’attivazione. Se l’effetto viene poi annullato, i segnalini restano spesi."
+    ],
+    "points": [
+     "Ogni segnalino ha un nome: un effetto che rimuove «Segnalini Magia» non può rimuovere un segnalino di un altro tipo.",
+     "I segnalini stanno sulla carta, non sulla zona: seguono la carta se cambia zona sul Terreno.",
+     "Una carta può portarne più di uno; alcuni testi fissano un massimo.",
+     "I Materiali Xyz non sono segnalini: sono vere carte attaccate, che entrambi i giocatori possono guardare in qualsiasi momento."
+    ],
+    "summary": "Un contrassegno che un effetto mette su una carta e che sparisce insieme a lei.",
+    "title": "Segnalini"
+   },
+   {
+    "diagram": "battle",
     "example": "Il tuo mostro da 2000 ATK attacca un mostro da 1500 ATK in Posizione di Attacco: viene distrutto e il tuo avversario subisce 500 danni. Contro un mostro da 2500 DEF in Posizione di Difesa, niente viene distrutto e tu subisci 500 danni.",
+    "group": "playing",
     "icon": "Swords",
     "id": "battle",
     "paragraphs": [
@@ -1094,10 +1361,14 @@
      "Un mostro coperto che viene attaccato viene scoperto; il suo effetto SCOPRI si attiva dopo il calcolo dei danni.",
      "I mostri distrutti in battaglia vengono mandati al Cimitero alla fine del Damage Step."
     ],
+    "summary": "Gli attacchi confrontano l’ATK, o la DEF se il mostro che difende è in Posizione di Difesa.",
     "title": "Battaglia"
    },
    {
-    "example": "",
+    "cards": [
+     "Mirror Force"
+    ],
+    "group": "playing",
     "icon": "Wand",
     "id": "spells-traps",
     "paragraphs": [
@@ -1115,7 +1386,27 @@
      "Trappola Continua: resta sul Terreno, Velocità di Magia 2.",
      "Contro-Trappola: Velocità di Magia 3, di solito annulla un’attivazione o un’Evocazione."
     ],
+    "summary": "Le Magie si attivano dalla mano; le Trappole vanno Posizionate almeno un turno prima.",
     "title": "Magie e Trappole"
+   },
+   {
+    "example": "Perdi il primo duello contro un deck pieno di Magie. Tra i due duelli aggiungi 2 carte anti-Magia dal tuo Side Deck e togli 2 carte poco utili in questo match-up.",
+    "group": "advanced",
+    "icon": "Trophy",
+    "id": "match",
+    "paragraphs": [
+     "Nei tornei si giocano Match: il primo giocatore che vince due duelli vince il Match. Chi ha perso un duello sceglie chi inizia quello successivo.",
+     "Tra due duelli dello stesso Match puoi scambiare carte tra il tuo Deck e il tuo Side Deck (da 0 a 15 carte). Quando hai finito, il tuo Main Deck deve avere ancora da 40 a 60 carte, l’Extra Deck al massimo 15, e il Side Deck deve tornare alla sua dimensione iniziale.",
+     "La Lista delle carte Proibite e Limitate viene aggiornata regolarmente da Konami. Si applica a Main Deck, Extra Deck e Side Deck messi insieme."
+    ],
+    "points": [
+     "Proibita: 0 copie. Limitata: 1. Semi-Limitata: 2. Altrimenti al massimo 3 copie.",
+     "Il TCG (Europa, Americhe, Oceania) e l’OCG (Giappone, Asia) hanno ognuno la propria lista.",
+     "Il tempo per cambiare il Side Deck tra due duelli è limitato, spesso a pochi minuti.",
+     "Se il tempo scade durante un Match, una procedura di fine tempo determina il vincitore, di solito il giocatore con più LP."
+    ],
+    "summary": "I tornei si giocano a Match: due duelli vinti, il Side Deck tra le partite, una lista limitativa.",
+    "title": "Match, Side Deck e lista limitativa"
    }
   ],
   "source": "Questa pagina riassume il regolamento ufficiale (Master Rule attuale); quando il testo di una carta o una decisione ufficiale dicono altrimenti, prevalgono la carta e la decisione.",
