@@ -58,12 +58,32 @@ struct CardDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task(id: app.collectionVersion) { await load() }
         .fullScreenCover(isPresented: $zoomed) {
-            if let value = card.value { ZoomedCard(card: value.summary) }
+            if let value = card.value {
+                CardShowcaseView(
+                    card: value.summary,
+                    rarities: Self.rarities(of: value),
+                    initialRarity: Self.rarity(of: value, matching: link.printHint))
+            } else {
+                // Ne devrait pas arriver (on n'ouvre le plein écran que depuis la carte chargée)
+                Button(t("common.actions.close"), systemImage: "xmark") { zoomed = false }
+            }
         }
     }
 
     private func load() async {
         card = await .fetch(card) { try await app.api.card(link.cardId) }
+    }
+
+    /// Raretés distinctes de la carte, dans l'ordre des impressions.
+    private static func rarities(of card: CardDetail) -> [String] {
+        var seen: Set<String> = []
+        return card.prints.compactMap { seen.insert($0.rarity).inserted ? $0.rarity : nil }
+    }
+
+    /// Rareté de l'impression scannée, si on la connaît.
+    private static func rarity(of card: CardDetail, matching hint: String?) -> String? {
+        guard let code = hint.flatMap(PrintCode.init) else { return nil }
+        return card.prints.first { code.matches($0.printCode) }?.rarity
     }
 
     @ViewBuilder
@@ -192,19 +212,3 @@ private struct PrintsSection: View {
     }
 }
 
-/// Visuel en grand (plein écran, toucher pour fermer).
-private struct ZoomedCard: View {
-    let card: CardSummary
-    @Environment(\.dismiss) private var dismiss
-
-    var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            CardArt(card: card, width: .large)
-                .padding(24)
-        }
-        .onTapGesture { dismiss() }
-        .accessibilityAddTraits(.isButton)
-        .accessibilityLabel(t("common.actions.close"))
-    }
-}
