@@ -991,7 +991,11 @@
    "noResults": "Keine Regel passt zu dieser Suche.",
    "openDuel": "Im Simulator ausprobieren",
    "points": "Wichtig",
-   "search": "Regel oder Begriff suchen…"
+   "search": "Regel oder Begriff suchen…",
+   "video": "Video-Tutorial",
+   "videoConsent": "Das Video wird erst beim Klicken von YouTube geladen.",
+   "videoLoad": "Video abspielen",
+   "videoOpen": "Auf YouTube öffnen"
   },
   "links": [
    {

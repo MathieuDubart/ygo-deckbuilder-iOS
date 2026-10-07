@@ -991,7 +991,11 @@
    "noResults": "Nenhuma regra corresponde a esta busca.",
    "openDuel": "Experimentar no simulador",
    "points": "Pontos-chave",
-   "search": "Buscar uma regra, uma palavra…"
+   "search": "Buscar uma regra, uma palavra…",
+   "video": "Tutorial em vídeo",
+   "videoConsent": "O vídeo só é carregado do YouTube quando você clica.",
+   "videoLoad": "Reproduzir o vídeo",
+   "videoOpen": "Abrir no YouTube"
   },
   "links": [
    {

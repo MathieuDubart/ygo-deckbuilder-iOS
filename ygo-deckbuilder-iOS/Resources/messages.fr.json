@@ -991,7 +991,11 @@
    "noResults": "Aucune règle ne correspond à cette recherche.",
    "openDuel": "Essayer dans le simulateur",
    "points": "À retenir",
-   "search": "Rechercher une règle, un mot…"
+   "search": "Rechercher une règle, un mot…",
+   "video": "Tuto vidéo",
+   "videoConsent": "La vidéo n’est chargée depuis YouTube qu’au moment où vous cliquez.",
+   "videoLoad": "Lancer la vidéo",
+   "videoOpen": "Ouvrir sur YouTube"
   },
   "links": [
    {
@@ -1028,7 +1032,12 @@
      "La liste des cartes Interdites & Limitées restreint certaines cartes : Interdite (0 exemplaire), Limitée (1 exemplaire), Semi-Limitée (2 exemplaires)."
     ],
     "summary": "Deux joueurs, 8000 LP chacun : vous gagnez en réduisant ceux de l’adversaire à 0.",
-    "title": "Les bases"
+    "title": "Les bases",
+    "video": {
+     "channel": "Le Labo",
+     "id": "khEccOJj_rI",
+     "title": "COMMENT JOUER À YuGiOh ! - 1 - Les Bases"
+    }
    },
    {
     "diagram": "field",
@@ -1048,7 +1057,12 @@
      "Les monstres sont en Position d’Attaque (verticale) ou en Position de Défense (horizontale). Un monstre face verso est toujours en Position de Défense, et vous pouvez regarder vos propres cartes face verso."
     ],
     "summary": "5 Zones Monstre, 5 Zones Magie & Piège et 1 Zone Terrain par joueur ; les 2 Zones Monstre Extra sont partagées.",
-    "title": "Le Terrain"
+    "title": "Le Terrain",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "7EP8P7jnvjs",
+     "title": "YU-GI-OH! TUTO #0 : Master Rules & Terrain"
+    }
    },
    {
     "diagram": "turn",
@@ -1138,7 +1152,12 @@
      "Si l’Invocation Fusion est annulée, les matériels restent utilisés et le Monstre Fusion est détruit."
     ],
     "summary": "Les Matériels indiqués partent au Cimetière, le Monstre Fusion arrive de l’Extra Deck.",
-    "title": "Invocation Fusion"
+    "title": "Invocation Fusion",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "H5RA9tNyDRs",
+     "title": "YU-GI-OH! TUTO #2 : Monstres Fusion"
+    }
    },
    {
     "cards": [
@@ -1161,7 +1180,12 @@
      "Certaines cartes utilisent d’autres sources, comme envoyer des monstres depuis le Deck ou les bannir depuis le Cimetière ; suivez le texte."
     ],
     "summary": "Une Magie Rituelle, plus des Sacrifices dont le total de Niveaux correspond au monstre.",
-    "title": "Invocation Rituelle"
+    "title": "Invocation Rituelle",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "P04HC93bgI0",
+     "title": "YU-GI-OH! TUTO #1 : Monstres Rituel"
+    }
    },
    {
     "cards": [
@@ -1184,7 +1208,12 @@
      "Une Invocation Synchro ne démarre pas de Chaîne, mais les cartes qui annulent une Invocation peuvent l’arrêter."
     ],
     "summary": "1 Syntoniseur et des non-Syntoniseurs dont la somme des Niveaux égale celui du Monstre Synchro.",
-    "title": "Invocation Synchro"
+    "title": "Invocation Synchro",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "BJi-Xjyh5P8",
+     "title": "YU-GI-OH! TUTO #3 : Monstres Synchro"
+    }
    },
    {
     "cards": [
@@ -1206,7 +1235,12 @@
      "Un Monstre Xyz sans matériel reste sur le Terrain ; il ne peut simplement plus payer de coût de détachement."
     ],
     "summary": "Deux monstres ou plus de même Niveau s’attachent sous un monstre de Rang égal.",
-    "title": "Invocation Xyz"
+    "title": "Invocation Xyz",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "AL6Spzlx0oc",
+     "title": "YU-GI-OH! TUTO #4 : Monstres Xyz"
+    }
    },
    {
     "cards": [
@@ -1227,7 +1261,12 @@
      "Une Invocation Pendule ne démarre pas de Chaîne, mais les cartes qui annulent une Invocation peuvent l’arrêter."
     ],
     "summary": "Deux Échelles posées dans vos Zones Pendule ouvrent une Invocation multiple entre les deux valeurs.",
-    "title": "Invocation Pendule"
+    "title": "Invocation Pendule",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "VoKM-czB9t4",
+     "title": "YU-GI-OH! TUTO #5 : Monstres Pendule"
+    }
    },
    {
     "cards": [
@@ -1250,7 +1289,12 @@
      "Depuis une Zone Monstre Extra, les Flèches Lien peuvent pointer vers des Zones Monstre Principales des deux côtés du Terrain."
     ],
     "summary": "Des Matériels envoyés au Cimetière, et des flèches qui ouvrent des zones à vos autres monstres.",
-    "title": "Invocation Lien"
+    "title": "Invocation Lien",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "TfxpJbvaR54",
+     "title": "YU-GI-OH! TUTO #6 : Monstres Lien"
+    }
    },
    {
     "diagram": "emz",
@@ -1293,7 +1337,12 @@
      "Un Jeton n’apparaît que si une carte le crée : vous ne pouvez pas en Invoquer de votre propre initiative."
     ],
     "summary": "Un Jeton n’est pas une carte : il occupe une Zone Monstre et disparaît dès qu’il la quitte.",
-    "title": "Jetons"
+    "title": "Jetons",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "d3ZYwiU1rlE",
+     "title": "YU-GI-OH! TUTO #15 : Jetons"
+    }
    },
    {
     "cards": [
@@ -1319,7 +1368,12 @@
      "« Une fois par tour » : chaque exemplaire une fois par tour, remis à zéro s’il quitte le Terrain. « Vous ne pouvez utiliser cet effet de [carte] qu’une fois par tour » : une fois par tour pour tous les exemplaires."
     ],
     "summary": "Les réponses s’empilent et se résolvent dans l’ordre inverse, selon la Vitesse de Sort.",
-    "title": "Chaînes et Vitesse de Sort"
+    "title": "Chaînes et Vitesse de Sort",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "nTAZwzrYgSs",
+     "title": "YU-GI-OH! TUTO #8 : TOUT sur les Chaînes"
+    }
    },
    {
     "cards": [
@@ -1362,7 +1416,12 @@
      "Les monstres détruits au combat sont envoyés au Cimetière à la fin de la Damage Step."
     ],
     "summary": "Les attaques se comparent à l’ATK, ou à la DEF si le défenseur est en Position de Défense.",
-    "title": "Combat"
+    "title": "Combat",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "l1DdhUM-DKA",
+     "title": "YU-GI-OH! TUTO #9 : TOUT sur la Battle Phase"
+    }
    },
    {
     "cards": [
@@ -1387,7 +1446,12 @@
      "Piège Contre : Vitesse de Sort 3, annule généralement une activation ou une Invocation."
     ],
     "summary": "Les Magies s’activent depuis la main, les Pièges doivent être Posés au moins un tour à l’avance.",
-    "title": "Magies et Pièges"
+    "title": "Magies et Pièges",
+    "video": {
+     "channel": "Joeri sama",
+     "id": "bNMPkFnXqGs",
+     "title": "YU-GI-OH! TUTO #12 : Activations et Annulations"
+    }
    },
    {
     "example": "Vous perdez le premier duel face à un deck rempli de Magies. Entre les deux duels, vous ajoutez 2 cartes anti-Magie de votre Side Deck et vous retirez 2 cartes peu utiles dans ce match-up.",
