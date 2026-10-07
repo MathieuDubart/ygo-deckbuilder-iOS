@@ -12,7 +12,6 @@ using namespace metal;
 // custom_parameter : x = traitement (CardFoil.rawValue), y = force 0…1,
 //                    z = 1 si les UV sont retournés verticalement, w = inutilisé.
 
-constant float kCardAspect = 59.0 / 86.0;  // largeur / hauteur d'une carte
 
 // Zones d'une carte moderne, en UV (origine en haut à gauche) : x0, y0, x1, y1.
 // Relevées sur le gabarit du visuel servi par le catalogue (421 x 614) : l'illustration est
