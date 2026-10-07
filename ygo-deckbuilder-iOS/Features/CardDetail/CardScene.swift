@@ -26,6 +26,10 @@ enum CardScene {
     /// Retrait de la tranche, pour que ses coins carrés restent cachés derrière les coins
     /// arrondis de la face et du dos.
     private static let edgeInset: Float = 0.019
+    /// La tranche est plus fine que l'écart entre les deux plans : sans ça ses faces avant et
+    /// arrière sont exactement au même Z qu'eux, et les deux se disputent le pixel (la carte
+    /// vire au blanc et clignote dès qu'on la tourne).
+    private static let edgeDepthRatio: Float = 0.7
 
     private static let library: MTLLibrary? = MTLCreateSystemDefaultDevice()?.makeDefaultLibrary()
 
@@ -81,7 +85,7 @@ enum CardScene {
             mesh: .generateBox(
                 width: width - edgeInset * width * 2,
                 height: height - edgeInset * width * 2,
-                depth: thickness),
+                depth: thickness * edgeDepthRatio),
             materials: [SimpleMaterial(
                 color: UIColor(white: 0.93, alpha: 1), roughness: 0.85, isMetallic: false)])
         root.addChild(edge)
