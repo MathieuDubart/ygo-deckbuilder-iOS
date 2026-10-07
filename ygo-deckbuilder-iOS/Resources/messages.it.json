@@ -710,6 +710,8 @@
  },
  "ios": {
   "card": {
+   "foil": "Rarità",
+   "rotateHint": "Trascina per inclinare la carta. Tocca due volte per raddrizzarla, una volta per chiudere.",
    "zoom": "Mostra la carta a schermo intero"
   },
   "common": {
@@ -727,19 +729,40 @@
    "decoding": "Risposta inattesa del server ({detail}). Il server è aggiornato?",
    "noServer": "Nessun server configurato."
   },
+  "more": {
+   "catalog": "Cerca in tutto il catalogo",
+   "duel": "Prova un deck contro il simulatore",
+   "rules": "Tutte le regole ufficiali, illustrate",
+   "wishlist": "Le carte che ti mancano"
+  },
+  "nav": {
+   "more": "Altro"
+  },
   "products": {
    "removeWithCards": "Rimuovilo con le sue carte"
   },
   "scan": {
-   "addOne": "+1 alla collezione",
-   "addedCount": "{count, plural, one {# aggiunta} other {# aggiunte}}",
    "alreadyOwned": "Ne possiedi già {count}",
-   "details": "Dettagli",
+   "copies": "{count, plural, one {# copia in coda} other {# copie in coda}}",
    "hint": "Inquadra il codice stampato sotto l'illustrazione (es. SDBE-IT001).",
    "notFound": "Nessuna carta trovata per {code}",
+   "queued": "{count, plural, one {# in coda} other {# in coda}}",
+   "review": {
+    "addManually": "Aggiungi a mano",
+    "commit": "{count, plural, one {Aggiungi # carta alla collezione} other {Aggiungi # carte alla collezione}}",
+    "empty": "Nessuna carta scansionata",
+    "emptyHint": "Inquadra il codice sotto l'illustrazione, oppure aggiungi una carta a mano.",
+    "failures": "Carte non aggiunte",
+    "noPrints": "Nessuna edizione nota per questa carta.",
+    "open": "{count, plural, one {Controlla # carta} other {Controlla # carte}}",
+    "openEmpty": "La coda è vuota",
+    "search": "Cerca una carta",
+    "title": "Controlla prima di aggiungere"
+   },
    "title": "Scansiona carte",
    "unavailable": "La scansione non è disponibile",
-   "unavailableHint": "Consenti l'accesso alla fotocamera nelle Impostazioni o usa un dispositivo che ne abbia una."
+   "unavailableHint": "Consenti l'accesso alla fotocamera nelle Impostazioni o usa un dispositivo che ne abbia una.",
+   "undo": "Annulla l'ultima scansione"
   },
   "server": {
    "change": "Cambia server",

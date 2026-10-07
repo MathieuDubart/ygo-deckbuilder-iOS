@@ -710,6 +710,8 @@
  },
  "ios": {
   "card": {
+   "foil": "Rarity",
+   "rotateHint": "Drag to tilt the card. Double-tap to straighten it, tap to close.",
    "zoom": "Show the card full screen"
   },
   "common": {
@@ -727,19 +729,40 @@
    "decoding": "Unexpected server response ({detail}). Is the server up to date?",
    "noServer": "No server configured."
   },
+  "more": {
+   "catalog": "Search the whole catalogue",
+   "duel": "Test a deck against the simulator",
+   "rules": "Every official rule, illustrated",
+   "wishlist": "The cards you are still missing"
+  },
+  "nav": {
+   "more": "More"
+  },
   "products": {
    "removeWithCards": "Remove it and its cards"
   },
   "scan": {
-   "addOne": "Add 1 to my collection",
-   "addedCount": "{count, plural, one {# added} other {# added}}",
    "alreadyOwned": "You already own {count}",
-   "details": "Details",
+   "copies": "{count, plural, one {# copy queued} other {# copies queued}}",
    "hint": "Point the camera at the code printed under the artwork (e.g. SDBE-FR001).",
    "notFound": "No card found for {code}",
+   "queued": "{count, plural, one {# queued} other {# queued}}",
+   "review": {
+    "addManually": "Add by hand",
+    "commit": "{count, plural, one {Add # card to my collection} other {Add # cards to my collection}}",
+    "empty": "No card scanned yet",
+    "emptyHint": "Point the camera at the code under the artwork, or add a card by hand.",
+    "failures": "Cards that were not added",
+    "noPrints": "No known edition for this card.",
+    "open": "{count, plural, one {Check # card} other {Check # cards}}",
+    "openEmpty": "The queue is empty",
+    "search": "Search a card",
+    "title": "Check before adding"
+   },
    "title": "Scan cards",
    "unavailable": "Scanning isn't available",
-   "unavailableHint": "Allow camera access in Settings, or use a device with a camera."
+   "unavailableHint": "Allow camera access in Settings, or use a device with a camera.",
+   "undo": "Undo last scan"
   },
   "server": {
    "change": "Change server",
