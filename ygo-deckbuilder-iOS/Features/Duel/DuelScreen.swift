@@ -3,27 +3,36 @@ import SwiftUI
 /// Onglet Duel : simulateur (moteur EDOPro sur le serveur) contre un adversaire passif,
 /// contrôlé par toi ou par le bot, et rappel des règles.
 struct DuelScreen: View {
+    /// Déjà dans une pile de navigation (onglet « Autre ») : ne pas en ouvrir une seconde.
+    var embedded = false
     @Environment(AppState.self) private var app
     @State private var model: DuelModel?
 
     var body: some View {
-        NavigationStack {
-            Group {
-                if let model {
-                    DuelContent(model: model)
-                } else {
-                    ProgressView()
-                }
-            }
+        Group {
+            if embedded { content } else { NavigationStack { content } }
         }
         .task {
             if model == nil { model = DuelModel(api: app.api) }
+        }
+    }
+
+    /// Le contenu seul : empilé tel quel dans l'onglet « Autre ».
+    @ViewBuilder
+    private var content: some View {
+        Group {
+            if let model {
+                DuelContent(model: model, embedded: embedded)
+            } else {
+                ProgressView()
+            }
         }
     }
 }
 
 private struct DuelContent: View {
     @Bindable var model: DuelModel
+    var embedded = false
     @Environment(AppState.self) private var app
     @State private var showRules = false
 
@@ -63,13 +72,15 @@ private struct DuelContent: View {
         if model.resuming {
             ProgressView()
         } else if let state = model.state {
-            DuelTableView(state: state, model: model, showRules: { showRules = true })
+            DuelTableView(state: state, model: model, embedded: embedded, showRules: { showRules = true })
         } else {
             switch model.engine {
             case .loaded(let engine) where engine.ready:
                 DuelSetupView(model: model, engine: engine) { showRules = true }
                     .toolbar {
-                        ToolbarItem(placement: .topBarLeading) { SettingsButton() }
+                        if !embedded {
+                            ToolbarItem(placement: .topBarLeading) { SettingsButton() }
+                        }
                     }
             case .loaded(let engine):
                 ContentUnavailableView {
@@ -90,6 +101,8 @@ private struct DuelContent: View {
 private struct DuelTableView: View {
     let state: DuelState
     let model: DuelModel
+    /// Empilé sous l'onglet « Autre » : le coin haut-gauche est pris par le bouton retour.
+    var embedded = false
     let showRules: () -> Void
 
     @State private var menuCard: DuelCardRef?
@@ -235,7 +248,7 @@ private struct DuelTableView: View {
 
     @ToolbarContentBuilder
     private var tableToolbar: some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) {
+        ToolbarItem(placement: embedded ? .topBarTrailing : .topBarLeading) {
             Button(t("duel.log.title"), systemImage: "list.bullet.rectangle") { showLog = true }
         }
         ToolbarItem(placement: .topBarTrailing) {

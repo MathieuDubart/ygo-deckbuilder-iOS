@@ -24,6 +24,8 @@ final class AppState {
     /// Deck à ouvrir dans l'onglet Decks (après création depuis une suggestion ou un produit).
     var pendingDeckId: String?
     var selectedTab: AppTab = .collection
+    /// Pile de navigation de l'onglet « Autre » (règles, wishlist, duel, catalogue).
+    var morePath: [MoreRoute] = []
     /// Deck à tester dans l'onglet Duel (depuis le deck builder).
     var pendingDuelDeckId: String?
 
@@ -79,6 +81,7 @@ final class AppState {
         await api.signOut()
         session = .signedOut
         selectedTab = .collection
+        morePath = []
     }
 
     // MARK: - Invalidation
@@ -101,7 +104,13 @@ final class AppState {
 
     func testInDuel(_ deckId: String) {
         pendingDuelDeckId = deckId
-        selectedTab = .duel
+        openMore(.duel)
+    }
+
+    /// Ouvre un écran de l'onglet « Autre » (remplace la pile en cours).
+    func openMore(_ route: MoreRoute) {
+        morePath = [route]
+        selectedTab = .more
     }
 
     func openDeck(_ id: String) {
@@ -112,5 +121,10 @@ final class AppState {
 }
 
 enum AppTab: Hashable {
-    case collection, decks, suggestions, wishlist, duel, search
+    case collection, decks, suggestions, more
+}
+
+/// Écrans regroupés sous l'onglet « Autre ».
+enum MoreRoute: Hashable {
+    case rules, wishlist, duel, catalog
 }

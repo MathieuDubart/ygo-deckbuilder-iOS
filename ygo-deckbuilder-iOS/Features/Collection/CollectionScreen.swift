@@ -10,7 +10,6 @@ struct CollectionScreen: View {
     @State private var selected: CardLink?
     @State private var importing = false
     @State private var scanning = false
-    @State private var pendingLink: CardLink?
     @State private var path = NavigationPath()
 
     var body: some View {
@@ -31,7 +30,7 @@ struct CollectionScreen: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu(t("common.actions.add"), systemImage: "plus") {
                         Button(t("collection.view.addCards"), systemImage: "magnifyingglass") {
-                            app.selectedTab = .search
+                            app.openMore(.catalog)
                         }
                         Button(t("collection.view.addProduct"), systemImage: "shippingbox") { importing = true }
                         Button(t("ios.scan.title"), systemImage: "camera.viewfinder") { scanning = true }
@@ -49,19 +48,8 @@ struct CollectionScreen: View {
                 path.append(ProductRoute(id: productId))
             }
         }
-        .fullScreenCover(isPresented: $scanning, onDismiss: openPending) {
-            CardScannerView { code, cardId in
-                pendingLink = CardLink(cardId: cardId, printHint: code)
-                scanning = false
-            }
-        }
-    }
-
-    /// La fiche s'ouvre une fois le scanner fermé (une seule présentation à la fois).
-    private func openPending() {
-        if let link = pendingLink {
-            pendingLink = nil
-            selected = link
+        .fullScreenCover(isPresented: $scanning) {
+            CardScannerView()
         }
     }
 
