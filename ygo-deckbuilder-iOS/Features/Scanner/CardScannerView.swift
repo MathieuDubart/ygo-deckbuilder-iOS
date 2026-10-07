@@ -3,28 +3,31 @@ import SwiftUI
 import VisionKit
 
 /// Scan des cartes par leur code imprimé (« SDBE-FR001 », sous l'illustration) : la caméra lit
-/// le code, l'API retrouve la carte (recherche par code), et on peut l'ajouter d'un geste
-/// avec la bonne impression et la bonne langue, puis enchaîner avec la suivante.
+/// les codes à la chaîne et chaque carte reconnue rejoint une file. On enchaîne les cartes sans
+/// rien valider, puis on relit la file (`ScanReviewView`) pour corriger les éditions, les
+/// quantités, en ajouter à la main, et tout envoyer en collection d'un coup.
 struct CardScannerView: View {
-    /// Ouvre la fiche de la carte (code scanné, id de la carte).
-    var onOpen: (String, Int) -> Void
+    /// Durée d'absence du viseur au bout de laquelle un code redevient comptable.
+    private static let cooldown: TimeInterval = 1.5
 
     @Environment(AppState.self) private var app
     @Environment(\.dismiss) private var dismiss
-    @State private var hit: ScanHit?
+    @State private var batch = ScanBatch()
     @State private var lookingUp: String?
-    @State private var lastCode: String?
+    /// Dernière fois qu'un code a été vu, et ceux déjà comptés (anti-rafale, voir `lookup`).
+    @State private var lastSeen: [String: Date] = [:]
+    @State private var counted: Set<String> = []
     @State private var notFound: String?
-    @State private var addedCount = 0
-    @State private var adding = false
-    @State private var failure: String?
     @State private var cameraReady = false
+    @State private var cameraError = false
+    /// La relecture est poussée sur la pile : pendant ce temps la caméra s'arrête.
+    @State private var reviewing = false
 
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                if DataScannerViewController.isSupported && cameraReady {
-                    DataScannerRepresentable { codes in
+                if DataScannerViewController.isSupported && cameraReady && !cameraError {
+                    DataScannerRepresentable(scanning: !reviewing, onFailure: { cameraError = true }) { codes in
                         Task { await lookup(codes) }
                     }
                     .ignoresSafeArea()
@@ -39,21 +42,24 @@ struct CardScannerView: View {
             }
             .navigationTitle(t("ios.scan.title"))
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(isPresented: $reviewing) {
+                ScanReviewView(batch: batch) { dismiss() }
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(t("common.actions.close"), systemImage: "xmark") { dismiss() }
                 }
-                if addedCount > 0 {
+                if !batch.isEmpty {
                     ToolbarItem(placement: .primaryAction) {
-                        Text(t("ios.scan.addedCount", ["count": addedCount]))
+                        Text(t("ios.scan.queued", ["count": batch.totalCopies]))
                             .font(.footnote.weight(.semibold))
                             .foregroundStyle(Theme.success)
                     }
                 }
             }
         }
-        .sensoryFeedback(.success, trigger: addedCount)
-        .sensoryFeedback(.selection, trigger: hit?.code)
+        .sensoryFeedback(.success, trigger: batch.totalCopies)
+        .sensoryFeedback(.warning, trigger: notFound)
         .task {
             // isAvailable reste faux tant que l'accès à la caméra n'est pas accordé
             if AVCaptureDevice.authorizationStatus(for: .video) == .notDetermined {
@@ -66,37 +72,29 @@ struct CardScannerView: View {
     @ViewBuilder
     private var panel: some View {
         VStack(alignment: .leading, spacing: Spacing.m) {
-            if let hit {
+            if let last = batch.last {
                 HStack(spacing: Spacing.m) {
-                    CardArt(card: hit.card, width: .thumb)
+                    CardArt(card: last.card, width: .thumb)
                         .frame(width: 56)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text(hit.card.name).font(.headline).lineLimit(2)
-                        Text(hit.code).font(.caption.monospaced()).foregroundStyle(.secondary)
-                        if hit.card.owned > 0 {
-                            Text(t("ios.scan.alreadyOwned", ["count": hit.card.owned]))
+                        Text(last.card.name).font(.headline).lineLimit(2)
+                        Text(last.subtitle).font(.caption.monospaced()).foregroundStyle(.secondary)
+                        if last.quantity > 1 {
+                            Text(t("ios.scan.copies", ["count": last.quantity]))
                                 .font(.caption)
                                 .foregroundStyle(Theme.success)
+                        } else if last.card.owned > 0 {
+                            Text(t("ios.scan.alreadyOwned", ["count": last.card.owned]))
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         }
                     }
                     Spacer(minLength: 0)
-                }
-                HStack(spacing: Spacing.m) {
-                    Button(t("ios.scan.details"), systemImage: "info.circle") {
-                        onOpen(hit.code, hit.card.id)
+                    Button(t("ios.scan.undo"), systemImage: "arrow.uturn.backward") {
+                        batch.undoLast()
                     }
+                    .labelStyle(.iconOnly)
                     .buttonStyle(.glass)
-                    Button {
-                        Task { await quickAdd(hit) }
-                    } label: {
-                        Label(t("ios.scan.addOne"), systemImage: adding ? "hourglass" : "plus")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.glassProminent)
-                    .disabled(adding)
-                }
-                if let failure {
-                    Text(failure).font(.footnote).foregroundStyle(Theme.danger)
                 }
             } else if let lookingUp {
                 HStack {
@@ -111,17 +109,40 @@ struct CardScannerView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
+
+            Button {
+                reviewing = true
+            } label: {
+                Label(
+                    batch.isEmpty
+                        ? t("ios.scan.review.openEmpty")
+                        : t("ios.scan.review.open", ["count": batch.totalCopies]),
+                    systemImage: "checklist")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.glassProminent)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Spacing.l)
         .glassEffect(.regular, in: .rect(cornerRadius: Radius.l, style: .continuous))
-        .animation(.snappy, value: hit?.code)
+        .animation(.snappy, value: batch.last?.id)
     }
 
-    /// Premier code nouveau parmi ceux lus → carte correspondante.
+    /// Premier code pas encore compté parmi ceux lus → carte correspondante, ajoutée à la file.
+    /// Un code compté le reste tant qu'il est dans le viseur : une carte posée devant
+    /// l'objectif ne s'ajoute pas en boucle. Il redevient comptable après avoir disparu
+    /// pendant `cooldown`, donc repasser la même carte ajoute bien un deuxième exemplaire.
+    /// Deux cartes côte à côte sont comptées l'une après l'autre, à la lecture suivante.
     private func lookup(_ codes: [String]) async {
-        guard lookingUp == nil, let code = codes.first(where: { $0 != lastCode }) else { return }
-        lastCode = code
+        let now = Date()
+        for (code, seenAt) in lastSeen where now.timeIntervalSince(seenAt) > Self.cooldown {
+            lastSeen[code] = nil
+            counted.remove(code)
+        }
+        let fresh = codes.first { !counted.contains($0) }
+        for code in codes { lastSeen[code] = now }
+        guard lookingUp == nil, let code = fresh else { return }
+        counted.insert(code)
         lookingUp = code
         notFound = nil
         defer { lookingUp = nil }
@@ -135,40 +156,16 @@ struct CardScannerView: View {
             }
             let detail = try? await app.api.card(card.id)
             let scanned = PrintCode(code)
-            hit = ScanHit(
-                code: code,
+            batch.add(
                 card: detail?.summary ?? card,
+                prints: detail?.prints ?? [],
+                code: code,
                 printId: scanned.flatMap { p in detail?.prints.first { p.matches($0.printCode) }?.id },
                 language: scanned?.language)
         } catch {
             notFound = code
         }
     }
-
-    private func quickAdd(_ hit: ScanHit) async {
-        adding = true
-        failure = nil
-        defer { adding = false }
-        do {
-            try await app.api.addToCollection(AddCollectionItemBody(
-                cardId: hit.card.id, printId: hit.printId, quantity: 1,
-                language: hit.language ?? L10n.shared.current.cardLanguage))
-            addedCount += 1
-            app.collectionChanged()
-            // Prêt pour la carte suivante (le même code peut être rescanné pour un 2e exemplaire)
-            self.hit = nil
-            lastCode = nil
-        } catch {
-            failure = error.localizedDescription
-        }
-    }
-}
-
-struct ScanHit: Equatable {
-    let code: String
-    let card: CardSummary
-    let printId: String?
-    let language: CardLanguage?
 }
 
 /// Extraction des codes imprimés dans le texte lu par la caméra (tolère O/0 et I/1).
@@ -189,6 +186,9 @@ nonisolated enum PrintCodeReader {
 
 /// Caméra VisionKit (reconnaissance de texte en direct).
 private struct DataScannerRepresentable: UIViewControllerRepresentable {
+    /// Faux quand on est passé sur la relecture : la caméra se met en pause.
+    var scanning: Bool
+    var onFailure: () -> Void
     let onCodes: ([String]) -> Void
 
     func makeUIViewController(context: Context) -> DataScannerViewController {
@@ -205,7 +205,21 @@ private struct DataScannerRepresentable: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ controller: DataScannerViewController, context: Context) {
-        if !controller.isScanning { try? controller.startScanning() }
+        guard scanning != controller.isScanning else { return }
+        guard scanning else {
+            controller.stopScanning()
+            return
+        }
+        do {
+            try controller.startScanning()
+        } catch {
+            // La vue n'est pas encore dans une fenêtre : on retente hors du cycle de mise à
+            // jour, et on ne déclare la caméra inutilisable que si ça rate encore.
+            Task { @MainActor in
+                guard !controller.isScanning else { return }
+                do { try controller.startScanning() } catch { onFailure() }
+            }
+        }
     }
 
     static func dismantleUIViewController(_ controller: DataScannerViewController, coordinator: Coordinator) {
