@@ -1,1624 +1,1767 @@
 {
- "auth": {
-  "errors": {
-   "email": "Enter a valid email address",
-   "passwordLength": "At least 10 characters",
-   "passwordMax": "128 characters maximum",
-   "passwordRequired": "Enter your password",
-   "usernameChars": "Letters, numbers, _ and - only",
-   "usernameLength": "3 to 32 characters"
-  },
-  "fields": {
-   "email": "Email",
-   "password": "Password",
-   "passwordHint": "At least 10 characters",
-   "username": "Username"
-  },
-  "landing": {
-   "description": "Log your cards and structure decks, build lists from what you actually own, and find out which meta decks you can put together — with the price of what's left to buy.",
-   "login": "Log in",
-   "register": "Create an account",
-   "title": "Your collection. Your decks.<muted>What you're missing.</muted>"
-  },
-  "login": {
-   "submit": "Log in",
-   "switch": "No account yet? <link>Sign up</link>",
-   "title": "Welcome back"
-  },
-  "register": {
-   "submit": "Create my account",
-   "switch": "Already have an account? <link>Log in</link>",
-   "title": "Create an account"
-  }
- },
- "cards": {
-  "ban": {
-   "Banned": "Banned",
-   "Forbidden": "Forbidden",
-   "Limited": "Limited",
-   "Semi-Limited": "Semi-Limited"
-  },
-  "collectionForm": {
-   "condition": "Condition",
-   "firstEdition": "1st ed.",
-   "language": "Language",
-   "print": "Printing",
-   "quantity": "Qty",
-   "success": "{count, plural, one {# copy added to your collection} other {# copies added to your collection}}",
-   "title": "Add to my collection"
-  },
-  "conditions": {
-   "EXCELLENT": "Excellent",
-   "GOOD": "Good",
-   "LIGHT_PLAYED": "Light Played",
-   "MINT": "Mint",
-   "NEAR_MINT": "Near Mint",
-   "PLAYED": "Played",
-   "POOR": "Poor"
-  },
-  "detail": {
-   "banTcg": "TCG: {status}",
-   "fallbackTitle": "Card",
-   "level": "Lv. {level}",
-   "ownedPrice": "Owned: <strong>{owned}</strong> · Cardmarket from <strong>{price}</strong>",
-   "printUnspecified": "Unspecified printing",
-   "prints": "Printings ({count})",
-   "scale": "Scale {scale}"
-  },
-  "interactions": {
-   "byTraits": "(by its traits)",
-   "byTraitsTitle": "These cards don't name it: they target its level, attribute or type",
-   "emptyIndexed": "No specific link found in the card texts: this card doesn't target any particular name or type, and no card specifically targets it.",
-   "emptyIndexing": "The interaction index is still being built, check back in a minute.",
-   "generic": "Broad effects (work with many cards): {list}",
-   "in": {
-    "MATERIAL": "Material for",
-    "MENTION": "Mentioned by",
-    "RECOVER": "Recovered by",
-    "SEARCH": "Searched by",
-    "SEND_GY": "Sent to the GY by",
-    "SPECIAL_SUMMON": "Summoned by",
-    "SUMMON_EXTRA": "Summoned from the Extra Deck by"
-   },
-   "none": "Nothing on this side.",
-   "noneMine": "None of your cards here.",
-   "onlyMine": "Only my cards",
-   "out": {
-    "MATERIAL": "Possible materials",
-    "MENTION": "Mentions",
-    "RECOVER": "Recovers",
-    "SEARCH": "Searches",
-    "SEND_GY": "Sends to the GY",
-    "SPECIAL_SUMMON": "Summons",
-    "SUMMON_EXTRA": "Summons from the Extra Deck"
-   },
-   "ownedLinked": "{count} of your cards",
-   "tabs": {
-    "in": "Used by",
-    "out": "What it does"
-   },
-   "title": "Interactions"
-  },
-  "wishlistForm": {
-   "maxPrice": "Max budget (€)",
-   "open": "Add to wishlist",
-   "print": "Target printing",
-   "quantity": "Qty",
-   "success": "Added to your wishlist",
-   "title": "I'm looking for it"
-  }
- },
- "catalog": {
-  "allCards": "Every Yu-Gi-Oh! card",
-  "approximate": "No exact match for “{query}” — here are the closest cards.",
-  "count": "{count, plural, one {# card} other {# cards}}",
-  "empty": {
-   "description": "Try another name, or remove some filters. If the catalog is empty, run the sync (pnpm cards:sync).",
-   "title": "No cards found"
-  },
-  "filters": {
-   "allArchetypes": "All archetypes",
-   "archetype": "Archetype",
-   "owned": "Owned",
-   "searchPlaceholder": "FR or EN name, archetype, or print code (SDBE-FR001)…",
-   "searchPlaceholderCompact": "Name, archetype…",
-   "sort": {
-    "atk": "ATK",
-    "def": "DEF",
-    "level": "Level",
-    "name": "Name",
-    "newest": "Newest",
-    "relevance": "Relevance"
-   },
-   "sortLabel": "Sort",
-   "sortOption": "Sort: {label}"
-  },
-  "title": "Catalog"
- },
- "collection": {
-  "conditions": {
-   "EXCELLENT": "Excellent",
-   "GOOD": "Good",
-   "LIGHT_PLAYED": "Light Played",
-   "MINT": "Mint",
-   "NEAR_MINT": "Near Mint",
-   "PLAYED": "Played",
-   "POOR": "Poor"
-  },
-  "import": {
-   "cardCount": "{count, plural, one {# card} other {# cards}}",
-   "confirm": {
-    "add": "Add this product",
-    "copiesEach": "Copies of each",
-    "description": "Its <strong>{count, plural, one {# card} other {# cards}}</strong> will be added to your collection, using the product’s official quantities when we can find them (Yugipedia list), otherwise 1 copy of each. The product will show up in the “Products” tab of your collection.",
-    "language": "Language",
-    "releasedOn": "released {date}",
-    "toast": "{count, plural, one {# card} other {# cards}} added from “{set}”",
-    "toastVerified": "{count, plural, one {# card} other {# cards}} added from “{set}” (official quantities)"
-   },
-   "kinds": {
-    "ALL": "All",
-    "BOX": "Box sets",
-    "OTHER": "Boosters & more",
-    "STARTER": "Starter Decks",
-    "STRUCTURE": "Structure Decks",
-    "TIN": "Tins"
-   },
-   "kindsLabel": "Product type",
-   "noResults": "No products found. Try another type, a keyword or the code printed on your cards.",
-   "searchPlaceholder": "Filter: “dragon”, “2022”, set code (SDBE)…",
-   "title": "Add a whole product"
-  },
-  "row": {
-   "addCopy": "Add one copy",
-   "removeCopy": "Remove one copy",
-   "unknownPrint": "Print ?"
-  },
-  "view": {
-   "addCards": "Add cards",
-   "addProduct": "Add a product",
-   "description": "Everything you own, by print, condition and language.",
-   "empty": {
-    "description": "Add cards from the catalog, or import a whole Structure Deck at once.",
-    "noMatch": "No matches",
-    "title": "Your collection is empty"
-   },
-   "filterPlaceholder": "Filter my collection…",
-   "stats": {
-    "copies": "Copies",
-    "distinctCards": "Unique cards",
-    "estimatedValue": "Estimated value"
-   },
-   "tabs": {
-    "cards": "Cards",
-    "label": "Collection view",
-    "products": "Products"
-   },
-   "title": "My collection"
-  }
- },
- "common": {
-  "actions": {
-   "add": "Add",
-   "back": "Back",
-   "cancel": "Cancel",
-   "close": "Close",
-   "copied": "Copied",
-   "copy": "Copy",
-   "create": "Create",
-   "delete": "Delete",
-   "remove": "Remove",
-   "retry": "Retry",
-   "save": "Save"
-  },
-  "categories": {
-   "MONSTER": "Monsters",
-   "SKILL": "Skills",
-   "SPELL": "Spells",
-   "TOKEN": "Tokens",
-   "TRAP": "Traps"
-  },
-  "locale": {
-   "label": "Language"
-  },
-  "pagination": {
-   "label": "Pagination",
-   "next": "Next →",
-   "previous": "← Previous"
-  },
-  "status": {
-   "error": "Something went wrong",
-   "loading": "Loading…",
-   "none": "—"
-  },
-  "zones": {
-   "EXTRA": "Extra Deck",
-   "MAIN": "Main Deck",
-   "SIDE": "Side Deck"
-  }
- },
- "deckBuilder": {
-  "actions": {
-   "addOne": "Add one copy to the {zone}",
-   "cannotAdd": "Can’t add this card",
-   "copies": "{total}/{limit, plural, one {# copy} other {# copies}}",
-   "inDeck": "In this deck",
-   "owned": "{owned} owned{toBuy, plural, =0 {} other { · # to buy}}",
-   "removeOne": "Remove one copy from the {zone}",
-   "zoneCount": "{count}/{max} cards"
-  },
-  "add": {
-   "extraDeckMonster": "This monster goes in the Extra Deck",
-   "maxCopies": "{limit, plural, one {Maximum # copy} other {Maximum # copies}}",
-   "notExtraDeck": "Only Fusion, Synchro, Xyz and Link monsters go in the Extra Deck",
-   "zoneFull": "{zone} is full"
-  },
-  "header": {
-   "guide": "Guide",
-   "guideDialogTitle": "Guide: {name}",
-   "guideHint": "How to play this deck: game plan, combos, mistakes to avoid",
-   "nameLabel": "Deck name"
-  },
-  "issues": {
-   "title": "Deck not legal",
-   "tooManyCopies": "{name}: {count, plural, one {# copy} other {# copies}} (max {limit})",
-   "wrongZone": "{name} doesn’t belong in the {zone}",
-   "zoneTooLarge": "{zone}: {count, plural, one {# card} other {# cards}} (maximum {limit})",
-   "zoneTooSmall": "{zone}: {count, plural, one {# card} other {# cards}} (minimum {limit})"
-  },
-  "missing": {
-   "addAll": "Add all to wishlist",
-   "added": "{count, plural, one {# card added to your wishlist} other {# cards added to your wishlist}}",
-   "summary": "<strong>{count, plural, one {# copy} other {# copies}}</strong> not owned · about <strong>{cost}</strong>"
-  },
-  "picker": {
-   "noOwnedResults": "None of your cards match. Uncheck “Owned” to search all cards.",
-   "noResults": "No results.",
-   "search": "Search",
-   "suggestions": "Suggestions",
-   "suggestionsCount": "Suggestions ({count})",
-   "suggestionsEmpty": "Add a few cards to the deck: suggestions are based on its archetypes.",
-   "suggestionsHint": "Cards from your collection that share an archetype with your deck or are mentioned by it.",
-   "tileTitle": "{name}\nClick: details · Ctrl/⌘+click: add · Shift+click: add to Side Deck"
-  },
-  "save": {
-   "dirty": "Unsaved changes",
-   "error": "Save failed — retry",
-   "saved": "Saved",
-   "saving": "Saving…"
-  },
-  "zone": {
-   "copyTitle": "{name}\nClick: details · Ctrl/⌘+click: remove",
-   "copyTitleMissing": "{name} — not owned\nClick: details · Ctrl/⌘+click: remove",
-   "empty": "Click a card on the left to see its details and add it",
-   "emptySide": "Open a card and add it to the Side Deck, or Shift+click to add it directly",
-   "missingBadge": "MISSING"
-  }
- },
- "decks": {
-  "formats": {
-   "CASUAL": "Casual",
-   "EDISON": "Edison",
-   "GOAT": "GOAT",
-   "OCG": "OCG",
-   "TCG": "TCG"
-  },
-  "new": {
-   "file": ".ydk file",
-   "fileHint": "Pick a file or paste its contents.",
-   "format": "Format",
-   "modes": {
-    "empty": "Empty deck",
-    "ydk": "Import a .ydk"
-   },
-   "name": "Name",
-   "submit": {
-    "empty": "Create and build",
-    "ydk": "Import"
-   },
-   "title": "New deck"
-  },
-  "view": {
-   "confirmDelete": "Delete “{name}”?",
-   "counts": {
-    "extra": "{count} extra",
-    "main": "{count} main",
-    "side": "{count} side"
-   },
-   "delete": "Delete",
-   "description": "Build with what you have, see what’s missing.",
-   "duplicate": "Duplicate",
-   "duplicated": "Deck duplicated",
-   "empty": {
-    "description": "Start from scratch, import a .ydk, or check the suggestions to see what your collection can already build.",
-    "title": "No decks yet"
-   },
-   "newDeck": "New deck",
-   "title": "My decks",
-   "updatedOn": "Edited {date}"
-  }
- },
- "duel": {
-  "actions": {
-   "ACTIVATE": "Activate",
-   "ATTACK": "Attack",
-   "ATTACK_DIRECT": "Attack directly",
-   "REPOSITION": "Change position",
-   "SET_MONSTER": "Set",
-   "SET_SPELL": "Set",
-   "SPSUMMON": "Special Summon",
-   "SUMMON": "Normal Summon",
-   "available": "{count, plural, one {# action} other {# actions}}",
-   "inspect": "View card"
-  },
-  "attributes": {
-   "DARK": "DARK",
-   "DIVINE": "DIVINE",
-   "EARTH": "EARTH",
-   "FIRE": "FIRE",
-   "LIGHT": "LIGHT",
-   "WATER": "WATER",
-   "WIND": "WIND"
-  },
-  "board": {
-   "actionable": "Has available actions",
-   "banished": "Banished",
-   "cardCount": "{count, plural, one {# card} other {# cards}}",
-   "chain": "Chain",
-   "chainLink": "Link {link}",
-   "counters": "{count, plural, one {# counter} other {# counters}}",
-   "deck": "Deck",
-   "emptyPile": "Empty.",
-   "extra": "Extra Deck",
-   "field": "Field",
-   "grave": "Graveyard",
-   "hand": "Hand",
-   "lp": "LP",
-   "materials": "{count, plural, one {# material} other {# materials}}",
-   "opponent": "Opponent",
-   "opponentTurn": "Opponent's turn",
-   "turn": "Turn {turn}",
-   "you": "You",
-   "yourTurn": "Your turn"
-  },
-  "controls": {
-   "battle": "Battle Phase",
-   "chains": {
-    "ALWAYS": "Always",
-    "SMART": "Auto",
-    "hint": "Auto: you're only asked to chain after an opponent's action (or when it's mandatory). Always: at every chain window, as in EDOPro.",
-    "label": "Chains"
-   },
-   "end": "End turn",
-   "leave": "Leave",
-   "main2": "Main Phase 2",
-   "restart": "Restart",
-   "sound": "Sound",
-   "speed": {
-    "fast": "Fast",
-    "label": "Animations",
-    "normal": "Normal",
-    "off": "Off"
-   },
-   "thinking": "The engine is resolving…"
-  },
-  "engine": {
-   "downloading": "The server is downloading card scripts (a few minutes the first time). This page refreshes on its own.",
-   "loading": "Checking the duel engine…",
-   "stats": "{cards, number} cards · {scripts, number} scripts",
-   "unavailable": "The duel engine is unavailable on this server."
-  },
-  "fx": {
-   "activate": "Chain Link {link}",
-   "attack": "Attack!",
-   "direct": "Direct attack!",
-   "duel": "Duel!",
-   "negated": "Negated!",
-   "opponent": "Opp.",
-   "set": "Card set",
-   "skip": "Skip",
-   "summon": {
-    "FLIP": "Flip Summon",
-    "NORMAL": "Normal Summon",
-    "SPECIAL": "Special Summon"
-   },
-   "you": "You"
-  },
-  "inspector": {
-   "empty": "Hover over or tap a card to read it.",
-   "hidden": "Face-down card."
-  },
-  "locations": {
-   "BANISHED": "banishment",
-   "DECK": "Deck",
-   "EXTRA": "Extra Deck",
-   "GRAVE": "GY",
-   "HAND": "hand",
-   "MZONE": "Monster Zone",
-   "OVERLAY": "Xyz materials",
-   "SZONE": "Spell & Trap Zone"
-  },
-  "log": {
-   "ACTIVATE": "Chain Link {link}: {player, select, you {you activate} other {your opponent activates}} <c>{card}</c>",
-   "ATTACK": "<c>{card}</c> attacks <t>{target}</t>",
-   "ATTACK_direct": "<c>{card}</c> attacks directly",
-   "CHAIN_NEGATED": "Chain Link {link} is negated",
-   "COIN": "Coin toss: {results}",
-   "DAMAGE": "{player, select, you {You take} other {Your opponent takes}} {amount} damage",
-   "DAMAGE_cost": "{player, select, you {You pay} other {Your opponent pays}} {amount} LP",
-   "DICE": "Die roll: {results}",
-   "DRAW": "{player, select, you {You draw} other {Your opponent draws}} {cards}",
-   "DRAW_hidden": "{player, select, you {You draw} other {Your opponent draws}} {count, plural, one {# card} other {# cards}}",
-   "MOVE": "<c>{card}</c> goes from {from} to {to}",
-   "PHASE": "{phase}",
-   "RECOVER": "{player, select, you {You gain} other {Your opponent gains}} {amount} LP",
-   "SET": "{player, select, you {You set a card} other {Your opponent sets a card}}",
-   "SUMMON_FLIP": "{player, select, you {You Flip Summon} other {Your opponent Flip Summons}} <c>{card}</c>",
-   "SUMMON_NORMAL": "{player, select, you {You Normal Summon} other {Your opponent Normal Summons}} <c>{card}</c>",
-   "SUMMON_SPECIAL": "{player, select, you {You Special Summon} other {Your opponent Special Summons}} <c>{card}</c>",
-   "TURN": "Turn {turn} — {player, select, you {your turn} other {opponent's turn}}",
-   "WIN": "{player, select, you {You win the duel} other {Your opponent wins the duel}}",
-   "WIN_draw": "The duel is a draw",
-   "empty": "Nothing yet.",
-   "heads": "Heads",
-   "hidden": "a card",
-   "tails": "Tails",
-   "title": "Duel log"
-  },
-  "page": {
-   "description": "Test your combos and play real duels with the actual card effects (EDOPro engine).",
-   "rules": "Rules reminder",
-   "source": "Source code (AGPL-3.0)",
-   "title": "Duel simulator"
-  },
-  "phaseShort": {
-   "BATTLE": "BP",
-   "DRAW": "DP",
-   "END": "EP",
-   "MAIN1": "M1",
-   "MAIN2": "M2",
-   "STANDBY": "SP"
-  },
-  "phases": {
-   "BATTLE": "Battle Phase",
-   "DRAW": "Draw Phase",
-   "END": "End Phase",
-   "MAIN1": "Main Phase 1",
-   "MAIN2": "Main Phase 2",
-   "STANDBY": "Standby Phase"
-  },
-  "positions": {
-   "ATK": "Face-up Attack",
-   "DEF": "Face-up Defense",
-   "FD_ATK": "Face-down Attack",
-   "FD_DEF": "Face-down Defense"
-  },
-  "prompt": {
-   "ANNOUNCE_ATTRIBUTE": {
-    "title": "Declare an Attribute"
-   },
-   "ANNOUNCE_CARD": {
-    "search": "Search a card…",
-    "title": "Declare a card name"
-   },
-   "ANNOUNCE_NUMBER": {
-    "title": "Declare a number"
-   },
-   "ANNOUNCE_RACE": {
-    "title": "Declare a monster Type"
-   },
-   "BATTLE": "Choose an attacker, activate an effect or leave the Battle Phase.",
-   "CHAIN": {
-    "forced": "You must activate one of these effects.",
-    "pass": "Don't activate",
-    "title": "Activate a card or effect?"
-   },
-   "IDLE": "Click a highlighted card to play it, or change phase.",
-   "OPTION": {
-    "title": "Choose an option"
-   },
-   "PLACE": {
-    "disable": "Choose a zone that will become unusable",
-    "title": "Choose a zone on the field",
-    "titleMany": "Choose {count} zones on the field"
-   },
-   "POSITION": {
-    "title": "Choose a battle position"
-   },
-   "SELECT_CARDS": {
-    "CARD": "Select cards",
-    "SUM": "Select cards whose total reaches {sum}",
-    "TRIBUTE": "Select the monsters to Tribute",
-    "always": "Always included",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "selected": "{count} selected",
-    "total": "Total: {total} / {sum}"
-   },
-   "SELECT_UNSELECT": {
-    "cancel": "Cancel",
-    "finish": "Done",
-    "selected": "Selected (click to remove)",
-    "title": "Select cards one by one"
-   },
-   "SORT": {
-    "confirm": "Confirm",
-    "hint": "Click the cards in the order you want (first = top).",
-    "keep": "Keep this order",
-    "reset": "Reset",
-    "title": "Choose the order"
-   },
-   "YESNO": {
-    "no": "No",
-    "title": "Confirm",
-    "yes": "Yes"
-   },
-   "choose": "Choose {count, plural, one {# value} other {# values}}",
-   "confirm": "Confirm",
-   "opponent": "Opponent's choice",
-   "range": {
-    "between": "Choose {min} to {max}",
-    "exact": "Choose {count}",
-    "upTo": "Choose up to {max}"
-   },
-   "waiting": "Waiting for the opponent…"
-  },
-  "races": {
-   "AQUA": "Aqua",
-   "BEAST": "Beast",
-   "BEASTWARRIOR": "Beast-Warrior",
-   "CELESTIALWARRIOR": "Celestial Warrior",
-   "CREATORGOD": "Creator God",
-   "CYBERSE": "Cyberse",
-   "CYBORG": "Cyborg",
-   "DINOSAUR": "Dinosaur",
-   "DIVINE": "Divine-Beast",
-   "DRAGON": "Dragon",
-   "FAIRY": "Fairy",
-   "FIEND": "Fiend",
-   "FISH": "Fish",
-   "GALAXY": "Galaxy",
-   "HIGHDRAGON": "High Dragon",
-   "ILLUSION": "Illusion",
-   "INSECT": "Insect",
-   "MACHINE": "Machine",
-   "MAGICALKNIGHT": "Magical Knight",
-   "OMEGAPSYCHIC": "Omega Psychic",
-   "PLANT": "Plant",
-   "PSYCHIC": "Psychic",
-   "PYRO": "Pyro",
-   "REPTILE": "Reptile",
-   "ROCK": "Rock",
-   "SEASERPENT": "Sea Serpent",
-   "SPELLCASTER": "Spellcaster",
-   "THUNDER": "Thunder",
-   "WARRIOR": "Warrior",
-   "WINGEDBEAST": "Winged Beast",
-   "WYRM": "Wyrm",
-   "ZOMBIE": "Zombie"
-  },
-  "result": {
-   "draw": "Draw",
-   "lose": "Defeat",
-   "newSetup": "New setup",
-   "rematch": "Replay with the same setup",
-   "review": "Look at the board",
-   "win": "Victory!"
-  },
-  "setup": {
-   "board": {
-    "auto": "Auto",
-    "empty": "No cards: the opponent starts with an empty field.",
-    "full": "This zone is full.",
-    "hint": "Cards already in place on the opponent's side when the duel starts: monsters, set cards, hand traps, graveyard…",
-    "label": "Opponent board",
-    "locations": {
-     "BANISHED": "Banished",
-     "FZONE": "Field Zone",
-     "GRAVE": "Graveyard",
-     "HAND": "Hand",
-     "MZONE": "Monster Zone",
-     "SZONE": "Spell & Trap Zone"
+  "auth": {
+    "errors": {
+      "email": "Enter a valid email address",
+      "passwordLength": "At least 10 characters",
+      "passwordMax": "128 characters maximum",
+      "passwordRequired": "Enter your password",
+      "usernameChars": "Letters, numbers, _ and - only",
+      "usernameLength": "3 to 32 characters"
     },
-    "noResults": "No card found.",
-    "positions": {
-     "ATTACK": "Attack",
-     "DEFENSE": "Defense",
-     "FACE_UP": "Face-up",
-     "SET": "Face-down"
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "passwordHint": "At least 10 characters",
+      "username": "Username"
     },
-    "remove": "Remove",
-    "search": "Search a card to add…",
-    "zone": "Zone"
-   },
-   "deck": "Your deck",
-   "deckPlaceholder": "Choose a deck",
-   "first": {
-    "label": "Who goes first",
-    "me": "Me",
-    "opponent": "Opponent"
-   },
-   "hand": {
-    "clear": "Clear",
-    "count": "{count}/{max} chosen",
-    "hint": "Force cards into your starting hand (the rest is drawn at random).",
-    "label": "Opening hand"
-   },
-   "lp": "Life Points",
-   "noDecks": "Build a deck first to test it here.",
-   "opponent": {
-    "BOT": "Bot",
-    "BOT_hint": "Plays the opponent deck on its own: builds its board, attacks when it's worth it and answers your plays with hand traps and traps.",
-    "ME": "Controlled by me",
-    "ME_hint": "You make every choice for both players: test interactions, hand traps, lines.",
-    "PASSIVE": "Passive",
-    "PASSIVE_hint": "Does nothing: perfect to test combos against a board you set up.",
-    "label": "Opponent"
-   },
-   "opponentDeck": {
-    "copy": "A copy of my deck",
-    "label": "Opponent deck"
-   },
-   "resume": "Resuming the duel…",
-   "start": "Start the duel",
-   "title": "New duel"
-  }
- },
- "guide": {
-  "aiError": "{error} — showing the computed guide instead.",
-  "combo": {
-   "endBoard": "End board",
-   "hand": "In hand"
+    "landing": {
+      "description": "Log your cards and structure decks, build lists from what you actually own, and find out which meta decks you can put together — with the price of what's left to buy.",
+      "login": "Log in",
+      "register": "Create an account",
+      "title": "Your collection. Your decks.<muted>What you're missing.</muted>"
+    },
+    "login": {
+      "submit": "Log in",
+      "switch": "No account yet? <link>Sign up</link>",
+      "title": "Welcome back"
+    },
+    "register": {
+      "submit": "Create my account",
+      "switch": "Already have an account? <link>Log in</link>",
+      "title": "Create an account"
+    }
   },
-  "mode": {
-   "AI": "AI-written",
-   "RULES": "Computed",
-   "label": "Guide version"
+  "cards": {
+    "ban": {
+      "Banned": "Banned",
+      "Forbidden": "Forbidden",
+      "Limited": "Limited",
+      "Semi-Limited": "Semi-Limited"
+    },
+    "collectionForm": {
+      "condition": "Condition",
+      "firstEdition": "1st ed.",
+      "language": "Language",
+      "print": "Printing",
+      "quantity": "Qty",
+      "success": "{count, plural, one {# copy added to your collection} other {# copies added to your collection}}",
+      "title": "Add to my collection"
+    },
+    "conditions": {
+      "EXCELLENT": "Excellent",
+      "GOOD": "Good",
+      "LIGHT_PLAYED": "Light Played",
+      "MINT": "Mint",
+      "NEAR_MINT": "Near Mint",
+      "PLAYED": "Played",
+      "POOR": "Poor"
+    },
+    "detail": {
+      "banTcg": "TCG: {status}",
+      "fallbackTitle": "Card",
+      "level": "Lv. {level}",
+      "ownedPrice": "Owned: <strong>{owned}</strong> · Cardmarket from <strong>{price}</strong>",
+      "printUnspecified": "Unspecified printing",
+      "prints": "Printings ({count})",
+      "scale": "Scale {scale}"
+    },
+    "interactions": {
+      "byTraits": "(by its traits)",
+      "byTraitsTitle": "These cards don't name it: they target its level, attribute or type",
+      "emptyIndexed": "No specific link found in the card texts: this card doesn't target any particular name or type, and no card specifically targets it.",
+      "emptyIndexing": "The interaction index is still being built, check back in a minute.",
+      "generic": "Broad effects (work with many cards): {list}",
+      "in": {
+        "MATERIAL": "Material for",
+        "MENTION": "Mentioned by",
+        "RECOVER": "Recovered by",
+        "SEARCH": "Searched by",
+        "SEND_GY": "Sent to the GY by",
+        "SPECIAL_SUMMON": "Summoned by",
+        "SUMMON_EXTRA": "Summoned from the Extra Deck by"
+      },
+      "none": "Nothing on this side.",
+      "noneMine": "None of your cards here.",
+      "onlyMine": "Only my cards",
+      "out": {
+        "MATERIAL": "Possible materials",
+        "MENTION": "Mentions",
+        "RECOVER": "Recovers",
+        "SEARCH": "Searches",
+        "SEND_GY": "Sends to the GY",
+        "SPECIAL_SUMMON": "Summons",
+        "SUMMON_EXTRA": "Summons from the Extra Deck"
+      },
+      "ownedLinked": "{count} of your cards",
+      "tabs": {
+        "in": "Used by",
+        "out": "What it does"
+      },
+      "title": "Interactions"
+    },
+    "wishlistForm": {
+      "maxPrice": "Max budget (€)",
+      "open": "Add to wishlist",
+      "print": "Target printing",
+      "quantity": "Qty",
+      "success": "Added to your wishlist",
+      "title": "I'm looking for it"
+    }
   },
-  "nothing": "Nothing in particular.",
-  "roles": {
-   "BOSS": "Boss",
-   "DRAW": "Draw",
-   "EXTENDER": "Extender",
-   "FUSION_ENABLER": "Fusion",
-   "HAND_TRAP": "Hand trap",
-   "INTERRUPTION": "Interruption",
-   "RECOVERY": "Recovery",
-   "REMOVAL": "Removal",
-   "RITUAL_ENABLER": "Ritual",
-   "SEARCHER": "Searcher",
-   "STARTER": "Starter"
+  "catalog": {
+    "allCards": "Every Yu-Gi-Oh! card",
+    "approximate": "No exact match for “{query}” — here are the closest cards.",
+    "count": "{count, plural, one {# card} other {# cards}}",
+    "empty": {
+      "description": "Try another name, or remove some filters. If the catalog is empty, run the sync (pnpm cards:sync).",
+      "title": "No cards found"
+    },
+    "filters": {
+      "allArchetypes": "All archetypes",
+      "archetype": "Archetype",
+      "owned": "Owned",
+      "searchPlaceholder": "FR or EN name, archetype, or print code (SDBE-FR001)…",
+      "searchPlaceholderCompact": "Name, archetype…",
+      "sort": {
+        "atk": "ATK",
+        "def": "DEF",
+        "level": "Level",
+        "name": "Name",
+        "newest": "Newest",
+        "relevance": "Relevance"
+      },
+      "sortLabel": "Sort",
+      "sortOption": "Sort: {label}"
+    },
+    "title": "Catalog"
   },
-  "sections": {
-   "combos": "Combos to know ({count})",
-   "combosDisclaimer": "Suggested lines found by reading the card effects: always check the exact card text (conditions, costs, “once per turn”).",
-   "firstSecond": "Going first / going second",
-   "gamePlan": "Game plan",
-   "goingFirst": "Going first",
-   "goingSecond": "Going second",
-   "keyCards": "Key cards",
-   "mistakes": "Mistakes to avoid",
-   "tips": "Tips"
-  },
-  "source": {
-   "ai": "Written by AI",
-   "aiWithModel": "Written by AI · {model}",
-   "rules": "Computed from card effects"
-  },
-  "title": "Deck guide",
-  "writing": "The AI is writing the guide… (a local model can take a minute or two) — showing the computed version in the meantime."
- },
- "ios": {
-  "card": {
-   "foil": "Rarity",
-   "rotateHint": "Drag to turn the card. Double-tap to lay it flat, tap to close.",
-   "showcaseFailed": "3D view unavailable",
-   "showcaseFailedHint": "The card image could not be loaded, or this device cannot render the card in 3D.",
-   "zoom": "Show the card full screen"
+  "collection": {
+    "conditions": {
+      "EXCELLENT": "Excellent",
+      "GOOD": "Good",
+      "LIGHT_PLAYED": "Light Played",
+      "MINT": "Mint",
+      "NEAR_MINT": "Near Mint",
+      "PLAYED": "Played",
+      "POOR": "Poor"
+    },
+    "import": {
+      "cardCount": "{count, plural, one {# card} other {# cards}}",
+      "confirm": {
+        "add": "Add this product",
+        "copiesEach": "Copies of each",
+        "description": "Its <strong>{count, plural, one {# card} other {# cards}}</strong> will be added to your collection, using the product’s official quantities when we can find them (Yugipedia list), otherwise 1 copy of each. The product will show up in the “Products” tab of your collection.",
+        "language": "Language",
+        "releasedOn": "released {date}",
+        "toast": "{count, plural, one {# card} other {# cards}} added from “{set}”",
+        "toastVerified": "{count, plural, one {# card} other {# cards}} added from “{set}” (official quantities)"
+      },
+      "kinds": {
+        "ALL": "All",
+        "BOX": "Box sets",
+        "OTHER": "Other products",
+        "STARTER": "Starter Decks",
+        "STRUCTURE": "Structure Decks",
+        "TIN": "Tins",
+        "BOOSTER": "Boosters"
+      },
+      "kindsLabel": "Product type",
+      "noResults": "No products found. Try another type, a keyword or the code printed on your cards.",
+      "searchPlaceholder": "Filter: “dragon”, “2022”, set code (SDBE)…",
+      "title": "Add a whole product"
+    },
+    "row": {
+      "addCopy": "Add one copy",
+      "removeCopy": "Remove one copy",
+      "unknownPrint": "Print ?"
+    },
+    "view": {
+      "addCards": "Add cards",
+      "addProduct": "Add a product",
+      "description": "Everything you own, by print, condition and language.",
+      "empty": {
+        "description": "Add cards from the catalog, or import a whole Structure Deck at once.",
+        "noMatch": "No matches",
+        "title": "Your collection is empty"
+      },
+      "filterPlaceholder": "Filter my collection…",
+      "stats": {
+        "copies": "Copies",
+        "distinctCards": "Unique cards",
+        "estimatedValue": "Estimated value"
+      },
+      "tabs": {
+        "cards": "Cards",
+        "label": "Collection view",
+        "products": "Products",
+        "releases": "Sets"
+      },
+      "title": "My collection"
+    },
+    "filters": {
+      "category": "Category",
+      "allCategories": "Any category",
+      "archetype": "Archetype",
+      "allArchetypes": "Any archetype",
+      "rarity": "Rarity",
+      "allRarities": "Any rarity",
+      "language": "Language",
+      "allLanguages": "Any language",
+      "condition": "Condition",
+      "allConditions": "Any condition",
+      "set": "Set",
+      "allSets": "Any set",
+      "sort": "Sort",
+      "sortOption": "Sort: {label}",
+      "firstEdition": "1st edition",
+      "sorts": {
+        "name": "Name",
+        "quantity": "Copies",
+        "value": "Value",
+        "rarity": "Rarity",
+        "newest": "Recently added"
+      }
+    }
   },
   "common": {
-   "more": "More",
-   "share": "Share"
-  },
-  "deck": {
-   "addCards": "Add cards",
-   "emptyZone": "Tap “Add cards”, then a card to see its details and add it.",
-   "exportYdk": "Export .ydk",
-   "moveToSide": "Move one to the Side Deck",
-   "testInDuel": "Test in a duel"
-  },
-  "errors": {
-   "decoding": "Unexpected server response ({detail}). Is the server up to date?",
-   "noServer": "No server configured."
-  },
-  "more": {
-   "catalog": "Search the whole catalogue",
-   "duel": "Test a deck against the simulator",
-   "rules": "Every official rule, illustrated",
-   "wishlist": "The cards you are still missing"
-  },
-  "nav": {
-   "more": "More"
-  },
-  "products": {
-   "removeWithCards": "Remove it and its cards"
-  },
-  "scan": {
-   "alreadyOwned": "You already own {count}",
-   "copies": "{count, plural, one {# copy queued} other {# copies queued}}",
-   "hint": "Point the camera at the code printed under the artwork (e.g. SDBE-FR001).",
-   "notFound": "No card found for {code}",
-   "queued": "{count, plural, one {# queued} other {# queued}}",
-   "review": {
-    "addManually": "Add by hand",
-    "commit": "{count, plural, one {Add # card to my collection} other {Add # cards to my collection}}",
-    "empty": "No card scanned yet",
-    "emptyHint": "Point the camera at the code under the artwork, or add a card by hand.",
-    "failures": "Cards that were not added",
-    "noPrints": "No known edition for this card.",
-    "open": "{count, plural, one {Check # card} other {Check # cards}}",
-    "openEmpty": "The queue is empty",
-    "search": "Search a card",
-    "title": "Check before adding"
-   },
-   "title": "Scan cards",
-   "unavailable": "Scanning isn't available",
-   "unavailableHint": "Allow camera access in Settings, or use a device with a camera.",
-   "undo": "Undo last scan"
-  },
-  "server": {
-   "change": "Change server",
-   "connect": "Connect",
-   "current": "Server",
-   "description": "YGO Deck Builder is self-hosted: enter the address of your instance (the one you open in your browser).",
-   "hint": "HTTPS by default. On your local network, type the full address, e.g. http://192.168.1.20:3000",
-   "invalid": "That doesn't look like a valid address.",
-   "notAnInstance": "This server doesn't answer like a YGO Deck Builder instance.",
-   "placeholder": "ygo.example.com",
-   "title": "Your server",
-   "unreachable": "Couldn't reach {url}: {error}"
-  },
-  "settings": {
-   "account": "Account",
-   "credits": "Card data and images: YGOPRODeck. Box art and set lists: Yugipedia. Yu-Gi-Oh! is a trademark of Konami; this app is not affiliated with Konami.",
-   "languageHint": "Also applies to card names and effects, and to generated guides.",
-   "meta": "Meta",
-   "server": "Server",
-   "systemLanguage": "System language",
-   "title": "Settings"
-  }
- },
- "layout": {
-  "appName": "Deck Builder",
-  "logout": "Log out",
-  "metaDescription": "Your Yu-Gi-Oh! collection, your decks, and what you're missing to play the meta.",
-  "metaTitle": "YGO Deck Builder",
-  "nav": {
-   "catalog": "Catalog",
-   "collection": "Collection",
-   "decks": "Decks",
-   "duel": "Duel",
-   "rules": "Rules",
-   "suggestions": "Suggestions",
-   "wishlist": "Wishlist"
-  },
-  "pages": {
-   "catalog": "Catalog",
-   "collection": "Collection",
-   "deckNotFound": "Deck not found.",
-   "decks": "Decks",
-   "duel": "Duel simulator",
-   "login": "Log in",
-   "register": "Sign up",
-   "rules": "Rules",
-   "suggestions": "Suggestions",
-   "wishlist": "Wishlist"
-  }
- },
- "products": {
-  "dialog": {
-   "content": {
-    "all": "The product’s full contents, with what you still have.",
-    "forCopies": "Quantities for {count} products.",
-    "missingOnly": "Missing only ({count})",
-    "ownedOf": "{owned} owned out of {needed}"
-   },
-   "fallbackTitle": "Product",
-   "groups": {
-    "EXTRA": "Extra Deck",
-    "MONSTER": "Monsters",
-    "OTHER": "Other",
-    "SPELL": "Spells",
-    "TRAP": "Traps"
-   },
-   "guideIntro": "Guide for the deck straight out of the box. To improve it with the rest of your collection, create a deck from it and open its suggestions.",
-   "header": {
-    "addedOn": "Added {date}",
-    "cardCount": "{total, plural, one {# card} other {# cards}} · {distinct} unique",
-    "complete": "All its cards are in your collection.",
-    "confirmRemove": "Remove “{name}” from your products?",
-    "copyFailed": "Couldn’t copy (the browser refused).",
-    "copyList": "Copy list",
-    "createDeck": "Create a deck from it",
-    "listCopied": "List copied",
-    "missing": "{count, plural, one {# copy is} other {# copies are}} no longer in your collection (sold, traded, entered by mistake…).",
-    "productCount": "{count, plural, one {# product} other {# products}} · {language}",
-    "remove": "Remove",
-    "removeCardsToo": "Also remove its {count, plural, one {# card} other {# cards}} from my collection (otherwise they stay, only the product disappears from the list)",
-    "unverified": "Unverified quantities",
-    "unverifiedHint": "Official list not found: 1 copy counted per card",
-    "verified": "Official quantities"
-   },
-   "tabs": {
-    "content": "Contents",
-    "guide": "How to play it"
-   },
-   "text": {
-    "header": "{name} — {count, plural, one {# product} other {# products}}"
-   }
-  },
-  "kinds": {
-   "BOX": "Box set",
-   "OTHER": "Product",
-   "STARTER": "Starter Deck",
-   "STRUCTURE": "Structure Deck",
-   "TIN": "Tin"
-  },
-  "tab": {
-   "addProduct": "Add a product",
-   "cardCount": "{count, plural, one {# card} other {# cards}}",
-   "complete": "All its cards are in your collection",
-   "deck": "Deck",
-   "empty": {
-    "description": "Add a Structure Deck, a tin or a box set: it will show up here with its full contents, plus a play guide for decks.",
-    "title": "No products yet"
-   },
-   "missing": "{count, plural, one {# copy is} other {# copies are}} no longer in your collection"
-  }
- },
- "rules": {
-  "description": "The official Yu-Gi-Oh! TCG rules under the current Master Rule, from setting up a duel to resolving Chains.",
-  "diagrams": {
-   "activate": "Activation",
-   "attached": "attached beneath",
-   "between": "Levels you can Summon",
-   "chainLink": "Chain Link",
-   "counters": "counters",
-   "damage": "damage",
-   "deck": "Deck",
-   "destroyed": "destroyed",
-   "extraDeck": "Extra Deck",
-   "extraZones": "Extra Monster Zones",
-   "fieldZone": "Field Zone",
-   "fromHandDeck": "from the hand or Deck",
-   "fusion": "Fusion",
-   "grave": "Graveyard",
-   "hand": "Hand",
-   "level": "Level",
-   "link": "Link",
-   "linkRating": "LINK",
-   "materials": "Materials",
-   "monsterZones": "Monster Zones",
-   "noDamage": "no damage",
-   "noTribute": "no Tribute",
-   "nonTuner": "non-Tuner",
-   "notFirstTurn": "not on turn 1",
-   "opponentSide": "Opponent",
-   "optional": "optional",
-   "pointed": "zones pointed to",
-   "rank": "Rank",
-   "remove": "remove",
-   "removed": "removed from play",
-   "resolution": "Resolution",
-   "ritual": "Ritual",
-   "sameLevel": "same Level",
-   "scale": "Scale",
-   "shared": "shared",
-   "spell": "Spell",
-   "spellZones": "Spell and Trap Zones",
-   "sum": "total",
-   "synchro": "Synchro",
-   "token": "Token",
-   "tribute": "Tribute",
-   "tributes": "Tributes",
-   "tuner": "Tuner",
-   "xyz": "Xyz",
-   "youSide": "You"
-  },
-  "glossary": [
-   {
-    "definition": "The moment you announce a card or effect and pay its cost. A negated activation still costs you whatever you paid.",
-    "term": "Activation"
-   },
-   {
-    "definition": "To stop an activation or an effect from applying. Negating is not destroying: a negated card can stay on the field.",
-    "term": "Negate"
-   },
-   {
-    "definition": "To remove a card from play, apart from the Graveyard. Some cards banish face-down, and nobody may look at it then.",
-    "term": "Banish"
-   },
-   {
-    "definition": "The stack of cards and effects activated in response to one another. The last one activated resolves first.",
-    "term": "Chain"
-   },
-   {
-    "definition": "To pick a specific card on activation. A card that “cannot be targeted” may not be chosen, even if the effect could affect it.",
-    "term": "Target"
-   },
-   {
-    "definition": "A marker an effect places on a card, which disappears along with it.",
-    "term": "Counter"
-   },
-   {
-    "definition": "What you pay on activation: discarding, paying LP, Tributing, detaching a Material. A cost is never given back.",
-    "term": "Cost"
-   },
-   {
-    "definition": "An effect that applies at all times while the card is on the field, with no activation and no Chain Link.",
-    "term": "Continuous Effect"
-   },
-   {
-    "definition": "An effect that activates when a specific event happens, such as “When this card is Summoned”.",
-    "term": "Trigger Effect"
-   },
-   {
-    "definition": "An effect you activate yourself, during your own Main Phase.",
-    "term": "Ignition Effect"
-   },
-   {
-    "definition": "A Spell Speed 2 effect, which you can activate during the opponent’s turn or in response to an activation.",
-    "term": "Quick Effect"
-   },
-   {
-    "definition": "An effect that activates when the monster is turned from face-down to face-up.",
-    "term": "FLIP Effect"
-   },
-   {
-    "definition": "A monster whose effect activates from your hand, often by discarding it, to disrupt the opponent during their turn.",
-    "term": "Hand trap"
-   },
-   {
-    "definition": "A monster created by an effect, which is not a card and vanishes as soon as it leaves the field.",
-    "term": "Token"
-   },
-   {
-    "definition": "The cards used for a Summon from the Extra Deck: Fusion, Synchro, Xyz or Link.",
-    "term": "Material"
-   },
-   {
-    "definition": "To send a monster you control to the Graveyard in order to pay for a Summon or a cost.",
-    "term": "Tribute"
-   },
-   {
-    "definition": "An optional “When… you can” effect can no longer be activated if its event is not the last thing that happened.",
-    "term": "Missed timing"
-   },
-   {
-    "definition": "How an effect ranks inside a Chain: only an effect of equal or higher Spell Speed may respond.",
-    "term": "Spell Speed"
-   }
-  ],
-  "groups": {
-   "advanced": "Going further",
-   "basics": "The basics",
-   "playing": "Playing your cards",
-   "summons": "Summoning"
-  },
-  "labels": {
-   "clear": "Clear",
-   "example": "Example",
-   "exampleCards": "Cards mentioned",
-   "glossary": "Glossary",
-   "glossaryHint": "The words that keep coming back on cards.",
-   "links": "Official resources",
-   "linksHint": "The full rules and video tutorials published by Konami.",
-   "noResults": "No rule matches this search.",
-   "openDuel": "Try it in the simulator",
-   "points": "Key points",
-   "search": "Search a rule, a keyword…",
-   "video": "Video tutorial",
-   "videoConsent": "The video is only loaded from YouTube once you click.",
-   "videoLoad": "Play the video",
-   "videoOpen": "Open on YouTube"
-  },
-  "links": [
-   {
-    "description": "The complete rules published by Konami, Link Summoning included.",
-    "label": "Official rulebook (PDF)",
-    "url": "https://img.yugioh-card.com/en/downloads/rulebook/SD_RuleBook_EN_10.pdf"
-   },
-   {
-    "description": "The official series: how a duel plays out, battle, Chains and every kind of Summon.",
-    "label": "Video tutorials",
-    "url": "https://www.yugioh-card.com/eu/videotutorials/"
-   },
-   {
-    "description": "The official beginners hub, with the same tutorials and starter advice.",
-    "label": "Yu-Gi-Oh! for beginners",
-    "url": "https://www.yugioh-card.com/eu/beginners/"
-   }
-  ],
-  "sections": [
-   {
-    "group": "basics",
-    "icon": "BookOpen",
-    "id": "basics",
-    "paragraphs": [
-     "Yu-Gi-Oh! is a duel between two players. Each player starts with 8000 Life Points (LP) and draws 5 cards. Your goal is to bring your opponent’s LP to 0 using monsters, Spells and Traps.",
-     "Before the first duel, decide at random (for example with a coin toss) which player chooses to go first or second. In a Match, the loser of the previous duel makes that choice for the next one."
-    ],
-    "points": [
-     "You win when your opponent’s LP reach 0. If both players reach 0 at the same time, the duel is a draw.",
-     "You win when your opponent has to draw a card but their Deck is empty.",
-     "Some cards have their own win condition, such as holding all five pieces of Exodia in your hand.",
-     "Main Deck: 40 to 60 cards. Extra Deck: 0 to 15 cards. Side Deck: 0 to 15 cards.",
-     "You can have at most 3 copies of a card with the same name across your Main, Extra and Side Deck combined.",
-     "The Forbidden & Limited List restricts some cards further: Forbidden (0 copies), Limited (1 copy), Semi-Limited (2 copies)."
-    ],
-    "summary": "Two duelists, 8000 LP each: you win by bringing your opponent’s down to 0.",
-    "title": "Basics"
-   },
-   {
-    "diagram": "field",
-    "group": "basics",
-    "icon": "LayoutGrid",
-    "id": "field",
-    "paragraphs": [
-     "Your side of the field has 5 Main Monster Zones, 5 Spell & Trap Zones and 1 Field Zone. The 2 Extra Monster Zones sit between both players and are shared.",
-     "You can use only one Extra Monster Zone at a time, unless a card effect lets you use the other one. When your monster leaves it, you can use either Extra Monster Zone again.",
-     "Your leftmost and rightmost Spell & Trap Zones are also your Pendulum Zones. The Field Zone holds your Field Spell."
-    ],
-    "points": [
-     "Deck: face-down pile; you draw from the top.",
-     "Extra Deck: holds your Fusion, Synchro, Xyz and Link Monsters, plus Pendulum Monsters sent there face-up during the duel.",
-     "Graveyard (GY): face-up pile of used and destroyed cards; both players can look at it at any time.",
-     "Banished cards are removed from play, usually face-up, and are kept apart from the GY.",
-     "Monsters are in Attack Position (vertical) or Defense Position (horizontal). A face-down monster is always in Defense Position, and you can look at your own face-down cards."
-    ],
-    "summary": "5 Monster Zones, 5 Spell & Trap Zones and 1 Field Zone each; the 2 Extra Monster Zones are shared.",
-    "title": "The field"
-   },
-   {
-    "diagram": "turn",
-    "group": "basics",
-    "icon": "Clock",
-    "id": "turn",
-    "paragraphs": [
-     "Each turn goes through the phases below, in this order. The player whose turn it is is the “turn player”.",
-     "The first turn of the duel has two restrictions: the player going first does not draw, and nobody can conduct a Battle Phase."
-    ],
-    "points": [
-     "Draw Phase: draw 1 card. The player going first skips this draw on the first turn of the duel.",
-     "Standby Phase: effects that happen “during the Standby Phase”, such as maintenance costs, are applied or activated.",
-     "Main Phase 1: Summon or Set monsters, change battle positions, activate cards and Set Spells and Traps.",
-     "Battle Phase: optional. Attack with your monsters. It cannot be conducted on the first turn of the duel.",
-     "Main Phase 2: only if you conducted a Battle Phase. You can do the same things as in Main Phase 1.",
-     "End Phase: effects that happen “during the End Phase” are applied. If you have more than 6 cards in your hand, discard until you have 6."
-    ],
-    "summary": "Six phases in order, including the Battle Phase — optional, and skipped on the very first turn.",
-    "title": "Turn structure"
-   },
-   {
-    "cards": [
-     "Summoned Skull"
-    ],
-    "diagram": "tributes",
-    "example": "You control 1 monster. To Normal Summon a Level 6 monster, you Tribute it. This uses your Normal Summon for the turn, so you cannot Set another monster.",
-    "group": "summons",
-    "icon": "ArrowUp",
-    "id": "normal-summon",
-    "paragraphs": [
-     "Once per turn, during your Main Phase, you can either Normal Summon a monster from your hand in face-up Attack Position or Set it in face-down Defense Position. Both actions use your single Normal Summon for the turn.",
-     "Higher-Level monsters require Tributes: you send monsters you control to the GY. This is a Tribute Summon (or a Tribute Set), which is a kind of Normal Summon.",
-     "During your Main Phase, you can also Set Spells and Traps face-down in your Spell & Trap Zones, as many as you have free zones."
-    ],
-    "points": [
-     "Level 1 to 4: no Tribute.",
-     "Level 5 or 6: 1 Tribute.",
-     "Level 7 or higher: 2 Tributes.",
-     "Flip Summon: during your Main Phase, change a face-down Defense Position monster to face-up Attack Position. You cannot do it the turn that monster was Set.",
-     "During your Main Phase, you can change each monster’s battle position once per turn, but not the turn it was Summoned or Set, nor after it attacked that turn. A Flip Summon counts as that change."
-    ],
-    "summary": "One Normal Summon or Set per turn, with Tributes from Level 5 upwards.",
-    "title": "Normal Summon and Set"
-   },
-   {
-    "cards": [
-     "Monster Reborn",
-     "Cyber Dragon"
-    ],
-    "example": "A monster says “Cannot be Normal Summoned/Set. Must first be Special Summoned from your hand by banishing 2 monsters from your GY.” If you Summon it that way and it is destroyed, a revival card can bring it back. If it was simply discarded from your hand, it cannot be revived.",
-    "group": "summons",
-    "icon": "Sparkles",
-    "id": "special-summon",
-    "paragraphs": [
-     "A Special Summon does not use your Normal Summon. You can perform as many as your cards allow, including during your opponent’s turn when an effect permits it.",
-     "Some monsters have a built-in procedure, such as “Cannot be Normal Summoned/Set. Must first be Special Summoned…” or “You can Special Summon this card from your hand by…”. This procedure does not start a Chain, but cards that negate Summons can stop it.",
-     "Other Special Summons are the effect of a card, for example “Special Summon 1 monster from your GY”. These are resolved as part of a Chain."
-    ],
-    "points": [
-     "Fusion, Ritual, Synchro, Xyz, Pendulum and Link Summons are all Special Summons.",
-     "Extra Deck monsters, Ritual Monsters and monsters that “must first be Special Summoned” must be properly Summoned before another effect can Special Summon them from the GY or banishment.",
-     "If a monster’s text says it “cannot be Special Summoned by other ways”, it can only ever be Summoned by its own procedure."
-    ],
-    "summary": "As many Special Summons as your cards allow, each following its own text.",
-    "title": "Special Summon"
-   },
-   {
-    "cards": [
-     "Polymerization",
-     "Blue-Eyes White Dragon",
-     "Blue-Eyes Ultimate Dragon"
-    ],
-    "diagram": "fusion",
-    "example": "“Polymerization” lets you Fusion Summon using monsters from your hand or field. You send the two monsters listed on the Fusion Monster from your hand to the GY, then Special Summon that Fusion Monster.",
-    "group": "summons",
-    "icon": "Combine",
-    "id": "fusion",
-    "paragraphs": [
-     "Fusion Monsters are in your Extra Deck. Their text lists the required Fusion Materials, for example two monsters by name or “1 DARK monster + 1 Warrior monster”.",
-     "Most Fusion Summons use a card such as “Polymerization”: send the listed materials from your hand or field to the GY, then Special Summon the Fusion Monster from your Extra Deck. The Fusion card states where the materials can come from.",
-     "Some Fusion Monsters describe their own procedure (such as a Contact Fusion that shuffles the materials into the Deck). Follow the card’s text; whether that counts as a Fusion Summon also depends on the text."
-    ],
-    "points": [
-     "Materials must match the text exactly. A substitute material only works if its own text says so.",
-     "Materials are sent to the GY unless the card used says otherwise, for example banish them or shuffle them into the Deck.",
-     "If the Fusion Summon is negated, the materials are still used and the Fusion Monster is destroyed."
-    ],
-    "summary": "The listed Materials go to the Graveyard and the Fusion Monster arrives from the Extra Deck.",
-    "title": "Fusion Summon"
-   },
-   {
-    "cards": [
-     "Black Luster Ritual",
-     "Black Luster Soldier"
-    ],
-    "diagram": "ritual",
-    "example": "Your Ritual Monster is Level 8 and the Ritual Spell asks for total Levels equal to or greater than 8. You Tribute a Level 4 monster from your hand and a Level 5 monster from your field (total 9), then Special Summon the Ritual Monster.",
-    "group": "summons",
-    "icon": "Flame",
-    "id": "ritual",
-    "paragraphs": [
-     "Ritual Monsters are in your Main Deck and are usually Summoned from your hand. You need a Ritual Spell that can Summon them; the two cards usually name each other.",
-     "Activate the Ritual Spell, then Tribute monsters from your hand and/or field whose total Levels meet the requirement written on the Ritual Spell, and Special Summon the Ritual Monster."
-    ],
-    "points": [
-     "Most Ritual Spells ask for total Levels “equal to or greater than” the Ritual Monster’s Level; some ask for “exactly equal”. Read the Ritual Spell.",
-     "The Ritual Monster you are Summoning cannot be one of the Tributes.",
-     "Ritual Monsters cannot be Normal Summoned or Set.",
-     "Some cards use other sources, such as sending monsters from the Deck or banishing them from the GY; follow the text."
-    ],
-    "summary": "A Ritual Spell plus Tributes whose Levels match the monster you are Summoning.",
-    "title": "Ritual Summon"
-   },
-   {
-    "cards": [
-     "Junk Synchron",
-     "Stardust Dragon"
-    ],
-    "diagram": "synchro",
-    "example": "A Level 3 Tuner plus a Level 4 non-Tuner make 7: you can Synchro Summon a Level 7 Synchro Monster.",
-    "group": "summons",
-    "icon": "Zap",
-    "id": "synchro",
-    "paragraphs": [
-     "Synchro Monsters are in your Extra Deck. During your Main Phase, send 1 Tuner and 1 or more non-Tuner monsters you control face-up to the GY. Their Levels must add up exactly to the Synchro Monster’s Level. Then Special Summon it.",
-     "The Synchro Monster’s text lists its materials, for example “1 Tuner + 1+ non-Tuner monsters”. Some require a specific Tuner or non-Tuner, or more than one Tuner."
-    ],
-    "points": [
-     "Materials must be face-up monsters you control, unless a card says otherwise.",
-     "A Tuner has “Tuner” written in its type line.",
-     "Xyz and Link Monsters have no Level, so they normally cannot be Synchro Material.",
-     "A Synchro Summon does not start a Chain, but cards that negate Summons can stop it."
-    ],
-    "summary": "1 Tuner plus non-Tuners whose Levels add up exactly to the Synchro Monster’s Level.",
-    "title": "Synchro Summon"
-   },
-   {
-    "cards": [
-     "Number 39: Utopia"
-    ],
-    "diagram": "xyz",
-    "example": "Two Level 4 monsters you control can be used to Xyz Summon a Rank 4 Xyz Monster that requires “2 Level 4 monsters”.",
-    "group": "summons",
-    "icon": "Layers",
-    "id": "xyz",
-    "paragraphs": [
-     "Xyz Monsters are in your Extra Deck. During your Main Phase, stack the face-up monsters you control that the Xyz Monster requires (usually 2 or more with the same Level), then place the Xyz Monster on top. The monsters underneath become Xyz Materials.",
-     "Xyz Monsters have a Rank, not a Level. Effects that refer to Levels do not apply to them, and they normally cannot be used for a Synchro Summon.",
-     "Xyz Materials are not monsters on the field. When the Xyz Monster leaves the field, its materials are sent to the GY."
-    ],
-    "points": [
-     "Many Xyz Monsters pay a cost by detaching Xyz Materials: move them from under the card to the GY.",
-     "Tokens cannot be used as Xyz Material.",
-     "An Xyz Monster with no materials stays on the field; it just cannot pay detach costs."
-    ],
-    "summary": "Two or more monsters of the same Level attach beneath a monster of equal Rank.",
-    "title": "Xyz Summon"
-   },
-   {
-    "cards": [
-     "Performapal Hip Hippo"
-    ],
-    "diagram": "pendulum",
-    "group": "summons",
-    "icon": "Scale",
-    "id": "pendulum",
-    "paragraphs": [
-     "Pendulum Monsters are in your Main Deck. Besides being Summoned as monsters, they can be activated as Spells in your Pendulum Zones (your leftmost and rightmost Spell & Trap Zones). There they are Spell Cards and use their Pendulum Scale and Pendulum Effect.",
-     "Once per turn, during your Main Phase, if you have a card in both Pendulum Zones, you can Pendulum Summon: Special Summon, at the same time, any number of monsters from your hand and/or face-up Pendulum Monsters from your Extra Deck whose Levels are strictly between the two Scales.",
-     "When a Pendulum Monster on your field would be sent to the GY, it is placed face-up in your Extra Deck instead."
-    ],
-    "points": [
-     "With Scales 1 and 8, you can Pendulum Summon monsters from Level 2 to Level 7.",
-     "Monsters from your hand go to Main Monster Zones. Face-up Pendulum Monsters from your Extra Deck go to an Extra Monster Zone or a Main Monster Zone a Link Monster points to.",
-     "A Pendulum Summon does not start a Chain, but cards that negate Summons can stop it."
-    ],
-    "summary": "Two Scales in your Pendulum Zones open a multi-monster Summon between those values.",
-    "title": "Pendulum Summon"
-   },
-   {
-    "cards": [
-     "Decode Talker"
-    ],
-    "diagram": "link",
-    "example": "A LINK-3 Monster needs 3 materials: you can use 3 monsters, or a LINK-2 Monster counting as 2 materials plus 1 other monster.",
-    "group": "summons",
-    "icon": "Link",
-    "id": "link",
-    "paragraphs": [
-     "Link Monsters are in your Extra Deck. During your Main Phase, send face-up monsters you control that meet the listed requirements to the GY as Link Material, then Special Summon the Link Monster.",
-     "The number of materials must equal the Link Rating (LINK-1, LINK-2…). A Link Monster used as material can count as 1 material or as a number of materials equal to its Link Rating.",
-     "Link Arrows point to adjacent zones. A monster in a zone a Link Arrow points to is “linked” to that Link Monster. Two Link Monsters that point to each other are “co-linked”."
-    ],
-    "points": [
-     "Link Monsters have no Level and no DEF; they are always in face-up Attack Position.",
-     "They cannot be Set, changed to Defense Position or turned face-down.",
-     "Tokens can be used as Link Material.",
-     "From an Extra Monster Zone, Link Arrows can point to Main Monster Zones on both sides of the field."
-    ],
-    "summary": "Materials are sent to the Graveyard, and the arrows open zones for your other monsters.",
-    "title": "Link Summon"
-   },
-   {
-    "diagram": "emz",
-    "example": "Your field is empty. You Synchro Summon into a Main Monster Zone, keeping the Extra Monster Zone free. Next, you Link Summon a LINK-2 Monster with bottom-left and bottom-right arrows into the Extra Monster Zone. Those arrows point to two of your Main Monster Zones, so your next Link Monster or face-up Pendulum Monsters from your Extra Deck can be placed there.",
-    "group": "summons",
-    "icon": "LayoutDashboard",
-    "id": "extra-deck-zones",
-    "paragraphs": [
-     "Since the April 2020 Master Rule revision, the zone a monster Summoned from the Extra Deck can use depends on its card type.",
-     "Fusion, Synchro and Xyz Monsters, including Pendulum Monsters of those types Summoned while face-down in the Extra Deck, can go to any of your free Main Monster Zones or to an Extra Monster Zone.",
-     "Link Monsters, and Pendulum Monsters Special Summoned face-up from the Extra Deck, must go to an Extra Monster Zone or to one of your Main Monster Zones a Link Monster points to."
-    ],
-    "points": [
-     "You can still use only one Extra Monster Zone, unless a card effect allows otherwise.",
-     "Placing a Fusion, Synchro or Xyz Monster in a Main Monster Zone keeps the Extra Monster Zone free for a Link Monster.",
-     "These restrictions only apply to monsters Summoned from the Extra Deck; monsters from the hand, Deck or GY go to Main Monster Zones."
-    ],
-    "summary": "Link Monsters go through an Extra Monster Zone; the others can also use your main zones.",
-    "title": "Extra Deck and Extra Monster Zones"
-   },
-   {
-    "cards": [
-     "Scapegoat"
-    ],
-    "diagram": "tokens",
-    "example": "A card Special Summons 4 Sheep Tokens in face-up Defense Position. They fill 4 of your 5 Monster Zones: you can use them as Link Material, but only one zone is left to Summon anything else.",
-    "group": "summons",
-    "icon": "Shapes",
-    "id": "tokens",
-    "paragraphs": [
-     "A Token is a monster created by a card effect. It does not exist in your Deck: its name, Type, Attribute, Level, ATK and DEF all come from the effect that creates it. You represent it with any recognizable marker — an official Token card, a coin, a die.",
-     "On the field, a Token behaves like a monster: it occupies a Monster Zone, can attack, be destroyed in battle, change battle position, be Tributed or be used as Material. If no Monster Zone is free, it cannot be Summoned at all.",
-     "The moment a Token leaves the field — destroyed, sent to the Graveyard, banished, returned to the hand — it is removed from play. It never actually reaches the Graveyard, so effects that trigger “when a card is sent to the Graveyard” do not see it."
-    ],
-    "points": [
-     "A Token is not a card: effects that refer to “cards” in the hand, Deck or Graveyard never count it.",
-     "It can be Tributed for a Tribute Summon, and used as Fusion, Synchro or Link Material.",
-     "It cannot be used as Xyz Material: Materials are attached beneath the monster, so the Token would leave the field and vanish at once.",
-     "Several Tokens can share the same name, and each one takes up its own Monster Zone.",
-     "A Token only appears if a card creates it: you can never Summon one on your own initiative."
-    ],
-    "summary": "A Token is not a card: it fills a Monster Zone and vanishes the moment it leaves the field.",
-    "title": "Tokens"
-   },
-   {
-    "cards": [
-     "Mystical Space Typhoon",
-     "Solemn Judgment"
-    ],
-    "diagram": "chain",
-    "example": "You activate a Normal Spell (Chain Link 1). Your opponent responds with a Normal Trap (Chain Link 2). You respond with a Counter Trap that negates it (Chain Link 3). The Counter Trap resolves first and negates the Trap, then your Spell resolves.",
-    "group": "playing",
-    "icon": "ListOrdered",
-    "id": "chains",
-    "paragraphs": [
-     "When a card or effect is activated, it becomes Chain Link 1. Players can respond with Spell Speed 2 or higher, equal to or higher than the last Chain Link, adding more links. When both players pass, the Chain resolves in reverse order: the last link first.",
-     "Costs (discarding, paying LP, detaching, Tributing…) are paid on activation and are not returned if the activation is negated. In card text, what comes before a colon (:) is a condition, what comes before a semicolon (;) is a cost or a target, and the rest is the effect."
-    ],
-    "points": [
-     "Spell Speed 1: Normal, Equip, Continuous, Field and Ritual Spells; Ignition, Trigger and Flip effects. They cannot be activated in response, except for simultaneous triggers.",
-     "Spell Speed 2: Quick-Play Spells, Normal and Continuous Traps, Quick Effects.",
-     "Spell Speed 3: Counter Traps. Only another Spell Speed 3 can respond to them.",
-     "Simultaneous triggers (SEGOC) are chained in this order: turn player’s mandatory, opponent’s mandatory, turn player’s optional, opponent’s optional.",
-     "An optional “When… you can” effect misses the timing if its event was not the last thing to happen. “If… you can” and mandatory effects do not.",
-     "Set Traps and Set Quick-Play Spells cannot be activated the turn they were Set, unless a card says so.",
-     "“Once per turn”: each copy once per turn, reset if it leaves the field. “You can only use this effect of [card] once per turn”: once per turn for all copies."
-    ],
-    "summary": "Responses stack up and resolve in reverse order, following Spell Speed.",
-    "title": "Chains and Spell Speed"
-   },
-   {
-    "cards": [
-     "Royal Magical Library"
-    ],
-    "diagram": "counters",
-    "example": "A monster gains 1 Spell Counter each time a Spell is activated, then you remove 3 of those counters to draw a card. The counters are gone as soon as you activate, even if the draw is then negated.",
-    "group": "playing",
-    "icon": "Hash",
-    "id": "counters",
-    "paragraphs": [
-     "Some cards place counters — Spell Counters, Bushido Counters and many others — on themselves or on other cards. A counter is not a card: it is a marker you put on the card concerned.",
-     "A counter can only be placed if a card’s text says so, and only on a card that can hold it. If that card leaves the field or is turned face-down, its counters are removed and do not come back with it.",
-     "Removing counters is usually a cost: you remove them when you activate the effect. If the effect is then negated, the counters stay spent."
-    ],
-    "points": [
-     "Every counter has a name: an effect that removes “Spell Counters” cannot remove a counter of another type.",
-     "Counters sit on the card, not on the zone: they follow the card if it moves to another zone on the field.",
-     "A card can hold several counters; some texts set a maximum.",
-     "Xyz Materials are not counters: they are real attached cards, and both players may look at them at any time."
-    ],
-    "summary": "A marker an effect places on a card, which disappears along with it.",
-    "title": "Counters"
-   },
-   {
-    "diagram": "battle",
-    "example": "Your 2000 ATK monster attacks a 1500 ATK monster in Attack Position: it is destroyed and your opponent takes 500 damage. Against a 2500 DEF monster in Defense Position, nothing is destroyed and you take 500 damage.",
-    "group": "playing",
-    "icon": "Swords",
-    "id": "battle",
-    "paragraphs": [
-     "The Battle Phase has a Start Step, Battle Step, Damage Step and End Step. Each face-up Attack Position monster you control can attack once per Battle Phase.",
-     "Battle Step: choose one of your monsters and declare an attack on an opponent’s monster. If your opponent controls no monsters, you can attack directly and they take damage equal to your monster’s ATK. If the number of monsters your opponent controls changes before the Damage Step, a replay occurs: choose a new target, attack directly if they now have none, or stop the attack.",
-     "Damage Step: face-down monsters are flipped face-up, then damage is calculated. Only Counter Traps, cards that directly change ATK or DEF, effects that negate an activation, and effects whose text allows it can be activated."
-    ],
-    "points": [
-     "Attack vs Attack Position: the monster with lower ATK is destroyed and its controller takes the difference. Equal ATK: both are destroyed and no damage is dealt. If both have 0 ATK, neither is destroyed.",
-     "Attack vs Defense Position: if ATK is higher than DEF, the defender is destroyed and no damage is dealt, unless the attacker inflicts piercing damage. If ATK is lower, the attacker’s controller takes the difference. If equal, nothing happens.",
-     "A face-down monster that is attacked is flipped face-up; its FLIP effect activates after damage calculation.",
-     "Monsters destroyed by battle are sent to the GY at the end of the Damage Step."
-    ],
-    "summary": "Attacks compare ATK, or DEF when the defending monster is in Defense Position.",
-    "title": "Battle"
-   },
-   {
-    "cards": [
-     "Mirror Force"
-    ],
-    "group": "playing",
-    "icon": "Wand",
-    "id": "spells-traps",
-    "paragraphs": [
-     "Activate Spells from your hand during your Main Phase, or Set them and activate them later. Traps must be Set first and can be activated from the next turn on, during either player’s turn. Normal Spells and Normal Traps go to the GY after resolving; Continuous, Equip and Field cards stay on the field.",
-     "Hand traps are monsters whose effect you activate from your hand, often by discarding them, usually as Quick Effects during either player’s turn."
-    ],
-    "points": [
-     "Normal Spell: one-time effect, Spell Speed 1.",
-     "Quick-Play Spell: from the hand, only during your own turn, in any phase; if Set, during either player’s turn, but not the turn it was Set.",
-     "Continuous Spell: stays on the field and keeps applying.",
-     "Equip Spell: equipped to a face-up monster; it is destroyed if that monster leaves the field or is turned face-down.",
-     "Field Spell: goes to your Field Zone, 1 per player. If you place a new one, your previous one is sent to the GY.",
-     "Ritual Spell: used to Ritual Summon.",
-     "Normal Trap: one-time effect, Spell Speed 2.",
-     "Continuous Trap: stays on the field, Spell Speed 2.",
-     "Counter Trap: Spell Speed 3, usually negates an activation or a Summon."
-    ],
-    "summary": "Spells activate from your hand; Traps must be Set at least a turn in advance.",
-    "title": "Spells and Traps"
-   },
-   {
-    "example": "You lose the first duel to a Spell-heavy deck. Between duels you bring in 2 anti-Spell cards from your Side Deck and take out 2 cards that do little in this match-up.",
-    "group": "advanced",
-    "icon": "Trophy",
-    "id": "match",
-    "paragraphs": [
-     "Tournaments are played as Matches: the first player to win two duels wins the Match. The player who lost a duel chooses who goes first in the next one.",
-     "Between two duels of the same Match you may swap cards between your Deck and your Side Deck (0 to 15 cards). Once you are done, your Main Deck must still hold 40 to 60 cards, your Extra Deck at most 15, and your Side Deck must be back to its original size.",
-     "The Forbidden & Limited List is updated regularly by Konami. It applies to your Main Deck, Extra Deck and Side Deck combined."
-    ],
-    "points": [
-     "Forbidden: 0 copies. Limited: 1. Semi-Limited: 2. Otherwise 3 copies at most.",
-     "The TCG (Europe, Americas, Oceania) and the OCG (Japan, Asia) each have their own list.",
-     "Side Decking time between duels is limited, often to a few minutes.",
-     "If time runs out during a Match, an end-of-time procedure decides the winner, usually the player with the most LP."
-    ],
-    "summary": "Tournaments are played as Matches: two duels won, a Side Deck between games, a Limited List.",
-    "title": "Matches, Side Deck and Limited List"
-   }
-  ],
-  "source": "This page summarizes the official rulebook (current Master Rule); when a card’s text or an official ruling says otherwise, the card and the ruling take precedence.",
-  "title": "Rules",
-  "tocLabel": "On this page"
- },
- "suggestions": {
-  "generate": {
-   "card": {
-    "allOwned": "All owned",
-    "inclusion": "Played in {percent} of lists",
-    "missingBadge": "MISSING",
-    "toBuy": "{count, plural, one {# copy to buy} other {# copies to buy}}"
-   },
-   "create": "Create this deck",
-   "created": "Deck “{name}” created",
-   "modes": {
-    "META": {
-     "hint": "The tournament reference list, with what you’re missing",
-     "label": "Full meta list"
+    "actions": {
+      "add": "Add",
+      "back": "Back",
+      "cancel": "Cancel",
+      "close": "Close",
+      "copied": "Copied",
+      "copy": "Copy",
+      "create": "Create",
+      "delete": "Delete",
+      "remove": "Remove",
+      "retry": "Retry",
+      "save": "Save"
     },
-    "OWNED": {
-     "hint": "Only what you own, rounded out with your staples",
-     "label": "With my cards"
-    }
-   },
-   "modesOfficial": {
-    "META": {
-     "hint": "The deck as sold, with what you’re missing",
-     "label": "Full official list"
+    "categories": {
+      "MONSTER": "Monsters",
+      "SKILL": "Skills",
+      "SPELL": "Spells",
+      "TOKEN": "Tokens",
+      "TRAP": "Traps"
     },
-    "OWNED": {
-     "hint": "Only what you own, rounded out with your staples",
-     "label": "With my cards"
+    "locale": {
+      "label": "Language"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "next": "Next →",
+      "previous": "← Previous"
+    },
+    "status": {
+      "error": "Something went wrong",
+      "loading": "Loading…",
+      "none": "—"
+    },
+    "zones": {
+      "EXTRA": "Extra Deck",
+      "MAIN": "Main Deck",
+      "SIDE": "Side Deck"
     }
-   },
-   "nameLabel": "Deck name",
-   "sources": {
-    "ARCHETYPE": "Archetype",
-    "FILLER": "Filler",
-    "FLEX": "Flex",
-    "STAPLE": "Staple",
-    "SUPPORT": "Support"
-   },
-   "status": {
-    "fragile": "Complete, but fragile",
-    "incomplete": "Incomplete with your collection",
-    "playable": "Complete and playable with your cards"
-   },
-   "summary": {
-    "cost": "Estimated cost",
-    "counts": "Main / Extra / Side",
-    "missingMain": "{count, plural, one {# card missing} other {# cards missing}}",
-    "nothing": "Nothing",
-    "playable": "Playable",
-    "toBuy": "To buy",
-    "toBuyValue": "{count, plural, one {# copy} other {# copies}}",
-    "yes": "Yes"
-   },
-   "titleArchetype": "Auto deck: {archetype}",
-   "titleMeta": "Build: {name}",
-   "titleOfficial": "Official deck: {name}",
-   "wishlistMissing": "{count, plural, one {Add the missing copy to my wishlist} other {Add the # missing copies to my wishlist}}",
-   "zoneCount": "{count, plural, one {# card} other {# cards}}"
   },
-  "meta": {
-   "card": {
-    "build": "Build this deck",
-    "coverage": "Share of the reference list you already own",
-    "imported": "Imported list",
-    "listCount": "{count, plural, one {# tournament list} other {# tournament lists}}",
-    "missing": "{owned}/{required} copies · <strong>{cost}</strong> to complete",
-    "playable": "You can play it as is.",
-    "share": "{share} of the meta",
-    "tier": "Tier {tier}",
-    "variant": "also “{name}”"
-   },
-   "empty": {
-    "description": "The meta is computed automatically from recent tournament top decks (YGOPRODeck). The first update runs when the API starts, then every Monday.",
-    "title": "No tournament data yet"
-   },
-   "status": {
-    "failed": "Meta updated {date} · failed",
-    "ok": "Meta updated {date} · {count, plural, one {# list} other {# lists}}",
-    "refresh": "Update",
-    "synced": "{archetypes} archetypes computed from {lists} lists"
-   }
+  "deckBuilder": {
+    "actions": {
+      "addOne": "Add one copy to the {zone}",
+      "cannotAdd": "Can’t add this card",
+      "copies": "{total}/{limit, plural, one {# copy} other {# copies}}",
+      "inDeck": "In this deck",
+      "owned": "{owned} owned{toBuy, plural, =0 {} other { · # to buy}}",
+      "removeOne": "Remove one copy from the {zone}",
+      "zoneCount": "{count}/{max} cards"
+    },
+    "add": {
+      "extraDeckMonster": "This monster goes in the Extra Deck",
+      "maxCopies": "{limit, plural, one {Maximum # copy} other {Maximum # copies}}",
+      "notExtraDeck": "Only Fusion, Synchro, Xyz and Link monsters go in the Extra Deck",
+      "zoneFull": "{zone} is full"
+    },
+    "header": {
+      "guide": "Guide",
+      "guideDialogTitle": "Guide: {name}",
+      "guideHint": "How to play this deck: game plan, combos, mistakes to avoid",
+      "nameLabel": "Deck name"
+    },
+    "issues": {
+      "title": "Deck not legal",
+      "tooManyCopies": "{name}: {count, plural, one {# copy} other {# copies}} (max {limit})",
+      "wrongZone": "{name} doesn’t belong in the {zone}",
+      "zoneTooLarge": "{zone}: {count, plural, one {# card} other {# cards}} (maximum {limit})",
+      "zoneTooSmall": "{zone}: {count, plural, one {# card} other {# cards}} (minimum {limit})"
+    },
+    "missing": {
+      "addAll": "Add all to wishlist",
+      "added": "{count, plural, one {# card added to your wishlist} other {# cards added to your wishlist}}",
+      "summary": "<strong>{count, plural, one {# copy} other {# copies}}</strong> not owned · about <strong>{cost}</strong>"
+    },
+    "picker": {
+      "noOwnedResults": "None of your cards match. Uncheck “Owned” to search all cards.",
+      "noResults": "No results.",
+      "search": "Search",
+      "suggestions": "Suggestions",
+      "suggestionsCount": "Suggestions ({count})",
+      "suggestionsEmpty": "Add a few cards to the deck: suggestions are based on its archetypes.",
+      "suggestionsHint": "Cards from your collection that share an archetype with your deck or are mentioned by it.",
+      "tileTitle": "{name}\nClick: details · Ctrl/⌘+click: add · Shift+click: add to Side Deck"
+    },
+    "save": {
+      "dirty": "Unsaved changes",
+      "error": "Save failed — retry",
+      "saved": "Saved",
+      "saving": "Saving…"
+    },
+    "zone": {
+      "copyTitle": "{name}\nClick: details · Ctrl/⌘+click: remove",
+      "copyTitleMissing": "{name} — not owned\nClick: details · Ctrl/⌘+click: remove",
+      "empty": "Click a card on the left to see its details and add it",
+      "emptySide": "Open a card and add it to the Side Deck, or Shift+click to add it directly",
+      "missingBadge": "MISSING"
+    }
   },
-  "official": {
-   "empty": {
-    "description": "Official deck lists (structure decks, starter decks, decks from boxes like Legendary Decks) are fetched from Yugipedia in the background after the API starts. Come back in a few minutes.",
-    "title": "No official decks yet"
-   },
-   "filterLabel": "Product type",
-   "filters": {
-    "ALL": "All",
-    "BOX": "Box decks",
-    "STARTER": "Starter decks",
-    "STRUCTURE": "Structure decks"
-   },
-   "owned": "In your collection",
-   "showMore": "Show more ({count})"
+  "decks": {
+    "formats": {
+      "CASUAL": "Casual",
+      "EDISON": "Edison",
+      "GOAT": "GOAT",
+      "OCG": "OCG",
+      "TCG": "TCG"
+    },
+    "new": {
+      "file": ".ydk file",
+      "fileHint": "Pick a file or paste its contents.",
+      "format": "Format",
+      "modes": {
+        "empty": "Empty deck",
+        "ydk": "Import a .ydk"
+      },
+      "name": "Name",
+      "submit": {
+        "empty": "Create and build",
+        "ydk": "Import"
+      },
+      "title": "New deck"
+    },
+    "view": {
+      "confirmDelete": "Delete “{name}”?",
+      "counts": {
+        "extra": "{count} extra",
+        "main": "{count} main",
+        "side": "{count} side"
+      },
+      "delete": "Delete",
+      "description": "Build with what you have, see what’s missing.",
+      "duplicate": "Duplicate",
+      "duplicated": "Deck duplicated",
+      "empty": {
+        "description": "Start from scratch, import a .ydk, or check the suggestions to see what your collection can already build.",
+        "title": "No decks yet"
+      },
+      "newDeck": "New deck",
+      "title": "My decks",
+      "updatedOn": "Edited {date}"
+    }
   },
-  "page": {
-   "archetypeStats": "{cards, plural, one {# card} other {# cards}} · {copies, plural, one {# copy} other {# copies}}",
-   "archetypesEmpty": "Add cards to your collection to see archetypes you can build.",
-   "description": "Today’s top decks, what your collection can already build, and decks built for you.",
-   "sections": {
-    "archetypes": "From your collection · one auto-built deck per archetype",
-    "meta": "Meta decks · the most accessible for you",
-    "official": "Official decks · structure, starter and box decks you can rebuild",
-    "playable": "Ready to play · 100% your cards"
-   },
-   "title": "Suggestions"
-  },
-  "playable": {
-   "best": "Best pick",
-   "composition": "100% your cards · {main} main · {extra} extra",
-   "empty": {
-    "action": "Add a product",
-    "description": "You need a well-stocked archetype (about ten different cards) or a good chunk of a meta deck. A Structure Deck is often the best starting point.",
-    "title": "No complete deck from your collection yet"
-   },
-   "homebrew": "Homebrew",
-   "metaTier": "Meta · Tier {tier}",
-   "official": "Official deck",
-   "open": "View & create"
-  },
-  "score": {
-   "criteria": {
-    "consistency": {
-     "hint": "Engine cards run at 3 copies",
-     "label": "Consistency"
+  "duel": {
+    "actions": {
+      "ACTIVATE": "Activate",
+      "ATTACK": "Attack",
+      "ATTACK_DIRECT": "Attack directly",
+      "REPOSITION": "Change position",
+      "SET_MONSTER": "Set",
+      "SET_SPELL": "Set",
+      "SPSUMMON": "Special Summon",
+      "SUMMON": "Normal Summon",
+      "available": "{count, plural, one {# action} other {# actions}}",
+      "inspect": "View card"
+    },
+    "attributes": {
+      "DARK": "DARK",
+      "DIVINE": "DIVINE",
+      "EARTH": "EARTH",
+      "FIRE": "FIRE",
+      "LIGHT": "LIGHT",
+      "WATER": "WATER",
+      "WIND": "WIND"
+    },
+    "board": {
+      "actionable": "Has available actions",
+      "banished": "Banished",
+      "cardCount": "{count, plural, one {# card} other {# cards}}",
+      "chain": "Chain",
+      "chainLink": "Link {link}",
+      "counters": "{count, plural, one {# counter} other {# counters}}",
+      "deck": "Deck",
+      "emptyPile": "Empty.",
+      "extra": "Extra Deck",
+      "field": "Field",
+      "grave": "Graveyard",
+      "hand": "Hand",
+      "lp": "LP",
+      "materials": "{count, plural, one {# material} other {# materials}}",
+      "opponent": "Opponent",
+      "opponentTurn": "Opponent's turn",
+      "turn": "Turn {turn}",
+      "you": "You",
+      "yourTurn": "Your turn"
+    },
+    "controls": {
+      "battle": "Battle Phase",
+      "chains": {
+        "ALWAYS": "Always",
+        "SMART": "Auto",
+        "hint": "Auto: you're only asked to chain after an opponent's action (or when it's mandatory). Always: at every chain window, as in EDOPro.",
+        "label": "Chains"
+      },
+      "end": "End turn",
+      "leave": "Leave",
+      "main2": "Main Phase 2",
+      "restart": "Restart",
+      "sound": "Sound",
+      "speed": {
+        "fast": "Fast",
+        "label": "Animations",
+        "normal": "Normal",
+        "off": "Off"
+      },
+      "thinking": "The engine is resolving…"
     },
     "engine": {
-     "hint": "Share of the Main Deck taken up by the archetype",
-     "label": "Engine"
+      "downloading": "The server is downloading card scripts (a few minutes the first time). This page refreshes on its own.",
+      "loading": "Checking the duel engine…",
+      "stats": "{cards, number} cards · {scripts, number} scripts",
+      "unavailable": "The duel engine is unavailable on this server."
     },
-    "filler": {
-     "hint": "Generic cards added to reach 40",
-     "label": "Filler"
+    "fx": {
+      "activate": "Chain Link {link}",
+      "attack": "Attack!",
+      "direct": "Direct attack!",
+      "duel": "Duel!",
+      "negated": "Negated!",
+      "opponent": "Opp.",
+      "set": "Card set",
+      "skip": "Skip",
+      "summon": {
+        "FLIP": "Flip Summon",
+        "NORMAL": "Normal Summon",
+        "SPECIAL": "Special Summon"
+      },
+      "you": "You"
     },
-    "staples": {
-     "hint": "Hand traps and generic meta cards",
-     "label": "Staples"
+    "inspector": {
+      "empty": "Hover over or tap a card to read it.",
+      "hidden": "Face-down card."
     },
-    "starters": {
-     "hint": "Copies of cards that start your combos on their own",
-     "label": "Starters"
+    "locations": {
+      "BANISHED": "banishment",
+      "DECK": "Deck",
+      "EXTRA": "Extra Deck",
+      "GRAVE": "GY",
+      "HAND": "hand",
+      "MZONE": "Monster Zone",
+      "OVERLAY": "Xyz materials",
+      "SZONE": "Spell & Trap Zone"
     },
-    "synergy": {
-     "hint": "Cards that search / summon each other, starters, Extra Deck you can actually summon",
-     "label": "Synergy"
+    "log": {
+      "ACTIVATE": "Chain Link {link}: {player, select, you {you activate} other {your opponent activates}} <c>{card}</c>",
+      "ATTACK": "<c>{card}</c> attacks <t>{target}</t>",
+      "ATTACK_direct": "<c>{card}</c> attacks directly",
+      "CHAIN_NEGATED": "Chain Link {link} is negated",
+      "COIN": "Coin toss: {results}",
+      "DAMAGE": "{player, select, you {You take} other {Your opponent takes}} {amount} damage",
+      "DAMAGE_cost": "{player, select, you {You pay} other {Your opponent pays}} {amount} LP",
+      "DICE": "Die roll: {results}",
+      "DRAW": "{player, select, you {You draw} other {Your opponent draws}} {cards}",
+      "DRAW_hidden": "{player, select, you {You draw} other {Your opponent draws}} {count, plural, one {# card} other {# cards}}",
+      "MOVE": "<c>{card}</c> goes from {from} to {to}",
+      "PHASE": "{phase}",
+      "RECOVER": "{player, select, you {You gain} other {Your opponent gains}} {amount} LP",
+      "SET": "{player, select, you {You set a card} other {Your opponent sets a card}}",
+      "SUMMON_FLIP": "{player, select, you {You Flip Summon} other {Your opponent Flip Summons}} <c>{card}</c>",
+      "SUMMON_NORMAL": "{player, select, you {You Normal Summon} other {Your opponent Normal Summons}} <c>{card}</c>",
+      "SUMMON_SPECIAL": "{player, select, you {You Special Summon} other {Your opponent Special Summons}} <c>{card}</c>",
+      "TURN": "Turn {turn} — {player, select, you {your turn} other {opponent's turn}}",
+      "WIN": "{player, select, you {You win the duel} other {Your opponent wins the duel}}",
+      "WIN_draw": "The duel is a draw",
+      "empty": "Nothing yet.",
+      "heads": "Heads",
+      "hidden": "a card",
+      "tails": "Tails",
+      "title": "Duel log"
+    },
+    "page": {
+      "description": "Test your combos and play real duels with the actual card effects (EDOPro engine).",
+      "rules": "Rules reminder",
+      "source": "Source code (AGPL-3.0)",
+      "title": "Duel simulator"
+    },
+    "phaseShort": {
+      "BATTLE": "BP",
+      "DRAW": "DP",
+      "END": "EP",
+      "MAIN1": "M1",
+      "MAIN2": "M2",
+      "STANDBY": "SP"
+    },
+    "phases": {
+      "BATTLE": "Battle Phase",
+      "DRAW": "Draw Phase",
+      "END": "End Phase",
+      "MAIN1": "Main Phase 1",
+      "MAIN2": "Main Phase 2",
+      "STANDBY": "Standby Phase"
+    },
+    "positions": {
+      "ATK": "Face-up Attack",
+      "DEF": "Face-up Defense",
+      "FD_ATK": "Face-down Attack",
+      "FD_DEF": "Face-down Defense"
+    },
+    "prompt": {
+      "ANNOUNCE_ATTRIBUTE": {
+        "title": "Declare an Attribute"
+      },
+      "ANNOUNCE_CARD": {
+        "search": "Search a card…",
+        "title": "Declare a card name"
+      },
+      "ANNOUNCE_NUMBER": {
+        "title": "Declare a number"
+      },
+      "ANNOUNCE_RACE": {
+        "title": "Declare a monster Type"
+      },
+      "BATTLE": "Choose an attacker, activate an effect or leave the Battle Phase.",
+      "CHAIN": {
+        "forced": "You must activate one of these effects.",
+        "pass": "Don't activate",
+        "title": "Activate a card or effect?"
+      },
+      "IDLE": "Click a highlighted card to play it, or change phase.",
+      "OPTION": {
+        "title": "Choose an option"
+      },
+      "PLACE": {
+        "disable": "Choose a zone that will become unusable",
+        "title": "Choose a zone on the field",
+        "titleMany": "Choose {count} zones on the field"
+      },
+      "POSITION": {
+        "title": "Choose a battle position"
+      },
+      "SELECT_CARDS": {
+        "CARD": "Select cards",
+        "SUM": "Select cards whose total reaches {sum}",
+        "TRIBUTE": "Select the monsters to Tribute",
+        "always": "Always included",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "selected": "{count} selected",
+        "total": "Total: {total} / {sum}"
+      },
+      "SELECT_UNSELECT": {
+        "cancel": "Cancel",
+        "finish": "Done",
+        "selected": "Selected (click to remove)",
+        "title": "Select cards one by one"
+      },
+      "SORT": {
+        "confirm": "Confirm",
+        "hint": "Click the cards in the order you want (first = top).",
+        "keep": "Keep this order",
+        "reset": "Reset",
+        "title": "Choose the order"
+      },
+      "YESNO": {
+        "no": "No",
+        "title": "Confirm",
+        "yes": "Yes"
+      },
+      "choose": "Choose {count, plural, one {# value} other {# values}}",
+      "confirm": "Confirm",
+      "opponent": "Opponent's choice",
+      "range": {
+        "between": "Choose {min} to {max}",
+        "exact": "Choose {count}",
+        "upTo": "Choose up to {max}"
+      },
+      "waiting": "Waiting for the opponent…"
+    },
+    "races": {
+      "AQUA": "Aqua",
+      "BEAST": "Beast",
+      "BEASTWARRIOR": "Beast-Warrior",
+      "CELESTIALWARRIOR": "Celestial Warrior",
+      "CREATORGOD": "Creator God",
+      "CYBERSE": "Cyberse",
+      "CYBORG": "Cyborg",
+      "DINOSAUR": "Dinosaur",
+      "DIVINE": "Divine-Beast",
+      "DRAGON": "Dragon",
+      "FAIRY": "Fairy",
+      "FIEND": "Fiend",
+      "FISH": "Fish",
+      "GALAXY": "Galaxy",
+      "HIGHDRAGON": "High Dragon",
+      "ILLUSION": "Illusion",
+      "INSECT": "Insect",
+      "MACHINE": "Machine",
+      "MAGICALKNIGHT": "Magical Knight",
+      "OMEGAPSYCHIC": "Omega Psychic",
+      "PLANT": "Plant",
+      "PSYCHIC": "Psychic",
+      "PYRO": "Pyro",
+      "REPTILE": "Reptile",
+      "ROCK": "Rock",
+      "SEASERPENT": "Sea Serpent",
+      "SPELLCASTER": "Spellcaster",
+      "THUNDER": "Thunder",
+      "WARRIOR": "Warrior",
+      "WINGEDBEAST": "Winged Beast",
+      "WYRM": "Wyrm",
+      "ZOMBIE": "Zombie"
+    },
+    "result": {
+      "draw": "Draw",
+      "lose": "Defeat",
+      "newSetup": "New setup",
+      "rematch": "Replay with the same setup",
+      "review": "Look at the board",
+      "win": "Victory!"
+    },
+    "setup": {
+      "board": {
+        "auto": "Auto",
+        "empty": "No cards: the opponent starts with an empty field.",
+        "full": "This zone is full.",
+        "hint": "Cards already in place on the opponent's side when the duel starts: monsters, set cards, hand traps, graveyard…",
+        "label": "Opponent board",
+        "locations": {
+          "BANISHED": "Banished",
+          "FZONE": "Field Zone",
+          "GRAVE": "Graveyard",
+          "HAND": "Hand",
+          "MZONE": "Monster Zone",
+          "SZONE": "Spell & Trap Zone"
+        },
+        "noResults": "No card found.",
+        "positions": {
+          "ATTACK": "Attack",
+          "DEFENSE": "Defense",
+          "FACE_UP": "Face-up",
+          "SET": "Face-down"
+        },
+        "remove": "Remove",
+        "search": "Search a card to add…",
+        "zone": "Zone"
+      },
+      "deck": "Your deck",
+      "deckPlaceholder": "Choose a deck",
+      "first": {
+        "label": "Who goes first",
+        "me": "Me",
+        "opponent": "Opponent"
+      },
+      "hand": {
+        "clear": "Clear",
+        "count": "{count}/{max} chosen",
+        "hint": "Force cards into your starting hand (the rest is drawn at random).",
+        "label": "Opening hand"
+      },
+      "lp": "Life Points",
+      "noDecks": "Build a deck first to test it here.",
+      "opponent": {
+        "BOT": "Bot",
+        "BOT_hint": "Plays the opponent deck on its own: builds its board, attacks when it's worth it and answers your plays with hand traps and traps.",
+        "ME": "Controlled by me",
+        "ME_hint": "You make every choice for both players: test interactions, hand traps, lines.",
+        "PASSIVE": "Passive",
+        "PASSIVE_hint": "Does nothing: perfect to test combos against a board you set up.",
+        "label": "Opponent"
+      },
+      "opponentDeck": {
+        "copy": "A copy of my deck",
+        "label": "Opponent deck"
+      },
+      "resume": "Resuming the duel…",
+      "start": "Start the duel",
+      "title": "New duel"
     }
-   },
-   "hint": "Strength rating: card synergy, engine, staples, consistency, share of generic filler",
-   "label": "strength"
-  }
- },
- "wishlist": {
-  "priorities": {
-   "HIGH": "Urgent",
-   "LOW": "Someday",
-   "MEDIUM": "Normal"
   },
-  "row": {
-   "acquired": "Got it",
-   "acquiredToast": "Added to your collection 🎉",
-   "budget": "budget {price}",
-   "priority": "Priority",
-   "remove": "Remove"
+  "guide": {
+    "aiError": "{error} — showing the computed guide instead.",
+    "combo": {
+      "endBoard": "End board",
+      "hand": "In hand"
+    },
+    "mode": {
+      "AI": "AI-written",
+      "RULES": "Computed",
+      "label": "Guide version"
+    },
+    "nothing": "Nothing in particular.",
+    "roles": {
+      "BOSS": "Boss",
+      "DRAW": "Draw",
+      "EXTENDER": "Extender",
+      "FUSION_ENABLER": "Fusion",
+      "HAND_TRAP": "Hand trap",
+      "INTERRUPTION": "Interruption",
+      "RECOVERY": "Recovery",
+      "REMOVAL": "Removal",
+      "RITUAL_ENABLER": "Ritual",
+      "SEARCHER": "Searcher",
+      "STARTER": "Starter"
+    },
+    "sections": {
+      "combos": "Combos to know ({count})",
+      "combosDisclaimer": "Suggested lines found by reading the card effects: always check the exact card text (conditions, costs, “once per turn”).",
+      "firstSecond": "Going first / going second",
+      "gamePlan": "Game plan",
+      "goingFirst": "Going first",
+      "goingSecond": "Going second",
+      "keyCards": "Key cards",
+      "mistakes": "Mistakes to avoid",
+      "tips": "Tips"
+    },
+    "source": {
+      "ai": "Written by AI",
+      "aiWithModel": "Written by AI · {model}",
+      "rules": "Computed from card effects"
+    },
+    "title": "Deck guide",
+    "writing": "The AI is writing the guide… (a local model can take a minute or two) — showing the computed version in the meantime."
   },
-  "view": {
-   "description": "Cards to hunt down, with the print you want and your budget.",
-   "empty": {
-    "description": "Add cards from their detail page, or send everything a deck is missing in one click.",
-    "title": "Your wishlist is empty"
-   },
-   "stats": {
-    "cards": "Cards",
-    "estimatedCost": "Estimated cost"
-   },
-   "title": "Wishlist"
+  "ios": {
+    "card": {
+      "foil": "Rarity",
+      "rotateHint": "Drag to turn the card. Double-tap to lay it flat, tap to close.",
+      "showcaseFailed": "3D view unavailable",
+      "showcaseFailedHint": "The card image could not be loaded, or this device cannot render the card in 3D.",
+      "zoom": "Show the card full screen"
+    },
+    "common": {
+      "more": "More",
+      "share": "Share"
+    },
+    "deck": {
+      "addCards": "Add cards",
+      "emptyZone": "Tap “Add cards”, then a card to see its details and add it.",
+      "exportYdk": "Export .ydk",
+      "moveToSide": "Move one to the Side Deck",
+      "testInDuel": "Test in a duel"
+    },
+    "errors": {
+      "decoding": "Unexpected server response ({detail}). Is the server up to date?",
+      "noServer": "No server configured."
+    },
+    "more": {
+      "catalog": "Search the whole catalogue",
+      "duel": "Test a deck against the simulator",
+      "rules": "Every official rule, illustrated",
+      "wishlist": "The cards you are still missing"
+    },
+    "nav": {
+      "more": "More"
+    },
+    "products": {
+      "removeWithCards": "Remove it and its cards"
+    },
+    "releases": {
+      "legend": {
+        "owned": "You have this exact print — the number says how many.",
+        "elsewhere": "You have the card, but from another set or another rarity.",
+        "missing": "You don’t have this card at all."
+      },
+      "meter": "{owned} out of {total}",
+      "spotlightMeta": "{date} · {owned}/{total}",
+      "byPrint": "By exact print",
+      "shownLabel": "Cards shown"
+    },
+    "scan": {
+      "alreadyOwned": "You already own {count}",
+      "copies": "{count, plural, one {# copy queued} other {# copies queued}}",
+      "hint": "Point the camera at the code printed under the artwork (e.g. SDBE-FR001).",
+      "notFound": "No card found for {code}",
+      "queued": "{count, plural, one {# queued} other {# queued}}",
+      "review": {
+        "addManually": "Add by hand",
+        "commit": "{count, plural, one {Add # card to my collection} other {Add # cards to my collection}}",
+        "empty": "No card scanned yet",
+        "emptyHint": "Point the camera at the code under the artwork, or add a card by hand.",
+        "failures": "Cards that were not added",
+        "noPrints": "No known edition for this card.",
+        "open": "{count, plural, one {Check # card} other {Check # cards}}",
+        "openEmpty": "The queue is empty",
+        "search": "Search a card",
+        "title": "Check before adding"
+      },
+      "title": "Scan cards",
+      "unavailable": "Scanning isn't available",
+      "unavailableHint": "Allow camera access in Settings, or use a device with a camera.",
+      "undo": "Undo last scan"
+    },
+    "server": {
+      "change": "Change server",
+      "connect": "Connect",
+      "current": "Server",
+      "description": "YGO Deck Builder is self-hosted: enter the address of your instance (the one you open in your browser).",
+      "hint": "HTTPS by default. On your local network, type the full address, e.g. http://192.168.1.20:3000",
+      "invalid": "That doesn't look like a valid address.",
+      "notAnInstance": "This server doesn't answer like a YGO Deck Builder instance.",
+      "placeholder": "ygo.example.com",
+      "title": "Your server",
+      "unreachable": "Couldn't reach {url}: {error}"
+    },
+    "settings": {
+      "account": "Account",
+      "credits": "Card data and images: YGOPRODeck. Box art and set lists: Yugipedia. Yu-Gi-Oh! is a trademark of Konami; this app is not affiliated with Konami.",
+      "languageHint": "Also applies to card names and effects, and to generated guides.",
+      "meta": "Meta",
+      "server": "Server",
+      "systemLanguage": "System language",
+      "title": "Settings"
+    }
+  },
+  "layout": {
+    "appName": "Deck Builder",
+    "logout": "Log out",
+    "metaDescription": "Your Yu-Gi-Oh! collection, your decks, and what you're missing to play the meta.",
+    "metaTitle": "YGO Deck Builder",
+    "nav": {
+      "catalog": "Catalog",
+      "collection": "Collection",
+      "decks": "Decks",
+      "duel": "Duel",
+      "rules": "Rules",
+      "suggestions": "Suggestions",
+      "wishlist": "Wishlist"
+    },
+    "pages": {
+      "catalog": "Catalog",
+      "collection": "Collection",
+      "deckNotFound": "Deck not found.",
+      "decks": "Decks",
+      "duel": "Duel simulator",
+      "login": "Log in",
+      "register": "Sign up",
+      "rules": "Rules",
+      "suggestions": "Suggestions",
+      "wishlist": "Wishlist"
+    }
+  },
+  "products": {
+    "dialog": {
+      "content": {
+        "all": "The product’s full contents, with what you still have.",
+        "forCopies": "Quantities for {count} products.",
+        "missingOnly": "Missing only ({count})",
+        "ownedOf": "{owned} owned out of {needed}"
+      },
+      "fallbackTitle": "Product",
+      "groups": {
+        "EXTRA": "Extra Deck",
+        "MONSTER": "Monsters",
+        "OTHER": "Other",
+        "SPELL": "Spells",
+        "TRAP": "Traps"
+      },
+      "guideIntro": "Guide for the deck straight out of the box. To improve it with the rest of your collection, create a deck from it and open its suggestions.",
+      "header": {
+        "addedOn": "Added {date}",
+        "cardCount": "{total, plural, one {# card} other {# cards}} · {distinct} unique",
+        "complete": "All its cards are in your collection.",
+        "confirmRemove": "Remove “{name}” from your products?",
+        "copyFailed": "Couldn’t copy (the browser refused).",
+        "copyList": "Copy list",
+        "createDeck": "Create a deck from it",
+        "listCopied": "List copied",
+        "missing": "{count, plural, one {# copy is} other {# copies are}} no longer in your collection (sold, traded, entered by mistake…).",
+        "productCount": "{count, plural, one {# product} other {# products}} · {language}",
+        "remove": "Remove",
+        "removeCardsToo": "Also remove its {count, plural, one {# card} other {# cards}} from my collection (otherwise they stay, only the product disappears from the list)",
+        "unverified": "Unverified quantities",
+        "unverifiedHint": "Official list not found: 1 copy counted per card",
+        "verified": "Official quantities"
+      },
+      "tabs": {
+        "content": "Contents",
+        "guide": "How to play it"
+      },
+      "text": {
+        "header": "{name} — {count, plural, one {# product} other {# products}}"
+      }
+    },
+    "kinds": {
+      "BOX": "Box set",
+      "OTHER": "Product",
+      "STARTER": "Starter Deck",
+      "STRUCTURE": "Structure Deck",
+      "TIN": "Tin",
+      "BOOSTER": "Booster"
+    },
+    "tab": {
+      "addProduct": "Add a product",
+      "cardCount": "{count, plural, one {# card} other {# cards}}",
+      "complete": "All its cards are in your collection",
+      "deck": "Deck",
+      "empty": {
+        "description": "Add a Structure Deck, a tin or a box set: it will show up here with its full contents, plus a play guide for decks.",
+        "title": "No products yet",
+        "noMatch": "No matches"
+      },
+      "missing": "{count, plural, one {# copy is} other {# copies are}} no longer in your collection"
+    },
+    "filters": {
+      "searchPlaceholder": "Filter my products…",
+      "kind": "Type",
+      "allKinds": "Any type",
+      "sort": "Sort",
+      "sortOption": "Sort: {label}",
+      "complete": "Complete only",
+      "sorts": {
+        "added": "Recently added",
+        "name": "Name",
+        "date": "Release date",
+        "completeness": "Least complete"
+      }
+    }
+  },
+  "releases": {
+    "title": "Set",
+    "searchPlaceholder": "Find a set: name, code (BETB)…",
+    "count": "{count, plural, one {# set} other {# sets}}",
+    "noDate": "Date unknown",
+    "today": "Out today",
+    "inDays": "{count, plural, one {in # day} other {in # days}}",
+    "sealed": "Sealed",
+    "unrevealed": "Card list not revealed yet",
+    "unrevealedHint": "This set is announced; its cards will show up here as soon as they are known.",
+    "elsewhere": "Owned",
+    "elsewhereHint": "You own this card from another set",
+    "noCardsShown": "Nothing matches these filters",
+    "anyEdition": "Any edition",
+    "anyEditionHint": "Count a card as pulled even when you own it from another set",
+    "spotlight": {
+      "upcoming": "Coming up",
+      "upcomingEmpty": "No announced release yet.",
+      "recent": "Just released",
+      "recentEmpty": "Nothing released in the last two months."
+    },
+    "status": {
+      "UPCOMING": "Upcoming",
+      "RECENT": "New",
+      "RELEASED": "Released"
+    },
+    "progress": {
+      "NONE": "Not started",
+      "STARTED": "In progress",
+      "COMPLETE": "Complete",
+      "labelPrints": "Prints pulled",
+      "labelCards": "Cards owned"
+    },
+    "shown": {
+      "all": "All",
+      "owned": "Pulled",
+      "missing": "To pull"
+    },
+    "stats": {
+      "copies": "Copies",
+      "ownedValue": "Value owned",
+      "missingValue": "Left to buy"
+    },
+    "filters": {
+      "status": "Status",
+      "allStatuses": "Any status",
+      "kind": "Type",
+      "allKinds": "Any type",
+      "year": "Year",
+      "allYears": "Any year",
+      "progress": "Progress",
+      "allProgress": "Any progress",
+      "rarity": "Rarity",
+      "allRarities": "Any rarity",
+      "sort": "Sort",
+      "ownedProduct": "Sealed owned"
+    },
+    "sort": {
+      "option": "Sort: {label}",
+      "date": "Release date",
+      "progress": "Progress",
+      "name": "Name",
+      "cards": "Card count"
+    },
+    "empty": {
+      "title": "No set found",
+      "description": "Change the filters, or try another name or code."
+    }
+  },
+  "rules": {
+    "description": "The official Yu-Gi-Oh! TCG rules under the current Master Rule, from setting up a duel to resolving Chains.",
+    "diagrams": {
+      "activate": "Activation",
+      "attached": "attached beneath",
+      "between": "Levels you can Summon",
+      "chainLink": "Chain Link",
+      "counters": "counters",
+      "damage": "damage",
+      "deck": "Deck",
+      "destroyed": "destroyed",
+      "extraDeck": "Extra Deck",
+      "extraZones": "Extra Monster Zones",
+      "fieldZone": "Field Zone",
+      "fromHandDeck": "from the hand or Deck",
+      "fusion": "Fusion",
+      "grave": "Graveyard",
+      "hand": "Hand",
+      "level": "Level",
+      "link": "Link",
+      "linkRating": "LINK",
+      "materials": "Materials",
+      "monsterZones": "Monster Zones",
+      "noDamage": "no damage",
+      "noTribute": "no Tribute",
+      "nonTuner": "non-Tuner",
+      "notFirstTurn": "not on turn 1",
+      "opponentSide": "Opponent",
+      "optional": "optional",
+      "pointed": "zones pointed to",
+      "rank": "Rank",
+      "remove": "remove",
+      "removed": "removed from play",
+      "resolution": "Resolution",
+      "ritual": "Ritual",
+      "sameLevel": "same Level",
+      "scale": "Scale",
+      "shared": "shared",
+      "spell": "Spell",
+      "spellZones": "Spell and Trap Zones",
+      "sum": "total",
+      "synchro": "Synchro",
+      "token": "Token",
+      "tribute": "Tribute",
+      "tributes": "Tributes",
+      "tuner": "Tuner",
+      "xyz": "Xyz",
+      "youSide": "You"
+    },
+    "glossary": [
+      {
+        "term": "Activation",
+        "definition": "The moment you announce a card or effect and pay its cost. A negated activation still costs you whatever you paid."
+      },
+      {
+        "term": "Negate",
+        "definition": "To stop an activation or an effect from applying. Negating is not destroying: a negated card can stay on the field."
+      },
+      {
+        "term": "Banish",
+        "definition": "To remove a card from play, apart from the Graveyard. Some cards banish face-down, and nobody may look at it then."
+      },
+      {
+        "term": "Chain",
+        "definition": "The stack of cards and effects activated in response to one another. The last one activated resolves first."
+      },
+      {
+        "term": "Target",
+        "definition": "To pick a specific card on activation. A card that “cannot be targeted” may not be chosen, even if the effect could affect it."
+      },
+      {
+        "term": "Counter",
+        "definition": "A marker an effect places on a card, which disappears along with it."
+      },
+      {
+        "term": "Cost",
+        "definition": "What you pay on activation: discarding, paying LP, Tributing, detaching a Material. A cost is never given back."
+      },
+      {
+        "term": "Continuous Effect",
+        "definition": "An effect that applies at all times while the card is on the field, with no activation and no Chain Link."
+      },
+      {
+        "term": "Trigger Effect",
+        "definition": "An effect that activates when a specific event happens, such as “When this card is Summoned”."
+      },
+      {
+        "term": "Ignition Effect",
+        "definition": "An effect you activate yourself, during your own Main Phase."
+      },
+      {
+        "term": "Quick Effect",
+        "definition": "A Spell Speed 2 effect, which you can activate during the opponent’s turn or in response to an activation."
+      },
+      {
+        "term": "FLIP Effect",
+        "definition": "An effect that activates when the monster is turned from face-down to face-up."
+      },
+      {
+        "term": "Hand trap",
+        "definition": "A monster whose effect activates from your hand, often by discarding it, to disrupt the opponent during their turn."
+      },
+      {
+        "term": "Token",
+        "definition": "A monster created by an effect, which is not a card and vanishes as soon as it leaves the field."
+      },
+      {
+        "term": "Material",
+        "definition": "The cards used for a Summon from the Extra Deck: Fusion, Synchro, Xyz or Link."
+      },
+      {
+        "term": "Tribute",
+        "definition": "To send a monster you control to the Graveyard in order to pay for a Summon or a cost."
+      },
+      {
+        "term": "Missed timing",
+        "definition": "An optional “When… you can” effect can no longer be activated if its event is not the last thing that happened."
+      },
+      {
+        "term": "Spell Speed",
+        "definition": "How an effect ranks inside a Chain: only an effect of equal or higher Spell Speed may respond."
+      }
+    ],
+    "groups": {
+      "advanced": "Going further",
+      "basics": "The basics",
+      "playing": "Playing your cards",
+      "summons": "Summoning"
+    },
+    "labels": {
+      "clear": "Clear",
+      "example": "Example",
+      "exampleCards": "Cards mentioned",
+      "glossary": "Glossary",
+      "glossaryHint": "The words that keep coming back on cards.",
+      "links": "Official resources",
+      "linksHint": "The full rules and video tutorials published by Konami.",
+      "noResults": "No rule matches this search.",
+      "openDuel": "Try it in the simulator",
+      "points": "Key points",
+      "search": "Search a rule, a keyword…",
+      "video": "Video tutorial",
+      "videoConsent": "The video is only loaded from YouTube once you click.",
+      "videoLoad": "Play the video",
+      "videoOpen": "Open on YouTube"
+    },
+    "links": [
+      {
+        "label": "Official rulebook (PDF)",
+        "description": "The complete rules published by Konami, Link Summoning included.",
+        "url": "https://img.yugioh-card.com/en/downloads/rulebook/SD_RuleBook_EN_10.pdf"
+      },
+      {
+        "label": "Video tutorials",
+        "description": "The official series: how a duel plays out, battle, Chains and every kind of Summon.",
+        "url": "https://www.yugioh-card.com/eu/videotutorials/"
+      },
+      {
+        "label": "Yu-Gi-Oh! for beginners",
+        "description": "The official beginners hub, with the same tutorials and starter advice.",
+        "url": "https://www.yugioh-card.com/eu/beginners/"
+      }
+    ],
+    "sections": [
+      {
+        "id": "basics",
+        "group": "basics",
+        "icon": "BookOpen",
+        "title": "Basics",
+        "summary": "Two duelists, 8000 LP each: you win by bringing your opponent’s down to 0.",
+        "paragraphs": [
+          "Yu-Gi-Oh! is a duel between two players. Each player starts with 8000 Life Points (LP) and draws 5 cards. Your goal is to bring your opponent’s LP to 0 using monsters, Spells and Traps.",
+          "Before the first duel, decide at random (for example with a coin toss) which player chooses to go first or second. In a Match, the loser of the previous duel makes that choice for the next one."
+        ],
+        "points": [
+          "You win when your opponent’s LP reach 0. If both players reach 0 at the same time, the duel is a draw.",
+          "You win when your opponent has to draw a card but their Deck is empty.",
+          "Some cards have their own win condition, such as holding all five pieces of Exodia in your hand.",
+          "Main Deck: 40 to 60 cards. Extra Deck: 0 to 15 cards. Side Deck: 0 to 15 cards.",
+          "You can have at most 3 copies of a card with the same name across your Main, Extra and Side Deck combined.",
+          "The Forbidden & Limited List restricts some cards further: Forbidden (0 copies), Limited (1 copy), Semi-Limited (2 copies)."
+        ]
+      },
+      {
+        "id": "field",
+        "group": "basics",
+        "icon": "LayoutGrid",
+        "title": "The field",
+        "summary": "5 Monster Zones, 5 Spell & Trap Zones and 1 Field Zone each; the 2 Extra Monster Zones are shared.",
+        "diagram": "field",
+        "paragraphs": [
+          "Your side of the field has 5 Main Monster Zones, 5 Spell & Trap Zones and 1 Field Zone. The 2 Extra Monster Zones sit between both players and are shared.",
+          "You can use only one Extra Monster Zone at a time, unless a card effect lets you use the other one. When your monster leaves it, you can use either Extra Monster Zone again.",
+          "Your leftmost and rightmost Spell & Trap Zones are also your Pendulum Zones. The Field Zone holds your Field Spell."
+        ],
+        "points": [
+          "Deck: face-down pile; you draw from the top.",
+          "Extra Deck: holds your Fusion, Synchro, Xyz and Link Monsters, plus Pendulum Monsters sent there face-up during the duel.",
+          "Graveyard (GY): face-up pile of used and destroyed cards; both players can look at it at any time.",
+          "Banished cards are removed from play, usually face-up, and are kept apart from the GY.",
+          "Monsters are in Attack Position (vertical) or Defense Position (horizontal). A face-down monster is always in Defense Position, and you can look at your own face-down cards."
+        ]
+      },
+      {
+        "id": "turn",
+        "group": "basics",
+        "icon": "Clock",
+        "title": "Turn structure",
+        "summary": "Six phases in order, including the Battle Phase — optional, and skipped on the very first turn.",
+        "diagram": "turn",
+        "paragraphs": [
+          "Each turn goes through the phases below, in this order. The player whose turn it is is the “turn player”.",
+          "The first turn of the duel has two restrictions: the player going first does not draw, and nobody can conduct a Battle Phase."
+        ],
+        "points": [
+          "Draw Phase: draw 1 card. The player going first skips this draw on the first turn of the duel.",
+          "Standby Phase: effects that happen “during the Standby Phase”, such as maintenance costs, are applied or activated.",
+          "Main Phase 1: Summon or Set monsters, change battle positions, activate cards and Set Spells and Traps.",
+          "Battle Phase: optional. Attack with your monsters. It cannot be conducted on the first turn of the duel.",
+          "Main Phase 2: only if you conducted a Battle Phase. You can do the same things as in Main Phase 1.",
+          "End Phase: effects that happen “during the End Phase” are applied. If you have more than 6 cards in your hand, discard until you have 6."
+        ]
+      },
+      {
+        "id": "normal-summon",
+        "group": "summons",
+        "icon": "ArrowUp",
+        "title": "Normal Summon and Set",
+        "summary": "One Normal Summon or Set per turn, with Tributes from Level 5 upwards.",
+        "diagram": "tributes",
+        "cards": [
+          "Summoned Skull"
+        ],
+        "paragraphs": [
+          "Once per turn, during your Main Phase, you can either Normal Summon a monster from your hand in face-up Attack Position or Set it in face-down Defense Position. Both actions use your single Normal Summon for the turn.",
+          "Higher-Level monsters require Tributes: you send monsters you control to the GY. This is a Tribute Summon (or a Tribute Set), which is a kind of Normal Summon.",
+          "During your Main Phase, you can also Set Spells and Traps face-down in your Spell & Trap Zones, as many as you have free zones."
+        ],
+        "points": [
+          "Level 1 to 4: no Tribute.",
+          "Level 5 or 6: 1 Tribute.",
+          "Level 7 or higher: 2 Tributes.",
+          "Flip Summon: during your Main Phase, change a face-down Defense Position monster to face-up Attack Position. You cannot do it the turn that monster was Set.",
+          "During your Main Phase, you can change each monster’s battle position once per turn, but not the turn it was Summoned or Set, nor after it attacked that turn. A Flip Summon counts as that change."
+        ],
+        "example": "You control 1 monster. To Normal Summon a Level 6 monster, you Tribute it. This uses your Normal Summon for the turn, so you cannot Set another monster."
+      },
+      {
+        "id": "special-summon",
+        "group": "summons",
+        "icon": "Sparkles",
+        "title": "Special Summon",
+        "summary": "As many Special Summons as your cards allow, each following its own text.",
+        "cards": [
+          "Monster Reborn",
+          "Cyber Dragon"
+        ],
+        "paragraphs": [
+          "A Special Summon does not use your Normal Summon. You can perform as many as your cards allow, including during your opponent’s turn when an effect permits it.",
+          "Some monsters have a built-in procedure, such as “Cannot be Normal Summoned/Set. Must first be Special Summoned…” or “You can Special Summon this card from your hand by…”. This procedure does not start a Chain, but cards that negate Summons can stop it.",
+          "Other Special Summons are the effect of a card, for example “Special Summon 1 monster from your GY”. These are resolved as part of a Chain."
+        ],
+        "points": [
+          "Fusion, Ritual, Synchro, Xyz, Pendulum and Link Summons are all Special Summons.",
+          "Extra Deck monsters, Ritual Monsters and monsters that “must first be Special Summoned” must be properly Summoned before another effect can Special Summon them from the GY or banishment.",
+          "If a monster’s text says it “cannot be Special Summoned by other ways”, it can only ever be Summoned by its own procedure."
+        ],
+        "example": "A monster says “Cannot be Normal Summoned/Set. Must first be Special Summoned from your hand by banishing 2 monsters from your GY.” If you Summon it that way and it is destroyed, a revival card can bring it back. If it was simply discarded from your hand, it cannot be revived."
+      },
+      {
+        "id": "fusion",
+        "group": "summons",
+        "icon": "Combine",
+        "title": "Fusion Summon",
+        "summary": "The listed Materials go to the Graveyard and the Fusion Monster arrives from the Extra Deck.",
+        "diagram": "fusion",
+        "cards": [
+          "Polymerization",
+          "Blue-Eyes White Dragon",
+          "Blue-Eyes Ultimate Dragon"
+        ],
+        "paragraphs": [
+          "Fusion Monsters are in your Extra Deck. Their text lists the required Fusion Materials, for example two monsters by name or “1 DARK monster + 1 Warrior monster”.",
+          "Most Fusion Summons use a card such as “Polymerization”: send the listed materials from your hand or field to the GY, then Special Summon the Fusion Monster from your Extra Deck. The Fusion card states where the materials can come from.",
+          "Some Fusion Monsters describe their own procedure (such as a Contact Fusion that shuffles the materials into the Deck). Follow the card’s text; whether that counts as a Fusion Summon also depends on the text."
+        ],
+        "points": [
+          "Materials must match the text exactly. A substitute material only works if its own text says so.",
+          "Materials are sent to the GY unless the card used says otherwise, for example banish them or shuffle them into the Deck.",
+          "If the Fusion Summon is negated, the materials are still used and the Fusion Monster is destroyed."
+        ],
+        "example": "“Polymerization” lets you Fusion Summon using monsters from your hand or field. You send the two monsters listed on the Fusion Monster from your hand to the GY, then Special Summon that Fusion Monster."
+      },
+      {
+        "id": "ritual",
+        "group": "summons",
+        "icon": "Flame",
+        "title": "Ritual Summon",
+        "summary": "A Ritual Spell plus Tributes whose Levels match the monster you are Summoning.",
+        "diagram": "ritual",
+        "cards": [
+          "Black Luster Ritual",
+          "Black Luster Soldier"
+        ],
+        "paragraphs": [
+          "Ritual Monsters are in your Main Deck and are usually Summoned from your hand. You need a Ritual Spell that can Summon them; the two cards usually name each other.",
+          "Activate the Ritual Spell, then Tribute monsters from your hand and/or field whose total Levels meet the requirement written on the Ritual Spell, and Special Summon the Ritual Monster."
+        ],
+        "points": [
+          "Most Ritual Spells ask for total Levels “equal to or greater than” the Ritual Monster’s Level; some ask for “exactly equal”. Read the Ritual Spell.",
+          "The Ritual Monster you are Summoning cannot be one of the Tributes.",
+          "Ritual Monsters cannot be Normal Summoned or Set.",
+          "Some cards use other sources, such as sending monsters from the Deck or banishing them from the GY; follow the text."
+        ],
+        "example": "Your Ritual Monster is Level 8 and the Ritual Spell asks for total Levels equal to or greater than 8. You Tribute a Level 4 monster from your hand and a Level 5 monster from your field (total 9), then Special Summon the Ritual Monster."
+      },
+      {
+        "id": "synchro",
+        "group": "summons",
+        "icon": "Zap",
+        "title": "Synchro Summon",
+        "summary": "1 Tuner plus non-Tuners whose Levels add up exactly to the Synchro Monster’s Level.",
+        "diagram": "synchro",
+        "cards": [
+          "Junk Synchron",
+          "Stardust Dragon"
+        ],
+        "paragraphs": [
+          "Synchro Monsters are in your Extra Deck. During your Main Phase, send 1 Tuner and 1 or more non-Tuner monsters you control face-up to the GY. Their Levels must add up exactly to the Synchro Monster’s Level. Then Special Summon it.",
+          "The Synchro Monster’s text lists its materials, for example “1 Tuner + 1+ non-Tuner monsters”. Some require a specific Tuner or non-Tuner, or more than one Tuner."
+        ],
+        "points": [
+          "Materials must be face-up monsters you control, unless a card says otherwise.",
+          "A Tuner has “Tuner” written in its type line.",
+          "Xyz and Link Monsters have no Level, so they normally cannot be Synchro Material.",
+          "A Synchro Summon does not start a Chain, but cards that negate Summons can stop it."
+        ],
+        "example": "A Level 3 Tuner plus a Level 4 non-Tuner make 7: you can Synchro Summon a Level 7 Synchro Monster."
+      },
+      {
+        "id": "xyz",
+        "group": "summons",
+        "icon": "Layers",
+        "title": "Xyz Summon",
+        "summary": "Two or more monsters of the same Level attach beneath a monster of equal Rank.",
+        "diagram": "xyz",
+        "cards": [
+          "Number 39: Utopia"
+        ],
+        "paragraphs": [
+          "Xyz Monsters are in your Extra Deck. During your Main Phase, stack the face-up monsters you control that the Xyz Monster requires (usually 2 or more with the same Level), then place the Xyz Monster on top. The monsters underneath become Xyz Materials.",
+          "Xyz Monsters have a Rank, not a Level. Effects that refer to Levels do not apply to them, and they normally cannot be used for a Synchro Summon.",
+          "Xyz Materials are not monsters on the field. When the Xyz Monster leaves the field, its materials are sent to the GY."
+        ],
+        "points": [
+          "Many Xyz Monsters pay a cost by detaching Xyz Materials: move them from under the card to the GY.",
+          "Tokens cannot be used as Xyz Material.",
+          "An Xyz Monster with no materials stays on the field; it just cannot pay detach costs."
+        ],
+        "example": "Two Level 4 monsters you control can be used to Xyz Summon a Rank 4 Xyz Monster that requires “2 Level 4 monsters”."
+      },
+      {
+        "id": "pendulum",
+        "group": "summons",
+        "icon": "Scale",
+        "title": "Pendulum Summon",
+        "summary": "Two Scales in your Pendulum Zones open a multi-monster Summon between those values.",
+        "diagram": "pendulum",
+        "cards": [
+          "Performapal Hip Hippo"
+        ],
+        "paragraphs": [
+          "Pendulum Monsters are in your Main Deck. Besides being Summoned as monsters, they can be activated as Spells in your Pendulum Zones (your leftmost and rightmost Spell & Trap Zones). There they are Spell Cards and use their Pendulum Scale and Pendulum Effect.",
+          "Once per turn, during your Main Phase, if you have a card in both Pendulum Zones, you can Pendulum Summon: Special Summon, at the same time, any number of monsters from your hand and/or face-up Pendulum Monsters from your Extra Deck whose Levels are strictly between the two Scales.",
+          "When a Pendulum Monster on your field would be sent to the GY, it is placed face-up in your Extra Deck instead."
+        ],
+        "points": [
+          "With Scales 1 and 8, you can Pendulum Summon monsters from Level 2 to Level 7.",
+          "Monsters from your hand go to Main Monster Zones. Face-up Pendulum Monsters from your Extra Deck go to an Extra Monster Zone or a Main Monster Zone a Link Monster points to.",
+          "A Pendulum Summon does not start a Chain, but cards that negate Summons can stop it."
+        ]
+      },
+      {
+        "id": "link",
+        "group": "summons",
+        "icon": "Link",
+        "title": "Link Summon",
+        "summary": "Materials are sent to the Graveyard, and the arrows open zones for your other monsters.",
+        "diagram": "link",
+        "cards": [
+          "Decode Talker"
+        ],
+        "paragraphs": [
+          "Link Monsters are in your Extra Deck. During your Main Phase, send face-up monsters you control that meet the listed requirements to the GY as Link Material, then Special Summon the Link Monster.",
+          "The number of materials must equal the Link Rating (LINK-1, LINK-2…). A Link Monster used as material can count as 1 material or as a number of materials equal to its Link Rating.",
+          "Link Arrows point to adjacent zones. A monster in a zone a Link Arrow points to is “linked” to that Link Monster. Two Link Monsters that point to each other are “co-linked”."
+        ],
+        "points": [
+          "Link Monsters have no Level and no DEF; they are always in face-up Attack Position.",
+          "They cannot be Set, changed to Defense Position or turned face-down.",
+          "Tokens can be used as Link Material.",
+          "From an Extra Monster Zone, Link Arrows can point to Main Monster Zones on both sides of the field."
+        ],
+        "example": "A LINK-3 Monster needs 3 materials: you can use 3 monsters, or a LINK-2 Monster counting as 2 materials plus 1 other monster."
+      },
+      {
+        "id": "extra-deck-zones",
+        "group": "summons",
+        "icon": "LayoutDashboard",
+        "title": "Extra Deck and Extra Monster Zones",
+        "summary": "Link Monsters go through an Extra Monster Zone; the others can also use your main zones.",
+        "diagram": "emz",
+        "paragraphs": [
+          "Since the April 2020 Master Rule revision, the zone a monster Summoned from the Extra Deck can use depends on its card type.",
+          "Fusion, Synchro and Xyz Monsters, including Pendulum Monsters of those types Summoned while face-down in the Extra Deck, can go to any of your free Main Monster Zones or to an Extra Monster Zone.",
+          "Link Monsters, and Pendulum Monsters Special Summoned face-up from the Extra Deck, must go to an Extra Monster Zone or to one of your Main Monster Zones a Link Monster points to."
+        ],
+        "points": [
+          "You can still use only one Extra Monster Zone, unless a card effect allows otherwise.",
+          "Placing a Fusion, Synchro or Xyz Monster in a Main Monster Zone keeps the Extra Monster Zone free for a Link Monster.",
+          "These restrictions only apply to monsters Summoned from the Extra Deck; monsters from the hand, Deck or GY go to Main Monster Zones."
+        ],
+        "example": "Your field is empty. You Synchro Summon into a Main Monster Zone, keeping the Extra Monster Zone free. Next, you Link Summon a LINK-2 Monster with bottom-left and bottom-right arrows into the Extra Monster Zone. Those arrows point to two of your Main Monster Zones, so your next Link Monster or face-up Pendulum Monsters from your Extra Deck can be placed there."
+      },
+      {
+        "id": "tokens",
+        "group": "summons",
+        "icon": "Shapes",
+        "title": "Tokens",
+        "summary": "A Token is not a card: it fills a Monster Zone and vanishes the moment it leaves the field.",
+        "diagram": "tokens",
+        "cards": [
+          "Scapegoat"
+        ],
+        "paragraphs": [
+          "A Token is a monster created by a card effect. It does not exist in your Deck: its name, Type, Attribute, Level, ATK and DEF all come from the effect that creates it. You represent it with any recognizable marker — an official Token card, a coin, a die.",
+          "On the field, a Token behaves like a monster: it occupies a Monster Zone, can attack, be destroyed in battle, change battle position, be Tributed or be used as Material. If no Monster Zone is free, it cannot be Summoned at all.",
+          "The moment a Token leaves the field — destroyed, sent to the Graveyard, banished, returned to the hand — it is removed from play. It never actually reaches the Graveyard, so effects that trigger “when a card is sent to the Graveyard” do not see it."
+        ],
+        "points": [
+          "A Token is not a card: effects that refer to “cards” in the hand, Deck or Graveyard never count it.",
+          "It can be Tributed for a Tribute Summon, and used as Fusion, Synchro or Link Material.",
+          "It cannot be used as Xyz Material: Materials are attached beneath the monster, so the Token would leave the field and vanish at once.",
+          "Several Tokens can share the same name, and each one takes up its own Monster Zone.",
+          "A Token only appears if a card creates it: you can never Summon one on your own initiative."
+        ],
+        "example": "A card Special Summons 4 Sheep Tokens in face-up Defense Position. They fill 4 of your 5 Monster Zones: you can use them as Link Material, but only one zone is left to Summon anything else."
+      },
+      {
+        "id": "chains",
+        "group": "playing",
+        "icon": "ListOrdered",
+        "title": "Chains and Spell Speed",
+        "summary": "Responses stack up and resolve in reverse order, following Spell Speed.",
+        "diagram": "chain",
+        "cards": [
+          "Mystical Space Typhoon",
+          "Solemn Judgment"
+        ],
+        "paragraphs": [
+          "When a card or effect is activated, it becomes Chain Link 1. Players can respond with Spell Speed 2 or higher, equal to or higher than the last Chain Link, adding more links. When both players pass, the Chain resolves in reverse order: the last link first.",
+          "Costs (discarding, paying LP, detaching, Tributing…) are paid on activation and are not returned if the activation is negated. In card text, what comes before a colon (:) is a condition, what comes before a semicolon (;) is a cost or a target, and the rest is the effect."
+        ],
+        "points": [
+          "Spell Speed 1: Normal, Equip, Continuous, Field and Ritual Spells; Ignition, Trigger and Flip effects. They cannot be activated in response, except for simultaneous triggers.",
+          "Spell Speed 2: Quick-Play Spells, Normal and Continuous Traps, Quick Effects.",
+          "Spell Speed 3: Counter Traps. Only another Spell Speed 3 can respond to them.",
+          "Simultaneous triggers (SEGOC) are chained in this order: turn player’s mandatory, opponent’s mandatory, turn player’s optional, opponent’s optional.",
+          "An optional “When… you can” effect misses the timing if its event was not the last thing to happen. “If… you can” and mandatory effects do not.",
+          "Set Traps and Set Quick-Play Spells cannot be activated the turn they were Set, unless a card says so.",
+          "“Once per turn”: each copy once per turn, reset if it leaves the field. “You can only use this effect of [card] once per turn”: once per turn for all copies."
+        ],
+        "example": "You activate a Normal Spell (Chain Link 1). Your opponent responds with a Normal Trap (Chain Link 2). You respond with a Counter Trap that negates it (Chain Link 3). The Counter Trap resolves first and negates the Trap, then your Spell resolves."
+      },
+      {
+        "id": "counters",
+        "group": "playing",
+        "icon": "Hash",
+        "title": "Counters",
+        "summary": "A marker an effect places on a card, which disappears along with it.",
+        "diagram": "counters",
+        "cards": [
+          "Royal Magical Library"
+        ],
+        "paragraphs": [
+          "Some cards place counters — Spell Counters, Bushido Counters and many others — on themselves or on other cards. A counter is not a card: it is a marker you put on the card concerned.",
+          "A counter can only be placed if a card’s text says so, and only on a card that can hold it. If that card leaves the field or is turned face-down, its counters are removed and do not come back with it.",
+          "Removing counters is usually a cost: you remove them when you activate the effect. If the effect is then negated, the counters stay spent."
+        ],
+        "points": [
+          "Every counter has a name: an effect that removes “Spell Counters” cannot remove a counter of another type.",
+          "Counters sit on the card, not on the zone: they follow the card if it moves to another zone on the field.",
+          "A card can hold several counters; some texts set a maximum.",
+          "Xyz Materials are not counters: they are real attached cards, and both players may look at them at any time."
+        ],
+        "example": "A monster gains 1 Spell Counter each time a Spell is activated, then you remove 3 of those counters to draw a card. The counters are gone as soon as you activate, even if the draw is then negated."
+      },
+      {
+        "id": "battle",
+        "group": "playing",
+        "icon": "Swords",
+        "title": "Battle",
+        "summary": "Attacks compare ATK, or DEF when the defending monster is in Defense Position.",
+        "diagram": "battle",
+        "paragraphs": [
+          "The Battle Phase has a Start Step, Battle Step, Damage Step and End Step. Each face-up Attack Position monster you control can attack once per Battle Phase.",
+          "Battle Step: choose one of your monsters and declare an attack on an opponent’s monster. If your opponent controls no monsters, you can attack directly and they take damage equal to your monster’s ATK. If the number of monsters your opponent controls changes before the Damage Step, a replay occurs: choose a new target, attack directly if they now have none, or stop the attack.",
+          "Damage Step: face-down monsters are flipped face-up, then damage is calculated. Only Counter Traps, cards that directly change ATK or DEF, effects that negate an activation, and effects whose text allows it can be activated."
+        ],
+        "points": [
+          "Attack vs Attack Position: the monster with lower ATK is destroyed and its controller takes the difference. Equal ATK: both are destroyed and no damage is dealt. If both have 0 ATK, neither is destroyed.",
+          "Attack vs Defense Position: if ATK is higher than DEF, the defender is destroyed and no damage is dealt, unless the attacker inflicts piercing damage. If ATK is lower, the attacker’s controller takes the difference. If equal, nothing happens.",
+          "A face-down monster that is attacked is flipped face-up; its FLIP effect activates after damage calculation.",
+          "Monsters destroyed by battle are sent to the GY at the end of the Damage Step."
+        ],
+        "example": "Your 2000 ATK monster attacks a 1500 ATK monster in Attack Position: it is destroyed and your opponent takes 500 damage. Against a 2500 DEF monster in Defense Position, nothing is destroyed and you take 500 damage."
+      },
+      {
+        "id": "spells-traps",
+        "group": "playing",
+        "icon": "Wand",
+        "title": "Spells and Traps",
+        "summary": "Spells activate from your hand; Traps must be Set at least a turn in advance.",
+        "cards": [
+          "Mirror Force"
+        ],
+        "paragraphs": [
+          "Activate Spells from your hand during your Main Phase, or Set them and activate them later. Traps must be Set first and can be activated from the next turn on, during either player’s turn. Normal Spells and Normal Traps go to the GY after resolving; Continuous, Equip and Field cards stay on the field.",
+          "Hand traps are monsters whose effect you activate from your hand, often by discarding them, usually as Quick Effects during either player’s turn."
+        ],
+        "points": [
+          "Normal Spell: one-time effect, Spell Speed 1.",
+          "Quick-Play Spell: from the hand, only during your own turn, in any phase; if Set, during either player’s turn, but not the turn it was Set.",
+          "Continuous Spell: stays on the field and keeps applying.",
+          "Equip Spell: equipped to a face-up monster; it is destroyed if that monster leaves the field or is turned face-down.",
+          "Field Spell: goes to your Field Zone, 1 per player. If you place a new one, your previous one is sent to the GY.",
+          "Ritual Spell: used to Ritual Summon.",
+          "Normal Trap: one-time effect, Spell Speed 2.",
+          "Continuous Trap: stays on the field, Spell Speed 2.",
+          "Counter Trap: Spell Speed 3, usually negates an activation or a Summon."
+        ]
+      },
+      {
+        "id": "match",
+        "group": "advanced",
+        "icon": "Trophy",
+        "title": "Matches, Side Deck and Limited List",
+        "summary": "Tournaments are played as Matches: two duels won, a Side Deck between games, a Limited List.",
+        "paragraphs": [
+          "Tournaments are played as Matches: the first player to win two duels wins the Match. The player who lost a duel chooses who goes first in the next one.",
+          "Between two duels of the same Match you may swap cards between your Deck and your Side Deck (0 to 15 cards). Once you are done, your Main Deck must still hold 40 to 60 cards, your Extra Deck at most 15, and your Side Deck must be back to its original size.",
+          "The Forbidden & Limited List is updated regularly by Konami. It applies to your Main Deck, Extra Deck and Side Deck combined."
+        ],
+        "points": [
+          "Forbidden: 0 copies. Limited: 1. Semi-Limited: 2. Otherwise 3 copies at most.",
+          "The TCG (Europe, Americas, Oceania) and the OCG (Japan, Asia) each have their own list.",
+          "Side Decking time between duels is limited, often to a few minutes.",
+          "If time runs out during a Match, an end-of-time procedure decides the winner, usually the player with the most LP."
+        ],
+        "example": "You lose the first duel to a Spell-heavy deck. Between duels you bring in 2 anti-Spell cards from your Side Deck and take out 2 cards that do little in this match-up."
+      }
+    ],
+    "source": "This page summarizes the official rulebook (current Master Rule); when a card’s text or an official ruling says otherwise, the card and the ruling take precedence.",
+    "title": "Rules",
+    "tocLabel": "On this page"
+  },
+  "suggestions": {
+    "generate": {
+      "card": {
+        "allOwned": "All owned",
+        "inclusion": "Played in {percent} of lists",
+        "missingBadge": "MISSING",
+        "toBuy": "{count, plural, one {# copy to buy} other {# copies to buy}}"
+      },
+      "create": "Create this deck",
+      "created": "Deck “{name}” created",
+      "modes": {
+        "META": {
+          "hint": "The tournament reference list, with what you’re missing",
+          "label": "Full meta list"
+        },
+        "OWNED": {
+          "hint": "Only what you own, rounded out with your staples",
+          "label": "With my cards"
+        }
+      },
+      "modesOfficial": {
+        "META": {
+          "hint": "The deck as sold, with what you’re missing",
+          "label": "Full official list"
+        },
+        "OWNED": {
+          "hint": "Only what you own, rounded out with your staples",
+          "label": "With my cards"
+        }
+      },
+      "nameLabel": "Deck name",
+      "sources": {
+        "ARCHETYPE": "Archetype",
+        "FILLER": "Filler",
+        "FLEX": "Flex",
+        "STAPLE": "Staple",
+        "SUPPORT": "Support"
+      },
+      "status": {
+        "fragile": "Complete, but fragile",
+        "incomplete": "Incomplete with your collection",
+        "playable": "Complete and playable with your cards"
+      },
+      "summary": {
+        "cost": "Estimated cost",
+        "counts": "Main / Extra / Side",
+        "missingMain": "{count, plural, one {# card missing} other {# cards missing}}",
+        "nothing": "Nothing",
+        "playable": "Playable",
+        "toBuy": "To buy",
+        "toBuyValue": "{count, plural, one {# copy} other {# copies}}",
+        "yes": "Yes"
+      },
+      "titleArchetype": "Auto deck: {archetype}",
+      "titleMeta": "Build: {name}",
+      "titleOfficial": "Official deck: {name}",
+      "wishlistMissing": "{count, plural, one {Add the missing copy to my wishlist} other {Add the # missing copies to my wishlist}}",
+      "zoneCount": "{count, plural, one {# card} other {# cards}}"
+    },
+    "meta": {
+      "card": {
+        "build": "Build this deck",
+        "coverage": "Share of the reference list you already own",
+        "imported": "Imported list",
+        "listCount": "{count, plural, one {# tournament list} other {# tournament lists}}",
+        "missing": "{owned}/{required} copies · <strong>{cost}</strong> to complete",
+        "playable": "You can play it as is.",
+        "share": "{share} of the meta",
+        "tier": "Tier {tier}",
+        "variant": "also “{name}”"
+      },
+      "empty": {
+        "description": "The meta is computed automatically from recent tournament top decks (YGOPRODeck). The first update runs when the API starts, then every Monday.",
+        "title": "No tournament data yet"
+      },
+      "status": {
+        "failed": "Meta updated {date} · failed",
+        "ok": "Meta updated {date} · {count, plural, one {# list} other {# lists}}",
+        "refresh": "Update",
+        "synced": "{archetypes} archetypes computed from {lists} lists"
+      }
+    },
+    "official": {
+      "empty": {
+        "description": "Official deck lists (structure decks, starter decks, decks from boxes like Legendary Decks) are fetched from Yugipedia in the background after the API starts. Come back in a few minutes.",
+        "title": "No official decks yet"
+      },
+      "filterLabel": "Product type",
+      "filters": {
+        "ALL": "All",
+        "BOX": "Box decks",
+        "STARTER": "Starter decks",
+        "STRUCTURE": "Structure decks"
+      },
+      "owned": "In your collection",
+      "showMore": "Show more ({count})"
+    },
+    "page": {
+      "archetypeStats": "{cards, plural, one {# card} other {# cards}} · {copies, plural, one {# copy} other {# copies}}",
+      "archetypesEmpty": "Add cards to your collection to see archetypes you can build.",
+      "description": "Today’s top decks, what your collection can already build, and decks built for you.",
+      "sections": {
+        "archetypes": "From your collection · one auto-built deck per archetype",
+        "meta": "Meta decks · the most accessible for you",
+        "official": "Official decks · structure, starter and box decks you can rebuild",
+        "playable": "Ready to play · 100% your cards"
+      },
+      "title": "Suggestions"
+    },
+    "playable": {
+      "best": "Best pick",
+      "composition": "100% your cards · {main} main · {extra} extra",
+      "empty": {
+        "action": "Add a product",
+        "description": "You need a well-stocked archetype (about ten different cards) or a good chunk of a meta deck. A Structure Deck is often the best starting point.",
+        "title": "No complete deck from your collection yet"
+      },
+      "homebrew": "Homebrew",
+      "metaTier": "Meta · Tier {tier}",
+      "official": "Official deck",
+      "open": "View & create"
+    },
+    "score": {
+      "criteria": {
+        "consistency": {
+          "hint": "Engine cards run at 3 copies",
+          "label": "Consistency"
+        },
+        "engine": {
+          "hint": "Share of the Main Deck taken up by the archetype",
+          "label": "Engine"
+        },
+        "filler": {
+          "hint": "Generic cards added to reach 40",
+          "label": "Filler"
+        },
+        "staples": {
+          "hint": "Hand traps and generic meta cards",
+          "label": "Staples"
+        },
+        "starters": {
+          "hint": "Copies of cards that start your combos on their own",
+          "label": "Starters"
+        },
+        "synergy": {
+          "hint": "Cards that search / summon each other, starters, Extra Deck you can actually summon",
+          "label": "Synergy"
+        }
+      },
+      "hint": "Strength rating: card synergy, engine, staples, consistency, share of generic filler",
+      "label": "strength"
+    }
+  },
+  "tags": {
+    "title": "Tags",
+    "empty": "No tags yet. Create one to sort things your own way.",
+    "newPlaceholder": "New tag…",
+    "create": "Create",
+    "color": "Colour",
+    "clear": "Clear",
+    "manage": "Manage tags",
+    "done": "Done",
+    "confirmDelete": "Delete the tag “{name}”?",
+    "colors": {
+      "slate": "Grey",
+      "red": "Red",
+      "amber": "Amber",
+      "green": "Green",
+      "teal": "Teal",
+      "blue": "Blue",
+      "violet": "Violet",
+      "pink": "Pink"
+    }
+  },
+  "wishlist": {
+    "priorities": {
+      "HIGH": "Urgent",
+      "LOW": "Someday",
+      "MEDIUM": "Normal"
+    },
+    "row": {
+      "acquired": "Got it",
+      "acquiredToast": "Added to your collection 🎉",
+      "budget": "budget {price}",
+      "priority": "Priority",
+      "remove": "Remove"
+    },
+    "view": {
+      "description": "Cards to hunt down, with the print you want and your budget.",
+      "empty": {
+        "description": "Add cards from their detail page, or send everything a deck is missing in one click.",
+        "title": "Your wishlist is empty"
+      },
+      "stats": {
+        "cards": "Cards",
+        "estimatedCost": "Estimated cost"
+      },
+      "title": "Wishlist"
+    }
   }
- }
 }

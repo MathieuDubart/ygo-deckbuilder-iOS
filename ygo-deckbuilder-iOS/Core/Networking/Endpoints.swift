@@ -50,13 +50,14 @@ extension APIClient {
 
     // MARK: Collection
 
-    func collection(q: String, page: Int, pageSize: Int = 40) async throws -> Paginated<CollectionItem> {
-        var items: [URLQueryItem] = [.init(name: "page", value: String(page)), .init(name: "pageSize", value: String(pageSize))]
-        if !q.isEmpty { items.append(.init(name: "q", value: q)) }
-        return try await get("collection", query: items)
+    func collection(_ query: CollectionQuery) async throws -> Paginated<CollectionItem> {
+        try await get("collection", query: query.items)
     }
 
     func collectionStats() async throws -> CollectionStats { try await get("collection/stats") }
+
+    /// Valeurs de filtre présentes dans la collection, avec leur effectif.
+    func collectionFacets() async throws -> CollectionFacets { try await get("collection/facets") }
 
     func addToCollection(_ body: AddCollectionItemBody) async throws {
         try await perform(.post, "collection", body: body)
@@ -75,12 +76,56 @@ extension APIClient {
         try await send(.post, "collection/import-set", body: body)
     }
 
-    func ownedProducts() async throws -> [OwnedProduct] { try await get("collection/products") }
+    func ownedProducts(_ query: OwnedProductsQuery = .init()) async throws -> [OwnedProduct] {
+        try await get("collection/products", query: query.items)
+    }
 
     func ownedProduct(_ id: String) async throws -> OwnedProductDetail { try await get("collection/products/\(id)") }
 
     func removeProduct(_ id: String, removeCards: Bool) async throws {
         try await perform(.delete, "collection/products/\(id)", query: [.init(name: "removeCards", value: String(removeCards))])
+    }
+
+    // MARK: Extensions
+
+    func releases(_ query: ReleaseQuery) async throws -> Paginated<Release> {
+        try await get("collection/releases", query: query.items)
+    }
+
+    /// Sorties à venir et sorties récentes, mises en avant en haut de l'onglet.
+    func releaseSpotlight() async throws -> ReleaseSpotlight {
+        try await get("collection/releases/spotlight")
+    }
+
+    func releaseFacets() async throws -> ReleaseFacets { try await get("collection/releases/facets") }
+
+    func release(_ setId: String) async throws -> ReleaseDetail {
+        try await get("collection/releases/\(setId)")
+    }
+
+    // MARK: Étiquettes
+
+    func tags() async throws -> [Tag] { try await get("tags") }
+
+    func createTag(_ body: CreateTagBody) async throws -> Tag { try await send(.post, "tags", body: body) }
+
+    @discardableResult
+    func updateTag(_ id: String, _ body: UpdateTagBody) async throws -> Tag {
+        try await send(.patch, "tags/\(id)", body: body)
+    }
+
+    func deleteTag(_ id: String) async throws { try await perform(.delete, "tags/\(id)") }
+
+    /// Pose (`on`) ou retire l'étiquette sur une carte.
+    @discardableResult
+    func tagCard(_ tagId: String, cardId: Int, on: Bool) async throws -> Tag {
+        try await send(on ? .put : .delete, "tags/\(tagId)/cards/\(cardId)")
+    }
+
+    /// Pose ou retire l'étiquette sur une extension.
+    @discardableResult
+    func tagSet(_ tagId: String, setId: String, on: Bool) async throws -> Tag {
+        try await send(on ? .put : .delete, "tags/\(tagId)/sets/\(setId)")
     }
 
     // MARK: Decks

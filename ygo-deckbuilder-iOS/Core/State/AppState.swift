@@ -20,6 +20,14 @@ final class AppState {
     private(set) var collectionVersion = 0
     private(set) var decksVersion = 0
     private(set) var wishlistVersion = 0
+    /// Étiquettes personnelles : création, renommage, pose ou retrait.
+    private(set) var tagsVersion = 0
+    /// Les étiquettes de l'utilisateur, chargées une fois pour toute l'app : c'est un petit
+    /// référentiel que cinq écrans affichent, pas la peine que chacun le redemande.
+    private(set) var tags: [Tag] = []
+    /// Observé, pas ignoré : les vues qui n'affichent que des puces d'étiquette ne lisent
+    /// que ce dictionnaire, et doivent se redessiner quand le référentiel arrive.
+    private var tagsById: [String: Tag] = [:]
 
     /// Deck à ouvrir dans l'onglet Decks (après création depuis une suggestion ou un produit).
     var pendingDeckId: String?
@@ -84,6 +92,8 @@ final class AppState {
         await api.signOut()
         session = .signedOut
         morePath = []
+        tags = []
+        tagsById = [:]
         show(.collection)
     }
 
@@ -98,11 +108,31 @@ final class AppState {
 
     func wishlistChanged() { wishlistVersion += 1 }
 
+    /// Une étiquette posée ou retirée change ce que les listes filtrées renvoient.
+    func tagsChanged() {
+        tagsVersion += 1
+        collectionVersion += 1
+    }
+
+    /// Recharge le référentiel d'étiquettes (appelé par l'écran racine sur `tagsVersion`).
+    func loadTags() async {
+        guard case .signedIn = session else { return }
+        guard let loaded = try? await api.tags() else { return }
+        tags = loaded
+        // Deux étiquettes de même identifiant ne devraient pas arriver, mais un doublon
+        // ne doit pas faire tomber l'app au lancement.
+        tagsById = Dictionary(loaded.map { ($0.id, $0) }, uniquingKeysWith: { _, last in last })
+    }
+
+    /// Les étiquettes posées sur une cible, dans l'ordre renvoyé par le serveur.
+    func tags(for ids: [String]) -> [Tag] { ids.compactMap { tagsById[$0] } }
+
     /// Changement de langue ou de compte : tout recharger (noms de cartes, guides…).
     func refreshAll() {
         collectionVersion += 1
         decksVersion += 1
         wishlistVersion += 1
+        tagsVersion += 1
     }
 
     func testInDuel(_ deckId: String) {
