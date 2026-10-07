@@ -991,7 +991,11 @@
    "noResults": "No rule matches this search.",
    "openDuel": "Try it in the simulator",
    "points": "Key points",
-   "search": "Search a rule, a keyword…"
+   "search": "Search a rule, a keyword…",
+   "video": "Video tutorial",
+   "videoConsent": "The video is only loaded from YouTube once you click.",
+   "videoLoad": "Play the video",
+   "videoOpen": "Open on YouTube"
   },
   "links": [
    {

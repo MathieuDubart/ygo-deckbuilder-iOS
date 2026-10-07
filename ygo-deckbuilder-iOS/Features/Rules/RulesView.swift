@@ -5,11 +5,19 @@ import SwiftUI
 /// n'ont pas d'équivalent ici : la version iOS garde le texte, les résumés et le glossaire.
 struct RulesView: View {
     nonisolated struct RuleSection: Decodable, Identifiable, Sendable {
+        /// Tuto vidéo (français uniquement, absent des autres langues).
+        nonisolated struct Video: Decodable, Sendable {
+            let id: String
+            let title: String
+            let channel: String
+        }
+
         let id: String
         let group: String
         let title: String
         let icon: String
         let summary: String
+        let video: Video?
         let paragraphs: [String]
         let points: [String]
         let example: String?
@@ -180,8 +188,43 @@ struct RulesView: View {
                 .padding(Spacing.m)
                 .background(Theme.spell.opacity(0.12), in: .rect(cornerRadius: Radius.s, style: .continuous))
             }
+            if let video = section.video {
+                videoLink(video)
+            }
         }
         .surface()
+    }
+
+    /// Tuto vidéo : un simple lien, la lecture se fait dans YouTube.
+    @ViewBuilder
+    private func videoLink(_ video: RuleSection.Video) -> some View {
+        if let url = URL(string: "https://www.youtube.com/watch?v=\(video.id)") {
+            VStack(alignment: .leading, spacing: Spacing.xs) {
+                Text(t("rules.labels.video"))
+                    .font(.caption.weight(.semibold))
+                    .textCase(.uppercase)
+                    .foregroundStyle(.tertiary)
+                Link(destination: url) {
+                    HStack(spacing: Spacing.s) {
+                        Image(systemName: "play.circle.fill")
+                            .font(.title2)
+                            .foregroundStyle(Color.accentColor)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(video.title)
+                                .font(.callout.weight(.medium))
+                                .fixedSize(horizontal: false, vertical: true)
+                            Text(video.channel)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer(minLength: 0)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(.rect)
+                }
+                .buttonStyle(.plain)
+            }
+        }
     }
 
     private var glossaryCard: some View {
