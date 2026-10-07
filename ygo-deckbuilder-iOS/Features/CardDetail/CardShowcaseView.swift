@@ -21,7 +21,7 @@ struct CardShowcaseView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var spin = CardSpin()
-    @State private var entity: ModelEntity?
+    @State private var entity: Entity?
     @State private var rarity: String?
     @State private var resting: CGSize = .zero
     @State private var failed = false
@@ -134,18 +134,26 @@ struct CardShowcaseView: View {
     }
 
     private var raritySwitcher: some View {
-        ScrollView(.horizontal) {
-            HStack(spacing: Spacing.xs) {
-                ForEach(rarities, id: \.self) { value in
-                    Button(value) { rarity = value }
-                        .buttonStyle(.glass)
-                        .controlSize(.small)
-                        .tint(rarity == value ? Color.accentColor : nil)
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal) {
+                HStack(spacing: Spacing.xs) {
+                    ForEach(rarities, id: \.self) { value in
+                        Button(value) { rarity = value }
+                            .buttonStyle(.glass)
+                            .controlSize(.small)
+                            .tint(rarity == value ? Color.accentColor : nil)
+                            .id(value)
+                    }
                 }
+                .padding(.horizontal, 2)
             }
-            .padding(.horizontal, 2)
+            .scrollIndicators(.hidden)
+            // La rareté de l'impression regardée peut être en bout de liste
+            .onChange(of: rarity, initial: true) { _, value in
+                guard let value else { return }
+                withAnimation { proxy.scrollTo(value, anchor: .center) }
+            }
         }
-        .scrollIndicators(.hidden)
         .accessibilityLabel(t("ios.card.foil"))
     }
 

@@ -57,14 +57,6 @@ static float boxMask(float2 uv, float4 box, float feather) {
     return lo.x * lo.y * hi.x * hi.y;
 }
 
-/// Distance signée au rectangle arrondi de la carte (négatif = dans le carton).
-static float cardCornerSDF(float2 uv, float radius) {
-    float2 p = (uv - 0.5) * float2(1.0, 1.0 / kCardAspect);
-    float2 halfSize = float2(0.5, 0.5 / kCardAspect) - radius;
-    float2 d = abs(p) - halfSize;
-    return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0) - radius;
-}
-
 /// Motif de la dorure, son relief, et le gradient analytique du motif. Le gradient est
 /// calculé à la main plutôt qu'avec dfdx/dfdy : les dérivées ne sont pas disponibles dans une
 /// fonction `[[visible]]`, et sur des motifs aussi fins elles ne donneraient que de l'aliasing.
@@ -178,9 +170,6 @@ void cardFrontSurface(realitykit::surface_parameters params)
     params.surface().set_base_color(params.textures().base_color().sample(cardSampler, uv).rgb);
     params.surface().set_metallic(0.0h);
 
-    // Coins arrondis : le carton s'arrête avant le coin du rectangle
-    params.surface().set_opacity(cardCornerSDF(uv, 0.055) < 0.0 ? 1.0h : 0.0h);
-
     if (kind == kNone || strength <= 0.0) {
         params.surface().set_roughness(0.62h);
         params.surface().set_emissive_color(half3(0.0h));
@@ -202,7 +191,7 @@ void cardFrontSurface(realitykit::surface_parameters params)
 
     // Bande lumineuse : elle balaie la carte quand on la tourne
     float band = (uv.x - 0.5) * 1.1 + (uv.y - 0.5) * 0.75 - lean.x * 1.7 + lean.y * 1.2;
-    float sweep = exp(-band * band * 2.0);
+    float sweep = exp(-band * band * 3.6);
 
     // Irisation : la teinte dépend de l'angle de vue, comme une vraie diffraction
     float hue = band * 0.5 + grazing * 0.9 + pattern.hueShift;
@@ -211,11 +200,13 @@ void cardFrontSurface(realitykit::surface_parameters params)
     float colorMix = (kind == kRareName || kind == kGold) ? 0.18 : 0.75;
     float3 rgb = mix(tint, hueToRGB(hue) * tint, colorMix);
 
-    float shine = mask * pattern.value * (sweep * 0.75 + 0.25 * grazing);
-    params.surface().set_emissive_color(half3(rgb * shine * 0.9));
+    // Assez discret pour qu'on lise encore la carte : la dorure se révèle à l'inclinaison,
+    // elle ne recouvre pas l'illustration en permanence.
+    float shine = mask * pattern.value * (sweep * 0.55 + 0.10 * grazing);
+    params.surface().set_emissive_color(half3(rgb * shine * 0.6));
 
     // La dorure est plus lisse que le carton : elle accroche davantage la lumière
-    params.surface().set_roughness(half(mix(0.62, 0.10, mask * pattern.value)));
+    params.surface().set_roughness(half(mix(0.62, 0.16, mask * pattern.value)));
 
     // Gaufrage : on incline la normale au rythme du motif
     if (pattern.relief > 0.0) {
@@ -232,13 +223,12 @@ void cardBackSurface(realitykit::surface_parameters params)
                                   filter::linear, mip_filter::linear);
 
     float4 settings = params.uniforms().custom_parameter();
+    // Le demi-tour du plan remet déjà la texture à l'endroit : pas de miroir à appliquer ici
     float2 uv = params.geometry().uv0();
     if (settings.z > 0.5) { uv.y = 1.0 - uv.y; }
-    uv.x = 1.0 - uv.x;
 
     params.surface().set_base_color(params.textures().base_color().sample(cardSampler, uv).rgb);
     params.surface().set_metallic(0.0h);
     params.surface().set_roughness(0.55h);
     params.surface().set_emissive_color(half3(0.0h));
-    params.surface().set_opacity(cardCornerSDF(uv, 0.055) < 0.0 ? 1.0h : 0.0h);
 }
