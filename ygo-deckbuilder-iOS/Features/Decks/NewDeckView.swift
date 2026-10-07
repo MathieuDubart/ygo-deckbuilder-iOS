@@ -91,8 +91,9 @@ struct NewDeckView: View {
             } else {
                 deck = try await app.api.importYdk(ImportYdkBody(name: trimmed, format: format, content: ydk))
             }
-            dismiss()
+            // On annonce le deck avant de fermer : l'écran d'en face l'ouvre à la fermeture
             onCreated(deck)
+            dismiss()
         } catch {
             self.error = error.localizedDescription
         }

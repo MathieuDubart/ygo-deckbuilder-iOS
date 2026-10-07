@@ -11,6 +11,8 @@ struct SuggestionsScreen: View {
     @State private var official: Loadable<[OfficialDeckSuggestion]> = .idle
     @State private var officialShown = 6
     @State private var target: GenerationTarget?
+    /// Deck créé depuis l'aperçu, à ouvrir dès que la feuille est refermée.
+    @State private var created: String?
 
     var body: some View {
         NavigationStack {
@@ -40,7 +42,17 @@ struct SuggestionsScreen: View {
             officialShown = 6
             official = await .fetch(official) { try await app.api.officialDecks(kind: officialKind) }
         }
-        .sheet(item: $target) { GeneratedDeckView(target: $0) }
+        .sheet(item: $target, onDismiss: openCreated) { target in
+            GeneratedDeckView(target: target) { created = $0 }
+        }
+    }
+
+    /// Le deck généré s'ouvre dans l'onglet Decks une fois la feuille refermée : demander le
+    /// changement d'onglet pendant la fermeture laisse la navigation en route.
+    private func openCreated() {
+        guard let id = created else { return }
+        created = nil
+        app.openDeck(id)
     }
 
     private func loadAll() async {
@@ -74,7 +86,7 @@ struct SuggestionsScreen: View {
                 } description: {
                     Text(t("suggestions.playable.empty.description"))
                 } actions: {
-                    Button(t("suggestions.playable.empty.action")) { app.selectedTab = .collection }
+                    Button(t("suggestions.playable.empty.action")) { app.show(.collection) }
                         .buttonStyle(.glass)
                 }
             } else {
@@ -273,6 +285,11 @@ private struct MetaDeckCard: View {
                     .frame(maxWidth: .infinity)
                     .clipped()
                     .overlay(LinearGradient(colors: [.clear, .black.opacity(0.5)], startPoint: .top, endPoint: .bottom))
+                    // `clipped()` cache le débordement mais ne le retire pas du test de
+                    // toucher : un visuel de carte étiré en largeur fait cinq fois la hauteur
+                    // de son cadre, et sa moitié invisible recouvrait le bouton « Construire
+                    // ce deck » de la carte précédente de la grille, qui ne réagissait plus.
+                    .contentShape(.rect)
                 HStack(spacing: Spacing.xxs) {
                     if let tier = deck.tier { Pill(text: t("suggestions.meta.card.tier", ["tier": tier]), tint: .accentColor) }
                     if deck.source == "tournaments", let share = deck.share {
