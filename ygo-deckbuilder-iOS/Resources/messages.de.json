@@ -710,6 +710,8 @@
  },
  "ios": {
   "card": {
+   "foil": "Seltenheit",
+   "rotateHint": "Zieh, um die Karte zu neigen. Doppeltippen richtet sie auf, Tippen schließt.",
    "zoom": "Karte im Vollbild anzeigen"
   },
   "common": {
@@ -727,19 +729,40 @@
    "decoding": "Unerwartete Serverantwort ({detail}). Ist der Server aktuell?",
    "noServer": "Kein Server eingerichtet."
   },
+  "more": {
+   "catalog": "Den gesamten Katalog durchsuchen",
+   "duel": "Ein Deck gegen den Simulator testen",
+   "rules": "Alle offiziellen Regeln, illustriert",
+   "wishlist": "Die Karten, die dir noch fehlen"
+  },
+  "nav": {
+   "more": "Mehr"
+  },
   "products": {
    "removeWithCards": "Mit seinen Karten entfernen"
   },
   "scan": {
-   "addOne": "+1 in meine Sammlung",
-   "addedCount": "{count} hinzugefügt",
    "alreadyOwned": "Du besitzt schon {count}",
-   "details": "Details",
+   "copies": "{count, plural, one {# Exemplar in der Liste} other {# Exemplare in der Liste}}",
    "hint": "Richte die Kamera auf den Code unter dem Artwork (z. B. SDBE-DE001).",
    "notFound": "Keine Karte für {code} gefunden",
+   "queued": "{count, plural, one {# in der Liste} other {# in der Liste}}",
+   "review": {
+    "addManually": "Von Hand hinzufügen",
+    "commit": "{count, plural, one {# Karte zur Sammlung hinzufügen} other {# Karten zur Sammlung hinzufügen}}",
+    "empty": "Noch keine Karte gescannt",
+    "emptyHint": "Richte die Kamera auf den Code unter dem Artwork oder füge eine Karte von Hand hinzu.",
+    "failures": "Nicht hinzugefügte Karten",
+    "noPrints": "Keine bekannte Auflage für diese Karte.",
+    "open": "{count, plural, one {# Karte prüfen} other {# Karten prüfen}}",
+    "openEmpty": "Die Liste ist leer",
+    "search": "Karte suchen",
+    "title": "Vor dem Hinzufügen prüfen"
+   },
    "title": "Karten scannen",
    "unavailable": "Scannen ist nicht verfügbar",
-   "unavailableHint": "Erlaube den Kamerazugriff in den Einstellungen oder nutze ein Gerät mit Kamera."
+   "unavailableHint": "Erlaube den Kamerazugriff in den Einstellungen oder nutze ein Gerät mit Kamera.",
+   "undo": "Letzten Scan rückgängig machen"
   },
   "server": {
    "change": "Server wechseln",

@@ -710,6 +710,8 @@
  },
  "ios": {
   "card": {
+   "foil": "Raridade",
+   "rotateHint": "Arrasta para inclinar a carta. Toca duas vezes para a endireitar, uma vez para fechar.",
    "zoom": "Mostrar a carta em ecrã inteiro"
   },
   "common": {
@@ -727,19 +729,40 @@
    "decoding": "Resposta inesperada do servidor ({detail}). O servidor está atualizado?",
    "noServer": "Nenhum servidor configurado."
   },
+  "more": {
+   "catalog": "Pesquise em todo o catálogo",
+   "duel": "Teste um deck contra o simulador",
+   "rules": "Todas as regras oficiais, ilustradas",
+   "wishlist": "As cartas que ainda te faltam"
+  },
+  "nav": {
+   "more": "Mais"
+  },
   "products": {
    "removeWithCards": "Remover com as suas cartas"
   },
   "scan": {
-   "addOne": "+1 na coleção",
-   "addedCount": "{count, plural, one {# adicionada} other {# adicionadas}}",
    "alreadyOwned": "Já tens {count}",
-   "details": "Detalhes",
+   "copies": "{count, plural, one {# cópia na fila} other {# cópias na fila}}",
    "hint": "Aponta a câmara para o código impresso por baixo da ilustração (ex. SDBE-PT001).",
    "notFound": "Nenhuma carta encontrada para {code}",
+   "queued": "{count, plural, one {# na fila} other {# na fila}}",
+   "review": {
+    "addManually": "Adicionar à mão",
+    "commit": "{count, plural, one {Adicionar # carta à coleção} other {Adicionar # cartas à coleção}}",
+    "empty": "Nenhuma carta lida",
+    "emptyHint": "Aponta a câmara para o código por baixo da ilustração, ou adiciona uma carta à mão.",
+    "failures": "Cartas não adicionadas",
+    "noPrints": "Nenhuma edição conhecida para esta carta.",
+    "open": "{count, plural, one {Conferir # carta} other {Conferir # cartas}}",
+    "openEmpty": "A fila está vazia",
+    "search": "Procurar uma carta",
+    "title": "Confere antes de adicionar"
+   },
    "title": "Digitalizar cartas",
    "unavailable": "A digitalização não está disponível",
-   "unavailableHint": "Permite o acesso à câmara nas Definições ou usa um dispositivo com câmara."
+   "unavailableHint": "Permite o acesso à câmara nas Definições ou usa um dispositivo com câmara.",
+   "undo": "Desfazer a última leitura"
   },
   "server": {
    "change": "Mudar de servidor",
