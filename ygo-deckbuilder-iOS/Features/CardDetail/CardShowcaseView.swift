@@ -73,6 +73,11 @@ struct CardShowcaseView: View {
 
             let camera = PerspectiveCamera()
             camera.camera.fieldOfViewInDegrees = 45
+            // Rien n'est plus près que la carte : en remontant le plan proche de 1 cm à 50 cm,
+            // le tampon de profondeur gagne deux ordres de grandeur de précision, ce qui
+            // compte pour un objet de 0,3 mm d'épaisseur.
+            camera.camera.near = 0.5
+            camera.camera.far = 20
             camera.look(at: .zero, from: SIMD3<Float>(0, 0, 1.95), relativeTo: nil)
             content.add(camera)
 
