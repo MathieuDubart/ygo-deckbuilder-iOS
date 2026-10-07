@@ -15,8 +15,11 @@ using namespace metal;
 constant float kCardAspect = 59.0 / 86.0;  // largeur / hauteur d'une carte
 
 // Zones d'une carte moderne, en UV (origine en haut à gauche) : x0, y0, x1, y1.
-constant float4 kNameBox = float4(0.062, 0.036, 0.805, 0.100);
-constant float4 kArtBox = float4(0.117, 0.145, 0.883, 0.639);
+// Relevées sur le gabarit du visuel servi par le catalogue (421 x 614) : l'illustration est
+// un carré de 319 px à 51 px du bord gauche et 110 px du haut, la ligne de nom va de 27 à
+// 58 px. Ces proportions sont celles de toutes les cartes modernes, Lien comprises.
+constant float4 kNameBox = float4(0.068, 0.040, 0.800, 0.096);
+constant float4 kArtBox = float4(0.118, 0.176, 0.882, 0.702);
 constant float4 kBorderBox = float4(0.055, 0.030, 0.945, 0.965);
 
 // Sens de balayage de la bande lumineuse. `view_direction` n'étant pas documentée comme
