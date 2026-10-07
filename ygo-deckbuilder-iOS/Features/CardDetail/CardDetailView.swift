@@ -5,6 +5,9 @@ import SwiftUI
 struct CardLink: Hashable, Identifiable {
     let cardId: Int
     var printHint: String?
+    /// Rareté exacte de l'impression d'où l'on vient. Elle prime sur la déduction par code :
+    /// deux impressions peuvent partager un code et ne différer que par la rareté.
+    var rarityHint: String?
     var id: Int { cardId }
 }
 
@@ -62,7 +65,8 @@ struct CardDetailView: View {
                 CardShowcaseView(
                     card: value.summary,
                     rarities: Self.rarities(of: value),
-                    initialRarity: Self.rarity(of: value, matching: link.printHint))
+                    initialRarity: link.rarityHint
+                        ?? Self.rarity(of: value, matching: link.printHint))
             } else {
                 // Ne devrait pas arriver (on n'ouvre le plein écran que depuis la carte chargée)
                 Button(t("common.actions.close"), systemImage: "xmark") { zoomed = false }

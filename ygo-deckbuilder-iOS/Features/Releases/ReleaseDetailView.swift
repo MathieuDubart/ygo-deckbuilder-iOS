@@ -198,7 +198,13 @@ struct ReleaseDetailView: View {
                 spacing: Spacing.m
             ) {
                 ForEach(cards) { card in
-                    Button { selected = CardLink(cardId: card.card.id) } label: {
+                    // L'impression de CETTE extension, avec sa rareté : c'est elle qu'on
+                    // regarde, et le plein écran doit lui donner le bon reflet.
+                    Button {
+                        selected = CardLink(
+                            cardId: card.card.id, printHint: card.printCode,
+                            rarityHint: card.rarity)
+                    } label: {
                         PrintTile(
                             card: card, anyEdition: anyEdition,
                             owners: friends.owners[card.printId],

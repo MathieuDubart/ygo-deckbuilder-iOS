@@ -206,7 +206,9 @@ struct ShowcasePicker: View {
                             spacing: Spacing.m
                         ) {
                             ForEach(selected) { card in
-                                tile(card.card, printId: card.printId, code: card.printCode)
+                                tile(
+                                    card.card, printId: card.printId, code: card.printCode,
+                                    rarity: card.rarity)
                             }
                         }
                         Divider()
@@ -269,17 +271,33 @@ struct ShowcasePicker: View {
             // Une ligne sans impression ne peut pas être mise en avant : le profil montre une
             // édition précise, pas « la carte, quelque part ». Celles déjà choisies sont
             // montrées plus haut, on ne les répète pas.
-            ForEach(list.filter { item in
-                guard let print = item.print else { return false }
-                return !selected.contains { $0.printId == print.id }
-            }) { item in
-                tile(item.card, printId: item.print?.id ?? "", code: item.print?.printCode ?? "")
+            ForEach(pickable(list)) { item in
+                tile(
+                    item.card, printId: item.print?.id ?? "", code: item.print?.printCode ?? "",
+                    rarity: item.print?.rarity ?? "")
             }
         }
     }
 
-    /// Une vignette sélectionnable, avec son rang quand elle est retenue.
-    private func tile(_ card: CardSummary, printId: String, code: String) -> some View {
+    /**
+     Impressions proposables : celles qu'on possède, sans celles déjà en vitrine (montrées
+     plus haut), et une seule fois chacune. La collection peut porter plusieurs lignes pour
+     la même impression (langue, état), qui donneraient des vignettes identiques dont la
+     sélection de l'une ferait réagir l'autre.
+     */
+    private func pickable(_ list: [CollectionItem]) -> [CollectionItem] {
+        var seen = Set(selected.map(\.printId))
+        return list.filter { item in
+            guard let print = item.print else { return false }
+            return seen.insert(print.id).inserted
+        }
+    }
+
+    /// Une vignette sélectionnable : le rang quand elle est retenue, et toujours sa rareté —
+    /// c'est elle qui distingue deux impressions de la même carte.
+    private func tile(_ card: CardSummary, printId: String, code: String, rarity: String)
+        -> some View
+    {
         let position = picked.firstIndex(of: printId)
         return Button { toggle(printId) } label: {
             VStack(alignment: .leading, spacing: 3) {
@@ -299,6 +317,10 @@ struct ShowcasePicker: View {
                     .font(.system(size: 9, weight: .medium).monospaced())
                     .foregroundStyle(.tertiary)
                     .lineLimit(1)
+                Text(rarity)
+                    .font(.system(size: 9))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
             }
         }
         .buttonStyle(.plain)
