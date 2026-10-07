@@ -755,13 +755,16 @@
     },
     "errors": {
       "decoding": "Resposta inesperada do servidor ({detail}). O servidor está atualizado?",
-      "noServer": "Nenhum servidor configurado."
+      "noServer": "Nenhum servidor configurado.",
+      "imageUnreadable": "Não foi possível ler esta imagem"
     },
     "more": {
       "catalog": "Pesquise em todo o catálogo",
       "duel": "Teste um deck contra o simulador",
       "rules": "Todas as regras oficiais, ilustradas",
-      "wishlist": "As cartas que ainda te faltam"
+      "wishlist": "As cartas que ainda te faltam",
+      "profile": "O teu perfil e as cartas em destaque",
+      "friends": "Compara as tuas coleções com amigos"
     },
     "nav": {
       "more": "Mais"
@@ -823,6 +826,9 @@
       "server": "Servidor",
       "systemLanguage": "Idioma do sistema",
       "title": "Definições"
+    },
+    "social": {
+      "friendCounters": "{cards} cartas · {sets} coleções completas"
     }
   },
   "layout": {
@@ -837,7 +843,9 @@
       "duel": "Duelo",
       "rules": "Regras",
       "suggestions": "Sugestões",
-      "wishlist": "Wishlist"
+      "wishlist": "Wishlist",
+      "friends": "Amigos",
+      "profile": "Perfil"
     },
     "pages": {
       "catalog": "Catálogo",
@@ -849,7 +857,9 @@
       "register": "Cadastrar",
       "rules": "Regras",
       "suggestions": "Sugestões",
-      "wishlist": "Wishlist"
+      "wishlist": "Wishlist",
+      "friends": "Amigos",
+      "profile": "Perfil"
     }
   },
   "products": {
@@ -1563,6 +1573,94 @@
     "source": "Esta página resume o livro de regras oficial (Master Rule atual); quando o texto de uma carta ou uma decisão oficial disser o contrário, a carta e a decisão têm prioridade.",
     "title": "Regras",
     "tocLabel": "Nesta página"
+  },
+  "social": {
+    "profile": {
+      "title": "Perfil",
+      "myTitle": "O meu perfil",
+      "edit": "Editar perfil",
+      "username": "Nome de utilizador",
+      "usernameHint": "Letras, dígitos, ponto, hífen e sublinhado. É assim que os amigos te encontram.",
+      "save": "Guardar",
+      "avatar": "Fotografia de perfil",
+      "banner": "Banner",
+      "upload": "Enviar uma imagem",
+      "replace": "Substituir",
+      "remove": "Remover",
+      "imageHint": "PNG, JPEG ou WebP, até 8 MB. Redimensionada e convertida automaticamente.",
+      "memberSince": "Membro desde {date}",
+      "friendsSince": "Amigos desde {date}",
+      "friendCount": "{count, plural, =0 {Sem amigos} one {# amigo} other {# amigos}}",
+      "openFriends": "Amigos",
+      "hidden": {
+        "title": "Este perfil é privado",
+        "description": "Tu e {username} ainda não são amigos. Envia um pedido para ver este perfil e comparar as vossas coleções.",
+        "sent": "Pedido enviado. Verás este perfil assim que for aceite.",
+        "received": "{username} enviou-te um pedido de amizade."
+      },
+      "stats": {
+        "distinctCards": "Cartas distintas",
+        "copies": "Exemplares",
+        "sets": "Coleções começadas",
+        "completedSets": "Coleções completas"
+      },
+      "showcase": {
+        "title": "Cartas em destaque",
+        "empty": "Nenhuma carta em destaque",
+        "emptyHint": "Escolhe algumas cartas da tua coleção para as mostrar aqui.",
+        "emptyOther": "{username} ainda não escolheu nenhuma carta",
+        "choose": "Escolher cartas",
+        "dialogTitle": "Cartas em destaque",
+        "dialogHint": "Até {max} cartas, escolhidas na tua coleção. Clica para adicionar ou remover; a ordem é mantida.",
+        "search": "Procurar na tua coleção…",
+        "selected": "{count} de {max} escolhidas",
+        "noResults": "Nenhuma carta da tua coleção corresponde",
+        "done": "Concluído"
+      }
+    },
+    "friends": {
+      "title": "Amigos",
+      "description": "Os amigos veem o teu perfil e o teu progresso em cada coleção.",
+      "search": {
+        "label": "Encontrar alguém",
+        "placeholder": "Nome de utilizador…",
+        "hint": "Pelo menos 2 caracteres",
+        "noResults": "Nenhuma conta corresponde a «{q}»"
+      },
+      "requests": {
+        "incoming": "Pedidos recebidos",
+        "outgoing": "Pedidos enviados",
+        "accept": "Aceitar",
+        "decline": "Recusar",
+        "cancel": "Cancelar pedido"
+      },
+      "list": {
+        "title": "Os teus amigos",
+        "empty": "Ainda sem amigos",
+        "emptyDescription": "Procura um nome de utilizador acima para enviar o teu primeiro pedido."
+      },
+      "actions": {
+        "add": "Adicionar como amigo",
+        "remove": "Remover amigo",
+        "confirmRemove": "Remover {username} dos teus amigos?",
+        "view": "Ver perfil"
+      },
+      "state": {
+        "FRIENDS": "Amigos",
+        "REQUEST_SENT": "Pedido enviado",
+        "REQUEST_RECEIVED": "Quer ser teu amigo"
+      }
+    },
+    "releases": {
+      "friends": "Amigos",
+      "none": "Adiciona amigos para comparar o progresso",
+      "onThisSet": "Os teus amigos nesta coleção",
+      "nobodyStarted": "Nenhum amigo começou esta coleção",
+      "ownedBy": "{count, plural, one {# amigo tem-na} other {# amigos têm-na}}",
+      "ownedElsewhere": "{count, plural, one {# amigo tem-na noutra edição} other {# amigos têm-na noutra edição}}",
+      "nobody": "Nenhum amigo tem esta carta",
+      "legend": "Um ponto ao lado de uma carta significa que um amigo a tem. Toca numa carta para os detalhes."
+    }
   },
   "suggestions": {
     "generate": {

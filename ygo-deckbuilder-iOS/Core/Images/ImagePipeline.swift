@@ -64,21 +64,27 @@ struct RemoteImage<Placeholder: View>: View {
     let sources: [URL]
     var width: ImagePipeline.Width = .tile
     var contentMode: ContentMode = .fill
+    /// Image déjà dimensionnée par le serveur (avatar, bannière) : inutile de repasser par
+    /// l'optimiseur, qui refuserait de toute façon une URL de son propre hôte.
+    var optimized: Bool = true
     @ViewBuilder var placeholder: () -> Placeholder
 
     @State private var image: UIImage?
 
     init(
         _ sources: [URL?], width: ImagePipeline.Width = .tile, contentMode: ContentMode = .fill,
-        @ViewBuilder placeholder: @escaping () -> Placeholder
+        optimized: Bool = true, @ViewBuilder placeholder: @escaping () -> Placeholder
     ) {
         self.sources = sources.compactMap { $0 }
         self.width = width
         self.contentMode = contentMode
+        self.optimized = optimized
         self.placeholder = placeholder
     }
 
-    private var resolved: [URL] { sources.map { ImagePipeline.shared.url(for: $0, width: width) } }
+    private var resolved: [URL] {
+        optimized ? sources.map { ImagePipeline.shared.url(for: $0, width: width) } : sources
+    }
 
     var body: some View {
         Group {

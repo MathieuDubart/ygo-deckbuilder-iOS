@@ -8,6 +8,8 @@ nonisolated struct PublicUser: Codable, Hashable, Sendable {
     let username: String
     let role: Role
     let createdAt: String
+    /// Chemin servi par l'API (`/uploads/…`), absent des versions antérieures du serveur.
+    let avatarUrl: String?
 
     var isAdmin: Bool { role == .admin }
 }
