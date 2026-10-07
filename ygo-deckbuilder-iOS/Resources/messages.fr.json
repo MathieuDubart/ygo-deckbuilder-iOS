@@ -711,7 +711,9 @@
  "ios": {
   "card": {
    "foil": "Rareté",
-   "rotateHint": "Glisse pour incliner la carte. Double-tape pour la remettre droite, tape pour fermer.",
+   "rotateHint": "Glisse pour tourner la carte. Double-tape pour la remettre à plat, tape pour fermer.",
+   "showcaseFailed": "Rendu 3D indisponible",
+   "showcaseFailedHint": "Le visuel de la carte n'a pas pu être chargé, ou cet appareil ne peut pas afficher la carte en 3D.",
    "zoom": "Afficher la carte en plein écran"
   },
   "common": {
