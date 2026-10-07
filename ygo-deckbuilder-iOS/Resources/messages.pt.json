@@ -853,14 +853,166 @@
  },
  "rules": {
   "description": "As regras oficiais do Yu-Gi-Oh! Estampas Ilustradas de acordo com a Master Rule atual, da preparação de um duelo à resolução de Correntes.",
-  "labels": {
-   "example": "Exemplo",
-   "openDuel": "Experimentar no simulador",
-   "points": "Pontos-chave"
+  "diagrams": {
+   "activate": "Ativação",
+   "attached": "anexadas embaixo",
+   "between": "Níveis invocáveis",
+   "chainLink": "Elo",
+   "counters": "marcadores",
+   "damage": "dano",
+   "deck": "Deck",
+   "destroyed": "destruído",
+   "extraDeck": "Deck Adicional",
+   "extraZones": "Zonas Adicionais",
+   "fieldZone": "Zona de Campo",
+   "fromHandDeck": "da mão ou do Deck",
+   "fusion": "Fusão",
+   "grave": "Cemitério",
+   "hand": "Mão",
+   "level": "Nível",
+   "link": "Link",
+   "linkRating": "LINK",
+   "materials": "Matérias",
+   "monsterZones": "Zonas de Monstros",
+   "noDamage": "sem dano",
+   "noTribute": "sem Tributo",
+   "nonTuner": "não-Regulador",
+   "notFirstTurn": "não no 1º turno",
+   "opponentSide": "Oponente",
+   "optional": "opcional",
+   "pointed": "zonas apontadas",
+   "rank": "Classe",
+   "remove": "remover",
+   "removed": "removido do jogo",
+   "resolution": "Resolução",
+   "ritual": "Ritual",
+   "sameLevel": "mesmo Nível",
+   "scale": "Escala",
+   "shared": "compartilhadas",
+   "spell": "Magia",
+   "spellZones": "Zonas Magia & Armadilha",
+   "sum": "total",
+   "synchro": "Sincro",
+   "token": "Ficha",
+   "tribute": "Tributo",
+   "tributes": "Tributos",
+   "tuner": "Regulador",
+   "xyz": "Xyz",
+   "youSide": "Você"
   },
+  "glossary": [
+   {
+    "definition": "O momento em que você anuncia uma carta ou efeito e paga o custo dele. Uma ativação negada custa mesmo assim o que você pagou.",
+    "term": "Ativação"
+   },
+   {
+    "definition": "Impedir que uma ativação ou um efeito se aplique. Negar não é destruir: uma carta negada pode continuar no campo.",
+    "term": "Negar"
+   },
+   {
+    "definition": "Remover uma carta do jogo, separada do Cemitério. Algumas cartas banem com a face para baixo, e então ninguém pode vê-la.",
+    "term": "Banir"
+   },
+   {
+    "definition": "A pilha de cartas e efeitos ativados em resposta uns aos outros. O último a ser ativado é o primeiro a ser resolvido.",
+    "term": "Corrente"
+   },
+   {
+    "definition": "Apontar uma carta específica na ativação. Uma carta que “não pode ser escolhida como alvo” não pode ser selecionada, mesmo que o efeito pudesse afetá-la.",
+    "term": "Escolher como alvo"
+   },
+   {
+    "definition": "Uma marca que um efeito coloca em uma carta e que desaparece junto com ela.",
+    "term": "Marcador"
+   },
+   {
+    "definition": "O que você paga na ativação: descartar, pagar PV, oferecer um Tributo, desassociar uma Matéria. Um custo nunca é devolvido.",
+    "term": "Custo"
+   },
+   {
+    "definition": "Um efeito que se aplica o tempo todo enquanto a carta está no campo, sem ativação e sem Elo de Corrente.",
+    "term": "Efeito Contínuo"
+   },
+   {
+    "definition": "Um efeito que é ativado quando um evento específico acontece, como “Quando esta carta é Invocada”.",
+    "term": "Efeito de Gatilho"
+   },
+   {
+    "definition": "Um efeito que você mesmo ativa, durante a sua Fase Principal.",
+    "term": "Efeito de Ignição"
+   },
+   {
+    "definition": "Um efeito de Velocidade de Magia 2, que você pode ativar durante o turno do oponente ou em resposta a uma ativação.",
+    "term": "Efeito Rápido"
+   },
+   {
+    "definition": "Um efeito que é ativado quando o monstro passa da face para baixo para a face para cima.",
+    "term": "Efeito VIRAR"
+   },
+   {
+    "definition": "Um monstro cujo efeito é ativado da mão, muitas vezes descartando-o, para atrapalhar o oponente no turno dele.",
+    "term": "Hand trap"
+   },
+   {
+    "definition": "Um monstro criado por um efeito, que não é uma carta e desaparece assim que sai do campo.",
+    "term": "Ficha"
+   },
+   {
+    "definition": "As cartas usadas em uma Invocação a partir do Deck Adicional: Fusão, Sincro, Xyz ou Link.",
+    "term": "Matéria"
+   },
+   {
+    "definition": "Enviar ao Cemitério um monstro que você controla para pagar uma Invocação ou um custo.",
+    "term": "Tributo"
+   },
+   {
+    "definition": "Um efeito opcional “Quando… você pode” não pode mais ser ativado se o evento dele não foi a última coisa a acontecer.",
+    "term": "Momento perdido"
+   },
+   {
+    "definition": "A prioridade de um efeito dentro de uma Corrente: só um efeito de Velocidade igual ou maior pode responder.",
+    "term": "Velocidade de Magia"
+   }
+  ],
+  "groups": {
+   "advanced": "Indo além",
+   "basics": "Fundamentos",
+   "playing": "Jogando suas cartas",
+   "summons": "As Invocações"
+  },
+  "labels": {
+   "clear": "Limpar",
+   "example": "Exemplo",
+   "exampleCards": "Cartas citadas",
+   "glossary": "Glossário",
+   "glossaryHint": "As palavras que aparecem toda hora nas cartas.",
+   "links": "Recursos oficiais",
+   "linksHint": "As regras completas e os tutoriais em vídeo publicados pela Konami.",
+   "noResults": "Nenhuma regra corresponde a esta busca.",
+   "openDuel": "Experimentar no simulador",
+   "points": "Pontos-chave",
+   "search": "Buscar uma regra, uma palavra…"
+  },
+  "links": [
+   {
+    "description": "As regras completas publicadas pela Konami, incluindo a Invocação-Link.",
+    "label": "Livro de regras oficial (PDF, em inglês)",
+    "url": "https://img.yugioh-card.com/en/downloads/rulebook/SD_RuleBook_EN_10.pdf"
+   },
+   {
+    "description": "A série oficial: como um duelo acontece, batalha, Correntes e cada tipo de Invocação.",
+    "label": "Tutoriais em vídeo (em inglês)",
+    "url": "https://www.yugioh-card.com/eu/videotutorials/"
+   },
+   {
+    "description": "A página oficial para quem está começando, com os mesmos tutoriais e dicas iniciais; não há versão em português.",
+    "label": "Yu-Gi-Oh! para iniciantes (em inglês)",
+    "url": "https://www.yugioh-card.com/eu/beginners/"
+   }
+  ],
   "sections": [
    {
-    "example": "",
+    "group": "basics",
     "icon": "BookOpen",
     "id": "basics",
     "paragraphs": [
@@ -875,10 +1027,12 @@
      "Você pode ter no máximo 3 cópias de uma carta com o mesmo nome somando Deck Principal, Deck Adicional e Side Deck.",
      "A Lista de Cartas Proibidas e Limitadas restringe algumas cartas ainda mais: Proibida (0 cópias), Limitada (1 cópia), Semilimitada (2 cópias)."
     ],
+    "summary": "Dois duelistas, 8000 PV cada: você vence reduzindo os do oponente a 0.",
     "title": "Fundamentos"
    },
    {
-    "example": "",
+    "diagram": "field",
+    "group": "basics",
     "icon": "LayoutGrid",
     "id": "field",
     "paragraphs": [
@@ -893,10 +1047,12 @@
      "Cartas banidas são removidas do jogo, geralmente com a face para cima, e ficam separadas do Cemitério.",
      "Os monstros ficam em Posição de Ataque (vertical) ou em Posição de Defesa (horizontal). Um monstro com a face para baixo está sempre em Posição de Defesa, e você pode olhar suas próprias cartas com a face para baixo."
     ],
+    "summary": "5 Zonas de Monstros, 5 Zonas de Magias & Armadilhas e 1 Zona de Campo para cada um; as 2 Zonas de Monstros Adicionais são compartilhadas.",
     "title": "O campo"
    },
    {
-    "example": "",
+    "diagram": "turn",
+    "group": "basics",
     "icon": "Clock",
     "id": "turn",
     "paragraphs": [
@@ -911,10 +1067,16 @@
      "Fase Principal 2: só se você realizou uma Fase de Batalha. Você pode fazer as mesmas coisas que na Fase Principal 1.",
      "Fase Final: efeitos que acontecem “durante a Fase Final” são aplicados. Se tiver mais de 6 cartas na mão, descarte até ficar com 6."
     ],
+    "summary": "Seis fases em ordem, incluindo a Fase de Batalha — opcional e proibida no primeiro turno.",
     "title": "Estrutura do turno"
    },
    {
+    "cards": [
+     "Summoned Skull"
+    ],
+    "diagram": "tributes",
     "example": "Você controla 1 monstro. Para Invocar-Normalmente um monstro de Nível 6, você oferece esse monstro como Tributo. Isso usa sua Invocação-Normal do turno, então você não pode Baixar outro monstro.",
+    "group": "summons",
     "icon": "ArrowUp",
     "id": "normal-summon",
     "paragraphs": [
@@ -929,10 +1091,16 @@
      "Invocação-Virar: durante sua Fase Principal, mude um monstro em Posição de Defesa com a face para baixo para Posição de Ataque com a face para cima. Não é possível no turno em que esse monstro foi Baixado.",
      "Durante sua Fase Principal, você pode mudar a posição de batalha de cada monstro uma vez por turno, mas não no turno em que ele foi Invocado ou Baixado, nem depois de ter atacado nesse turno. Uma Invocação-Virar conta como essa mudança."
     ],
+    "summary": "Uma Invocação-Normal ou um Baixar por turno, com Tributos a partir do Nível 5.",
     "title": "Invocação-Normal e Baixar"
    },
    {
+    "cards": [
+     "Monster Reborn",
+     "Cyber Dragon"
+    ],
     "example": "Um monstro diz “Não pode ser Invocado-Normalmente/Baixado. Deve primeiro ser Invocado-Especialmente da sua mão ao banir 2 monstros do seu Cemitério.” Se você o Invocar assim e ele for destruído, uma carta de reviver pode trazê-lo de volta. Se ele só foi descartado da sua mão, não pode ser revivido.",
+    "group": "summons",
     "icon": "Sparkles",
     "id": "special-summon",
     "paragraphs": [
@@ -945,10 +1113,18 @@
      "Monstros do Deck Adicional, Monstros de Ritual e monstros que “devem primeiro ser Invocados-Especialmente” precisam ser Invocados corretamente antes que outro efeito possa Invocá-los-Especialmente do Cemitério ou de entre as cartas banidas.",
      "Se o texto de um monstro diz que ele “não pode ser Invocado-Especialmente de outras formas”, ele só pode ser Invocado pelo próprio procedimento."
     ],
+    "summary": "Quantas Invocações-Especiais suas cartas permitirem, cada uma seguindo o próprio texto.",
     "title": "Invocação-Especial"
    },
    {
+    "cards": [
+     "Polymerization",
+     "Blue-Eyes White Dragon",
+     "Blue-Eyes Ultimate Dragon"
+    ],
+    "diagram": "fusion",
     "example": "“Polimerização” permite Invocar-por-Fusão usando monstros da sua mão ou do seu campo. Você envia ao Cemitério, da sua mão, os dois monstros indicados no Monstro de Fusão e, depois, Invoca-Especialmente esse Monstro de Fusão.",
+    "group": "summons",
     "icon": "Combine",
     "id": "fusion",
     "paragraphs": [
@@ -961,10 +1137,17 @@
      "As matérias são enviadas ao Cemitério, a menos que a carta usada diga o contrário, por exemplo bani-las ou embaralhá-las no Deck.",
      "Se a Invocação-Fusão for negada, as matérias continuam usadas e o Monstro de Fusão é destruído."
     ],
+    "summary": "As Matérias indicadas vão para o Cemitério e o Monstro de Fusão chega do Deck Adicional.",
     "title": "Invocação-Fusão"
    },
    {
+    "cards": [
+     "Black Luster Ritual",
+     "Black Luster Soldier"
+    ],
+    "diagram": "ritual",
     "example": "Seu Monstro de Ritual é de Nível 8 e a Magia de Ritual pede Níveis somados iguais ou maiores que 8. Você oferece como Tributo um monstro de Nível 4 da sua mão e um monstro de Nível 5 do seu campo (total 9) e, depois, Invoca-Especialmente o Monstro de Ritual.",
+    "group": "summons",
     "icon": "Flame",
     "id": "ritual",
     "paragraphs": [
@@ -977,10 +1160,17 @@
      "Monstros de Ritual não podem ser Invocados-Normalmente nem Baixados.",
      "Algumas cartas usam outras fontes, como enviar monstros do Deck ou bani-los do Cemitério; siga o texto."
     ],
+    "summary": "Uma Magia de Ritual mais Tributos cujos Níveis somados combinam com o monstro que você Invoca.",
     "title": "Invocação-Ritual"
    },
    {
+    "cards": [
+     "Junk Synchron",
+     "Stardust Dragon"
+    ],
+    "diagram": "synchro",
     "example": "Um Regulador de Nível 3 mais um não-Regulador de Nível 4 somam 7: você pode Invocar-por-Sincro um Monstro Sincro de Nível 7.",
+    "group": "summons",
     "icon": "Zap",
     "id": "synchro",
     "paragraphs": [
@@ -993,10 +1183,16 @@
      "Monstros Xyz e Link não têm Nível, então normalmente não podem ser Matérias Sincro.",
      "Uma Invocação-Sincro não inicia uma Corrente, mas cartas que negam Invocações podem impedi-la."
     ],
+    "summary": "1 Regulador mais não-Reguladores cujos Níveis somam exatamente o Nível do Monstro Sincro.",
     "title": "Invocação-Sincro"
    },
    {
+    "cards": [
+     "Number 39: Utopia"
+    ],
+    "diagram": "xyz",
     "example": "Dois monstros de Nível 4 que você controla podem ser usados para Invocar-por-Xyz um Monstro Xyz de Classe 4 que exige “2 monstros de Nível 4”.",
+    "group": "summons",
     "icon": "Layers",
     "id": "xyz",
     "paragraphs": [
@@ -1009,10 +1205,15 @@
      "Fichas não podem ser usadas como Matéria Xyz.",
      "Um Monstro Xyz sem matérias continua no campo; ele só não pode mais pagar custos de desassociar."
     ],
+    "summary": "Dois ou mais monstros do mesmo Nível ficam anexados embaixo de um monstro de Classe igual.",
     "title": "Invocação-Xyz"
    },
    {
-    "example": "",
+    "cards": [
+     "Performapal Hip Hippo"
+    ],
+    "diagram": "pendulum",
+    "group": "summons",
     "icon": "Scale",
     "id": "pendulum",
     "paragraphs": [
@@ -1025,10 +1226,16 @@
      "Monstros da sua mão vão para Zonas de Monstros Principais. Monstros Pêndulo com a face para cima do seu Deck Adicional vão para uma Zona de Monstros Adicional ou para uma Zona de Monstros Principal apontada por um Monstro Link.",
      "Uma Invocação-Pêndulo não inicia uma Corrente, mas cartas que negam Invocações podem impedi-la."
     ],
+    "summary": "Duas Escalas nas suas Zonas do Pêndulo abrem uma Invocação de vários monstros entre esses valores.",
     "title": "Invocação-Pêndulo"
    },
    {
+    "cards": [
+     "Decode Talker"
+    ],
+    "diagram": "link",
     "example": "Um Monstro LINK-3 precisa de 3 matérias: você pode usar 3 monstros, ou um Monstro LINK-2 contando como 2 matérias mais 1 outro monstro.",
+    "group": "summons",
     "icon": "Link",
     "id": "link",
     "paragraphs": [
@@ -1042,10 +1249,13 @@
      "Fichas podem ser usadas como Matéria Link.",
      "A partir de uma Zona de Monstros Adicional, as Setas Link podem apontar para Zonas de Monstros Principais dos dois lados do campo."
     ],
+    "summary": "As Matérias vão para o Cemitério e as setas abrem zonas para seus outros monstros.",
     "title": "Invocação-Link"
    },
    {
+    "diagram": "emz",
     "example": "Seu campo está vazio. Você Invoca-por-Sincro em uma Zona de Monstros Principal, deixando a Zona de Monstros Adicional livre. Depois, você Invoca-por-Link na Zona de Monstros Adicional um Monstro LINK-2 com setas para baixo à esquerda e para baixo à direita. Essas setas apontam para duas das suas Zonas de Monstros Principais, então seu próximo Monstro Link ou Monstros Pêndulo com a face para cima do seu Deck Adicional podem ser colocados ali.",
+    "group": "summons",
     "icon": "LayoutDashboard",
     "id": "extra-deck-zones",
     "paragraphs": [
@@ -1058,10 +1268,41 @@
      "Colocar um Monstro de Fusão, Sincro ou Xyz em uma Zona de Monstros Principal deixa a Zona de Monstros Adicional livre para um Monstro Link.",
      "Essas restrições valem apenas para monstros Invocados do Deck Adicional; monstros da mão, do Deck ou do Cemitério vão para Zonas de Monstros Principais."
     ],
+    "summary": "Monstros Link passam por uma Zona de Monstros Adicional; os outros também podem usar suas zonas principais.",
     "title": "Deck Adicional e Zonas de Monstros Adicionais"
    },
    {
+    "cards": [
+     "Scapegoat"
+    ],
+    "diagram": "tokens",
+    "example": "Uma carta Invoca-Especialmente 4 Fichas Ovelha em Posição de Defesa com a face para cima. Elas ocupam 4 das suas 5 Zonas de Monstros: você pode usá-las como Matérias Link, mas sobra apenas uma zona para Invocar outra coisa.",
+    "group": "summons",
+    "icon": "Shapes",
+    "id": "tokens",
+    "paragraphs": [
+     "Uma Ficha é um monstro criado pelo efeito de uma carta. Ela não existe no seu Deck: nome, Tipo, Atributo, Nível, ATK e DEF vêm todos do efeito que a cria. Você a representa com qualquer marcador reconhecível — uma carta de Ficha oficial, uma moeda, um dado.",
+     "No campo, uma Ficha se comporta como um monstro: ocupa uma Zona de Monstros, pode atacar, ser destruída em batalha, mudar de posição de batalha, ser oferecida como Tributo ou ser usada como Matéria. Se não houver Zona de Monstros livre, ela não pode nem ser Invocada.",
+     "No instante em que uma Ficha sai do campo — destruída, enviada ao Cemitério, banida, devolvida para a mão — ela é removida do jogo. Ela nunca chega de verdade ao Cemitério, então efeitos que são ativados “quando uma carta é enviada ao Cemitério” não a enxergam."
+    ],
+    "points": [
+     "Uma Ficha não é uma carta: efeitos que falam de “cartas” na mão, no Deck ou no Cemitério nunca a contam.",
+     "Ela pode ser oferecida como Tributo para uma Invocação-Tributo e usada como Matéria de Fusão, Sincro ou Link.",
+     "Ela não pode ser usada como Matéria Xyz: as Matérias ficam anexadas embaixo do monstro, então a Ficha sairia do campo e desapareceria na hora.",
+     "Várias Fichas podem ter o mesmo nome, e cada uma ocupa a sua própria Zona de Monstros.",
+     "Uma Ficha só aparece se uma carta a criar: você nunca pode Invocar uma por conta própria."
+    ],
+    "summary": "Uma Ficha não é uma carta: ela ocupa uma Zona de Monstros e desaparece no instante em que sai do campo.",
+    "title": "Fichas"
+   },
+   {
+    "cards": [
+     "Mystical Space Typhoon",
+     "Solemn Judgment"
+    ],
+    "diagram": "chain",
     "example": "Você ativa uma Magia Normal (Elo 1). Seu oponente responde com uma Armadilha Normal (Elo 2). Você responde com uma Armadilha de Resposta que a nega (Elo 3). A Armadilha de Resposta é resolvida primeiro e nega a Armadilha; depois, sua Magia é resolvida.",
+    "group": "playing",
     "icon": "ListOrdered",
     "id": "chains",
     "paragraphs": [
@@ -1077,10 +1318,36 @@
      "Armadilhas Baixadas e Magias Rápidas Baixadas não podem ser ativadas no turno em que foram Baixadas, a menos que uma carta permita.",
      "“Uma vez por turno”: cada cópia uma vez por turno, reiniciado se ela sair do campo. “Você só pode usar este efeito de [carta] uma vez por turno”: uma vez por turno para todas as cópias."
     ],
+    "summary": "As respostas se empilham e são resolvidas na ordem inversa, seguindo a Velocidade de Magia.",
     "title": "Correntes e Velocidade de Magia"
    },
    {
+    "cards": [
+     "Royal Magical Library"
+    ],
+    "diagram": "counters",
+    "example": "Um monstro ganha 1 Marcador de Magia cada vez que uma Magia é ativada e, depois, você remove 3 desses marcadores para comprar uma carta. Os marcadores vão embora já na ativação, mesmo que a compra seja negada depois.",
+    "group": "playing",
+    "icon": "Hash",
+    "id": "counters",
+    "paragraphs": [
+     "Algumas cartas colocam marcadores — Marcadores de Magia, Marcadores Bushido e muitos outros — nelas mesmas ou em outras cartas. Um marcador não é uma carta: é uma marca que você coloca sobre a carta em questão.",
+     "Um marcador só pode ser colocado se o texto de uma carta disser isso, e só em uma carta que possa recebê-lo. Se essa carta sair do campo ou for virada para baixo, os marcadores dela são removidos e não voltam com ela.",
+     "Remover marcadores geralmente é um custo: você os remove no momento da ativação. Se o efeito for negado depois, os marcadores continuam gastos."
+    ],
+    "points": [
+     "Todo marcador tem um nome: um efeito que remove “Marcadores de Magia” não pode remover um marcador de outro tipo.",
+     "Os marcadores ficam na carta, não na zona: eles acompanham a carta se ela mudar de zona no campo.",
+     "Uma carta pode ter vários marcadores; alguns textos definem um máximo.",
+     "Matérias Xyz não são marcadores: são cartas de verdade anexadas, e os dois jogadores podem vê-las a qualquer momento."
+    ],
+    "summary": "Uma marca que um efeito coloca em uma carta e que desaparece junto com ela.",
+    "title": "Marcadores"
+   },
+   {
+    "diagram": "battle",
     "example": "Seu monstro de 2000 de ATK ataca um monstro de 1500 de ATK em Posição de Ataque: ele é destruído e seu oponente sofre 500 de dano. Contra um monstro de 2500 de DEF em Posição de Defesa, nada é destruído e você sofre 500 de dano.",
+    "group": "playing",
     "icon": "Swords",
     "id": "battle",
     "paragraphs": [
@@ -1094,10 +1361,14 @@
      "Um monstro com a face para baixo que é atacado é virado para cima; seu efeito VIRAR é ativado após o cálculo de dano.",
      "Monstros destruídos em batalha são enviados ao Cemitério no fim da Etapa de Dano."
     ],
+    "summary": "Os ataques comparam o ATK, ou a DEF quando o monstro que defende está em Posição de Defesa.",
     "title": "Batalha"
    },
    {
-    "example": "",
+    "cards": [
+     "Mirror Force"
+    ],
+    "group": "playing",
     "icon": "Wand",
     "id": "spells-traps",
     "paragraphs": [
@@ -1115,7 +1386,27 @@
      "Armadilha Contínua: permanece no campo, Velocidade de Magia 2.",
      "Armadilha de Resposta: Velocidade de Magia 3, geralmente nega uma ativação ou uma Invocação."
     ],
+    "summary": "Magias são ativadas da mão; Armadilhas precisam ser Baixadas pelo menos um turno antes.",
     "title": "Magias e Armadilhas"
+   },
+   {
+    "example": "Você perde o primeiro duelo para um deck cheio de Magias. Entre os duelos, você coloca 2 cartas anti-Magia do seu Side Deck e tira 2 cartas que ajudam pouco nesse confronto.",
+    "group": "advanced",
+    "icon": "Trophy",
+    "id": "match",
+    "paragraphs": [
+     "Torneios são jogados em Partidas: o primeiro jogador a ganhar dois duelos ganha a Partida. Quem perdeu um duelo escolhe quem começa o próximo.",
+     "Entre dois duelos da mesma Partida, você pode trocar cartas entre o seu Deck e o seu Side Deck (0 a 15 cartas). Ao terminar, o seu Deck Principal ainda precisa ter 40 a 60 cartas, o Deck Adicional no máximo 15, e o Side Deck deve voltar ao tamanho original.",
+     "A Lista de Cartas Proibidas e Limitadas é atualizada regularmente pela Konami. Ela vale para o Deck Principal, o Deck Adicional e o Side Deck somados."
+    ],
+    "points": [
+     "Proibida: 0 cópias. Limitada: 1. Semilimitada: 2. Fora disso, no máximo 3 cópias.",
+     "O TCG (Europa, Américas, Oceania) e o OCG (Japão, Ásia) têm cada um a sua lista.",
+     "O tempo de troca do Side Deck entre duelos é limitado, muitas vezes a alguns minutos.",
+     "Se o tempo acabar durante uma Partida, um procedimento de fim de tempo define o vencedor, em geral o jogador com mais PV."
+    ],
+    "summary": "Torneios são jogados em Partidas: dois duelos ganhos, Side Deck entre os jogos, lista limitativa.",
+    "title": "Partidas, Side Deck e lista limitativa"
    }
   ],
   "source": "Esta página resume o livro de regras oficial (Master Rule atual); quando o texto de uma carta ou uma decisão oficial disser o contrário, a carta e a decisão têm prioridade.",

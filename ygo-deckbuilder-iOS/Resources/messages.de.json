@@ -853,14 +853,166 @@
  },
  "rules": {
   "description": "Die offiziellen Regeln des Yu-Gi-Oh! TCG nach der aktuellen Master Rule, vom Aufbau eines Duells bis zur Abhandlung von Ketten.",
-  "labels": {
-   "example": "Beispiel",
-   "openDuel": "Im Simulator ausprobieren",
-   "points": "Wichtig"
+  "diagrams": {
+   "activate": "Aktivierung",
+   "attached": "darunter gelegt",
+   "between": "Beschwörbare Stufen",
+   "chainLink": "Kettenglied",
+   "counters": "Zählmarken",
+   "damage": "Schaden",
+   "deck": "Deck",
+   "destroyed": "zerstört",
+   "extraDeck": "Extra Deck",
+   "extraZones": "Extra-Monsterzonen",
+   "fieldZone": "Spielfeldzone",
+   "fromHandDeck": "von Hand oder Deck",
+   "fusion": "Fusion",
+   "grave": "Friedhof",
+   "hand": "Hand",
+   "level": "Stufe",
+   "link": "Link",
+   "linkRating": "LINK",
+   "materials": "Materialien",
+   "monsterZones": "Monsterzonen",
+   "noDamage": "kein Schaden",
+   "noTribute": "kein Tribut",
+   "nonTuner": "Nicht-Empfänger",
+   "notFirstTurn": "nicht im 1. Zug",
+   "opponentSide": "Gegner",
+   "optional": "optional",
+   "pointed": "Zielzonen",
+   "rank": "Rang",
+   "remove": "entfernen",
+   "removed": "aus dem Spiel",
+   "resolution": "Abhandlung",
+   "ritual": "Ritual",
+   "sameLevel": "gleiche Stufe",
+   "scale": "Bereich",
+   "shared": "geteilt",
+   "spell": "Zauber",
+   "spellZones": "Zauber- & Fallenzonen",
+   "sum": "Summe",
+   "synchro": "Synchro",
+   "token": "Spielmarke",
+   "tribute": "Tribut",
+   "tributes": "Tribute",
+   "tuner": "Empfänger",
+   "xyz": "Xyz",
+   "youSide": "Du"
   },
+  "glossary": [
+   {
+    "definition": "Der Moment, in dem du eine Karte oder einen Effekt ankündigst und die Kosten zahlst. Eine annullierte Aktivierung kostet dich trotzdem, was du gezahlt hast.",
+    "term": "Aktivierung"
+   },
+   {
+    "definition": "Verhindern, dass eine Aktivierung oder ein Effekt wirkt. Annullieren ist nicht Zerstören: Eine annullierte Karte kann auf dem Spielfeld bleiben.",
+    "term": "Annullieren"
+   },
+   {
+    "definition": "Eine Karte aus dem Spiel entfernen, getrennt vom Friedhof. Manche Karten verbannen verdeckt, dann darf sie niemand ansehen.",
+    "term": "Verbannen"
+   },
+   {
+    "definition": "Der Stapel der Karten und Effekte, die als Antwort aufeinander aktiviert wurden. Der zuletzt aktivierte wird zuerst abgehandelt.",
+    "term": "Kette"
+   },
+   {
+    "definition": "Bei der Aktivierung eine bestimmte Karte bestimmen. Eine Karte, die „nicht als Ziel gewählt werden kann“, darf nicht ausgewählt werden, auch wenn der Effekt sie treffen könnte.",
+    "term": "Als Ziel wählen"
+   },
+   {
+    "definition": "Eine Marke, die ein Effekt auf eine Karte legt und die mit ihr verschwindet.",
+    "term": "Zählmarke"
+   },
+   {
+    "definition": "Was du bei der Aktivierung zahlst: abwerfen, LP zahlen, als Tribut anbieten, ein Material abhängen. Kosten werden nie zurückgegeben.",
+    "term": "Kosten"
+   },
+   {
+    "definition": "Ein Effekt, der dauerhaft wirkt, solange die Karte auf dem Spielfeld liegt, ohne Aktivierung und ohne Kettenglied.",
+    "term": "Permanenter Effekt"
+   },
+   {
+    "definition": "Ein Effekt, der aktiviert wird, wenn ein bestimmtes Ereignis eintritt, etwa „Wenn diese Karte beschworen wird“.",
+    "term": "Trigger-Effekt"
+   },
+   {
+    "definition": "Ein Effekt, den du selbst während deiner eigenen Main Phase aktivierst.",
+    "term": "Zündeffekt"
+   },
+   {
+    "definition": "Ein Effekt mit Zaubergeschwindigkeit 2, den du im Spielzug des Gegners oder als Antwort auf eine Aktivierung aktivieren kannst.",
+    "term": "Schnelleffekt"
+   },
+   {
+    "definition": "Ein Effekt, der aktiviert wird, wenn das Monster von verdeckt auf offen gedreht wird.",
+    "term": "FLIPP-Effekt"
+   },
+   {
+    "definition": "Ein Monster, dessen Effekt du von der Hand aktivierst, oft indem du es abwirfst, um den Gegner in seinem Spielzug zu stören.",
+    "term": "Hand Trap"
+   },
+   {
+    "definition": "Ein Monster, das ein Effekt erzeugt, keine Karte ist und verschwindet, sobald es das Spielfeld verlässt.",
+    "term": "Spielmarke"
+   },
+   {
+    "definition": "Die Karten, die du für eine Beschwörung aus dem Extra Deck nutzt: Fusion, Synchro, Xyz oder Link.",
+    "term": "Material"
+   },
+   {
+    "definition": "Ein Monster, das du kontrollierst, auf den Friedhof legen, um eine Beschwörung oder Kosten zu bezahlen.",
+    "term": "Tribut"
+   },
+   {
+    "definition": "Ein optionaler Effekt „Wenn… kannst du“ kann nicht mehr aktiviert werden, wenn sein Ereignis nicht das Letzte war, was passiert ist.",
+    "term": "Verpasstes Timing"
+   },
+   {
+    "definition": "Der Rang eines Effekts in einer Kette: Nur ein Effekt mit gleicher oder höherer Zaubergeschwindigkeit darf antworten.",
+    "term": "Zaubergeschwindigkeit"
+   }
+  ],
+  "groups": {
+   "advanced": "Weiterführend",
+   "basics": "Grundlagen",
+   "playing": "Karten spielen",
+   "summons": "Beschwörungen"
+  },
+  "labels": {
+   "clear": "Löschen",
+   "example": "Beispiel",
+   "exampleCards": "Genannte Karten",
+   "glossary": "Glossar",
+   "glossaryHint": "Die Begriffe, die auf Karten immer wieder auftauchen.",
+   "links": "Offizielle Ressourcen",
+   "linksHint": "Die vollständigen Regeln und die Video-Tutorials von Konami.",
+   "noResults": "Keine Regel passt zu dieser Suche.",
+   "openDuel": "Im Simulator ausprobieren",
+   "points": "Wichtig",
+   "search": "Regel oder Begriff suchen…"
+  },
+  "links": [
+   {
+    "description": "Die vollständigen Regeln von Konami, Linkbeschwörung inklusive.",
+    "label": "Offizielles Regelbuch (PDF, englisch)",
+    "url": "https://img.yugioh-card.com/en/downloads/rulebook/SD_RuleBook_EN_10.pdf"
+   },
+   {
+    "description": "Die offizielle Reihe: Ablauf eines Duells, Kampf, Ketten und jede Art von Beschwörung.",
+    "label": "Video-Tutorials (englisch)",
+    "url": "https://www.yugioh-card.com/eu/videotutorials/"
+   },
+   {
+    "description": "Der offizielle Einstiegsbereich auf Deutsch, mit Tutorials und Tipps für den Start.",
+    "label": "Yu-Gi-Oh! für Anfänger",
+    "url": "https://www.yugioh-card.com/eu/de/fuer_anfaenger/"
+   }
+  ],
   "sections": [
    {
-    "example": "",
+    "group": "basics",
     "icon": "BookOpen",
     "id": "basics",
     "paragraphs": [
@@ -875,10 +1027,12 @@
      "Von einer Karte mit demselben Namen darfst du in Main Deck, Extra Deck und Side Deck zusammen höchstens 3 Exemplare haben.",
      "Die Liste verbotener und limitierter Karten schränkt manche Karten weiter ein: Verboten (0 Exemplare), Limitiert (1 Exemplar), Semi-Limitiert (2 Exemplare)."
     ],
+    "summary": "Zwei Duellanten mit je 8000 LP: Du gewinnst, wenn die LP deines Gegners auf 0 fallen.",
     "title": "Grundlagen"
    },
    {
-    "example": "",
+    "diagram": "field",
+    "group": "basics",
     "icon": "LayoutGrid",
     "id": "field",
     "paragraphs": [
@@ -893,10 +1047,12 @@
      "Verbannte Karten sind aus dem Spiel entfernt, meist offen, und werden getrennt vom Friedhof abgelegt.",
      "Monster sind in Angriffsposition (senkrecht) oder Verteidigungsposition (waagerecht). Ein verdecktes Monster ist immer in Verteidigungsposition, und du darfst dir deine eigenen verdeckten Karten ansehen."
     ],
+    "summary": "Je 5 Monsterzonen, 5 Zauber- & Fallenzonen und 1 Spielfeldzone; die 2 Extra-Monsterzonen werden geteilt.",
     "title": "Das Spielfeld"
    },
    {
-    "example": "",
+    "diagram": "turn",
+    "group": "basics",
     "icon": "Clock",
     "id": "turn",
     "paragraphs": [
@@ -911,10 +1067,16 @@
      "Main Phase 2: nur, wenn du eine Battle Phase durchgeführt hast. Du kannst dasselbe tun wie in der Main Phase 1.",
      "End Phase: Effekte, die „während der End Phase“ stattfinden, werden angewendet. Hast du mehr als 6 Karten auf der Hand, wirf ab, bis du 6 hast."
     ],
+    "summary": "Sechs Phasen in fester Reihenfolge, darunter die Battle Phase — optional und im ersten Spielzug verboten.",
     "title": "Ablauf eines Spielzugs"
    },
    {
+    "cards": [
+     "Summoned Skull"
+    ],
+    "diagram": "tributes",
     "example": "Du kontrollierst 1 Monster. Um ein Monster der Stufe 6 als Normalbeschwörung zu beschwören, biete es als Tribut an. Damit ist deine Normalbeschwörung des Spielzugs verbraucht, du kannst also kein weiteres Monster setzen.",
+    "group": "summons",
     "icon": "ArrowUp",
     "id": "normal-summon",
     "paragraphs": [
@@ -929,10 +1091,16 @@
      "Flippbeschwörung: Ändere während deiner Main Phase ein verdecktes Monster in Verteidigungsposition in offene Angriffsposition. Das ist nicht in dem Spielzug möglich, in dem das Monster gesetzt wurde.",
      "Während deiner Main Phase kannst du die Kampfposition jedes Monsters einmal pro Spielzug ändern, aber nicht in dem Spielzug, in dem es beschworen oder gesetzt wurde, und nicht, nachdem es in diesem Spielzug angegriffen hat. Eine Flippbeschwörung zählt als diese Änderung."
     ],
+    "summary": "Eine Normalbeschwörung oder ein Setzen pro Spielzug, ab Stufe 5 mit Tributen.",
     "title": "Normalbeschwörung und Setzen"
    },
    {
+    "cards": [
+     "Monster Reborn",
+     "Cyber Dragon"
+    ],
     "example": "Ein Monster sagt: „Kann nicht als Normalbeschwörung beschworen/gesetzt werden. Muss zuerst als Spezialbeschwörung von deiner Hand beschworen werden, indem du 2 Monster von deinem Friedhof verbannst.“ Hast du es so beschworen und wird es zerstört, kann eine Wiederbelebungskarte es zurückholen. Wurde es nur von der Hand abgeworfen, kann es nicht wiederbelebt werden.",
+    "group": "summons",
     "icon": "Sparkles",
     "id": "special-summon",
     "paragraphs": [
@@ -945,10 +1113,18 @@
      "Extra-Deck-Monster, Ritualmonster und Monster, die „zuerst als Spezialbeschwörung beschworen werden müssen“, müssen ordnungsgemäß beschworen worden sein, bevor ein anderer Effekt sie vom Friedhof oder aus dem Verbannten als Spezialbeschwörung beschwören kann.",
      "Steht im Text eines Monsters, dass es „nicht auf andere Weise als Spezialbeschwörung beschworen werden kann“, kann es nur mit seinem eigenen Verfahren beschworen werden."
     ],
+    "summary": "So viele Spezialbeschwörungen, wie deine Karten erlauben, jede nach ihrem eigenen Text.",
     "title": "Spezialbeschwörung"
    },
    {
+    "cards": [
+     "Polymerization",
+     "Blue-Eyes White Dragon",
+     "Blue-Eyes Ultimate Dragon"
+    ],
+    "diagram": "fusion",
     "example": "Mit „Polymerisation“ kannst du eine Fusionsbeschwörung mit Monstern von deiner Hand oder deinem Spielfeld durchführen. Du legst die zwei auf dem Fusionsmonster genannten Monster von deiner Hand auf den Friedhof und beschwörst dann dieses Fusionsmonster als Spezialbeschwörung.",
+    "group": "summons",
     "icon": "Combine",
     "id": "fusion",
     "paragraphs": [
@@ -961,10 +1137,17 @@
      "Die Materialien werden auf den Friedhof gelegt, außer die benutzte Karte sagt etwas anderes, zum Beispiel sie zu verbannen oder ins Deck zu mischen.",
      "Wird die Fusionsbeschwörung annulliert, bleiben die Materialien verbraucht und das Fusionsmonster wird zerstört."
     ],
+    "summary": "Die genannten Materialien gehen auf den Friedhof, das Fusionsmonster kommt aus dem Extra Deck.",
     "title": "Fusionsbeschwörung"
    },
    {
+    "cards": [
+     "Black Luster Ritual",
+     "Black Luster Soldier"
+    ],
+    "diagram": "ritual",
     "example": "Dein Ritualmonster hat Stufe 8 und der Ritualzauber verlangt Stufen, die zusammen gleich oder höher als 8 sind. Du bietest ein Monster der Stufe 4 von deiner Hand und ein Monster der Stufe 5 von deinem Spielfeld als Tribut an (zusammen 9) und beschwörst dann das Ritualmonster als Spezialbeschwörung.",
+    "group": "summons",
     "icon": "Flame",
     "id": "ritual",
     "paragraphs": [
@@ -977,10 +1160,17 @@
      "Ritualmonster können nicht als Normalbeschwörung beschworen oder gesetzt werden.",
      "Manche Karten nutzen andere Quellen, etwa Monster vom Deck auf den Friedhof zu legen oder vom Friedhof zu verbannen; folge dem Text."
     ],
+    "summary": "Ein Ritualzauber und Tribute, deren Stufen zu dem Monster passen, das du beschwörst.",
     "title": "Ritualbeschwörung"
    },
    {
+    "cards": [
+     "Junk Synchron",
+     "Stardust Dragon"
+    ],
+    "diagram": "synchro",
     "example": "Ein Empfänger der Stufe 3 und ein Nicht-Empfänger der Stufe 4 ergeben 7: Du kannst ein Synchromonster der Stufe 7 als Synchrobeschwörung beschwören.",
+    "group": "summons",
     "icon": "Zap",
     "id": "synchro",
     "paragraphs": [
@@ -993,10 +1183,16 @@
      "Xyz- und Linkmonster haben keine Stufe und können daher normalerweise kein Synchromaterial sein.",
      "Eine Synchrobeschwörung startet keine Kette, kann aber von Karten annulliert werden, die Beschwörungen annullieren."
     ],
+    "summary": "1 Empfänger plus Nicht-Empfänger, deren Stufen zusammen genau die Stufe des Synchromonsters ergeben.",
     "title": "Synchrobeschwörung"
    },
    {
+    "cards": [
+     "Number 39: Utopia"
+    ],
+    "diagram": "xyz",
     "example": "Zwei Monster der Stufe 4, die du kontrollierst, können für die Xyz-Beschwörung eines Xyz-Monsters mit Rang 4 verwendet werden, das „2 Monster der Stufe 4“ verlangt.",
+    "group": "summons",
     "icon": "Layers",
     "id": "xyz",
     "paragraphs": [
@@ -1009,10 +1205,15 @@
      "Spielmarken können nicht als Xyz-Material verwendet werden.",
      "Ein Xyz-Monster ohne Material bleibt auf dem Spielfeld; es kann nur keine Abhängkosten mehr zahlen."
     ],
+    "summary": "Zwei oder mehr Monster derselben Stufe liegen unter einem Monster mit gleichem Rang.",
     "title": "Xyz-Beschwörung"
    },
    {
-    "example": "",
+    "cards": [
+     "Performapal Hip Hippo"
+    ],
+    "diagram": "pendulum",
+    "group": "summons",
     "icon": "Scale",
     "id": "pendulum",
     "paragraphs": [
@@ -1025,10 +1226,16 @@
      "Monster von deiner Hand kommen in Hauptmonsterzonen. Offene Pendelmonster aus deinem Extra Deck kommen in eine Extra-Monsterzone oder in eine Hauptmonsterzone, auf die ein Linkmonster zeigt.",
      "Eine Pendelbeschwörung startet keine Kette, kann aber von Karten annulliert werden, die Beschwörungen annullieren."
     ],
+    "summary": "Zwei Bereiche in deinen Pendelzonen öffnen eine Beschwörung mehrerer Monster dazwischen.",
     "title": "Pendelbeschwörung"
    },
    {
+    "cards": [
+     "Decode Talker"
+    ],
+    "diagram": "link",
     "example": "Ein LINK-3-Monster braucht 3 Materialien: Du kannst 3 Monster verwenden oder ein LINK-2-Monster, das als 2 Materialien zählt, plus 1 weiteres Monster.",
+    "group": "summons",
     "icon": "Link",
     "id": "link",
     "paragraphs": [
@@ -1042,10 +1249,13 @@
      "Spielmarken können als Linkmaterial verwendet werden.",
      "Aus einer Extra-Monsterzone können Linkpfeile auf Hauptmonsterzonen auf beiden Seiten des Spielfelds zeigen."
     ],
+    "summary": "Die Materialien gehen auf den Friedhof, und die Pfeile öffnen Zonen für deine anderen Monster.",
     "title": "Linkbeschwörung"
    },
    {
+    "diagram": "emz",
     "example": "Dein Spielfeld ist leer. Du führst eine Synchrobeschwörung in eine Hauptmonsterzone durch und hältst die Extra-Monsterzone frei. Danach beschwörst du per Linkbeschwörung ein LINK-2-Monster mit Pfeilen nach unten links und unten rechts in die Extra-Monsterzone. Diese Pfeile zeigen auf zwei deiner Hauptmonsterzonen, also kannst du dort dein nächstes Linkmonster oder offene Pendelmonster aus deinem Extra Deck platzieren.",
+    "group": "summons",
     "icon": "LayoutDashboard",
     "id": "extra-deck-zones",
     "paragraphs": [
@@ -1058,10 +1268,41 @@
      "Legst du ein Fusions-, Synchro- oder Xyz-Monster in eine Hauptmonsterzone, bleibt die Extra-Monsterzone für ein Linkmonster frei.",
      "Diese Einschränkungen gelten nur für Monster, die aus dem Extra Deck beschworen werden; Monster von der Hand, aus dem Deck oder vom Friedhof kommen in Hauptmonsterzonen."
     ],
+    "summary": "Linkmonster brauchen eine Extra-Monsterzone; die anderen dürfen auch in deine Hauptzonen.",
     "title": "Extra Deck und Extra-Monsterzonen"
    },
    {
+    "cards": [
+     "Scapegoat"
+    ],
+    "diagram": "tokens",
+    "example": "Eine Karte beschwört 4 Schaf-Spielmarken als Spezialbeschwörung in offene Verteidigungsposition. Sie füllen 4 deiner 5 Monsterzonen: Du kannst sie als Linkmaterial verwenden, aber es bleibt nur eine Zone, um noch etwas anderes zu beschwören.",
+    "group": "summons",
+    "icon": "Shapes",
+    "id": "tokens",
+    "paragraphs": [
+     "Eine Spielmarke ist ein Monster, das von einem Karteneffekt erzeugt wird. Sie liegt nicht in deinem Deck: Name, Typ, Attribut, Stufe, ATK und DEF kommen alle von dem Effekt, der sie erzeugt. Du stellst sie mit einem erkennbaren Marker dar — einer offiziellen Spielmarken-Karte, einer Münze, einem Würfel.",
+     "Auf dem Spielfeld verhält sich eine Spielmarke wie ein Monster: Sie belegt eine Monsterzone, kann angreifen, im Kampf zerstört werden, ihre Kampfposition ändern, als Tribut angeboten oder als Material verwendet werden. Ist keine Monsterzone frei, kann sie gar nicht beschworen werden.",
+     "Sobald eine Spielmarke das Spielfeld verlässt — zerstört, auf den Friedhof gelegt, verbannt, auf die Hand zurückgelegt — wird sie aus dem Spiel entfernt. Sie erreicht den Friedhof nie wirklich, deshalb sehen Effekte, die auslösen, „wenn eine Karte auf den Friedhof gelegt wird“, sie nicht."
+    ],
+    "points": [
+     "Eine Spielmarke ist keine Karte: Effekte, die von „Karten“ auf der Hand, im Deck oder im Friedhof sprechen, zählen sie nie mit.",
+     "Sie kann für eine Tributbeschwörung als Tribut angeboten und als Fusions-, Synchro- oder Linkmaterial verwendet werden.",
+     "Sie kann kein Xyz-Material sein: Material wird unter das Monster gelegt, die Spielmarke würde also das Spielfeld verlassen und sofort verschwinden.",
+     "Mehrere Spielmarken können denselben Namen tragen, und jede belegt ihre eigene Monsterzone.",
+     "Eine Spielmarke erscheint nur, wenn eine Karte sie erzeugt: Du kannst sie nie aus eigenem Antrieb beschwören."
+    ],
+    "summary": "Eine Spielmarke ist keine Karte: Sie belegt eine Monsterzone und verschwindet, sobald sie das Spielfeld verlässt.",
+    "title": "Spielmarken"
+   },
+   {
+    "cards": [
+     "Mystical Space Typhoon",
+     "Solemn Judgment"
+    ],
+    "diagram": "chain",
     "example": "Du aktivierst einen normalen Zauber (Kettenglied 1). Dein Gegner antwortet mit einer normalen Falle (Kettenglied 2). Du antwortest mit einer Konterfalle, die sie annulliert (Kettenglied 3). Die Konterfalle wird zuerst abgehandelt und annulliert die Falle, danach wird dein Zauber abgehandelt.",
+    "group": "playing",
     "icon": "ListOrdered",
     "id": "chains",
     "paragraphs": [
@@ -1077,10 +1318,36 @@
      "Gesetzte Fallen und gesetzte Schnellzauber können nicht in dem Spielzug aktiviert werden, in dem sie gesetzt wurden, außer eine Karte erlaubt es.",
      "„Einmal pro Spielzug“: jedes Exemplar einmal pro Spielzug, zurückgesetzt, wenn es das Spielfeld verlässt. „Du kannst diesen Effekt von [Karte] nur einmal pro Spielzug verwenden“: einmal pro Spielzug für alle Exemplare."
     ],
+    "summary": "Antworten stapeln sich und werden in umgekehrter Reihenfolge abgehandelt, nach Zaubergeschwindigkeit.",
     "title": "Ketten und Zaubergeschwindigkeit"
    },
    {
+    "cards": [
+     "Royal Magical Library"
+    ],
+    "diagram": "counters",
+    "example": "Ein Monster erhält jedes Mal 1 Zauber-Zählmarke, wenn ein Zauber aktiviert wird, und du entfernst dann 3 dieser Zählmarken, um eine Karte zu ziehen. Die Zählmarken sind schon bei der Aktivierung weg, selbst wenn das Ziehen danach annulliert wird.",
+    "group": "playing",
+    "icon": "Hash",
+    "id": "counters",
+    "paragraphs": [
+     "Manche Karten legen Zählmarken — Zauber-Zählmarken, Bushido-Zählmarken und viele andere — auf sich selbst oder auf andere Karten. Eine Zählmarke ist keine Karte: Sie ist ein Marker, den du auf die betroffene Karte legst.",
+     "Eine Zählmarke darf nur gelegt werden, wenn der Text einer Karte das sagt, und nur auf eine Karte, die sie aufnehmen kann. Verlässt diese Karte das Spielfeld oder wird sie verdeckt gedreht, werden ihre Zählmarken entfernt und kommen nicht mit ihr zurück.",
+     "Zählmarken zu entfernen sind meist Kosten: Du entfernst sie bei der Aktivierung. Wird der Effekt danach annulliert, bleiben die Zählmarken verbraucht."
+    ],
+    "points": [
+     "Jede Zählmarke hat einen Namen: Ein Effekt, der „Zauber-Zählmarken“ entfernt, kann keine Zählmarke eines anderen Typs entfernen.",
+     "Zählmarken liegen auf der Karte, nicht auf der Zone: Sie wandern mit der Karte, wenn diese auf dem Spielfeld die Zone wechselt.",
+     "Eine Karte kann mehrere Zählmarken tragen; manche Texte legen ein Maximum fest.",
+     "Xyz-Material sind keine Zählmarken: Es sind echte angelegte Karten, die beide Spieler jederzeit ansehen dürfen."
+    ],
+    "summary": "Eine Marke, die ein Effekt auf eine Karte legt und die mit ihr verschwindet.",
+    "title": "Zählmarken"
+   },
+   {
+    "diagram": "battle",
     "example": "Dein Monster mit 2000 ATK greift ein Monster mit 1500 ATK in Angriffsposition an: Es wird zerstört und dein Gegner erhält 500 Schaden. Gegen ein Monster mit 2500 DEF in Verteidigungsposition wird nichts zerstört und du erhältst 500 Schaden.",
+    "group": "playing",
     "icon": "Swords",
     "id": "battle",
     "paragraphs": [
@@ -1094,10 +1361,14 @@
      "Ein angegriffenes verdecktes Monster wird aufgedeckt; sein FLIPP-Effekt wird nach der Schadensberechnung aktiviert.",
      "Durch Kampf zerstörte Monster werden am Ende des Damage Step auf den Friedhof gelegt."
     ],
+    "summary": "Angriffe vergleichen die ATK, oder die DEF, wenn das verteidigende Monster in Verteidigungsposition ist.",
     "title": "Kampf"
    },
    {
-    "example": "",
+    "cards": [
+     "Mirror Force"
+    ],
+    "group": "playing",
     "icon": "Wand",
     "id": "spells-traps",
     "paragraphs": [
@@ -1115,7 +1386,27 @@
      "Permanente Falle: bleibt auf dem Spielfeld, Zaubergeschwindigkeit 2.",
      "Konterfalle: Zaubergeschwindigkeit 3, annulliert meist eine Aktivierung oder eine Beschwörung."
     ],
+    "summary": "Zauber aktivierst du von der Hand; Fallen müssen mindestens einen Spielzug vorher gesetzt werden.",
     "title": "Zauber und Fallen"
+   },
+   {
+    "example": "Du verlierst das erste Duell gegen ein Deck voller Zauber. Zwischen den Duellen nimmst du 2 Anti-Zauber-Karten aus deinem Side Deck hinein und 2 Karten heraus, die in diesem Match-up wenig bringen.",
+    "group": "advanced",
+    "icon": "Trophy",
+    "id": "match",
+    "paragraphs": [
+     "Turniere werden als Match gespielt: Wer zuerst zwei Duelle gewinnt, gewinnt das Match. Der Verlierer eines Duells entscheidet, wer im nächsten beginnt.",
+     "Zwischen zwei Duellen desselben Matches darfst du Karten zwischen deinem Deck und deinem Side Deck tauschen (0 bis 15 Karten). Danach muss dein Main Deck weiterhin 40 bis 60 Karten enthalten, dein Extra Deck höchstens 15, und dein Side Deck muss wieder seine ursprüngliche Größe haben.",
+     "Die Liste verbotener und limitierter Karten wird von Konami regelmäßig aktualisiert. Sie gilt für Main Deck, Extra Deck und Side Deck zusammen."
+    ],
+    "points": [
+     "Verboten: 0 Exemplare. Limitiert: 1. Semi-Limitiert: 2. Sonst höchstens 3 Exemplare.",
+     "Das TCG (Europa, Amerika, Ozeanien) und das OCG (Japan, Asien) haben jeweils ihre eigene Liste.",
+     "Die Zeit zum Tauschen des Side Decks zwischen zwei Duellen ist begrenzt, oft auf wenige Minuten.",
+     "Läuft während eines Matches die Zeit ab, bestimmt ein Verfahren am Zeitende den Sieger, meist den Spieler mit den meisten LP."
+    ],
+    "summary": "Turniere werden als Match gespielt: zwei gewonnene Duelle, Side Deck zwischen den Duellen, Limitierungsliste.",
+    "title": "Match, Side Deck und Limitierungsliste"
    }
   ],
   "source": "Diese Seite fasst das offizielle Regelbuch (aktuelle Master Rule) zusammen; wenn der Text einer Karte oder ein offizielles Ruling etwas anderes sagt, haben Karte und Ruling Vorrang.",
