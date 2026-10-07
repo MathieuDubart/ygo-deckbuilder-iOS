@@ -110,7 +110,9 @@ enum DuelHaptics {
 final class DuelSound {
     static let shared = DuelSound()
 
-    private static let sampleRate = 44_100.0
+    /// `nonisolated` : c'est une constante, et le calcul des bruitages tourne hors du fil
+    /// principal — l'isoler en ferait une erreur en mode Swift 6.
+    nonisolated private static let sampleRate = 44_100.0
     private let engine = AVAudioEngine()
     private let format = AVAudioFormat(standardFormatWithSampleRate: DuelSound.sampleRate, channels: 1)!
     private var players: [AVAudioPlayerNode] = []

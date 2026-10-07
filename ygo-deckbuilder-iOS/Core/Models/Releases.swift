@@ -46,7 +46,9 @@ nonisolated struct Release: Decodable, Hashable, Sendable, Identifiable {
     /// Optionnel comme ailleurs : une app plus récente que son serveur doit continuer à lire.
     let tagIds: [String]?
 
-    var id: String { set.id }
+    // `self.` obligatoire : dans le corps d'une propriété calculée, `set` seul est lu comme
+    // le mot-clé d'un accesseur en écriture.
+    var id: String { self.set.id }
     var tags: [String] { tagIds ?? [] }
     /// Extension annoncée dont aucune carte n'est connue.
     var unrevealed: Bool { progress.prints == 0 }

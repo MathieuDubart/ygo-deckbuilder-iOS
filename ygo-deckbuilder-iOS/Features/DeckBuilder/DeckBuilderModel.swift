@@ -144,13 +144,13 @@ final class DeckBuilderModel {
         let trimmed = newName.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty, trimmed != name else { return }
         name = String(trimmed.prefix(80))
-        Task { try? await api.updateDeck(deckId, UpdateDeckBody(name: name)); onSaved?() }
+        Task { _ = try? await api.updateDeck(deckId, UpdateDeckBody(name: name)); onSaved?() }
     }
 
     func setFormat(_ newFormat: DeckFormat) {
         guard newFormat != format else { return }
         format = newFormat
-        Task { try? await api.updateDeck(deckId, UpdateDeckBody(format: newFormat)); onSaved?() }
+        Task { _ = try? await api.updateDeck(deckId, UpdateDeckBody(format: newFormat)); onSaved?() }
     }
 
     /// Met à jour les quantités possédées (après un ajout à la collection).
