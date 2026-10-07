@@ -169,7 +169,12 @@ struct ProductDetailView: View {
                             .foregroundStyle(.secondary)
                     }
                     ForEach(cards, id: \.card.id) { c in
-                        Button { selected = CardLink(cardId: c.card.id, printHint: c.printCode) } label: {
+                        // La rareté vient du contenu du produit : deux impressions peuvent partager un
+                        // code, et le code seul donnerait le mauvais reflet en plein écran.
+                        Button {
+                            selected = CardLink(
+                                cardId: c.card.id, printHint: c.printCode, rarityHint: c.rarity)
+                        } label: {
                             CardRow(card: c.card, subtitle: "\(c.printCode) · \(c.rarity)") {
                                 VStack(alignment: .trailing, spacing: 2) {
                                     Text("\(c.needed)×").font(.subheadline.bold().monospacedDigit())

@@ -13,7 +13,8 @@ struct ProfileScreen: View {
     @State private var state: Loadable<ProfileView> = .idle
     @State private var editing = false
     @State private var picking = false
-    @State private var selected: CardLink?
+    /// Carte de la vitrine ouverte en plein écran (l'objet 3D, pas la fiche).
+    @State private var shown: ProfileCard?
 
     var body: some View {
         ScrollView {
@@ -21,7 +22,7 @@ struct ProfileScreen: View {
                 switch view {
                 case .visible(let profile):
                     VisibleProfile(
-                        profile: profile, editing: $editing, picking: $picking, selected: $selected)
+                        profile: profile, editing: $editing, picking: $picking, shown: $shown)
                 case .hidden(let user, let friendship, let requestId):
                     HiddenProfile(user: user, state: friendship, requestId: requestId)
                 }
@@ -33,7 +34,12 @@ struct ProfileScreen: View {
             await load()
         }
         .refreshable { await load() }
-        .cardDetailSheet($selected)
+        // Une vitrine, ça se regarde : on ouvre la carte en grand, dans la rareté qu'il
+        // possède, plutôt que la fiche. Une seule rareté dans la liste, donc pas de
+        // sélecteur : c'est SA carte qu'on regarde.
+        .fullScreenCover(item: $shown) { card in
+            CardShowcaseView(card: card.card, rarities: [card.rarity], initialRarity: card.rarity)
+        }
         .sheet(isPresented: $editing) {
             if case .visible(let profile) = state.value { ProfileEditor(user: profile.user) }
         }
@@ -64,7 +70,7 @@ private struct VisibleProfile: View {
     let profile: Profile
     @Binding var editing: Bool
     @Binding var picking: Bool
-    @Binding var selected: CardLink?
+    @Binding var shown: ProfileCard?
 
     @Environment(AppState.self) private var app
 
@@ -176,7 +182,7 @@ private struct VisibleProfile: View {
                     spacing: Spacing.m
                 ) {
                     ForEach(profile.cards) { card in
-                        Button { selected = CardLink(cardId: card.card.id) } label: {
+                        Button { shown = card } label: {
                             VStack(alignment: .leading, spacing: 3) {
                                 CardArt(card: card.card)
                                 Text(card.printCode)
