@@ -44,8 +44,16 @@ nonisolated enum WishlistPriority: String, Codable, Hashable, Sendable, CaseIter
 }
 
 nonisolated enum ProductKind: String, Codable, Hashable, Sendable, CaseIterable, Identifiable {
-    case structure = "STRUCTURE", tin = "TIN", starter = "STARTER", box = "BOX", other = "OTHER"
+    case booster = "BOOSTER", structure = "STRUCTURE", tin = "TIN", starter = "STARTER"
+    case box = "BOX", other = "OTHER"
     var id: String { rawValue }
+
+    /// Un type inconnu (serveur plus récent que l'app) ne doit pas faire échouer tout un
+    /// écran : on le range avec les autres produits.
+    init(from decoder: any Decoder) throws {
+        let raw = try decoder.singleValueContainer().decode(String.self)
+        self = ProductKind(rawValue: raw) ?? .other
+    }
 }
 
 nonisolated enum OfficialDeckKind: String, Codable, Hashable, Sendable, CaseIterable, Identifiable {

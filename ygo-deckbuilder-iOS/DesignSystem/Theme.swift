@@ -186,13 +186,7 @@ struct FilterChip<Content: View>: View {
 
     var body: some View {
         Button(action: action) {
-            label()
-                .lineLimit(1)
-                .font(.subheadline.weight(.medium))
-                .foregroundStyle(isOn ? Color.accentColor : Color.primary)
-                .padding(.horizontal, Spacing.m + 2)
-                .padding(.vertical, Spacing.s)
-                .glassEffect(isOn ? .regular.tint(.accentColor.opacity(0.25)).interactive() : .regular.interactive(), in: .capsule)
+            ChipLabel(isOn: isOn, label: label)
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(isOn ? .isSelected : [])

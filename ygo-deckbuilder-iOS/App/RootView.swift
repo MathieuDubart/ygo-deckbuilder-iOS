@@ -17,12 +17,22 @@ struct RootView: View {
                     AuthView()
                 case .signedIn:
                     MainTabView()
+                        .task(id: TagLoad(tags: app.tagsVersion, collection: app.collectionVersion)) {
+                            await app.loadTags()
+                        }
                 }
             }
         }
         .animation(.default, value: app.session)
         .animation(.default, value: app.server.url)
     }
+}
+
+/// Le référentiel d'étiquettes se recharge quand elles changent, mais aussi avec la
+/// collection : un échec au lancement (hors ligne) ne doit pas condamner toute la session.
+private struct TagLoad: Equatable {
+    let tags: Int
+    let collection: Int
 }
 
 struct MainTabView: View {

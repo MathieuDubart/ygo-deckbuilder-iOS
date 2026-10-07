@@ -29,7 +29,7 @@ final class ServerConfig {
 }
 
 nonisolated enum HTTPMethod: String, Sendable {
-    case get = "GET", post = "POST", patch = "PATCH", delete = "DELETE"
+    case get = "GET", post = "POST", put = "PUT", patch = "PATCH", delete = "DELETE"
 }
 
 /// Client HTTP unique. Tout passe par `<serveur>/api/…` (le proxy du front web relaie vers
