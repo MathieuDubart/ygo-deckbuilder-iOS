@@ -16,8 +16,9 @@ struct DeckCardActions: View {
         VStack(alignment: .leading, spacing: Spacing.m) {
             HStack(alignment: .firstTextBaseline) {
                 Text(t("deckBuilder.actions.inDeck")).font(.headline)
+                let ban = builder.banStatus(of: card)
                 Text(t("deckBuilder.actions.copies", ["total": total, "limit": limit])
-                    + (!builder.isOCG && card.banTcg != nil ? " · \(banLabel(card.banTcg!))" : ""))
+                    + (ban.map { " · \(banLabel($0))" } ?? ""))
                     .font(.caption.monospacedDigit())
                     .foregroundStyle(.secondary)
                 Spacer()

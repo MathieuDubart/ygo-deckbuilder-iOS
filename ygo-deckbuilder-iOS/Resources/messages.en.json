@@ -36,7 +36,10 @@
       "Banned": "Banned",
       "Forbidden": "Forbidden",
       "Limited": "Limited",
-      "Semi-Limited": "Semi-Limited"
+      "Semi-Limited": "Semi-Limited",
+      "FORBIDDEN": "Forbidden",
+      "LIMITED": "Limited",
+      "SEMI_LIMITED": "Semi-Limited"
     },
     "collectionForm": {
       "condition": "Condition",
@@ -63,7 +66,8 @@
       "ownedPrice": "Owned: <strong>{owned}</strong> · Cardmarket from <strong>{price}</strong>",
       "printUnspecified": "Unspecified printing",
       "prints": "Printings ({count})",
-      "scale": "Scale {scale}"
+      "scale": "Scale {scale}",
+      "banOcg": "OCG: {status}"
     },
     "interactions": {
       "byTraits": "(by its traits)",
@@ -277,7 +281,9 @@
       "extraDeckMonster": "This monster goes in the Extra Deck",
       "maxCopies": "{limit, plural, one {Maximum # copy} other {Maximum # copies}}",
       "notExtraDeck": "Only Fusion, Synchro, Xyz and Link monsters go in the Extra Deck",
-      "zoneFull": "{zone} is full"
+      "zoneFull": "{zone} is full",
+      "atLimit": "Already {count}",
+      "atLimitBan": "{status} · already {count}"
     },
     "header": {
       "guide": "Guide",
@@ -290,7 +296,10 @@
       "tooManyCopies": "{name}: {count, plural, one {# copy} other {# copies}} (max {limit})",
       "wrongZone": "{name} doesn’t belong in the {zone}",
       "zoneTooLarge": "{zone}: {count, plural, one {# card} other {# cards}} (maximum {limit})",
-      "zoneTooSmall": "{zone}: {count, plural, one {# card} other {# cards}} (minimum {limit})"
+      "zoneTooSmall": "{zone}: {count, plural, one {# card} other {# cards}} (minimum {limit})",
+      "forbidden": "{name} is forbidden ({count, plural, one {# copy} other {# copies}} in the deck)",
+      "fix": "Remove what the banlist forbids",
+      "fixed": "{count, plural, one {# copy removed} other {# copies removed}}"
     },
     "missing": {
       "addAll": "Add all to wishlist",
@@ -305,7 +314,8 @@
       "suggestionsCount": "Suggestions ({count})",
       "suggestionsEmpty": "Add a few cards to the deck: suggestions are based on its archetypes.",
       "suggestionsHint": "Cards from your collection that share an archetype with your deck or are mentioned by it.",
-      "tileTitle": "{name}\nClick: details · Ctrl/⌘+click: add · Shift+click: add to Side Deck"
+      "tileTitle": "{name}\nClick: details · Ctrl/⌘+click: add · Shift+click: add to Side Deck",
+      "tileBlocked": "{name}\n{reason} — cannot be added"
     },
     "save": {
       "dirty": "Unsaved changes",
@@ -319,6 +329,9 @@
       "empty": "Click a card on the left to see its details and add it",
       "emptySide": "Open a card and add it to the Side Deck, or Shift+click to add it directly",
       "missingBadge": "MISSING"
+    },
+    "banlist": {
+      "updated": "The banlist has changed — this deck has been rechecked."
     }
   },
   "decks": {

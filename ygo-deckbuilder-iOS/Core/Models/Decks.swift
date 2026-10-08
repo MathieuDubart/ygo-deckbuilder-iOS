@@ -19,6 +19,7 @@ nonisolated struct DeckIssue: Codable, Hashable, Sendable {
     nonisolated enum Code: String, Codable, Sendable {
         case zoneTooSmall = "ZONE_TOO_SMALL"
         case zoneTooLarge = "ZONE_TOO_LARGE"
+        case forbidden = "FORBIDDEN"
         case tooManyCopies = "TOO_MANY_COPIES"
         case wrongZone = "WRONG_ZONE"
     }
@@ -82,4 +83,15 @@ nonisolated struct CardSuggestion: Decodable, Hashable, Sendable {
     let card: CardSummary
     let reason: Reason
     let ownedQuantity: Int
+}
+
+/**
+ État de la banlist locale. `changed` dit si la dernière relecture a bougé un statut : c'est le
+ seul signal dont le client a besoin pour décider de recharger un deck ou pas.
+ */
+nonisolated struct BanlistStatus: Codable, Hashable, Sendable {
+    let changed: Bool
+    /// Dernière relecture, ou nil si la banlist n'a jamais été lue avec succès.
+    let checkedAt: String?
+    let listed: Int
 }

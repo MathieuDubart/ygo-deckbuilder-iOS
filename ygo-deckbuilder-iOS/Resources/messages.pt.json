@@ -36,7 +36,10 @@
       "Banned": "Banido",
       "Forbidden": "Proibido",
       "Limited": "Limitado",
-      "Semi-Limited": "Semilimitado"
+      "Semi-Limited": "Semilimitado",
+      "FORBIDDEN": "Proibido",
+      "LIMITED": "Limitado",
+      "SEMI_LIMITED": "Semilimitado"
     },
     "collectionForm": {
       "condition": "Estado",
@@ -63,7 +66,8 @@
       "ownedPrice": "Na coleção: <strong>{owned}</strong> · Cardmarket a partir de <strong>{price}</strong>",
       "printUnspecified": "Impressão não especificada",
       "prints": "Impressões ({count})",
-      "scale": "Escala {scale}"
+      "scale": "Escala {scale}",
+      "banOcg": "OCG: {status}"
     },
     "interactions": {
       "byTraits": "(pelas características)",
@@ -277,7 +281,9 @@
       "extraDeckMonster": "Este monstro vai no Deck Adicional",
       "maxCopies": "{limit, plural, one {Máximo de # cópia} other {Máximo de # cópias}}",
       "notExtraDeck": "Só monstros de Fusão, Sincro, Xyz e Link vão no Deck Adicional",
-      "zoneFull": "{zone} está cheio"
+      "zoneFull": "{zone} está cheio",
+      "atLimit": "Já {count}",
+      "atLimitBan": "{status} · já {count}"
     },
     "header": {
       "guide": "Guia",
@@ -290,7 +296,10 @@
       "tooManyCopies": "{name}: {count, plural, one {# cópia} other {# cópias}} (máx. {limit})",
       "wrongZone": "{name} não pode ir no {zone}",
       "zoneTooLarge": "{zone}: {count, plural, one {# card} other {# cards}} (máximo {limit})",
-      "zoneTooSmall": "{zone}: {count, plural, one {# card} other {# cards}} (mínimo {limit})"
+      "zoneTooSmall": "{zone}: {count, plural, one {# card} other {# cards}} (mínimo {limit})",
+      "forbidden": "{name} está proibida ({count, plural, one {# exemplar} other {# exemplares}} no deck)",
+      "fix": "Retirar o que a banlist proíbe",
+      "fixed": "{count, plural, one {# exemplar retirado} other {# exemplares retirados}}"
     },
     "missing": {
       "addAll": "Pôr tudo na wishlist",
@@ -305,7 +314,8 @@
       "suggestionsCount": "Sugestões ({count})",
       "suggestionsEmpty": "Adicione alguns cards ao deck: as sugestões se baseiam nos arquétipos dele.",
       "suggestionsHint": "Cards da sua coleção que compartilham um arquétipo com o seu deck ou são mencionados por ele.",
-      "tileTitle": "{name}\nClique: detalhes · Ctrl/⌘+clique: adicionar · Shift+clique: adicionar ao Side Deck"
+      "tileTitle": "{name}\nClique: detalhes · Ctrl/⌘+clique: adicionar · Shift+clique: adicionar ao Side Deck",
+      "tileBlocked": "{name}\n{reason} — não pode ser adicionada"
     },
     "save": {
       "dirty": "Alterações não salvas",
@@ -319,6 +329,9 @@
       "empty": "Clique em um card à esquerda para ver os detalhes e adicioná-lo",
       "emptySide": "Abra um card e adicione ao Side Deck, ou use Shift+clique para adicionar direto",
       "missingBadge": "FALTA"
+    },
+    "banlist": {
+      "updated": "A banlist mudou — este deck acabou de ser reverificado."
     }
   },
   "decks": {

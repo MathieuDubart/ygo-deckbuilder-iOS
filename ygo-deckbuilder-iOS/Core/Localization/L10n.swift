@@ -132,8 +132,6 @@ final class L10n {
         return try? JSONDecoder().decode(T.self, from: data)
     }
 
-    func has(_ key: String) -> Bool { messages[key] != nil || fallback[key] != nil }
-
     /// Texte brut (les balises <strong>… sont retirées).
     func t(_ key: String, _ args: [String: any Sendable] = [:]) -> String {
         guard let m = message(key) else { return key }

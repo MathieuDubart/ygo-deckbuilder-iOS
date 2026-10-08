@@ -9,11 +9,12 @@ struct DeckBuilderScreen: View {
     @Environment(AppState.self) private var app
     @State private var model: DeckBuilderModel?
     @State private var loadError: String?
+    @State private var banlistMessage: String?
 
     var body: some View {
         Group {
             if let model {
-                DeckBuilderContent(model: model)
+                DeckBuilderContent(model: model, banlistMessage: banlistMessage)
             } else if let loadError {
                 ContentUnavailableView(t("layout.pages.deckNotFound"), systemImage: "rectangle.stack.badge.minus", description: Text(loadError))
             } else {
@@ -21,6 +22,20 @@ struct DeckBuilderScreen: View {
             }
         }
         .task(id: app.collectionVersion) { await load() }
+        .task {
+            // La banlist change bien plus souvent que le reste du catalogue. On la relit à
+            // l'ouverture, SANS faire attendre le deck : il s'affiche avec la liste connue, et
+            // on ne recharge que si un statut a bougé. Le serveur borne la fréquence réelle.
+            guard let status = try? await app.api.refreshBanlist(), status.changed,
+                  let deck = try? await app.api.deck(deckId),
+                  // Le modèle peut ne pas être encore construit : annoncer une
+                  // revérification qu'on n'a pas pu appliquer ferait mentir le bandeau.
+                  let model
+            else { return }
+            // Les cartes, pas seulement les quantités : le statut vit dans la carte.
+            model.refreshCards(from: deck)
+            banlistMessage = t("deckBuilder.banlist.updated")
+        }
         .onDisappear {
             let model = model
             Task { await model?.flush() }
@@ -45,6 +60,8 @@ struct DeckBuilderScreen: View {
 
 private struct DeckBuilderContent: View {
     @Bindable var model: DeckBuilderModel
+    /// Mot d'explication quand la banlist vient de changer sous les pieds du joueur.
+    var banlistMessage: String?
 
     @Environment(AppState.self) private var app
     @State private var name = ""
@@ -53,13 +70,22 @@ private struct DeckBuilderContent: View {
     @State private var showingGuide = false
     @State private var pendingLink: CardLink?
     @State private var wishlistMessage: String?
+    @State private var issuesMessage: String?
     @FocusState private var editingName: Bool
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Spacing.xl) {
                 header
-                IssuesView(model: model)
+                if let banlistMessage {
+                    Label(banlistMessage, systemImage: "arrow.trianglehead.2.clockwise")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+                IssuesView(model: model, message: $issuesMessage)
+                if let issuesMessage {
+                    Text(issuesMessage).font(.footnote).foregroundStyle(Theme.success)
+                }
                 MissingView(model: model, message: $wishlistMessage)
                 ForEach(DeckZone.allCases) { zone in
                     ZoneSection(model: model, zone: zone) { selected = CardLink(cardId: $0) }
@@ -198,6 +224,7 @@ private struct SaveStatusView: View {
 
 private struct IssuesView: View {
     let model: DeckBuilderModel
+    @Binding var message: String?
 
     var body: some View {
         let issues = model.issues
@@ -208,6 +235,17 @@ private struct IssuesView: View {
                     .foregroundStyle(Theme.warning)
                 ForEach(Array(issues.enumerated()), id: \.offset) { _, issue in
                     Text("· \(describe(issue))").font(.footnote)
+                }
+                // Seules les anomalies de banlist se réparent toutes seules : une zone trop
+                // petite ou un monstre mal placé demandent un choix de joueur.
+                if !model.banlistFixes.isEmpty {
+                    Button(t("deckBuilder.issues.fix"), systemImage: "scissors") {
+                        let removed = model.applyBanlistFixes()
+                        message = t("deckBuilder.issues.fixed", ["count": removed])
+                    }
+                    .buttonStyle(.glass)
+                    .font(.footnote.weight(.medium))
+                    .padding(.top, Spacing.xs)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -227,6 +265,8 @@ private struct IssuesView: View {
         switch issue.code {
         case .zoneTooSmall: return t("deckBuilder.issues.zoneTooSmall", ["zone": zone, "count": count, "limit": limit])
         case .zoneTooLarge: return t("deckBuilder.issues.zoneTooLarge", ["zone": zone, "count": count, "limit": limit])
+        // Une interdiction n'est pas un quota : « 2 exemplaires sur 0 » ne veut rien dire
+        case .forbidden: return t("deckBuilder.issues.forbidden", ["name": name, "count": count])
         case .tooManyCopies: return t("deckBuilder.issues.tooManyCopies", ["name": name, "count": count, "limit": limit])
         case .wrongZone: return t("deckBuilder.issues.wrongZone", ["name": name, "zone": zone])
         }

@@ -36,7 +36,10 @@
       "Banned": "Verboten",
       "Forbidden": "Verboten",
       "Limited": "Limitiert",
-      "Semi-Limited": "Semi-Limitiert"
+      "Semi-Limited": "Semi-Limitiert",
+      "FORBIDDEN": "Verboten",
+      "LIMITED": "Limitiert",
+      "SEMI_LIMITED": "Semi-Limitiert"
     },
     "collectionForm": {
       "condition": "Zustand",
@@ -63,7 +66,8 @@
       "ownedPrice": "Im Besitz: <strong>{owned}</strong> · Cardmarket ab <strong>{price}</strong>",
       "printUnspecified": "Druck nicht angegeben",
       "prints": "Drucke ({count})",
-      "scale": "Skala {scale}"
+      "scale": "Skala {scale}",
+      "banOcg": "OCG: {status}"
     },
     "interactions": {
       "byTraits": "(über ihre Eigenschaften)",
@@ -277,7 +281,9 @@
       "extraDeckMonster": "Dieses Monster gehört ins Extra Deck",
       "maxCopies": "{limit, plural, one {Maximal # Exemplar} other {Maximal # Exemplare}}",
       "notExtraDeck": "Nur Fusions-, Synchro-, Xyz- und Link-Monster gehören ins Extra Deck",
-      "zoneFull": "{zone} ist voll"
+      "zoneFull": "{zone} ist voll",
+      "atLimit": "Bereits {count}",
+      "atLimitBan": "{status} · bereits {count}"
     },
     "header": {
       "guide": "Guide",
@@ -290,7 +296,10 @@
       "tooManyCopies": "{name}: {count, plural, one {# Exemplar} other {# Exemplare}} (max. {limit})",
       "wrongZone": "{name} gehört nicht ins {zone}",
       "zoneTooLarge": "{zone}: {count, plural, one {# Karte} other {# Karten}} (maximal {limit})",
-      "zoneTooSmall": "{zone}: {count, plural, one {# Karte} other {# Karten}} (mindestens {limit})"
+      "zoneTooSmall": "{zone}: {count, plural, one {# Karte} other {# Karten}} (mindestens {limit})",
+      "forbidden": "{name} ist verboten ({count, plural, one {# Exemplar} other {# Exemplare}} im Deck)",
+      "fix": "Von der Banlist Verbotenes entfernen",
+      "fixed": "{count, plural, one {# Exemplar entfernt} other {# Exemplare entfernt}}"
     },
     "missing": {
       "addAll": "Alle auf die Wunschliste",
@@ -305,7 +314,8 @@
       "suggestionsCount": "Vorschläge ({count})",
       "suggestionsEmpty": "Füge ein paar Karten ins Deck ein: Die Vorschläge basieren auf seinen Archetypen.",
       "suggestionsHint": "Karten aus deiner Sammlung, die einen Archetyp mit deinem Deck teilen oder von ihm erwähnt werden.",
-      "tileTitle": "{name}\nKlick: Details · Strg/⌘+Klick: hinzufügen · Umschalt+Klick: ins Side Deck"
+      "tileTitle": "{name}\nKlick: Details · Strg/⌘+Klick: hinzufügen · Umschalt+Klick: ins Side Deck",
+      "tileBlocked": "{name}\n{reason} — kann nicht hinzugefügt werden"
     },
     "save": {
       "dirty": "Ungespeicherte Änderungen",
@@ -319,6 +329,9 @@
       "empty": "Klick links auf eine Karte, um ihre Details zu sehen und sie hinzuzufügen",
       "emptySide": "Öffne eine Karte und füge sie dem Side Deck hinzu – oder direkt per Umschalt+Klick",
       "missingBadge": "FEHLT"
+    },
+    "banlist": {
+      "updated": "Die Banlist hat sich geändert — dieses Deck wurde neu geprüft."
     }
   },
   "decks": {

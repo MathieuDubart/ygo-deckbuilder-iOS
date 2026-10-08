@@ -128,6 +128,15 @@ extension APIClient {
         try await send(on ? .put : .delete, "tags/\(tagId)/sets/\(setId)")
     }
 
+    // MARK: Banlist
+
+    /**
+     Demande au serveur de relire la banlist si elle a vieilli. Le serveur borne la fréquence
+     réelle par l'âge de la dernière lecture : on peut donc l'appeler à chaque ouverture de
+     deck sans y penser.
+     */
+    func refreshBanlist() async throws -> BanlistStatus { try await send(.post, "banlist/refresh") }
+
     // MARK: Decks
 
     func decks() async throws -> [DeckListItem] { try await get("decks") }

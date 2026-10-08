@@ -45,8 +45,6 @@ final class DeckBuilderModel {
         }
     }
 
-    var isOCG: Bool { format == .ocg }
-
     // MARK: - Lecture
 
     func cards(in zone: DeckZone) -> [Entry] {
@@ -70,17 +68,64 @@ final class DeckBuilderModel {
         DeckZone.allCases.reduce(0) { $0 + quantity(of: cardId, in: $1) }
     }
 
-    /// Exemplaires autorisés (banlist TCG, sauf format OCG).
-    func limit(for card: CardSummary) -> Int {
-        isOCG ? DeckRules.maxCopies : DeckRules.maxCopies(for: card.banTcg)
+    /// Le statut banlist qui s'applique à cette carte, selon le format du deck.
+    func banStatus(of card: CardSummary) -> String? {
+        DeckRules.banStatus(of: card, format: format)
     }
 
-    var issues: [DeckIssue] {
-        DeckRules.validate(entries.values.map {
+    /// Exemplaires autorisés pour cette carte, selon le format du deck.
+    func limit(for card: CardSummary) -> Int {
+        DeckRules.maxCopies(for: banStatus(of: card))
+    }
+
+    /**
+     Pourquoi cette carte ne peut pas être ajoutée, ou `nil` si elle peut. Le picker s'en sert
+     pour éteindre la vignette AVANT le geste : apprendre qu'une carte est interdite au moment
+     où on la touche, c'est l'apprendre trop tard.
+     */
+    func blockedReason(for card: CardSummary) -> String? {
+        let status = BanStatus(label: banStatus(of: card))
+        if status == .forbidden { return t("cards.ban.FORBIDDEN") }
+        let count = totalCopies(of: card.id)
+        guard count >= limit(for: card) else { return nil }
+        // Dire ce qui bloque, pas la règle : « déjà 3 » se comprend, « maximum 3 » laisse
+        // croire qu'on énonce une limite théorique alors qu'on vient de la toucher.
+        guard let status else { return t("deckBuilder.add.atLimit", ["count": count]) }
+        return t(
+            "deckBuilder.add.atLimitBan",
+            ["status": t("cards.ban.\(status.messageKey)"), "count": count])
+    }
+
+    /// La decklist dans la forme que comprennent les règles partagées.
+    private var forValidation: [DeckRules.Entry] {
+        entries.values.map {
             DeckRules.Entry(
                 cardId: $0.card.id, zone: $0.zone, quantity: $0.quantity,
-                isExtraDeckMonster: $0.card.isExtraDeck, banStatus: isOCG ? nil : $0.card.banTcg)
-        })
+                isExtraDeckMonster: $0.card.isExtraDeck, banStatus: banStatus(of: $0.card))
+        }
+    }
+
+    var issues: [DeckIssue] { DeckRules.validate(forValidation) }
+
+    /// Les exemplaires à retirer pour repasser la banlist, vide si la liste est légale.
+    var banlistFixes: [DeckRules.Fix] { DeckRules.fixes(forValidation) }
+
+    /**
+     Applique le correctif de banlist : on retire, rien d'autre. Renvoie le nombre
+     d'exemplaires retirés, pour pouvoir le dire à l'écran.
+     */
+    @discardableResult
+    func applyBanlistFixes() -> Int {
+        let fixes = banlistFixes
+        guard !fixes.isEmpty else { return 0 }
+        for fix in fixes {
+            let key = "\(fix.zone.rawValue):\(fix.cardId)"
+            guard var entry = entries[key] else { continue }
+            entry.quantity -= fix.remove
+            if entry.quantity > 0 { entries[key] = entry } else { entries[key] = nil }
+        }
+        scheduleSave()
+        return fixes.reduce(0) { $0 + $1.remove }
     }
 
     var missing: [MissingCard] {
@@ -114,8 +159,7 @@ final class DeckBuilderModel {
         let target = zone ?? (card.isExtraDeck ? .extra : .main)
         if target == .main && card.isExtraDeck { return t("deckBuilder.add.extraDeckMonster") }
         if target == .extra && !card.isExtraDeck { return t("deckBuilder.add.notExtraDeck") }
-        let allowed = limit(for: card)
-        if totalCopies(of: card.id) >= allowed { return t("deckBuilder.add.maxCopies", ["limit": allowed]) }
+        if let blocked = blockedReason(for: card) { return blocked }
         if count(target) >= DeckRules.range(target).upperBound {
             return t("deckBuilder.add.zoneFull", ["zone": t("common.zones.\(target.rawValue)")])
         }
@@ -155,12 +199,27 @@ final class DeckBuilderModel {
 
     /// Met à jour les quantités possédées (après un ajout à la collection).
     func refreshOwned(from deck: Deck) {
+        update(from: deck) { entry, c in entry.owned = c.ownedQuantity }
+    }
+
+    /**
+     Recharge les cartes elles-mêmes, pas seulement les quantités possédées. Les statuts de
+     banlist vivent DANS la carte : relire la liste côté serveur ne change rien à l'écran tant
+     que les `CardSummary` du deck restent ceux d'avant.
+     */
+    func refreshCards(from deck: Deck) {
+        update(from: deck) { entry, c in
+            entry.card = c.card
+            entry.owned = c.ownedQuantity
+        }
+    }
+
+    private func update(from deck: Deck, _ apply: (inout Entry, DeckCard) -> Void) {
         for c in deck.cards {
             let key = "\(c.zone.rawValue):\(c.cardId)"
-            if var entry = entries[key] {
-                entry.owned = c.ownedQuantity
-                entries[key] = entry
-            }
+            guard var entry = entries[key] else { continue }
+            apply(&entry, c)
+            entries[key] = entry
         }
     }
 

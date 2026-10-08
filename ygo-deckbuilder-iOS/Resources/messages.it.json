@@ -36,7 +36,10 @@
       "Banned": "Proibita",
       "Forbidden": "Proibita",
       "Limited": "Limitata",
-      "Semi-Limited": "Semi-Limitata"
+      "Semi-Limited": "Semi-Limitata",
+      "FORBIDDEN": "Proibita",
+      "LIMITED": "Limitata",
+      "SEMI_LIMITED": "Semi-Limitata"
     },
     "collectionForm": {
       "condition": "Condizione",
@@ -63,7 +66,8 @@
       "ownedPrice": "Possedute: <strong>{owned}</strong> · Cardmarket da <strong>{price}</strong>",
       "printUnspecified": "Stampa non specificata",
       "prints": "Stampe ({count})",
-      "scale": "Scala {scale}"
+      "scale": "Scala {scale}",
+      "banOcg": "OCG: {status}"
     },
     "interactions": {
       "byTraits": "(per le sue caratteristiche)",
@@ -277,7 +281,9 @@
       "extraDeckMonster": "Questo mostro va nell’Extra Deck",
       "maxCopies": "{limit, plural, one {Massimo # copia} other {Massimo # copie}}",
       "notExtraDeck": "Solo i mostri Fusione, Synchro, Xyz e Link vanno nell’Extra Deck",
-      "zoneFull": "{zone} pieno"
+      "zoneFull": "{zone} pieno",
+      "atLimit": "Già {count}",
+      "atLimitBan": "{status} · già {count}"
     },
     "header": {
       "guide": "Guida",
@@ -290,7 +296,10 @@
       "tooManyCopies": "{name}: {count, plural, one {# copia} other {# copie}} (max {limit})",
       "wrongZone": "{name} non può andare in {zone}",
       "zoneTooLarge": "{zone}: {count, plural, one {# carta} other {# carte}} (massimo {limit})",
-      "zoneTooSmall": "{zone}: {count, plural, one {# carta} other {# carte}} (minimo {limit})"
+      "zoneTooSmall": "{zone}: {count, plural, one {# carta} other {# carte}} (minimo {limit})",
+      "forbidden": "{name} è vietata ({count, plural, one {# copia} other {# copie}} nel deck)",
+      "fix": "Togliere ciò che la banlist vieta",
+      "fixed": "{count, plural, one {# copia rimossa} other {# copie rimosse}}"
     },
     "missing": {
       "addAll": "Metti tutto in wishlist",
@@ -305,7 +314,8 @@
       "suggestionsCount": "Suggerimenti ({count})",
       "suggestionsEmpty": "Aggiungi qualche carta al deck: i suggerimenti si basano sui suoi archetipi.",
       "suggestionsHint": "Carte della tua collezione che condividono un archetipo con il deck o che vi sono nominate.",
-      "tileTitle": "{name}\nClic: dettagli · Ctrl/⌘+clic: aggiungi · Maiusc+clic: aggiungi al Side Deck"
+      "tileTitle": "{name}\nClic: dettagli · Ctrl/⌘+clic: aggiungi · Maiusc+clic: aggiungi al Side Deck",
+      "tileBlocked": "{name}\n{reason} — impossibile aggiungerla"
     },
     "save": {
       "dirty": "Modifiche non salvate",
@@ -319,6 +329,9 @@
       "empty": "Clicca una carta a sinistra per vederne i dettagli e aggiungerla",
       "emptySide": "Apri una carta e aggiungila al Side Deck, oppure Maiusc+clic per aggiungerla subito",
       "missingBadge": "MANCA"
+    },
+    "banlist": {
+      "updated": "La banlist è cambiata — questo deck è stato ricontrollato."
     }
   },
   "decks": {
