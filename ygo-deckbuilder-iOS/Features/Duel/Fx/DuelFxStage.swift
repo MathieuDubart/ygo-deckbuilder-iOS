@@ -153,16 +153,19 @@ private struct TurnBanner: View {
 
     var body: some View {
         GeometryReader { geo in
+            // La bannière du joueur est en couleur d'accent : son encre est donc celle de
+            // l'accent, pas du blanc — l'accent est blanc os en apparence sombre.
+            let ink: Color = player == 0 ? Theme.accentInk : .white
             VStack(spacing: 2) {
                 Text(t("duel.board.turn", ["turn": turn]))
                     .font(.caption.weight(.semibold))
                     .tracking(3)
                     .textCase(.uppercase)
-                    .foregroundStyle(.white.opacity(0.8))
+                    .foregroundStyle(ink.opacity(0.8))
                 Text(player == 0 ? t("duel.board.yourTurn") : t("duel.board.opponentTurn"))
                     .font(.system(size: 36, weight: .black).italic())
                     .textCase(.uppercase)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(ink)
                     .minimumScaleFactor(0.6)
                     .lineLimit(1)
             }

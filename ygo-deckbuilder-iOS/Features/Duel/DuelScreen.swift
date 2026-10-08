@@ -233,10 +233,10 @@ private struct DuelTableView: View {
             HStack(spacing: 2) {
                 ForEach(DuelPhase.allCases, id: \.self) { phase in
                     Text(t("duel.phaseShort.\(phase.rawValue)"))
-                        .font(.system(size: 10, weight: .bold).monospaced())
+                        .codeStyle(10, weight: .bold)
                         .padding(.horizontal, 5)
                         .padding(.vertical, 3)
-                        .foregroundStyle(phase == state.phase ? Color.black : .secondary)
+                        .foregroundStyle(phase == state.phase ? Theme.accentInk : .secondary)
                         .background(phase == state.phase ? Color.accentColor : .clear, in: .rect(cornerRadius: 5))
                         .accessibilityLabel(t("duel.phases.\(phase.rawValue)"))
                 }
@@ -478,8 +478,7 @@ private struct DuelLogView: View {
                 .padding(.top, Spacing.s)
         case .phase(let phase):
             Text(t("duel.phases.\(phase.rawValue)"))
-                .font(.caption2.weight(.semibold))
-                .textCase(.uppercase)
+                .font(.caption2.weight(.medium))
                 .foregroundStyle(.tertiary)
         case .draw(let player, let count, let codes):
             logText(codes.isEmpty

@@ -119,7 +119,10 @@ struct ReleaseDetailView: View {
                 ForEach(detail.rarities) { row in
                     VStack(alignment: .leading, spacing: Spacing.xxs) {
                         HStack {
-                            Text(row.rarity).lineLimit(1)
+                            Text(row.rarity)
+                                .foregroundStyle(
+                                    Theme.isPremiumRarity(row.rarity) ? Theme.gold : .secondary)
+                                .lineLimit(1)
                             Spacer()
                             Text("\(row.ownedPrints)/\(row.prints)").monospacedDigit()
                         }
@@ -230,12 +233,12 @@ private struct PrintTile: View {
             CardArt(card: card.card, dimmed: !card.isOwned(anyEdition: anyEdition))
                 .overlay(alignment: .topTrailing) { badge }
             Text(card.printCode)
-                .font(.system(size: 9, weight: .medium).monospaced())
+                .codeStyle(9)
                 .foregroundStyle(.tertiary)
                 .lineLimit(1)
             Text(card.rarity)
                 .font(.system(size: 9))
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Theme.isPremiumRarity(card.rarity) ? Theme.gold : .secondary)
                 .lineLimit(2)
             PrintOwners(owners: owners, elsewhere: elsewhere, byId: friendsById)
         }

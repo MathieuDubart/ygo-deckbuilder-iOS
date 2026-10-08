@@ -1,7 +1,34 @@
 import SwiftUI
+import UIKit
 
-/// Couleurs de l'app (alignées sur la palette du web). L'accent doré vient de l'asset AccentColor.
+/**
+ Couleurs de l'app, alignées sur le web : le classeur du collectionneur.
+
+ Les cartes sont la seule couleur. Le chrome tient en noir chaud (le carton) et en blanc os
+ (l'étiquette collée sur l'intercalaire, qui est aussi la couleur d'accent de l'app). L'or ne
+ décore pas : il se mérite — rareté premium et extension bouclée, rien d'autre.
+ */
 enum Theme {
+    /// Une pochette : toujours plus sombre que sa page. Elle doit creuser aussi bien sur le
+    /// fond système groupé que sur le noir pur, d'où le liseré de `pocketEdge` qui l'accompagne
+    /// — en sombre, l'écart de valeur seul ne suffirait pas.
+    static let pocket = adaptive(light: (0.898, 0.886, 0.859), dark: (0.035, 0.031, 0.027))
+    /// Le liseré d'une pochette : le pli du carton, pas une bordure.
+    static let pocketEdge = adaptive(light: (0.000, 0.000, 0.000), dark: (1.000, 1.000, 1.000))
+    /// L'encre qu'on pose SUR l'accent (os en sombre, presque noir en clair) : son inverse.
+    static let accentInk = adaptive(light: (0.969, 0.961, 0.945), dark: (0.110, 0.102, 0.090))
+    /// L'or, et lui seul, pour ce qui se mérite.
+    static let gold = adaptive(light: (0.667, 0.502, 0.145), dark: (0.910, 0.760, 0.360))
+
+    private static func adaptive(
+        light: (Double, Double, Double), dark: (Double, Double, Double)
+    ) -> Color {
+        Color(UIColor { traits in
+            let c = traits.userInterfaceStyle == .dark ? dark : light
+            return UIColor(red: c.0, green: c.1, blue: c.2, alpha: 1)
+        })
+    }
+
     static let success = Color(red: 0.30, green: 0.75, blue: 0.52)
     static let warning = Color(red: 0.93, green: 0.66, blue: 0.25)
     static let danger = Color(red: 0.92, green: 0.36, blue: 0.33)
@@ -25,11 +52,35 @@ enum Theme {
     }
 
     static func coverageColor(_ value: Double) -> Color {
-        value >= 1 ? success : value >= 0.6 ? .accentColor : value >= 0.3 ? warning : danger
+        // Complet = or, c'est le seul endroit avec la rareté où il apparaît
+        value >= 1 ? gold : value >= 0.6 ? success : value >= 0.3 ? warning : danger
     }
 
     static func scoreColor(_ score: Int) -> Color {
-        score >= 70 ? success : score >= 50 ? .accentColor : warning
+        score >= 70 ? success : score >= 50 ? warning : danger
+    }
+
+    /**
+     Une rareté mérite-t-elle l'or ? Les noms viennent du catalogue en anglais et ne sont pas
+     normalisés (« Ultra Rare », « Quarter Century Secret Rare »…), d'où une détection par
+     mot-clé plutôt qu'une liste fermée, périmée à la prochaine extension.
+     */
+    static func isPremiumRarity(_ rarity: String?) -> Bool {
+        guard let rarity else { return false }
+        let value = rarity.lowercased()
+        return ["ultra", "secret", "ultimate", "ghost", "starlight", "collector", "platinum",
+                "gold", "prismatic", "serial"].contains { value.contains($0) }
+    }
+}
+
+extension View {
+    /**
+     Un code d'extension, une quantité, un prix : condensé et tabulaire, jamais à chasse fixe.
+     Les codes sont imprimés en condensé sur les vraies cartes, et la largeur de SF Pro donne
+     exactement ça sans embarquer de police.
+     */
+    func codeStyle(_ size: CGFloat = 11, weight: Font.Weight = .medium) -> some View {
+        font(.system(size: size, weight: weight).width(.condensed).monospacedDigit())
     }
 }
 
@@ -46,11 +97,11 @@ struct Pill: View {
             if let systemImage { Image(systemName: systemImage) }
         }
         .labelStyle(PillLabelStyle(hasIcon: systemImage != nil))
-        .font(.caption2.weight(.semibold))
+        .font(.system(size: 11, weight: .medium).width(.condensed))
         .foregroundStyle(tint)
-        .padding(.horizontal, Spacing.s)
-        .padding(.vertical, 3)
-        .background(tint.opacity(0.14), in: .capsule)
+        .padding(.horizontal, Spacing.xs)
+        .padding(.vertical, 2)
+        .background(tint.opacity(0.1), in: .rect(cornerRadius: 3, style: .continuous))
         .fixedSize()
     }
 }
@@ -73,23 +124,23 @@ struct StatTile: View {
     var systemImage: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Spacing.xxs) {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack(spacing: Spacing.xxs) {
+                if let systemImage { Image(systemName: systemImage).font(.caption) }
+                Text(value)
+                    .font(.system(size: 22, weight: .semibold).width(.condensed).monospacedDigit())
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
+            }
+            .foregroundStyle(tint)
             Text(label)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.85)
-            HStack(spacing: Spacing.xxs) {
-                if let systemImage { Image(systemName: systemImage).font(.caption) }
-                Text(value)
-                    .font(.title3.weight(.semibold).monospacedDigit())
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.6)
-            }
-            .foregroundStyle(tint)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .tileSurface()
+        .padding(.vertical, Spacing.xs)
     }
 }
 
@@ -126,15 +177,14 @@ struct ScoreBadge: View {
         let color = Theme.scoreColor(score)
         VStack(spacing: 0) {
             Text("\(score)")
-                .font(.title3.bold().monospacedDigit())
+                .font(.title3.bold().width(.condensed).monospacedDigit())
             Text(t("suggestions.score.label"))
-                .font(.system(size: 9, weight: .semibold))
-                .textCase(.uppercase)
+                .font(.system(size: 9, weight: .medium))
         }
         .foregroundStyle(color)
-        .padding(.horizontal, 10)
-        .padding(.vertical, 5)
-        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(color.opacity(0.5)))
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .overlay(RoundedRectangle(cornerRadius: Radius.card).strokeBorder(color.opacity(0.4)))
         .accessibilityElement(children: .combine)
         .accessibilityHint(t("suggestions.score.hint"))
     }
@@ -170,7 +220,7 @@ struct ScoreBreakdown: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, Spacing.s)
-                .background(.fill.quaternary, in: .rect(cornerRadius: Radius.s - 4, style: .continuous))
+                .background(.fill.quaternary, in: .rect(cornerRadius: Radius.card, style: .continuous))
                 .accessibilityElement(children: .combine)
                 .accessibilityHint(t("suggestions.score.criteria.\(item.key).hint"))
             }

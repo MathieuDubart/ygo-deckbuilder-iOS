@@ -349,7 +349,14 @@ private struct CollectionRow: View {
                     .font(.subheadline.weight(.semibold))
                     .lineLimit(2)
                 FlowLayout(spacing: Spacing.xxs) {
-                    Pill(text: item.print.map { "\($0.printCode) · \($0.rarity)" } ?? t("collection.row.unknownPrint"))
+                    if let impression = item.print {
+                        Pill(text: impression.printCode)
+                        Pill(
+                            text: impression.rarity,
+                            tint: Theme.isPremiumRarity(impression.rarity) ? Theme.gold : .secondary)
+                    } else {
+                        Pill(text: t("collection.row.unknownPrint"))
+                    }
                     Pill(text: item.language)
                     Pill(text: t("collection.conditions.\(item.condition)"))
                     if item.firstEdition { Pill(text: "1st", tint: .accentColor) }

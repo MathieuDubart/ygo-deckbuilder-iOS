@@ -18,15 +18,15 @@ enum Spacing {
     static let section: CGFloat = 36
 }
 
-/// Rayons des coins (continus).
+/// Rayons des coins (continus). Une pochette est découpée, pas moussée.
 enum Radius {
     /// Visuel de carte Yu-Gi-Oh!
-    static let card: CGFloat = 6
-    /// Petites surfaces : tuiles de chiffres, champs
-    static let s: CGFloat = 12
+    static let card: CGFloat = 4
+    /// Petites surfaces : pochettes, champs
+    static let s: CGFloat = 5
     /// Cartes de contenu
-    static let m: CGFloat = 20
-    /// Panneaux flottants en verre
+    static let m: CGFloat = 8
+    /// Panneaux flottants en verre — le système garde sa rondeur
     static let l: CGFloat = 28
 }
 
@@ -56,17 +56,44 @@ extension View {
             .padding(padding)
             .background(.fill.quaternary, in: .rect(cornerRadius: radius, style: .continuous))
     }
+
+    /**
+     Une pochette : un creux dans la page, jamais une surface posée dessus. L'ombre est
+     *interne* — c'est ce qui distingue un emplacement vide d'une carte flottante, et c'est le
+     geste central de la direction.
+     */
+    func pocket(padding: CGFloat = 2, radius: CGFloat = Radius.s, visible: Bool = true) -> some View {
+        self
+            .padding(padding)
+            .background {
+                if visible {
+                    RoundedRectangle(cornerRadius: radius, style: .continuous)
+                        .fill(Theme.pocket.shadow(.inner(color: .black.opacity(0.5), radius: 2, y: 1)))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: radius, style: .continuous)
+                                .strokeBorder(Theme.pocketEdge.opacity(0.08), lineWidth: 0.5)
+                        }
+                }
+            }
+    }
 }
 
 /// Titre de section : icône teintée, titre, et un élément optionnel à droite.
 struct SectionHeader<Trailing: View>: View {
     let title: String
     var systemImage: String?
+    /// Le filet qui tient la section. Faux quand le titre sert d'étiquette à autre chose
+    /// (le libellé d'un `DisclosureGroup`), où un trait sous le chevron ne veut rien dire.
+    var ruled = true
     @ViewBuilder var trailing: () -> Trailing
 
-    init(_ title: String, systemImage: String? = nil, @ViewBuilder trailing: @escaping () -> Trailing) {
+    init(
+        _ title: String, systemImage: String? = nil, ruled: Bool = true,
+        @ViewBuilder trailing: @escaping () -> Trailing
+    ) {
         self.title = title
         self.systemImage = systemImage
+        self.ruled = ruled
         self.trailing = trailing
     }
 
@@ -74,21 +101,24 @@ struct SectionHeader<Trailing: View>: View {
         HStack(alignment: .firstTextBaseline, spacing: Spacing.s) {
             if let systemImage {
                 Image(systemName: systemImage)
-                    .foregroundStyle(.tint)
-                    .imageScale(.medium)
+                    .foregroundStyle(.secondary)
+                    .imageScale(.small)
             }
             Text(title)
-                .font(.title3.weight(.semibold))
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(.secondary)
                 .lineLimit(2)
             Spacer(minLength: Spacing.s)
             trailing()
         }
+        .padding(.bottom, ruled ? Spacing.xs : 0)
+        .overlay(alignment: .bottom) { if ruled { Divider() } }
         .accessibilityAddTraits(.isHeader)
     }
 }
 
 extension SectionHeader where Trailing == EmptyView {
-    init(_ title: String, systemImage: String? = nil) {
-        self.init(title, systemImage: systemImage) { EmptyView() }
+    init(_ title: String, systemImage: String? = nil, ruled: Bool = true) {
+        self.init(title, systemImage: systemImage, ruled: ruled) { EmptyView() }
     }
 }

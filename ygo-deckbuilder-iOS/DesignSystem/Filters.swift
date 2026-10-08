@@ -1,11 +1,11 @@
 import SwiftUI
 
-/// Jauge d'avancement. Le ton suit l'état plutôt que la valeur : complet en vert, entamé en
-/// couleur d'accent, rien en gris — on lit l'état sans lire le chiffre.
+/// Jauge d'avancement. Le ton suit l'état plutôt que la valeur : bouclé en or — c'est l'un
+/// des deux seuls endroits où il apparaît —, entamé à l'encre, rien en creux.
 struct Meter: View {
     let value: Int
     let total: Int
-    var height: CGFloat = 6
+    var height: CGFloat = 4
 
     private var ratio: Double {
         guard total > 0 else { return 0 }
@@ -13,8 +13,8 @@ struct Meter: View {
     }
 
     private var tint: Color {
-        if ratio >= 1 { return Theme.success }
-        return ratio > 0 ? .accentColor : .secondary.opacity(0.4)
+        if ratio >= 1 { return Theme.gold }
+        return ratio > 0 ? .secondary : .clear
     }
 
     var body: some View {
@@ -22,8 +22,8 @@ struct Meter: View {
         // extrémités arrondies, et la jauge deviendrait une lentille sous les 50 %.
         GeometryReader { geo in
             ZStack(alignment: .leading) {
-                Capsule().fill(.fill.tertiary)
-                Capsule().fill(tint).frame(width: geo.size.width * ratio)
+                RoundedRectangle(cornerRadius: 1).fill(.fill.tertiary)
+                RoundedRectangle(cornerRadius: 1).fill(tint).frame(width: geo.size.width * ratio)
             }
         }
         .frame(height: height)
@@ -42,11 +42,11 @@ struct ChipLabel<Content: View>: View {
         label()
             .lineLimit(1)
             .font(.subheadline.weight(.medium))
-            .foregroundStyle(isOn ? Color.accentColor : Color.primary)
             .padding(.horizontal, Spacing.m + 2)
             .padding(.vertical, Spacing.s)
+            .foregroundStyle(isOn ? Theme.accentInk : Color.primary)
             .glassEffect(
-                isOn ? .regular.tint(.accentColor.opacity(0.25)).interactive() : .regular.interactive(),
+                isOn ? .regular.tint(.accentColor).interactive() : .regular.interactive(),
                 in: .capsule)
     }
 }

@@ -131,8 +131,7 @@ struct RulesView: View {
             ForEach(grouped) { group in
                 VStack(alignment: .leading, spacing: Spacing.xs) {
                     Text(group.label)
-                        .font(.caption2.weight(.semibold))
-                        .textCase(.uppercase)
+                        .font(.caption2.weight(.medium))
                         .foregroundStyle(.tertiary)
                     FlowLayout(spacing: Spacing.xs) {
                         ForEach(group.items) { section in
@@ -168,8 +167,7 @@ struct RulesView: View {
             if !section.points.isEmpty {
                 VStack(alignment: .leading, spacing: Spacing.s) {
                     Text(t("rules.labels.points"))
-                        .font(.caption.weight(.semibold))
-                        .textCase(.uppercase)
+                        .font(.caption.weight(.medium))
                         .foregroundStyle(.tertiary)
                     ForEach(Array(section.points.enumerated()), id: \.offset) { _, point in
                         HStack(alignment: .firstTextBaseline, spacing: Spacing.s) {
@@ -185,7 +183,6 @@ struct RulesView: View {
                 VStack(alignment: .leading, spacing: Spacing.xxs) {
                     Text(t("rules.labels.example"))
                         .font(.caption.weight(.semibold))
-                        .textCase(.uppercase)
                         .foregroundStyle(Theme.spell)
                     Text(example)
                         .font(.callout)
@@ -208,8 +205,7 @@ struct RulesView: View {
         if let url = URL(string: "https://www.youtube.com/watch?v=\(video.id)") {
             VStack(alignment: .leading, spacing: Spacing.xs) {
                 Text(t("rules.labels.video"))
-                    .font(.caption.weight(.semibold))
-                    .textCase(.uppercase)
+                    .font(.caption.weight(.medium))
                     .foregroundStyle(.tertiary)
                 Link(destination: url) {
                     HStack(spacing: Spacing.s) {

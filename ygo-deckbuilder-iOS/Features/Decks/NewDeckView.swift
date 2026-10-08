@@ -39,7 +39,7 @@ struct NewDeckView: View {
                     Section {
                         Button(t("decks.new.file"), systemImage: "doc") { picking = true }
                         TextEditor(text: $ydk)
-                            .font(.caption.monospaced())
+                            .codeStyle(12)
                             .frame(minHeight: 140)
                     } footer: {
                         Text(t("decks.new.fileHint"))

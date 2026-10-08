@@ -214,7 +214,7 @@ private struct GeneratedCardTile: View {
 
     var body: some View {
         VStack(spacing: 3) {
-            CardTile(card: entry.card, quantity: entry.quantity, missing: entry.missing)
+            CardTile(card: entry.card, quantity: entry.quantity, dimmed: entry.missing >= entry.quantity, missing: entry.missing)
             if entry.source.isLabeled {
                 Text(t("suggestions.generate.sources.\(entry.source.rawValue)"))
                     .font(.system(size: 9, weight: .semibold))

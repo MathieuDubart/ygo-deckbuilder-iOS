@@ -33,8 +33,8 @@ struct ServerSetupView: View {
                             .submitLabel(.go)
                             .focused($focused)
                             .onSubmit { Task { await connect() } }
-                            .padding(14)
-                            .background(.fill.tertiary, in: .rect(cornerRadius: 14))
+                            .padding(Spacing.m)
+                            .background(.fill.tertiary, in: .rect(cornerRadius: Radius.s, style: .continuous))
                         Text(t("ios.server.hint"))
                             .font(.footnote)
                             .foregroundStyle(.secondary)

@@ -97,7 +97,7 @@ private struct ScanDraftEditor: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(draft.card.name).font(.headline).lineLimit(3)
                         if let code = draft.code {
-                            Text(code).font(.caption.monospaced()).foregroundStyle(.secondary)
+                            Text(code).codeStyle(12).foregroundStyle(.secondary)
                         }
                     }
                 }

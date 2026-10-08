@@ -160,7 +160,7 @@ struct DuelCardFace: View {
 
     var body: some View {
         if let summary = model.card(code) {
-            CardArt(card: summary, width: width)
+            CardArt(card: summary, width: width, pocketed: false)
                 .overlay(alignment: .topTrailing) {
                     if position?.isFaceDown == true {
                         ZStack(alignment: .topTrailing) {

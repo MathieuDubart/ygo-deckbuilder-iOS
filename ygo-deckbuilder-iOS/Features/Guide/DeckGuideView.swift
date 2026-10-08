@@ -297,7 +297,7 @@ private struct ComboView: View {
     private func cardStrip(_ title: String, ids: [Int]) -> some View {
         if !ids.isEmpty {
             VStack(alignment: .leading, spacing: Spacing.xxs) {
-                Text(title).font(.caption.weight(.semibold)).foregroundStyle(.secondary).textCase(.uppercase)
+                Text(title).font(.caption.weight(.medium)).foregroundStyle(.secondary)
                 thumbs(ids, size: 44)
             }
         }

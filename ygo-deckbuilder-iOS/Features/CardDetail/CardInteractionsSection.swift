@@ -12,7 +12,10 @@ struct CardInteractionsSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.m) {
-            SectionHeader(t("cards.interactions.title"), systemImage: "point.3.connected.trianglepath.dotted") {
+            SectionHeader(
+                t("cards.interactions.title"),
+                systemImage: "point.3.connected.trianglepath.dotted"
+            ) {
                 if let owned = data.value?.ownedLinked, owned > 0 {
                     Pill(text: t("cards.interactions.ownedLinked", ["count": owned]), tint: Theme.success)
                 }

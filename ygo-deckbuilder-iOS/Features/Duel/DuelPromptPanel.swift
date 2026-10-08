@@ -299,7 +299,7 @@ struct DuelChoiceGrid: View {
                             if let rank = order.firstIndex(of: choice.index) {
                                 Text("\(rank + 1)")
                                     .font(.caption2.bold())
-                                    .foregroundStyle(.black)
+                                    .foregroundStyle(Theme.accentInk)
                                     .frame(width: 18, height: 18)
                                     .background(Color.accentColor, in: .circle)
                                     .padding(2)
@@ -520,7 +520,7 @@ private struct DuelAnnounceCard: View {
                 .autocorrectionDisabled()
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 58), spacing: Spacing.xs)], spacing: Spacing.xs) {
                 ForEach(results) { card in
-                    CardArt(card: card, width: .thumb)
+                    CardArt(card: card, width: .thumb, pocketed: false)
                         .onTapGesture { respond(DuelAnswer(cardId: card.id)) }
                 }
             }
