@@ -8,7 +8,10 @@ import VisionKit
 /// quantités, en ajouter à la main, et tout envoyer en collection d'un coup.
 struct CardScannerView: View {
     /// Durée d'absence du viseur au bout de laquelle un code redevient comptable.
-    private static let cooldown: TimeInterval = 1.5
+    private static let absenceCooldown: TimeInterval = 1.5
+    /// Délai imposé entre deux cartes ajoutées : le temps de changer de carte sans que la
+    /// suivante — ou la même, lue sous un autre angle — ne parte toute seule.
+    private static let scanCooldown: TimeInterval = 5
 
     @Environment(AppState.self) private var app
     @Environment(\.dismiss) private var dismiss
@@ -17,6 +20,12 @@ struct CardScannerView: View {
     /// Dernière fois qu'un code a été vu, et ceux déjà comptés (anti-rafale, voir `lookup`).
     @State private var lastSeen: [String: Date] = [:]
     @State private var counted: Set<String> = []
+    /// Fenêtre du délai en cours, de l'ajout à la reprise. Portée en intervalle plutôt qu'en
+    /// échéance seule : la jauge en a besoin pour s'animer sans redémarrer à chaque passe.
+    @State private var cooldown: ClosedRange<Date>?
+    /// Change à chaque nouveau délai, et seulement là : c'est l'identité de la tâche qui le
+    /// laisse expirer. Y mettre `cooldown`, que la tâche remet à nil, l'annulerait elle-même.
+    @State private var cooldownToken = 0
     @State private var notFound: String?
     @State private var cameraReady = false
     @State private var cameraError = false
@@ -45,6 +54,9 @@ struct CardScannerView: View {
             .navigationDestination(isPresented: $reviewing) {
                 ScanReviewView(batch: batch) { dismiss() }
             }
+            .onChange(of: reviewing) { _, leaving in
+                if leaving { endCooldown() }
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(t("common.actions.close"), systemImage: "xmark") { dismiss() }
@@ -66,6 +78,12 @@ struct CardScannerView: View {
                 _ = await AVCaptureDevice.requestAccess(for: .video)
             }
             cameraReady = DataScannerViewController.isAvailable
+        }
+        .task(id: cooldownToken) {
+            guard let cooldown else { return }
+            try? await Task.sleep(for: .seconds(max(0, cooldown.upperBound.timeIntervalSinceNow)))
+            guard !Task.isCancelled else { return }
+            self.cooldown = nil
         }
     }
 
@@ -92,6 +110,9 @@ struct CardScannerView: View {
                     Spacer(minLength: 0)
                     Button(t("ios.scan.undo"), systemImage: "arrow.uturn.backward") {
                         batch.undoLast()
+                        // La carte reste dans `counted` : il faut la sortir du viseur pour la
+                        // rescanner, sinon elle repartirait en boucle.
+                        endCooldown()
                     }
                     .labelStyle(.iconOnly)
                     .buttonStyle(.glass)
@@ -110,6 +131,23 @@ struct CardScannerView: View {
                     .foregroundStyle(.secondary)
             }
 
+            if let cooldown {
+                HStack(spacing: Spacing.m) {
+                    ProgressView(timerInterval: cooldown, countsDown: true) {
+                        EmptyView()
+                    } currentValueLabel: {
+                        EmptyView()
+                    }
+                    .tint(.secondary)
+                    Text(t("ios.scan.cooldown"))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize()
+                }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel(t("ios.scan.cooldown"))
+            }
+
             Button {
                 reviewing = true
             } label: {
@@ -126,16 +164,29 @@ struct CardScannerView: View {
         .padding(Spacing.l)
         .glassEffect(.regular, in: .rect(cornerRadius: Radius.l, style: .continuous))
         .animation(.snappy, value: batch.last?.id)
+        .animation(.snappy, value: cooldown == nil)
     }
 
     /// Premier code pas encore compté parmi ceux lus → carte correspondante, ajoutée à la file.
-    /// Un code compté le reste tant qu'il est dans le viseur : une carte posée devant
-    /// l'objectif ne s'ajoute pas en boucle. Il redevient comptable après avoir disparu
-    /// pendant `cooldown`, donc repasser la même carte ajoute bien un deuxième exemplaire.
+    ///
+    /// Deux garde-fous se cumulent. Par code : un code compté le reste tant qu'il est dans le
+    /// viseur — une carte posée devant l'objectif ne s'ajoute pas en boucle — et redevient
+    /// comptable après `absenceCooldown` d'absence, donc repasser la même carte ajoute bien un
+    /// deuxième exemplaire. Globalement : rien ne s'ajoute pendant `scanCooldown` après une
+    /// carte trouvée, le temps d'en changer. Les codes continuent d'être datés pendant ce
+    /// délai, sinon ce qui est resté sous l'objectif redeviendrait comptable en l'attendant.
     /// Deux cartes côte à côte sont comptées l'une après l'autre, à la lecture suivante.
     private func lookup(_ codes: [String]) async {
         let now = Date()
-        for (code, seenAt) in lastSeen where now.timeIntervalSince(seenAt) > Self.cooldown {
+        if let cooldown, now < cooldown.upperBound {
+            // On date, mais on ne laisse rien expirer : c'est l'ÉCART entre deux lectures qui
+            // déclenche l'expiration, et l'OCR clignote. Laisser faire, et une carte restée
+            // sous l'objectif sortirait de `counted` pendant le délai pour repartir à la
+            // reprise — exactement ce que le délai est censé empêcher.
+            for code in codes { lastSeen[code] = now }
+            return
+        }
+        for (code, seenAt) in lastSeen where now.timeIntervalSince(seenAt) > Self.absenceCooldown {
             lastSeen[code] = nil
             counted.remove(code)
         }
@@ -162,9 +213,22 @@ struct CardScannerView: View {
                 code: code,
                 printId: scanned.flatMap { p in detail?.prints.first { p.matches($0.printCode) }?.id },
                 language: scanned?.language)
+            startCooldown()
         } catch {
             notFound = code
         }
+    }
+
+    private func startCooldown() {
+        let start = Date()
+        cooldown = start...start.addingTimeInterval(Self.scanCooldown)
+        cooldownToken += 1
+    }
+
+    private func endCooldown() {
+        guard cooldown != nil else { return }
+        cooldown = nil
+        cooldownToken += 1
     }
 }
 
