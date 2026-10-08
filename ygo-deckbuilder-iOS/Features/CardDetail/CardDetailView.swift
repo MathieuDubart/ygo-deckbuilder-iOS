@@ -195,7 +195,7 @@ private struct PrintsSection: View {
                 ForEach(prints) { print in
                     HStack {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(print.printCode).font(.subheadline.monospaced())
+                            Text(print.printCode).codeStyle(15)
                             Text("\(print.rarity) · \(print.setName)")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
@@ -211,7 +211,9 @@ private struct PrintsSection: View {
                 }
             }
         } label: {
-            SectionHeader(t("cards.detail.prints", ["count": prints.count]), systemImage: "square.stack")
+            SectionHeader(
+                t("cards.detail.prints", ["count": prints.count]), systemImage: "square.stack",
+                ruled: false)
         }
     }
 }

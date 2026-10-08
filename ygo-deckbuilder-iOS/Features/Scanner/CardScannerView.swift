@@ -78,7 +78,7 @@ struct CardScannerView: View {
                         .frame(width: 56)
                     VStack(alignment: .leading, spacing: 2) {
                         Text(last.card.name).font(.headline).lineLimit(2)
-                        Text(last.subtitle).font(.caption.monospaced()).foregroundStyle(.secondary)
+                        Text(last.subtitle).codeStyle(12).foregroundStyle(.secondary)
                         if last.quantity > 1 {
                             Text(t("ios.scan.copies", ["count": last.quantity]))
                                 .font(.caption)
@@ -99,7 +99,7 @@ struct CardScannerView: View {
             } else if let lookingUp {
                 HStack {
                     ProgressView()
-                    Text(lookingUp).font(.subheadline.monospaced())
+                    Text(lookingUp).codeStyle(15)
                 }
             } else if let notFound {
                 Label(t("ios.scan.notFound", ["code": notFound]), systemImage: "questionmark.circle")

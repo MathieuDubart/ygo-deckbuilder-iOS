@@ -86,7 +86,7 @@ private struct ProductTile: View {
                 .font(.caption.weight(.medium))
                 .lineLimit(2)
             HStack(spacing: Spacing.xxs) {
-                if let code = set.code { Text(code).font(.caption2.monospaced()) }
+                if let code = set.code { Text(code).codeStyle(11) }
                 if let date = set.tcgDate { Text(String(date.prefix(4))).font(.caption2) }
                 Spacer()
                 Text(t("collection.import.cardCount", ["count": set.cardCount])).font(.caption2)

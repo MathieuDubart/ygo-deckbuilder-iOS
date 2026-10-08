@@ -314,7 +314,7 @@ struct ShowcasePicker: View {
                         }
                     }
                 Text(code)
-                    .font(.system(size: 9, weight: .medium).monospaced())
+                    .codeStyle(9)
                     .foregroundStyle(.tertiary)
                     .lineLimit(1)
                 Text(rarity)

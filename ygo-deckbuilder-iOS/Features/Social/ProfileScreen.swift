@@ -186,12 +186,13 @@ private struct VisibleProfile: View {
                             VStack(alignment: .leading, spacing: 3) {
                                 CardArt(card: card.card)
                                 Text(card.printCode)
-                                    .font(.system(size: 9, weight: .medium).monospaced())
+                                    .codeStyle(9)
                                     .foregroundStyle(.tertiary)
                                     .lineLimit(1)
                                 Text(card.rarity)
                                     .font(.system(size: 9))
-                                    .foregroundStyle(.secondary)
+                                    .foregroundStyle(
+                                        Theme.isPremiumRarity(card.rarity) ? Theme.gold : .secondary)
                                     .lineLimit(1)
                             }
                         }

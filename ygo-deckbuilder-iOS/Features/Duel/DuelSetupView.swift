@@ -188,7 +188,7 @@ private struct DuelBoardRow: View {
     var body: some View {
         HStack(spacing: Spacing.m) {
             Group {
-                if let card { CardArt(card: card, width: .thumb) } else { DuelCardBack() }
+                if let card { CardArt(card: card, width: .thumb, pocketed: false) } else { DuelCardBack() }
             }
             .frame(width: 36)
             VStack(alignment: .leading, spacing: Spacing.xs) {
@@ -255,7 +255,7 @@ struct DuelOpeningHandView: View {
                     ForEach(main, id: \.cardId) { entry in
                         let chosen = hand.filter { $0 == entry.cardId }.count
                         let full = chosen >= entry.quantity || hand.count >= max
-                        CardArt(card: entry.card, width: .thumb, dimmed: full && chosen == 0)
+                        CardArt(card: entry.card, width: .thumb, dimmed: full && chosen == 0, pocketed: false)
                             .overlay {
                                 if chosen > 0 {
                                     RoundedRectangle(cornerRadius: Radius.card, style: .continuous)
@@ -266,7 +266,7 @@ struct DuelOpeningHandView: View {
                                 if chosen > 0 {
                                     Text("\(chosen)")
                                         .font(.caption2.bold())
-                                        .foregroundStyle(.black)
+                                        .foregroundStyle(Theme.accentInk)
                                         .frame(width: 18, height: 18)
                                         .background(Color.accentColor, in: .circle)
                                         .padding(2)

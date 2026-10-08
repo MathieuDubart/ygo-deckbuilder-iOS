@@ -63,7 +63,7 @@ struct MoreScreen: View {
                         if badge > 0 {
                             Text("\(badge)")
                                 .font(.caption2.monospacedDigit().weight(.bold))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Theme.accentInk)
                                 .padding(.horizontal, 5)
                                 .padding(.vertical, 1)
                                 .background(Color.accentColor, in: .capsule)

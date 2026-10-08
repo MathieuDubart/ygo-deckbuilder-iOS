@@ -154,9 +154,9 @@ private struct MenuChip: View {
         Label(title, systemImage: systemImage)
             .lineLimit(1)
             .font(.subheadline.weight(.medium))
-            .foregroundStyle(isOn ? Color.accentColor : Color.primary)
             .padding(.horizontal, Spacing.m + 2)
             .padding(.vertical, Spacing.s)
-            .glassEffect(isOn ? .regular.tint(.accentColor.opacity(0.25)).interactive() : .regular.interactive(), in: .capsule)
+            .foregroundStyle(isOn ? Theme.accentInk : Color.primary)
+            .glassEffect(isOn ? .regular.tint(.accentColor).interactive() : .regular.interactive(), in: .capsule)
     }
 }

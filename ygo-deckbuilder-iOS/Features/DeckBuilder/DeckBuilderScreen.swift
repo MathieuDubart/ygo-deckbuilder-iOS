@@ -212,7 +212,10 @@ private struct IssuesView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(Spacing.m)
-            .background(Theme.warning.opacity(0.1), in: .rect(cornerRadius: Radius.s, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: Radius.s, style: .continuous)
+                    .strokeBorder(Theme.warning.opacity(0.35))
+            }
         }
     }
 
@@ -261,7 +264,11 @@ private struct MissingView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .tileSurface()
+            .padding(Spacing.m)
+            .overlay {
+                RoundedRectangle(cornerRadius: Radius.s, style: .continuous)
+                    .strokeBorder(Theme.danger.opacity(0.35))
+            }
         }
     }
 
@@ -286,46 +293,87 @@ private struct ZoneSection: View {
     let zone: DeckZone
     let onOpen: (Int) -> Void
 
+    /// Un exemplaire = une pochette, comme dans un classeur. Les exemplaires qu'on ne possède
+    /// pas gardent leur place, en creux : on voit le deck tel qu'il sera, et ce qui manque.
+    private struct Copy: Identifiable {
+        let entry: DeckBuilderModel.Entry
+        let index: Int
+        let missing: Bool
+        var id: String { "\(entry.card.id)-\(index)" }
+    }
+
+    private func copies(_ entries: [DeckBuilderModel.Entry]) -> [Copy] {
+        entries.flatMap { entry in
+            (0..<max(0, entry.quantity)).map { Copy(entry: entry, index: $0, missing: $0 >= entry.owned) }
+        }
+    }
+
     var body: some View {
         let entries = model.cards(in: zone)
+        let cardCopies = copies(entries)
         VStack(alignment: .leading, spacing: Spacing.m) {
-            SectionHeader(t("common.zones.\(zone.rawValue)")) {
-                let range = DeckRules.range(zone)
-                Text("\(model.count(zone))/\(zone == .main ? range.lowerBound : range.upperBound)")
-                    .font(.subheadline.monospacedDigit())
-                    .foregroundStyle(zone == .main && model.count(zone) < range.lowerBound ? Theme.warning : .secondary)
-            }
-            if entries.isEmpty {
+            SectionHeader(t("common.zones.\(zone.rawValue)")) { counter }
+            if cardCopies.isEmpty {
                 Text(t(zone == .side ? "deckBuilder.zone.emptySide" : "ios.deck.emptyZone"))
                     .font(.footnote)
                     .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, Spacing.xl)
+                    .pocket(padding: 0)
             } else {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: GridWidth.compactCard), spacing: Spacing.s)], spacing: Spacing.m) {
-                    ForEach(entries) { entry in
-                        Button { onOpen(entry.card.id) } label: {
-                            CardTile(
-                                card: entry.card, quantity: entry.quantity,
-                                missing: max(0, entry.quantity - entry.owned))
+                LazyVGrid(
+                    columns: [GridItem(.adaptive(minimum: GridWidth.compactCard), spacing: Spacing.xs)],
+                    spacing: Spacing.xs
+                ) {
+                    ForEach(cardCopies) { copy in
+                        Button { onOpen(copy.entry.card.id) } label: {
+                            CardArt(card: copy.entry.card, dimmed: copy.missing)
+                                .overlay(alignment: .bottom) {
+                                    if copy.missing {
+                                        Text(t("deckBuilder.zone.missingBadge"))
+                                            .codeStyle(9, weight: .bold)
+                                            .foregroundStyle(Theme.danger)
+                                            .padding(.bottom, 4)
+                                    }
+                                }
                         }
                         .buttonStyle(.plain)
-                        .contextMenu {
-                            Button(t("deckBuilder.actions.addOne", ["zone": t("common.zones.\(zone.rawValue)")]), systemImage: "plus") {
-                                model.add(entry.card, to: zone)
-                            }
-                            Button(t("deckBuilder.actions.removeOne", ["zone": t("common.zones.\(zone.rawValue)")]), systemImage: "minus") {
-                                model.removeOne(entry.card.id, from: zone)
-                            }
-                            if zone != .side {
-                                Button(t("ios.deck.moveToSide"), systemImage: "arrow.turn.down.right") {
-                                    if model.add(entry.card, to: .side) == nil { model.removeOne(entry.card.id, from: zone) }
-                                }
-                            }
-                        }
+                        .contextMenu { menu(for: copy.entry) }
                     }
                 }
             }
         }
-        .animation(.snappy, value: entries.map(\.id))
+        .animation(.snappy, value: cardCopies.map(\.id))
+    }
+
+    /// Le compte, avec la fourchette autorisée en second plan : « 38/40–60 ».
+    private var counter: some View {
+        let range = DeckRules.range(zone)
+        let count = model.count(zone)
+        let short = zone == .main && count < range.lowerBound
+        return HStack(spacing: 0) {
+            Text("\(count)")
+                .foregroundStyle(short ? Theme.warning : .secondary)
+            Text(zone == .main ? "/\(range.lowerBound)–\(range.upperBound)" : "/\(range.upperBound)")
+                .foregroundStyle(.tertiary)
+        }
+        .codeStyle(14, weight: .medium)
+    }
+
+    @ViewBuilder
+    private func menu(for entry: DeckBuilderModel.Entry) -> some View {
+        let zoneName = t("common.zones.\(zone.rawValue)")
+        Button(t("deckBuilder.actions.addOne", ["zone": zoneName]), systemImage: "plus") {
+            model.add(entry.card, to: zone)
+        }
+        Button(t("deckBuilder.actions.removeOne", ["zone": zoneName]), systemImage: "minus") {
+            model.removeOne(entry.card.id, from: zone)
+        }
+        if zone != .side {
+            Button(t("ios.deck.moveToSide"), systemImage: "arrow.turn.down.right") {
+                if model.add(entry.card, to: .side) == nil { model.removeOne(entry.card.id, from: zone) }
+            }
+        }
     }
 }
 
