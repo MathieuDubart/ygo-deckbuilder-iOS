@@ -26,5 +26,5 @@ for locale in LOCALES:
         merged[file.stem] = json.loads(file.read_text(encoding="utf-8"))
     merged["ios"] = json.loads((ROOT / "Localization" / f"ios.{locale}.json").read_text(encoding="utf-8"))
     target = out_dir / f"messages.{locale}.json"
-    target.write_text(json.dumps(merged, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+    target.write_text(json.dumps(merged, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(f"{target.relative_to(ROOT)} : {len(merged)} namespaces")

@@ -1,42 +1,14 @@
 {
-  "server": {
-    "title": "Ton serveur",
-    "description": "YGO Deck Builder s'auto-héberge : entre l'adresse de ton instance (celle que tu ouvres dans ton navigateur).",
-    "placeholder": "ygo.example.com",
-    "hint": "HTTPS par défaut. Sur ton réseau local, tape l'adresse complète, ex. http://192.168.1.20:3000",
-    "connect": "Se connecter",
-    "invalid": "Cette adresse n'a pas l'air valide.",
-    "unreachable": "Impossible de joindre {url} : {error}",
-    "notAnInstance": "Ce serveur ne répond pas comme une instance YGO Deck Builder.",
-    "current": "Serveur",
-    "change": "Changer de serveur"
-  },
-  "settings": {
-    "title": "Réglages",
-    "account": "Compte",
-    "systemLanguage": "Langue du système",
-    "languageHint": "S'applique aussi aux noms et effets des cartes, et aux guides générés.",
-    "server": "Serveur",
-    "meta": "Meta",
-    "credits": "Données et images des cartes : YGOPRODeck. Visuels et listes des produits : Yugipedia. Yu-Gi-Oh! est une marque de Konami ; cette app n'est pas affiliée à Konami."
-  },
-  "scan": {
-    "title": "Scanner des cartes",
-    "hint": "Vise le code imprimé sous l'illustration (ex. SDBE-FR001).",
-    "details": "Détails",
-    "addOne": "+1 dans ma collection",
-    "addedCount": "{count, plural, one {# ajoutée} other {# ajoutées}}",
-    "alreadyOwned": "Tu en as déjà {count}",
-    "notFound": "Aucune carte trouvée pour {code}",
-    "unavailable": "Le scan n'est pas disponible",
-    "unavailableHint": "Autorise l'accès à la caméra dans les Réglages, ou utilise un appareil qui en a une."
-  },
   "card": {
+    "foil": "Rareté",
+    "rotateHint": "Glisse pour tourner la carte. Double-tape pour la remettre à plat, tape pour fermer.",
+    "showcaseFailed": "Rendu 3D indisponible",
+    "showcaseFailedHint": "Le visuel de la carte n'a pas pu être chargé, ou cet appareil ne peut pas afficher la carte en 3D.",
     "zoom": "Afficher la carte en plein écran"
   },
   "common": {
-    "share": "Partager",
-    "more": "Plus"
+    "more": "Plus",
+    "share": "Partager"
   },
   "deck": {
     "addCards": "Ajouter des cartes",
@@ -45,11 +17,82 @@
     "moveToSide": "En passer une au Side Deck",
     "testInDuel": "Tester en duel"
   },
+  "errors": {
+    "decoding": "Réponse inattendue du serveur ({detail}). Le serveur est-il à jour ?",
+    "noServer": "Aucun serveur configuré.",
+    "imageUnreadable": "Impossible de lire cette image"
+  },
+  "more": {
+    "catalog": "Chercher dans tout le catalogue",
+    "duel": "Tester un deck contre le simulateur",
+    "rules": "Toutes les règles officielles, illustrées",
+    "wishlist": "Les cartes qui te manquent",
+    "profile": "Ton profil et tes cartes mises en avant",
+    "friends": "Compare tes extensions avec tes amis"
+  },
+  "nav": {
+    "more": "Autre"
+  },
   "products": {
     "removeWithCards": "Le retirer avec ses cartes"
   },
-  "errors": {
-    "noServer": "Aucun serveur configuré.",
-    "decoding": "Réponse inattendue du serveur ({detail}). Le serveur est-il à jour ?"
+  "releases": {
+    "legend": {
+      "owned": "Tu as cette impression précise — le nombre dit combien.",
+      "elsewhere": "Tu as la carte, mais dans une autre extension ou une autre rareté.",
+      "missing": "Tu n’as pas cette carte du tout."
+    },
+    "meter": "{owned} sur {total}",
+    "spotlightMeta": "{date} · {owned}/{total}",
+    "byPrint": "Par impression exacte",
+    "shownLabel": "Cartes affichées"
+  },
+  "scan": {
+    "alreadyOwned": "Tu en as déjà {count}",
+    "cooldown": "Change de carte",
+    "copies": "{count, plural, one {# exemplaire en file} other {# exemplaires en file}}",
+    "hint": "Vise le code imprimé sous l'illustration (ex. SDBE-FR001).",
+    "notFound": "Aucune carte trouvée pour {code}",
+    "queued": "{count, plural, one {# en file} other {# en file}}",
+    "review": {
+      "addManually": "Ajouter à la main",
+      "commit": "{count, plural, one {Ajouter # carte à ma collection} other {Ajouter # cartes à ma collection}}",
+      "empty": "Aucune carte scannée",
+      "emptyHint": "Vise le code imprimé sous l'illustration, ou ajoute une carte à la main.",
+      "failures": "Cartes non ajoutées",
+      "noPrints": "Aucune édition connue pour cette carte.",
+      "open": "{count, plural, one {Vérifier # carte} other {Vérifier # cartes}}",
+      "openEmpty": "La file est vide",
+      "search": "Chercher une carte",
+      "title": "Vérifier avant d'ajouter"
+    },
+    "title": "Scanner des cartes",
+    "unavailable": "Le scan n'est pas disponible",
+    "unavailableHint": "Autorise l'accès à la caméra dans les Réglages, ou utilise un appareil qui en a une.",
+    "undo": "Annuler le dernier scan"
+  },
+  "server": {
+    "change": "Changer de serveur",
+    "connect": "Se connecter",
+    "current": "Serveur",
+    "description": "YGO Deck Builder s'auto-héberge : entre l'adresse de ton instance (celle que tu ouvres dans ton navigateur).",
+    "hint": "HTTPS par défaut. Sur ton réseau local, tape l'adresse complète, ex. http://192.168.1.20:3000",
+    "invalid": "Cette adresse n'a pas l'air valide.",
+    "notAnInstance": "Ce serveur ne répond pas comme une instance YGO Deck Builder.",
+    "placeholder": "ygo.example.com",
+    "title": "Ton serveur",
+    "unreachable": "Impossible de joindre {url} : {error}"
+  },
+  "settings": {
+    "account": "Compte",
+    "credits": "Données et images des cartes : YGOPRODeck. Visuels et listes des produits : Yugipedia. Yu-Gi-Oh! est une marque de Konami ; cette app n'est pas affiliée à Konami.",
+    "languageHint": "S'applique aussi aux noms et effets des cartes, et aux guides générés.",
+    "meta": "Meta",
+    "server": "Serveur",
+    "systemLanguage": "Langue du système",
+    "title": "Réglages"
+  },
+  "social": {
+    "friendCounters": "{cards} cartes · {sets} extensions complètes"
   }
 }

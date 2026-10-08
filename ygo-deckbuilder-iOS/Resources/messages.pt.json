@@ -785,6 +785,7 @@
     },
     "scan": {
       "alreadyOwned": "Já tens {count}",
+      "cooldown": "Troca de carta",
       "copies": "{count, plural, one {# cópia na fila} other {# cópias na fila}}",
       "hint": "Aponta a câmara para o código impresso por baixo da ilustração (ex. SDBE-PT001).",
       "notFound": "Nenhuma carta encontrada para {code}",
@@ -1764,12 +1765,18 @@
       "archetypesEmpty": "Adicione cards à sua coleção para ver arquétipos que você pode montar.",
       "description": "Os decks do momento, o que sua coleção já consegue montar e decks montados para você.",
       "sections": {
-        "archetypes": "Da sua coleção · um deck automático por arquétipo",
-        "meta": "Decks do meta · os mais acessíveis para você",
-        "official": "Decks oficiais · structure, starter e decks de caixas para remontar",
-        "playable": "Prontos para jogar · 100% seus cards"
+        "archetypes": "Da tua coleção",
+        "meta": "Decks do meta",
+        "official": "Decks oficiais",
+        "playable": "Prontos a jogar"
       },
-      "title": "Sugestões"
+      "title": "Sugestões",
+      "sectionHints": {
+        "playable": "Montados inteiramente com as tuas cartas",
+        "meta": "Os que estão mais ao teu alcance",
+        "official": "Structure decks, starters e listas de caixas para refazer",
+        "archetypes": "Um deck por arquétipo que já consegues montar"
+      }
     },
     "playable": {
       "best": "Melhor opção",
