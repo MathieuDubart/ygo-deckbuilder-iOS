@@ -25,7 +25,10 @@ nonisolated struct CardSummary: Codable, Hashable, Sendable, Identifiable {
     let imageUrl: String?
     let imageUrlSmall: String?
     let isExtraDeck: Bool
+    /// Statut sur la banlist TCG, libellé brut de la source. `BanStatus(label:)` le normalise.
     let banTcg: String?
+    /// Statut sur la banlist OCG : c'est elle qui s'applique à un deck au format OCG.
+    let banOcg: String?
     let priceCardmarket: Double?
     let ownedQuantity: Int?
     /// Étiquettes personnelles posées sur la carte (absent hors contexte utilisateur).
@@ -63,13 +66,13 @@ nonisolated struct CardDetail: Codable, Hashable, Sendable, Identifiable {
     let imageUrlSmall: String?
     let isExtraDeck: Bool
     let banTcg: String?
+    let banOcg: String?
     let priceCardmarket: Double?
     let ownedQuantity: Int?
     let desc: String
     let linkVal: Int?
     let linkMarkers: [String]
     let scale: Int?
-    let banOcg: String?
     let prints: [CardPrint]
     let tagIds: [String]?
 
@@ -81,8 +84,8 @@ nonisolated struct CardDetail: Codable, Hashable, Sendable, Identifiable {
             id: id, name: name, category: category, type: type, frameType: frameType,
             archetype: archetype, attribute: attribute, race: race, level: level, atk: atk,
             def: def, imageUrl: imageUrl, imageUrlSmall: imageUrlSmall, isExtraDeck: isExtraDeck,
-            banTcg: banTcg, priceCardmarket: priceCardmarket, ownedQuantity: ownedQuantity,
-            tagIds: tagIds
+            banTcg: banTcg, banOcg: banOcg, priceCardmarket: priceCardmarket,
+            ownedQuantity: ownedQuantity, tagIds: tagIds
         )
     }
 }

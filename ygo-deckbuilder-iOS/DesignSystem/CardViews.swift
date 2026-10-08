@@ -34,9 +34,49 @@ struct CardTile: View {
     var quantity: Int?
     var dimmed = false
     var missing = 0
+    /**
+     Format dans lequel on lit cette carte : c'est lui qui choisit la banlist. Sans valeur, la
+     pastille retombe sur le TCG, défaut de l'app. Passer le format plutôt qu'un statut déjà
+     résolu évite l'ambiguïté entre « pas précisé » et « précisé, et la carte est libre » —
+     dans un deck OCG, une carte limitée en TCG seulement ne doit porter aucune pastille.
+     */
+    var format: DeckFormat?
+    /// Raison pour laquelle la carte ne peut pas être prise : la tuile s'éteint et l'explique.
+    var blocked: String?
+
+    private var ban: BanStatus? {
+        BanStatus(label: format.map { DeckRules.banStatus(of: card, format: $0) } ?? card.banTcg)
+    }
 
     var body: some View {
-        CardArt(card: card, dimmed: dimmed)
+        VStack(alignment: .leading, spacing: 3) {
+            art
+            // La raison se lit SOUS la pochette : posée dessus, elle se tronque et recouvre le
+            // badge de quantité, qui reste l'information la plus utile de la vignette.
+            if let blocked {
+                Label(blocked, systemImage: "nosign")
+                    .codeStyle(10, weight: .bold)
+                    .foregroundStyle(Theme.danger)
+                    .lineLimit(2)
+            }
+        }
+    }
+
+    private var art: some View {
+        CardArt(card: card, dimmed: dimmed || blocked != nil)
+            .overlay(alignment: .topLeading) {
+                if let ban {
+                    Text("\(ban.maxCopies)")
+                        .codeStyle(10, weight: .bold)
+                        // L'accent est presque noir en apparence claire : du noir dessus
+                        // disparaîtrait. Les deux autres tons sont des couleurs fixes claires.
+                        .foregroundStyle(ban == .semiLimited ? Theme.accentInk : .black)
+                        .frame(width: 16, height: 16)
+                        .background(banTone(ban), in: .circle)
+                        .padding(4)
+                        .accessibilityLabel(t("cards.ban.\(ban.messageKey)"))
+                }
+            }
             .overlay(alignment: .topTrailing) {
                 if let quantity, quantity > 0 {
                     Text("×\(quantity)")
@@ -56,6 +96,14 @@ struct CardTile: View {
                         .padding(.bottom, 5)
                 }
             }
+    }
+
+    private func banTone(_ status: BanStatus) -> Color {
+        switch status {
+        case .forbidden: Theme.danger
+        case .limited: Theme.warning
+        case .semiLimited: .accentColor
+        }
     }
 }
 

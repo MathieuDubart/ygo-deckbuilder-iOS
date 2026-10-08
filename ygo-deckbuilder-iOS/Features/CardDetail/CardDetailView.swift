@@ -143,11 +143,9 @@ private struct CardFacts: View {
                 }
                 if let link = card.linkVal { Pill(text: "LINK-\(link)") }
                 if let scale = card.scale { Pill(text: t("cards.detail.scale", ["scale": scale])) }
-                if let ban = card.banTcg {
-                    Pill(
-                        text: t("cards.detail.banTcg", ["status": banLabel(ban)]),
-                        tint: ban == "Limited" || ban == "Semi-Limited" ? Theme.warning : Theme.danger)
-                }
+                // Les deux listes : elles divergent, et c'est celle du format joué qui compte
+                if let ban = card.banTcg { banPill("cards.detail.banTcg", ban) }
+                if let ban = card.banOcg { banPill("cards.detail.banOcg", ban) }
             }
 
             if card.category == .monster, card.atk != nil || card.def != nil {
@@ -172,6 +170,12 @@ private struct CardFacts: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
+    private func banPill(_ key: String, _ status: String) -> some View {
+        Pill(
+            text: t(key, ["status": banLabel(status)]),
+            tint: BanStatus(label: status) == .forbidden ? Theme.danger : Theme.warning)
+    }
+
     private func stat(_ label: String, _ value: String) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(label).font(.caption2.bold()).foregroundStyle(.secondary)
@@ -180,9 +184,10 @@ private struct CardFacts: View {
     }
 }
 
+/// Statut traduit, ou le libellé brut si la source en invente un qu'on ne connaît pas.
 func banLabel(_ status: String) -> String {
-    let key = "cards.ban.\(status)"
-    return L10n.shared.has(key) ? t(key) : status
+    guard let normalized = BanStatus(label: status) else { return status }
+    return t("cards.ban.\(normalized.messageKey)")
 }
 
 private struct PrintsSection: View {

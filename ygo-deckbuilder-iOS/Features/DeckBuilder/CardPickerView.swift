@@ -30,7 +30,11 @@ struct CardPickerView: View {
 
                 switch tab {
                 case .search:
-                    if let search { SearchPane(search: search, onOpen: open, onAdd: add) }
+                    if let search {
+                        SearchPane(
+                            search: search, format: model.format,
+                            blockedReason: model.blockedReason(for:), onOpen: open, onAdd: add)
+                    }
                 case .suggestions:
                     suggestionsPane
                 }
@@ -101,7 +105,10 @@ struct CardPickerView: View {
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                         CardGrid(items: items.map(\.card), minWidth: 90) { card in
-                            PickerTile(card: card, inDeck: model.totalCopies(of: card.id), onOpen: { open(card) }, onAdd: { add(card) })
+                            PickerTile(
+                                card: card, format: model.format,
+                                blocked: model.blockedReason(for: card),
+                                onOpen: { open(card) }, onAdd: { add(card) })
                         }
                     }
                     .padding(.horizontal, Spacing.l)
@@ -114,6 +121,8 @@ struct CardPickerView: View {
 
 private struct SearchPane: View {
     @Bindable var search: CardSearchModel
+    let format: DeckFormat
+    let blockedReason: (CardSummary) -> String?
     let onOpen: (CardSummary) -> Void
     let onAdd: (CardSummary) -> Void
 
@@ -128,7 +137,9 @@ private struct SearchPane: View {
                         .padding(.top, Spacing.xl)
                 }
                 CardGrid(items: search.items, minWidth: 90) { card in
-                    PickerTile(card: card, inDeck: 0, onOpen: { onOpen(card) }, onAdd: { onAdd(card) })
+                    PickerTile(
+                        card: card, format: format, blocked: blockedReason(card),
+                        onOpen: { onOpen(card) }, onAdd: { onAdd(card) })
                         .onAppear {
                             if card.id == search.items.last?.id { Task { await search.loadMore() } }
                         }
@@ -146,23 +157,29 @@ private struct SearchPane: View {
 
 private struct PickerTile: View {
     let card: CardSummary
-    let inDeck: Int
+    let format: DeckFormat
+    /// Raison du refus, ou nil. La fiche reste ouvrable — on veut pouvoir lire pourquoi.
+    let blocked: String?
     let onOpen: () -> Void
     let onAdd: () -> Void
 
     var body: some View {
         Button(action: onOpen) {
-            CardTile(card: card, quantity: card.owned, dimmed: card.owned == 0)
+            CardTile(
+                card: card, quantity: card.owned, dimmed: card.owned == 0,
+                format: format, blocked: blocked)
         }
         .buttonStyle(.plain)
         .overlay(alignment: .bottomTrailing) {
-            Button(t("common.actions.add"), systemImage: "plus", action: onAdd)
-                .labelStyle(.iconOnly)
-                .font(.caption.bold())
-                .buttonStyle(.glassProminent)
-                .buttonBorderShape(.circle)
-                .controlSize(.small)
-                .padding(4)
+            if blocked == nil {
+                Button(t("common.actions.add"), systemImage: "plus", action: onAdd)
+                    .labelStyle(.iconOnly)
+                    .font(.caption.bold())
+                    .buttonStyle(.glassProminent)
+                    .buttonBorderShape(.circle)
+                    .controlSize(.small)
+                    .padding(4)
+            }
         }
     }
 }
