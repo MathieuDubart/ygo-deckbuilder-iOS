@@ -785,6 +785,7 @@
     },
     "scan": {
       "alreadyOwned": "You already own {count}",
+      "cooldown": "Swap in the next card",
       "copies": "{count, plural, one {# copy queued} other {# copies queued}}",
       "hint": "Point the camera at the code printed under the artwork (e.g. SDBE-FR001).",
       "notFound": "No card found for {code}",
@@ -1764,12 +1765,18 @@
       "archetypesEmpty": "Add cards to your collection to see archetypes you can build.",
       "description": "Today’s top decks, what your collection can already build, and decks built for you.",
       "sections": {
-        "archetypes": "From your collection · one auto-built deck per archetype",
-        "meta": "Meta decks · the most accessible for you",
-        "official": "Official decks · structure, starter and box decks you can rebuild",
-        "playable": "Ready to play · 100% your cards"
+        "archetypes": "From your collection",
+        "meta": "Meta decks",
+        "official": "Official decks",
+        "playable": "Ready to play"
       },
-      "title": "Suggestions"
+      "title": "Suggestions",
+      "sectionHints": {
+        "playable": "Built entirely from cards you own",
+        "meta": "The ones within closest reach",
+        "official": "Structure decks, starters and box lists to rebuild",
+        "archetypes": "One deck per archetype you can already field"
+      }
     },
     "playable": {
       "best": "Best pick",

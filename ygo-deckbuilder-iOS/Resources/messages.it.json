@@ -785,6 +785,7 @@
     },
     "scan": {
       "alreadyOwned": "Ne possiedi già {count}",
+      "cooldown": "Cambia carta",
       "copies": "{count, plural, one {# copia in coda} other {# copie in coda}}",
       "hint": "Inquadra il codice stampato sotto l'illustrazione (es. SDBE-IT001).",
       "notFound": "Nessuna carta trovata per {code}",
@@ -1764,12 +1765,18 @@
       "archetypesEmpty": "Aggiungi carte alla tua collezione per vedere gli archetipi che puoi costruire.",
       "description": "I top deck del momento, quello che la tua collezione ti permette già di costruire e deck costruiti per te.",
       "sections": {
-        "archetypes": "Dalla tua collezione · un deck automatico per archetipo",
-        "meta": "Deck meta · i più accessibili per te",
-        "official": "Deck ufficiali · structure, starter e deck dei box da ricostruire",
-        "playable": "Pronti da giocare · 100% carte tue"
+        "archetypes": "Dalla tua collezione",
+        "meta": "Deck del meta",
+        "official": "Deck ufficiali",
+        "playable": "Pronti da giocare"
       },
-      "title": "Suggerimenti"
+      "title": "Suggerimenti",
+      "sectionHints": {
+        "playable": "Montati interamente con le tue carte",
+        "meta": "Quelli più alla tua portata",
+        "official": "Structure deck, starter e liste di box da rifare",
+        "archetypes": "Un deck per archetipo che puoi già schierare"
+      }
     },
     "playable": {
       "best": "Scelta migliore",

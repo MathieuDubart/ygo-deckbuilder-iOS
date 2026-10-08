@@ -82,34 +82,46 @@ extension View {
 struct SectionHeader<Trailing: View>: View {
     let title: String
     var systemImage: String?
+    /// Une précision sous le titre : le titre nomme, l'indice précise. Deux niveaux de
+    /// lecture plutôt qu'un seul titre à rallonge coupé d'un point médian.
+    var hint: String?
     /// Le filet qui tient la section. Faux quand le titre sert d'étiquette à autre chose
     /// (le libellé d'un `DisclosureGroup`), où un trait sous le chevron ne veut rien dire.
     var ruled = true
     @ViewBuilder var trailing: () -> Trailing
 
     init(
-        _ title: String, systemImage: String? = nil, ruled: Bool = true,
+        _ title: String, systemImage: String? = nil, hint: String? = nil, ruled: Bool = true,
         @ViewBuilder trailing: @escaping () -> Trailing
     ) {
         self.title = title
         self.systemImage = systemImage
+        self.hint = hint
         self.ruled = ruled
         self.trailing = trailing
     }
 
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: Spacing.s) {
-            if let systemImage {
-                Image(systemName: systemImage)
+        VStack(alignment: .leading, spacing: 2) {
+            HStack(alignment: .firstTextBaseline, spacing: Spacing.s) {
+                if let systemImage {
+                    Image(systemName: systemImage)
+                        .foregroundStyle(.secondary)
+                        .imageScale(.small)
+                }
+                Text(title)
+                    .font(.subheadline.weight(.medium))
                     .foregroundStyle(.secondary)
-                    .imageScale(.small)
+                    .lineLimit(2)
+                Spacer(minLength: Spacing.s)
+                trailing()
             }
-            Text(title)
-                .font(.subheadline.weight(.medium))
-                .foregroundStyle(.secondary)
-                .lineLimit(2)
-            Spacer(minLength: Spacing.s)
-            trailing()
+            if let hint {
+                Text(hint)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
         .padding(.bottom, ruled ? Spacing.xs : 0)
         .overlay(alignment: .bottom) { if ruled { Divider() } }
@@ -118,7 +130,7 @@ struct SectionHeader<Trailing: View>: View {
 }
 
 extension SectionHeader where Trailing == EmptyView {
-    init(_ title: String, systemImage: String? = nil, ruled: Bool = true) {
-        self.init(title, systemImage: systemImage, ruled: ruled) { EmptyView() }
+    init(_ title: String, systemImage: String? = nil, hint: String? = nil, ruled: Bool = true) {
+        self.init(title, systemImage: systemImage, hint: hint, ruled: ruled) { EmptyView() }
     }
 }

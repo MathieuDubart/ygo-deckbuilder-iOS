@@ -785,6 +785,7 @@
     },
     "scan": {
       "alreadyOwned": "Tu en as déjà {count}",
+      "cooldown": "Change de carte",
       "copies": "{count, plural, one {# exemplaire en file} other {# exemplaires en file}}",
       "hint": "Vise le code imprimé sous l'illustration (ex. SDBE-FR001).",
       "notFound": "Aucune carte trouvée pour {code}",
@@ -1824,12 +1825,18 @@
       "archetypesEmpty": "Ajoute des cartes à ta collection pour voir émerger des archétypes à construire.",
       "description": "Les decks du moment, ce que ta collection permet déjà, et des decks construits pour toi.",
       "sections": {
-        "archetypes": "Depuis ta collection · un deck auto par archétype",
-        "meta": "Decks du meta · les plus accessibles pour toi",
-        "official": "Decks officiels · structure, starter et coffrets à remonter",
-        "playable": "Prêts à jouer · 100 % avec tes cartes"
+        "archetypes": "Depuis ta collection",
+        "meta": "Decks du meta",
+        "official": "Decks officiels",
+        "playable": "Prêts à jouer"
       },
-      "title": "Suggestions"
+      "title": "Suggestions",
+      "sectionHints": {
+        "playable": "Entièrement montés avec tes cartes",
+        "meta": "Ceux qui sont le plus à ta portée",
+        "official": "Structure, starters et listes de coffrets à remonter",
+        "archetypes": "Un deck par archétype que tu peux déjà aligner"
+      }
     },
     "playable": {
       "best": "Meilleur choix",

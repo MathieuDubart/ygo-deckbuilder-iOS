@@ -23,10 +23,10 @@ struct SuggestionsScreen: View {
                         .foregroundStyle(.secondary)
                         .padding(.bottom, -Spacing.m)
 
-                    section(t("suggestions.page.sections.playable"), systemImage: "checkmark.shield") { playableSection }
-                    section(t("suggestions.page.sections.meta"), systemImage: "trophy") { metaSection }
-                    section(t("suggestions.page.sections.official"), systemImage: "shippingbox") { officialSection }
-                    section(t("suggestions.page.sections.archetypes"), systemImage: "sparkles") { archetypeSection }
+                    section("playable", systemImage: "checkmark.shield") { playableSection }
+                    section("meta", systemImage: "trophy") { metaSection }
+                    section("official", systemImage: "shippingbox") { officialSection }
+                    section("archetypes", systemImage: "sparkles") { archetypeSection }
                 }
                 .padding(.horizontal, Spacing.l)
                 .padding(.vertical, Spacing.s)
@@ -68,9 +68,15 @@ struct SuggestionsScreen: View {
     private func loadArchetypes() async { archetypes = await .fetch(archetypes) { try await app.api.archetypeSuggestions() } }
     private func loadOfficial() async { official = await .fetch(official) { try await app.api.officialDecks(kind: officialKind) } }
 
-    private func section(_ title: String, systemImage: String, @ViewBuilder content: () -> some View) -> some View {
+    /// Une section de la page. Le titre nomme, l'indice précise : deux niveaux de lecture
+    /// plutôt qu'un seul titre à rallonge coupé d'un point médian.
+    private func section(_ key: String, systemImage: String, @ViewBuilder content: () -> some View)
+        -> some View
+    {
         VStack(alignment: .leading, spacing: Spacing.m) {
-            SectionHeader(title, systemImage: systemImage)
+            SectionHeader(
+                t("suggestions.page.sections.\(key)"), systemImage: systemImage,
+                hint: t("suggestions.page.sectionHints.\(key)"))
             content()
         }
     }
