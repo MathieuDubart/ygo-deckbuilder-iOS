@@ -371,6 +371,7 @@
       "title": "Neues Deck"
     },
     "view": {
+      "allFormats": "Alle Formate",
       "confirmDelete": "„{name}“ löschen?",
       "counts": {
         "extra": "{count} Extra",
@@ -385,7 +386,23 @@
         "description": "Fang bei null an, importiere eine .ydk oder schau in die Vorschläge, um zu sehen, was deine Sammlung schon hergibt.",
         "title": "Noch keine Decks"
       },
+      "filterPlaceholder": "Meine Decks filtern…",
+      "format": "Format",
+      "fromProduct": "Aus einem Produkt",
       "newDeck": "Neues Deck",
+      "noResults": {
+        "clear": "Filter zurücksetzen",
+        "description": "Mit diesen Filtern bleibt nichts übrig. Nimm einen weg und versuch es nochmal.",
+        "title": "Kein Deck passt"
+      },
+      "sort": "Sortierung",
+      "sortOption": "Sortierung: {label}",
+      "sorts": {
+        "created": "Erstellung",
+        "name": "Name",
+        "size": "Größe",
+        "updated": "Bearbeitung"
+      },
       "title": "Meine Decks",
       "updatedOn": "Bearbeitet am {date}"
     }

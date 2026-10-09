@@ -371,6 +371,7 @@
       "title": "Nouveau deck"
     },
     "view": {
+      "allFormats": "Tous les formats",
       "confirmDelete": "Supprimer « {name} » ?",
       "counts": {
         "extra": "{count} extra",
@@ -385,7 +386,23 @@
         "description": "Pars de zéro, importe un .ydk, ou regarde les suggestions pour voir ce que ta collection permet déjà.",
         "title": "Aucun deck pour l’instant"
       },
+      "filterPlaceholder": "Filtrer mes decks…",
+      "format": "Format",
+      "fromProduct": "Depuis un produit",
       "newDeck": "Nouveau deck",
+      "noResults": {
+        "clear": "Effacer les filtres",
+        "description": "Rien ici ne passe ces filtres. Enlèves-en un et réessaie.",
+        "title": "Aucun deck ne correspond"
+      },
+      "sort": "Tri",
+      "sortOption": "Tri : {label}",
+      "sorts": {
+        "created": "Création",
+        "name": "Nom",
+        "size": "Taille",
+        "updated": "Modification"
+      },
       "title": "Mes decks",
       "updatedOn": "Modifié le {date}"
     }
