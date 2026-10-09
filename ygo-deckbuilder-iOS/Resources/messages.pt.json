@@ -355,6 +355,30 @@
       "OCG": "OCG",
       "TCG": "TCG"
     },
+    "matchups": {
+      "hint": "Onde este deck ganha e onde sofre, pelo que joga.",
+      "none": "Ainda não há cartas suficientes para avaliar este deck.",
+      "reasons": {
+        "BALANCED": "Nada faz pender a partida.",
+        "BREAKERS": "Remoção em massa suficiente para limpar o campo deles.",
+        "DISRUPTION": "Interação suficiente para responder a tempo.",
+        "FRAGILE_SETUP": "O teu plano precisa de um campo, e o deles impede-o.",
+        "HAND_TRAPS": "Cartas da mão suficientes para os travar no turno deles.",
+        "LOCK": "Os teus bloqueios fecham o plano deles.",
+        "NO_BREAKERS": "Nada para quebrar um campo já montado.",
+        "NO_DISRUPTION": "Nenhuma interação: nada lhes responde.",
+        "NO_HAND_TRAPS": "Poucas cartas da mão: jogam o turno sem incómodo.",
+        "RESILIENCE": "Voltas daquilo que te tiram."
+      },
+      "strengthTitle": "Solidez",
+      "title": "Prognósticos",
+      "verdicts": {
+        "BAD": "Desfavorável",
+        "EVEN": "Equilibrado",
+        "GOOD": "Favorável"
+      },
+      "vsStyle": "contra {style}"
+    },
     "new": {
       "file": "Arquivo .ydk",
       "fileHint": "Escolha um arquivo ou cole o conteúdo dele.",
@@ -369,6 +393,20 @@
         "ydk": "Importar"
       },
       "title": "Novo deck"
+    },
+    "styleHints": {
+      "BEATDOWN": "Bate cedo e continua.",
+      "COMBO": "Encadeia cartas para montar um campo num turno.",
+      "CONTROL": "Deixa vir e responde.",
+      "MIDRANGE": "Joga o seu jogo sem apostar tudo num turno.",
+      "STUN": "Tranca a partida em vez de responder."
+    },
+    "styles": {
+      "BEATDOWN": "Agressivo",
+      "COMBO": "Combo",
+      "CONTROL": "Controlo",
+      "MIDRANGE": "Midrange",
+      "STUN": "Stun"
     },
     "view": {
       "allFormats": "Todos os formatos",
@@ -401,6 +439,7 @@
         "created": "Criação",
         "name": "Nome",
         "size": "Tamanho",
+        "strength": "Solidez",
         "updated": "Modificação"
       },
       "title": "Meus decks",
@@ -791,6 +830,7 @@
     },
     "deck": {
       "addCards": "Adicionar cartas",
+      "analyse": "Analisar",
       "emptyZone": "Toca em «Adicionar cartas» e depois numa carta para ver os detalhes e adicioná-la.",
       "exportYdk": "Exportar .ydk",
       "moveToSide": "Passar uma para o Side Deck",

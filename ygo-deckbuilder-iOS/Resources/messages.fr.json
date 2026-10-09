@@ -355,6 +355,30 @@
       "OCG": "OCG",
       "TCG": "TCG"
     },
+    "matchups": {
+      "hint": "Où ce deck gagne et où il souffre, d’après ce qu’il joue.",
+      "none": "Pas encore assez de cartes pour juger ce deck.",
+      "reasons": {
+        "BALANCED": "Rien ne fait pencher la partie.",
+        "BREAKERS": "De quoi nettoyer ce qu’ils posent.",
+        "DISRUPTION": "Assez d’interaction pour répondre à temps.",
+        "FRAGILE_SETUP": "Ton plan demande un plateau, et le leur t’empêche de le poser.",
+        "HAND_TRAPS": "Assez de cartes de main pour les arrêter pendant leur tour.",
+        "LOCK": "Tes verrous ferment leur plan de jeu.",
+        "NO_BREAKERS": "Rien pour casser un terrain déjà en place.",
+        "NO_DISRUPTION": "Aucune interaction : rien ne leur répond.",
+        "NO_HAND_TRAPS": "Trop peu de cartes de main : ils déroulent leur tour sans être inquiétés.",
+        "RESILIENCE": "Tu reviens de ce qu’ils t’enlèvent."
+      },
+      "strengthTitle": "Solidité",
+      "title": "Pronostics",
+      "verdicts": {
+        "BAD": "Défavorable",
+        "EVEN": "Équilibré",
+        "GOOD": "Favorable"
+      },
+      "vsStyle": "contre {style}"
+    },
     "new": {
       "file": "Fichier .ydk",
       "fileHint": "Choisis un fichier ou colle son contenu.",
@@ -369,6 +393,20 @@
         "ydk": "Importer"
       },
       "title": "Nouveau deck"
+    },
+    "styleHints": {
+      "BEATDOWN": "Frappe tôt et continue de frapper.",
+      "COMBO": "Enchaîne ses cartes pour poser un plateau en un tour.",
+      "CONTROL": "Laisse venir, et répond.",
+      "MIDRANGE": "Joue son jeu sans tout miser sur un tour.",
+      "STUN": "Enferme la partie plutôt que d’y répondre."
+    },
+    "styles": {
+      "BEATDOWN": "Agression",
+      "COMBO": "Combo",
+      "CONTROL": "Contrôle",
+      "MIDRANGE": "Midrange",
+      "STUN": "Verrous"
     },
     "view": {
       "allFormats": "Tous les formats",
@@ -401,6 +439,7 @@
         "created": "Création",
         "name": "Nom",
         "size": "Taille",
+        "strength": "Solidité",
         "updated": "Modification"
       },
       "title": "Mes decks",
@@ -791,6 +830,7 @@
     },
     "deck": {
       "addCards": "Ajouter des cartes",
+      "analyse": "Analyser",
       "emptyZone": "Touche « Ajouter des cartes », puis une carte pour voir son détail et l'ajouter.",
       "exportYdk": "Exporter en .ydk",
       "moveToSide": "En passer une au Side Deck",

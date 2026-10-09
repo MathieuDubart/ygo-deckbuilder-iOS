@@ -68,6 +68,7 @@ private struct DeckBuilderContent: View {
     @State private var selected: CardLink?
     @State private var picking = false
     @State private var showingGuide = false
+    @State private var showingStrength = false
     @State private var pendingLink: CardLink?
     @State private var wishlistMessage: String?
     @State private var issuesMessage: String?
@@ -106,9 +107,25 @@ private struct DeckBuilderContent: View {
                 }
                 .disabled(model.entries.isEmpty)
             }
+            // Les deux lectures du deck sous un seul bouton : la barre porte déjà le duel,
+            // le partage et le retour, et un quatrième écraserait le nom du deck.
             ToolbarItem(placement: .topBarTrailing) {
-                Button(t("deckBuilder.header.guide"), systemImage: "book.pages") { showingGuide = true }
-                    .disabled(model.entries.isEmpty)
+                Menu {
+                    Button(t("deckBuilder.header.guide"), systemImage: "book.pages") {
+                        showingGuide = true
+                    }
+                    Button(t("decks.matchups.strengthTitle"), systemImage: "shield.lefthalf.filled") {
+                        // La note porte sur ce qui est SAUVEGARDÉ : sans ça, on ouvre les
+                        // pronostics du deck d'il y a trois cartes.
+                        Task {
+                            await model.flush()
+                            showingStrength = true
+                        }
+                    }
+                } label: {
+                    Label(t("ios.deck.analyse"), systemImage: "chart.bar.doc.horizontal")
+                }
+                .disabled(model.entries.isEmpty)
             }
             ToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: YdkFile(name: model.name, text: ydk), preview: SharePreview("\(model.name).ydk")) {
@@ -147,6 +164,23 @@ private struct DeckBuilderContent: View {
                     }
                 }
             }
+        }
+        .sheet(isPresented: $showingStrength) {
+            NavigationStack {
+                ScrollView {
+                    // Chargée à l'ouverture : le calcul relit les textes de toutes les cartes
+                    DeckStrengthSheet(deckId: model.deckId)
+                        .padding(Spacing.l)
+                }
+                .navigationTitle(t("decks.matchups.strengthTitle"))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button(t("common.actions.close"), systemImage: "xmark") { showingStrength = false }
+                    }
+                }
+            }
+            .presentationDetents([.medium, .large])
         }
         .cardDetailSheet($selected, builder: model)
     }
@@ -435,4 +469,23 @@ nonisolated struct YdkFile: Transferable, Sendable {
 extension UTType {
     /// .ydk (YGOPro / EDOPro / Master Duel) : du texte.
     nonisolated static var ydk: UTType { UTType(filenameExtension: "ydk", conformingTo: .plainText) ?? .plainText }
+}
+
+/// La force du deck, chargée quand la feuille s'ouvre et pas avant.
+private struct DeckStrengthSheet: View {
+    let deckId: String
+
+    @Environment(AppState.self) private var app
+    @State private var state: Loadable<DeckStrength?> = .idle
+
+    var body: some View {
+        LoadableView(state: state, retry: load) { strength in
+            DeckStrengthPanel(strength: strength)
+        }
+        .task { await load() }
+    }
+
+    private func load() async {
+        state = await .fetch(state) { try await app.api.deckStrength(deckId) }
+    }
 }

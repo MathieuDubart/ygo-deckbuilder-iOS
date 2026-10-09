@@ -179,6 +179,14 @@ extension APIClient {
 
     func deck(_ id: String) async throws -> Deck { try await get("decks/\(id)") }
 
+    /// Note, forme et pronostics. À part de la fiche : c'est le calcul le plus lourd.
+    /// Un deck trop incomplet pour être jugé répond un corps VIDE, pas un objet.
+    func deckStrength(_ id: String) async throws -> DeckStrength? {
+        let body = try await self.data(.get, "decks/\(id)/strength")
+        guard !body.isEmpty else { return nil }
+        return try? JSONDecoder().decode(DeckStrength.self, from: body)
+    }
+
     func createDeck(_ body: CreateDeckBody) async throws -> Deck { try await send(.post, "decks", body: body) }
 
     func importYdk(_ body: ImportYdkBody) async throws -> Deck { try await send(.post, "decks/import-ydk", body: body) }

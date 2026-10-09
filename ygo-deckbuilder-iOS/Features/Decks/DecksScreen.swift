@@ -234,6 +234,9 @@ private struct DeckRow: View {
                 Text(deck.name).font(.headline).lineLimit(2)
                 FlowLayout(spacing: Spacing.xxs) {
                     Pill(text: t("decks.formats.\(deck.format.rawValue)"))
+                    if let style = deck.style {
+                        Pill(text: t("decks.styles.\(style.rawValue)"), tint: .accentColor)
+                    }
                     // Monté depuis un produit : savoir d'où vient un deck qu'on n'a pas
                     // écrit soi-même évite de le prendre pour un brouillon oublié.
                     if deck.isFromProduct {
@@ -251,6 +254,12 @@ private struct DeckRow: View {
                 Text(t("decks.view.updatedOn", ["date": L10n.shared.date(deck.updatedAt)]))
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
+            }
+            // La colonne de texte prend la place : sans ça le badge colle aux noms courts
+            .frame(maxWidth: .infinity, alignment: .leading)
+            // Un deck trop incomplet pour être noté n'affiche rien : un zéro serait un jugement
+            if let strength = deck.strength {
+                ScoreBadge(score: strength).frame(maxHeight: .infinity, alignment: .top)
             }
         }
         .padding(.vertical, Spacing.xxs)
