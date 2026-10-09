@@ -225,6 +225,20 @@
         "rarity": "Rarity",
         "newest": "Recently added"
       }
+    },
+    "language": {
+      "alreadyUniform": "Everything is already in {language}.",
+      "copies": "{count} in {piles, plural, one {# stack} other {# stacks}}",
+      "done": "{count, plural, one {# stack moved} other {# stacks moved}}{merged, plural, =0 {} one {, # merged} other {, # merged}}.",
+      "label": "Filing language",
+      "neverChosen": "Never set — new cards follow the interface language.",
+      "normalize": "Move everything to {language} ({count})",
+      "onlyFuture": "Only for new cards",
+      "saved": "New cards will be filed in {language}.",
+      "title": "Collection language",
+      "willMerge": "{count, plural, one {# stack joins another} other {# stacks join another}} — copies are added up, none are lost.",
+      "willRetag": "{count, plural, one {# stack changes language} other {# stacks change language}}.",
+      "breakdown": "Breakdown"
     }
   },
   "common": {
@@ -813,12 +827,16 @@
         "open": "{count, plural, one {Check # card} other {Check # cards}}",
         "openEmpty": "The queue is empty",
         "search": "Search a card",
-        "title": "Check before adding"
+        "title": "Check before adding",
+        "language": "Language of this batch",
+        "languageHint": "Filed in your collection language. Change it here for a batch bought in another one."
       },
       "title": "Scan cards",
       "unavailable": "Scanning isn't available",
       "unavailableHint": "Allow camera access in Settings, or use a device with a camera.",
-      "undo": "Undo last scan"
+      "undo": "Undo last scan",
+      "unknownNumber": "The set is known, but not number {code}.",
+      "unknownSet": "Set {code} is not in the catalogue yet — it could not be fetched either."
     },
     "server": {
       "change": "Change server",

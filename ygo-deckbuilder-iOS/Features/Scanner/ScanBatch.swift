@@ -25,7 +25,7 @@ final class ScanDraft: Identifiable {
         printId: String? = nil,
         quantity: Int = 1,
         condition: CardCondition = .nearMint,
-        language: CardLanguage = L10n.shared.current.cardLanguage,
+        language: CardLanguage,
         firstEdition: Bool = false
     ) {
         self.card = card
@@ -65,18 +65,26 @@ final class ScanBatch {
     /// ce qui correspond à scanner deux copies de la même carte à la suite.
     @discardableResult
     func add(card: CardSummary, prints: [CardPrint], code: String? = nil,
-             printId: String? = nil, language: CardLanguage? = nil) -> ScanDraft {
+             printId: String? = nil, language: CardLanguage) -> ScanDraft {
         if let code, let existing = drafts.first(where: { $0.code == code && $0.printId == printId }) {
             existing.quantity += 1
             last = existing
             return existing
         }
         let draft = ScanDraft(
-            card: card, prints: prints, code: code, printId: printId,
-            language: language ?? L10n.shared.current.cardLanguage)
+            card: card, prints: prints, code: code, printId: printId, language: language)
         drafts.append(draft)
         last = draft
         return draft
+    }
+
+    /**
+     Repasse toute la file dans une langue. Le scan range dans la langue de collection ; ce
+     bouton sert à l'exception inverse — un lot entier acheté dans une autre langue — sans
+     avoir à corriger carte par carte.
+     */
+    func setLanguage(_ language: CardLanguage) {
+        for draft in drafts { draft.language = language }
     }
 
     func remove(_ draft: ScanDraft) {

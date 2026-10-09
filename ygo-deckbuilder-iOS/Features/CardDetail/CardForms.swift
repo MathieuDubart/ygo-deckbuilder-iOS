@@ -10,6 +10,8 @@ struct AddToCollectionSection: View {
     @State private var quantity = 1
     @State private var condition: CardCondition = .nearMint
     @State private var language: CardLanguage = L10n.shared.current.cardLanguage
+    /// Vrai une fois la langue posée depuis le réglage : on ne réécrit pas un choix manuel.
+    @State private var languageSet = false
     @State private var firstEdition = false
     @State private var saving = false
     @State private var message: (text: String, ok: Bool)?
@@ -51,11 +53,17 @@ struct AddToCollectionSection: View {
         .task(id: card.id) { applyHint() }
     }
 
-    /// Code scanné (SDBE-FR001) → impression correspondante et langue FR.
+    /// Code scanné (SDBE-FR001) → impression correspondante. La langue, elle, vient du
+    /// réglage de collection et PAS de la région lue sur la carte : ranger selon ce qui est
+    /// imprimé est précisément ce qui mélangeait la bibliothèque. Ça se corrige juste en
+    /// dessous, dans le sélecteur, pour la carte qui fait exception.
     private func applyHint() {
+        if !languageSet {
+            language = app.collectionLanguage
+            languageSet = true
+        }
         guard let hint = printHint.flatMap(PrintCode.init) else { return }
         printId = card.prints.first { hint.matches($0.printCode) }?.id
-        if let lang = hint.language { language = lang }
     }
 
     private func add() async {

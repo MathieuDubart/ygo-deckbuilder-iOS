@@ -103,7 +103,10 @@ private struct ImportConfirmSheet: View {
 
     @Environment(AppState.self) private var app
     @State private var copies = 1
+    /// Posée au premier affichage depuis le réglage de collection : une boîte entière rangée
+    /// dans la mauvaise langue est le plus gros dégât possible.
     @State private var language: CardLanguage = L10n.shared.current.cardLanguage
+    @State private var languageSet = false
     @State private var saving = false
     @State private var error: String?
 
@@ -154,6 +157,11 @@ private struct ImportConfirmSheet: View {
             }
             .navigationTitle(t("products.kinds.\(set.kind.rawValue)"))
             .navigationBarTitleDisplayMode(.inline)
+        }
+        .task {
+            guard !languageSet else { return }
+            language = app.collectionLanguage
+            languageSet = true
         }
     }
 

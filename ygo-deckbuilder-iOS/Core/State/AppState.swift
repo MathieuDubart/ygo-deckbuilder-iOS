@@ -59,6 +59,23 @@ final class AppState {
         return nil
     }
 
+    /**
+     La langue dans laquelle ranger une carte qui arrive : le choix de l'utilisateur, sinon
+     celle de l'interface. C'est le défaut du scan et de l'ajout à la main — ranger selon la
+     région lue sur la carte est précisément ce qui mélangeait les collections.
+     */
+    var collectionLanguage: CardLanguage {
+        user?.collectionLanguage ?? L10n.shared.current.cardLanguage
+    }
+
+    /// Après un changement de réglage : le serveur fait foi, on relit l'utilisateur.
+    func refreshUser() async {
+        guard let user = try? await api.me() else { return }
+        // Une déconnexion pendant la requête ne doit pas être annulée par sa réponse.
+        guard case .signedIn = session else { return }
+        session = .signedIn(user)
+    }
+
     // MARK: - Session
 
     /// Au lancement : reprend la session du Keychain si elle est encore valide.

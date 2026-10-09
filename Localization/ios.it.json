@@ -64,12 +64,16 @@
       "open": "{count, plural, one {Controlla # carta} other {Controlla # carte}}",
       "openEmpty": "La coda è vuota",
       "search": "Cerca una carta",
-      "title": "Controlla prima di aggiungere"
+      "title": "Controlla prima di aggiungere",
+      "language": "Lingua di questo lotto",
+      "languageHint": "Archiviato nella lingua della tua collezione. Da cambiare qui per un lotto comprato in un’altra."
     },
     "title": "Scansiona carte",
     "unavailable": "La scansione non è disponibile",
     "unavailableHint": "Consenti l'accesso alla fotocamera nelle Impostazioni o usa un dispositivo che ne abbia una.",
-    "undo": "Annulla l'ultima scansione"
+    "undo": "Annulla l'ultima scansione",
+    "unknownNumber": "L’espansione è nota, ma non il numero {code}.",
+    "unknownSet": "L’espansione di {code} non è ancora a catalogo — e non è stato possibile recuperarla."
   },
   "server": {
     "change": "Cambia server",

@@ -64,12 +64,16 @@
       "open": "{count, plural, one {Check # card} other {Check # cards}}",
       "openEmpty": "The queue is empty",
       "search": "Search a card",
-      "title": "Check before adding"
+      "title": "Check before adding",
+      "language": "Language of this batch",
+      "languageHint": "Filed in your collection language. Change it here for a batch bought in another one."
     },
     "title": "Scan cards",
     "unavailable": "Scanning isn't available",
     "unavailableHint": "Allow camera access in Settings, or use a device with a camera.",
-    "undo": "Undo last scan"
+    "undo": "Undo last scan",
+    "unknownNumber": "The set is known, but not number {code}.",
+    "unknownSet": "Set {code} is not in the catalogue yet — it could not be fetched either."
   },
   "server": {
     "change": "Change server",

@@ -123,8 +123,9 @@ struct CardScannerView: View {
                     Text(lookingUp).codeStyle(15)
                 }
             } else if let notFound {
-                Label(t("ios.scan.notFound", ["code": notFound]), systemImage: "questionmark.circle")
+                Label(notFound, systemImage: "questionmark.circle")
                     .font(.subheadline)
+                    .fixedSize(horizontal: false, vertical: true)
             } else {
                 Label(t("ios.scan.hint"), systemImage: "viewfinder")
                     .font(.subheadline)
@@ -198,24 +199,36 @@ struct CardScannerView: View {
         notFound = nil
         defer { lookingUp = nil }
         do {
-            var query = CardSearchQuery()
-            query.q = code
-            query.pageSize = 5
-            guard let card = try await app.api.searchCards(query).items.first else {
-                notFound = code
+            // Une seule requête, et c'est le serveur qui sait quoi faire d'un code inconnu :
+            // il va chercher l'extension manquante avant d'abandonner. Une recherche texte
+            // ne faisait pas la différence entre « mal lu » et « pas dans notre catalogue ».
+            let lookup = try await app.api.cardByPrintCode(code)
+            guard let card = lookup.card, lookup.status == .found else {
+                notFound = describe(lookup)
                 return
             }
-            let detail = try? await app.api.card(card.id)
             let scanned = PrintCode(code)
             batch.add(
-                card: detail?.summary ?? card,
-                prints: detail?.prints ?? [],
+                card: card.summary,
+                prints: card.prints,
                 code: code,
-                printId: scanned.flatMap { p in detail?.prints.first { p.matches($0.printCode) }?.id },
-                language: scanned?.language)
+                printId: scanned.flatMap { p in card.prints.first { p.matches($0.printCode) }?.id },
+                // La langue vient du réglage de collection, pas du code lu : ranger selon la
+                // région imprimée est précisément ce qui mélangeait la bibliothèque. Ce qui
+                // fait exception se corrige à la relecture, carte par carte ou d'un coup.
+                language: app.collectionLanguage)
             startCooldown()
         } catch {
-            notFound = code
+            notFound = t("ios.scan.notFound", ["code": code])
+        }
+    }
+
+    /// Pourquoi ce code n'a rien donné, en toutes lettres : la cause change ce qu'on peut faire.
+    private func describe(_ lookup: PrintLookup) -> String {
+        switch lookup.status {
+        case .unknownSet: t("ios.scan.unknownSet", ["code": lookup.code])
+        case .unknownNumber: t("ios.scan.unknownNumber", ["code": lookup.code])
+        case .invalidCode, .found, .unrecognized: t("ios.scan.notFound", ["code": lookup.code])
         }
     }
 

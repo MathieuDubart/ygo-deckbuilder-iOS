@@ -9,6 +9,7 @@ struct CollectionScreen: View {
     @State private var stats: Loadable<CollectionStats> = .idle
     @State private var selected: CardLink?
     @State private var importing = false
+    @State private var choosingLanguage = false
     @State private var scanning = false
     @State private var path = NavigationPath()
     /// Incrémenté par les listes quand on tire pour rafraîchir : le résumé doit suivre le
@@ -50,6 +51,10 @@ struct CollectionScreen: View {
                         }
                         Button(t("collection.view.addProduct"), systemImage: "shippingbox") { importing = true }
                         Button(t("ios.scan.title"), systemImage: "camera.viewfinder") { scanning = true }
+                        Divider()
+                        Button(t("collection.language.title"), systemImage: "character.book.closed") {
+                            choosingLanguage = true
+                        }
                     }
                 }
             }
@@ -64,6 +69,7 @@ struct CollectionScreen: View {
                 path.append(ProductRoute(id: productId))
             }
         }
+        .sheet(isPresented: $choosingLanguage) { CollectionLanguageView() }
         .fullScreenCover(isPresented: $scanning) {
             CardScannerView()
         }

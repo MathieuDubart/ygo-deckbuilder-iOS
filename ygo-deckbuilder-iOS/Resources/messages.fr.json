@@ -225,6 +225,20 @@
         "rarity": "Rareté",
         "newest": "Ajout récent"
       }
+    },
+    "language": {
+      "alreadyUniform": "Tout est déjà en {language}.",
+      "copies": "{count} dans {piles, plural, one {# pile} other {# piles}}",
+      "done": "{count, plural, one {# pile déplacée} other {# piles déplacées}}{merged, plural, =0 {} one {, # fusionnée} other {, # fusionnées}}.",
+      "label": "Langue de rangement",
+      "neverChosen": "Jamais choisie — les nouvelles cartes suivent la langue de l’interface.",
+      "normalize": "Tout passer en {language} ({count})",
+      "onlyFuture": "Seulement pour les prochaines",
+      "saved": "Les prochaines cartes seront rangées en {language}.",
+      "title": "Langue de la collection",
+      "willMerge": "{count, plural, one {# pile en rejoint une autre} other {# piles en rejoignent une autre}} — les exemplaires s’additionnent, rien ne se perd.",
+      "willRetag": "{count, plural, one {# pile change de langue} other {# piles changent de langue}}.",
+      "breakdown": "Répartition"
     }
   },
   "common": {
@@ -813,12 +827,16 @@
         "open": "{count, plural, one {Vérifier # carte} other {Vérifier # cartes}}",
         "openEmpty": "La file est vide",
         "search": "Chercher une carte",
-        "title": "Vérifier avant d'ajouter"
+        "title": "Vérifier avant d'ajouter",
+        "language": "Langue de ce lot",
+        "languageHint": "Rangé dans la langue de ta collection. À changer ici pour un lot acheté dans une autre."
       },
       "title": "Scanner des cartes",
       "unavailable": "Le scan n'est pas disponible",
       "unavailableHint": "Autorise l'accès à la caméra dans les Réglages, ou utilise un appareil qui en a une.",
-      "undo": "Annuler le dernier scan"
+      "undo": "Annuler le dernier scan",
+      "unknownNumber": "L’extension est connue, mais pas le numéro {code}.",
+      "unknownSet": "L’extension de {code} n’est pas encore au catalogue — et n’a pas pu être récupérée."
     },
     "server": {
       "change": "Changer de serveur",

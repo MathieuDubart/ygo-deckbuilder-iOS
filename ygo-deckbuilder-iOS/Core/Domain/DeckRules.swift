@@ -192,8 +192,5 @@ nonisolated struct PrintCode: Hashable, Sendable {
         return other.set == set && other.number == number
     }
 
-    /// Langue de la carte déduite du code ("SDBE-FR001" → FR).
-    var language: CardLanguage? { region.flatMap(CardLanguage.init(rawValue:)) }
-
     var text: String { "\(set)-\(region ?? "")\(number)" }
 }
