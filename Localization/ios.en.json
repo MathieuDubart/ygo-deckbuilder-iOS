@@ -39,7 +39,7 @@
   "releases": {
     "legend": {
       "owned": "You have this exact print — the number says how many.",
-      "elsewhere": "You have the card, but from another set or another rarity.",
+      "elsewhere": "You have the card, but from another set.",
       "missing": "You don’t have this card at all."
     },
     "meter": "{owned} out of {total}",

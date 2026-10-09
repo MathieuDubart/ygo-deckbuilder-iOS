@@ -174,6 +174,9 @@
       "confirm": {
         "add": "Add this product",
         "copiesEach": "Copies of each",
+        "createDecks": "Also add its deck to my decks",
+        "createDecksHint": "The three-box build: the key cards in triple, the filler cut. What you are missing shows up in the builder.",
+        "decksToast": "{count, plural, one {Deck added: {name}} other {# decks added}}",
         "description": "Its <strong>{count, plural, one {# card} other {# cards}}</strong> will be added to your collection, using the product’s official quantities when we can find them (Yugipedia list), otherwise 1 copy of each. The product will show up in the “Products” tab of your collection.",
         "language": "Language",
         "releasedOn": "released {date}",
@@ -798,7 +801,7 @@
     "releases": {
       "byPrint": "By exact print",
       "legend": {
-        "elsewhere": "You have the card, but from another set or another rarity.",
+        "elsewhere": "You have the card, but from another set.",
         "missing": "You don’t have this card at all.",
         "owned": "You have this exact print — the number says how many."
       },
@@ -1001,6 +1004,8 @@
       "labelCards": "Cards owned",
       "labelPrints": "Prints pulled"
     },
+    "sameCode": "Rarity",
+    "sameCodeHint": "You have this number, in another rarity: the slot counts as collected.",
     "sealed": "Sealed",
     "searchPlaceholder": "Find a set: name, code (BETB)…",
     "shown": {

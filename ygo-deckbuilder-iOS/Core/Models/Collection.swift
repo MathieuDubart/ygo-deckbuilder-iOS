@@ -129,6 +129,14 @@ nonisolated struct ImportSetBody: Encodable, Sendable {
     let setName: String
     var copies: Int = 1
     var language: CardLanguage
+    /// Poser aussi les decks du produit dans « Mes decks ».
+    var createDecks: Bool = false
+}
+
+/// Un deck posé dans « Mes decks » à l'import d'un produit.
+nonisolated struct CreatedDeck: Decodable, Hashable, Sendable, Identifiable {
+    let id: String
+    let name: String
 }
 
 nonisolated struct ImportSetResult: Decodable, Sendable {
@@ -137,6 +145,10 @@ nonisolated struct ImportSetResult: Decodable, Sendable {
     let cardsAdded: Int
     let copiesAdded: Int
     let quantitiesVerified: Bool
+    /// Serveur antérieur à la fonctionnalité : la clé est absente, pas vide.
+    let decksCreated: [CreatedDeck]?
+
+    var decks: [CreatedDeck] { decksCreated ?? [] }
 }
 
 // MARK: - Produits possédés

@@ -39,7 +39,7 @@
   "releases": {
     "legend": {
       "owned": "Tu as cette impression précise — le nombre dit combien.",
-      "elsewhere": "Tu as la carte, mais dans une autre extension ou une autre rareté.",
+      "elsewhere": "Tu as la carte, mais dans une autre extension.",
       "missing": "Tu n’as pas cette carte du tout."
     },
     "meter": "{owned} sur {total}",

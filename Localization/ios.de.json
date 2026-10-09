@@ -39,7 +39,7 @@
   "releases": {
     "legend": {
       "owned": "Du hast genau diesen Druck — die Zahl sagt wie viele.",
-      "elsewhere": "Du hast die Karte, aber aus einer anderen Edition oder Seltenheit.",
+      "elsewhere": "Du hast die Karte, aber aus einer anderen Edition.",
       "missing": "Diese Karte hast du gar nicht."
     },
     "meter": "{owned} von {total}",

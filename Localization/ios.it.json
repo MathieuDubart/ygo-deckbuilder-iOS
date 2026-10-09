@@ -39,7 +39,7 @@
   "releases": {
     "legend": {
       "owned": "Hai questa stampa precisa — il numero dice quante.",
-      "elsewhere": "Hai la carta, ma da un’altra espansione o un’altra rarità.",
+      "elsewhere": "Hai la carta, ma da un’altra espansione.",
       "missing": "Non hai affatto questa carta."
     },
     "meter": "{owned} su {total}",

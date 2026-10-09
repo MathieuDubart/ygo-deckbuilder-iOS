@@ -174,6 +174,9 @@
       "confirm": {
         "add": "Aggiungi questo prodotto",
         "copiesEach": "Copie di ciascuna",
+        "createDecks": "Aggiungere anche il suo deck ai miei",
+        "createDecksHint": "La versione a tre scatole: le carte chiave in triplo, il riempitivo tagliato. Quello che ti manca appare nel builder.",
+        "decksToast": "{count, plural, one {Deck aggiunto: {name}} other {# deck aggiunti}}",
         "description": "Le sue <strong>{count, plural, one {# carta} other {# carte}}</strong> verranno aggiunte alla tua collezione, con le quantità ufficiali del prodotto quando le troviamo (lista Yugipedia), altrimenti 1 copia di ciascuna. Il prodotto comparirà nella scheda «Prodotti» della tua collezione.",
         "language": "Lingua",
         "releasedOn": "uscito il {date}",
@@ -798,7 +801,7 @@
     "releases": {
       "byPrint": "Per stampa esatta",
       "legend": {
-        "elsewhere": "Hai la carta, ma da un’altra espansione o un’altra rarità.",
+        "elsewhere": "Hai la carta, ma da un’altra espansione.",
         "missing": "Non hai affatto questa carta.",
         "owned": "Hai questa stampa precisa — il numero dice quante."
       },
@@ -1001,6 +1004,8 @@
       "labelCards": "Carte possedute",
       "labelPrints": "Stampe ottenute"
     },
+    "sameCode": "Rarità",
+    "sameCodeHint": "Hai questo numero, in un’altra rarità: la casella conta come ottenuta.",
     "sealed": "Sigillato",
     "searchPlaceholder": "Trova un’espansione: nome, codice (BETB)…",
     "shown": {

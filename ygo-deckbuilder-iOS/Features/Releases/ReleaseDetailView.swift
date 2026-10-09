@@ -135,11 +135,17 @@ struct ReleaseDetailView: View {
         }
     }
 
-    /// Les trois états d'une vignette. Au doigt il n'y a pas de survol : si ça n'est pas
+    /// Les quatre états d'une vignette. Au doigt il n'y a pas de survol : si ça n'est pas
     /// écrit, ça n'existe pas.
     private var legend: some View {
-        VStack(alignment: .leading, spacing: Spacing.xs) {
+        // Une grille et non des `frame` fixes : `Pill` est en `fixedSize`, donc une largeur
+        // imposée ne tronque rien — la pastille passerait par-dessus son propre texte dès
+        // qu'une langue allonge l'étiquette. La colonne se mesure sur la plus large.
+        Grid(alignment: .leadingFirstTextBaseline, horizontalSpacing: Spacing.s, verticalSpacing: Spacing.xs) {
             legendRow(Pill(text: "×2", tint: Theme.success), t("ios.releases.legend.owned"))
+            legendRow(
+                Pill(text: t("releases.sameCode"), tint: Theme.success),
+                t("releases.sameCodeHint"))
             legendRow(Pill(text: t("releases.elsewhere"), tint: Theme.warning), t("ios.releases.legend.elsewhere"))
             legendRow(Pill(text: "—"), t("ios.releases.legend.missing"))
         }
@@ -148,10 +154,14 @@ struct ReleaseDetailView: View {
     }
 
     private func legendRow(_ pill: Pill, _ text: String) -> some View {
-        HStack(alignment: .firstTextBaseline, spacing: Spacing.s) {
-            pill.frame(width: 44, alignment: .leading)
-            Text(text).font(.caption).foregroundStyle(.secondary)
-            Spacer(minLength: 0)
+        GridRow {
+            pill
+            // Une `Text` d'une ligne annonce une largeur idéale énorme : sans ça, la plus
+            // longue des quatre explications serait tronquée au lieu d'être enveloppée.
+            Text(text)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 
@@ -246,6 +256,7 @@ private struct PrintTile: View {
         .accessibilityValue(
             card.owned > 0
                 ? t("ios.releases.legend.owned")
+                : card.sameCode > 0 ? t("releases.sameCodeHint")
                 : card.ownedElsewhere > 0 ? t("ios.releases.legend.elsewhere")
                 : t("ios.releases.legend.missing"))
     }
@@ -254,6 +265,11 @@ private struct PrintTile: View {
     private var badge: some View {
         if card.owned > 0 {
             Pill(text: "×\(card.owned)", tint: Theme.success).padding(3)
+        } else if card.sameCode > 0 {
+            // Le même numéro dans une autre rareté : la case est cochée, ce n'est
+            // simplement pas cette ligne-ci qu'on possède. Étiquette courte : `Pill` est en
+            // `fixedSize`, et un libellé long déborderait d’une vignette de 96 pt.
+            Pill(text: t("releases.sameCode"), tint: Theme.success).padding(3)
         } else if card.ownedElsewhere > 0 {
             // Possédée, mais pas dans cette extension : utile à savoir avant de racheter
             Pill(text: t("releases.elsewhere"), tint: Theme.warning).padding(3)
