@@ -1004,8 +1004,8 @@
       "labelCards": "Cards owned",
       "labelPrints": "Prints pulled"
     },
-    "sameCode": "Rarity",
-    "sameCodeHint": "You have this number, in another rarity: the slot counts as collected.",
+    "sameCode": "✓",
+    "sameCodeHint": "You have this card from this set — under another number or another rarity. The slot counts as collected.",
     "sealed": "Sealed",
     "searchPlaceholder": "Find a set: name, code (BETB)…",
     "shown": {

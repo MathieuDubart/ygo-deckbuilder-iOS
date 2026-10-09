@@ -1004,8 +1004,8 @@
       "labelCards": "Cartas possuídas",
       "labelPrints": "Impressões obtidas"
     },
-    "sameCode": "Raridade",
-    "sameCodeHint": "Tens este número, noutra raridade: a casa conta como obtida.",
+    "sameCode": "✓",
+    "sameCodeHint": "Você tem esta carta desta edição — com outro número ou outra raridade. A casa conta como obtida.",
     "sealed": "Lacrado",
     "searchPlaceholder": "Encontrar uma edição: nome, código (BETB)…",
     "shown": {
