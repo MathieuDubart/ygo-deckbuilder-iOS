@@ -33,10 +33,6 @@
   },
   "cards": {
     "ban": {
-      "Banned": "Proibita",
-      "Forbidden": "Proibita",
-      "Limited": "Limitata",
-      "Semi-Limited": "Semi-Limitata",
       "FORBIDDEN": "Proibita",
       "LIMITED": "Limitata",
       "SEMI_LIMITED": "Semi-Limitata"
@@ -60,14 +56,14 @@
       "POOR": "Poor"
     },
     "detail": {
+      "banOcg": "OCG: {status}",
       "banTcg": "TCG: {status}",
       "fallbackTitle": "Carta",
       "level": "Liv. {level}",
       "ownedPrice": "Possedute: <strong>{owned}</strong> · Cardmarket da <strong>{price}</strong>",
       "printUnspecified": "Stampa non specificata",
       "prints": "Stampe ({count})",
-      "scale": "Scala {scale}",
-      "banOcg": "OCG: {status}"
+      "scale": "Scala {scale}"
     },
     "interactions": {
       "byTraits": "(per le sue caratteristiche)",
@@ -149,6 +145,30 @@
       "PLAYED": "Played",
       "POOR": "Poor"
     },
+    "filters": {
+      "allArchetypes": "Tutti gli archetipi",
+      "allCategories": "Tutte le categorie",
+      "allConditions": "Tutte le condizioni",
+      "allLanguages": "Tutte le lingue",
+      "allRarities": "Tutte le rarità",
+      "allSets": "Tutte le espansioni",
+      "archetype": "Archetipo",
+      "category": "Categoria",
+      "condition": "Condizione",
+      "firstEdition": "1ª edizione",
+      "language": "Lingua",
+      "rarity": "Rarità",
+      "set": "Espansione",
+      "sort": "Ordina",
+      "sortOption": "Ordina: {label}",
+      "sorts": {
+        "name": "Nome",
+        "newest": "Aggiunte di recente",
+        "quantity": "Copie",
+        "rarity": "Rarità",
+        "value": "Valore"
+      }
+    },
     "import": {
       "cardCount": "{count, plural, one {# carta} other {# carte}}",
       "confirm": {
@@ -162,17 +182,31 @@
       },
       "kinds": {
         "ALL": "Tutti",
+        "BOOSTER": "Booster",
         "BOX": "Box set",
         "OTHER": "Altri prodotti",
         "STARTER": "Starter Deck",
         "STRUCTURE": "Structure Deck",
-        "TIN": "Tin",
-        "BOOSTER": "Booster"
+        "TIN": "Tin"
       },
       "kindsLabel": "Tipo di prodotto",
       "noResults": "Nessun prodotto trovato. Prova un altro tipo, una parola chiave o il codice stampato sulle tue carte.",
       "searchPlaceholder": "Filtra: «drago», «2022», codice del set (SDBE)…",
       "title": "Aggiungi un prodotto intero"
+    },
+    "language": {
+      "alreadyUniform": "È già tutto in {language}.",
+      "breakdown": "Ripartizione",
+      "copies": "{count} in {piles, plural, one {# pila} other {# pile}}",
+      "done": "{count, plural, one {# pila spostata} other {# pile spostate}}{merged, plural, =0 {} other {, # unite}}.",
+      "label": "Lingua di archiviazione",
+      "neverChosen": "Mai scelta — le nuove carte seguono la lingua dell’interfaccia.",
+      "normalize": "Portare tutto in {language} ({count})",
+      "onlyFuture": "Solo per le prossime",
+      "saved": "Le prossime carte saranno archiviate in {language}.",
+      "title": "Lingua della collezione",
+      "willMerge": "{count, plural, one {# pila ne raggiunge un’altra} other {# pile ne raggiungono altre}} — le copie si sommano, non si perde nulla.",
+      "willRetag": "{count, plural, one {# pila cambia lingua} other {# pile cambiano lingua}}."
     },
     "row": {
       "addCopy": "Aggiungi una copia",
@@ -201,44 +235,6 @@
         "releases": "Espansioni"
       },
       "title": "La mia collezione"
-    },
-    "filters": {
-      "category": "Categoria",
-      "allCategories": "Tutte le categorie",
-      "archetype": "Archetipo",
-      "allArchetypes": "Tutti gli archetipi",
-      "rarity": "Rarità",
-      "allRarities": "Tutte le rarità",
-      "language": "Lingua",
-      "allLanguages": "Tutte le lingue",
-      "condition": "Condizione",
-      "allConditions": "Tutte le condizioni",
-      "set": "Espansione",
-      "allSets": "Tutte le espansioni",
-      "sort": "Ordina",
-      "sortOption": "Ordina: {label}",
-      "firstEdition": "1ª edizione",
-      "sorts": {
-        "name": "Nome",
-        "quantity": "Copie",
-        "value": "Valore",
-        "rarity": "Rarità",
-        "newest": "Aggiunte di recente"
-      }
-    },
-    "language": {
-      "alreadyUniform": "È già tutto in {language}.",
-      "copies": "{count} in {piles, plural, one {# pila} other {# pile}}",
-      "done": "{count, plural, one {# pila spostata} other {# pile spostate}}{merged, plural, =0 {} other {, # unite}}.",
-      "label": "Lingua di archiviazione",
-      "neverChosen": "Mai scelta — le nuove carte seguono la lingua dell’interfaccia.",
-      "normalize": "Portare tutto in {language} ({count})",
-      "onlyFuture": "Solo per le prossime",
-      "saved": "Le prossime carte saranno archiviate in {language}.",
-      "title": "Lingua della collezione",
-      "willMerge": "{count, plural, one {# pila ne raggiunge un’altra} other {# pile ne raggiungono altre}} — le copie si sommano, non si perde nulla.",
-      "willRetag": "{count, plural, one {# pila cambia lingua} other {# pile cambiano lingua}}.",
-      "breakdown": "Ripartizione"
     }
   },
   "common": {
@@ -292,12 +288,15 @@
       "zoneCount": "{count}/{max} carte"
     },
     "add": {
+      "atLimit": "Già {count}",
+      "atLimitBan": "{status} · già {count}",
       "extraDeckMonster": "Questo mostro va nell’Extra Deck",
       "maxCopies": "{limit, plural, one {Massimo # copia} other {Massimo # copie}}",
       "notExtraDeck": "Solo i mostri Fusione, Synchro, Xyz e Link vanno nell’Extra Deck",
-      "zoneFull": "{zone} pieno",
-      "atLimit": "Già {count}",
-      "atLimitBan": "{status} · già {count}"
+      "zoneFull": "{zone} pieno"
+    },
+    "banlist": {
+      "updated": "La banlist è cambiata — questo deck è stato ricontrollato."
     },
     "header": {
       "guide": "Guida",
@@ -306,14 +305,14 @@
       "nameLabel": "Nome del deck"
     },
     "issues": {
+      "fix": "Togliere ciò che la banlist vieta",
+      "fixed": "{count, plural, one {# copia rimossa} other {# copie rimosse}}",
+      "forbidden": "{name} è vietata ({count, plural, one {# copia} other {# copie}} nel deck)",
       "title": "Deck non valido",
       "tooManyCopies": "{name}: {count, plural, one {# copia} other {# copie}} (max {limit})",
       "wrongZone": "{name} non può andare in {zone}",
       "zoneTooLarge": "{zone}: {count, plural, one {# carta} other {# carte}} (massimo {limit})",
-      "zoneTooSmall": "{zone}: {count, plural, one {# carta} other {# carte}} (minimo {limit})",
-      "forbidden": "{name} è vietata ({count, plural, one {# copia} other {# copie}} nel deck)",
-      "fix": "Togliere ciò che la banlist vieta",
-      "fixed": "{count, plural, one {# copia rimossa} other {# copie rimosse}}"
+      "zoneTooSmall": "{zone}: {count, plural, one {# carta} other {# carte}} (minimo {limit})"
     },
     "missing": {
       "addAll": "Metti tutto in wishlist",
@@ -328,8 +327,8 @@
       "suggestionsCount": "Suggerimenti ({count})",
       "suggestionsEmpty": "Aggiungi qualche carta al deck: i suggerimenti si basano sui suoi archetipi.",
       "suggestionsHint": "Carte della tua collezione che condividono un archetipo con il deck o che vi sono nominate.",
-      "tileTitle": "{name}\nClic: dettagli · Ctrl/⌘+clic: aggiungi · Maiusc+clic: aggiungi al Side Deck",
-      "tileBlocked": "{name}\n{reason} — impossibile aggiungerla"
+      "tileBlocked": "{name}\n{reason} — impossibile aggiungerla",
+      "tileTitle": "{name}\nClic: dettagli · Ctrl/⌘+clic: aggiungi · Maiusc+clic: aggiungi al Side Deck"
     },
     "save": {
       "dirty": "Modifiche non salvate",
@@ -343,9 +342,6 @@
       "empty": "Clicca una carta a sinistra per vederne i dettagli e aggiungerla",
       "emptySide": "Apri una carta e aggiungila al Side Deck, oppure Maiusc+clic per aggiungerla subito",
       "missingBadge": "MANCA"
-    },
-    "banlist": {
-      "updated": "La banlist è cambiata — questo deck è stato ricontrollato."
     }
   },
   "decks": {
@@ -782,16 +778,16 @@
     },
     "errors": {
       "decoding": "Risposta inattesa del server ({detail}). Il server è aggiornato?",
-      "noServer": "Nessun server configurato.",
-      "imageUnreadable": "Impossibile leggere questa immagine"
+      "imageUnreadable": "Impossibile leggere questa immagine",
+      "noServer": "Nessun server configurato."
     },
     "more": {
       "catalog": "Cerca in tutto il catalogo",
       "duel": "Prova un deck contro il simulatore",
-      "rules": "Tutte le regole ufficiali, illustrate",
-      "wishlist": "Le carte che ti mancano",
+      "friends": "Confronta i tuoi set con gli amici",
       "profile": "Il tuo profilo e le carte in vetrina",
-      "friends": "Confronta i tuoi set con gli amici"
+      "rules": "Tutte le regole ufficiali, illustrate",
+      "wishlist": "Le carte che ti mancano"
     },
     "nav": {
       "more": "Altro"
@@ -800,15 +796,15 @@
       "removeWithCards": "Rimuovilo con le sue carte"
     },
     "releases": {
+      "byPrint": "Per stampa esatta",
       "legend": {
-        "owned": "Hai questa stampa precisa — il numero dice quante.",
         "elsewhere": "Hai la carta, ma da un’altra espansione o un’altra rarità.",
-        "missing": "Non hai affatto questa carta."
+        "missing": "Non hai affatto questa carta.",
+        "owned": "Hai questa stampa precisa — il numero dice quante."
       },
       "meter": "{owned} su {total}",
-      "spotlightMeta": "{date} · {owned}/{total}",
-      "byPrint": "Per stampa esatta",
-      "shownLabel": "Carte mostrate"
+      "shownLabel": "Carte mostrate",
+      "spotlightMeta": "{date} · {owned}/{total}"
     },
     "scan": {
       "alreadyOwned": "Ne possiedi già {count}",
@@ -823,13 +819,13 @@
         "empty": "Nessuna carta scansionata",
         "emptyHint": "Inquadra il codice sotto l'illustrazione, oppure aggiungi una carta a mano.",
         "failures": "Carte non aggiunte",
+        "language": "Lingua di questo lotto",
+        "languageHint": "Archiviato nella lingua della tua collezione. Da cambiare qui per un lotto comprato in un’altra.",
         "noPrints": "Nessuna edizione nota per questa carta.",
         "open": "{count, plural, one {Controlla # carta} other {Controlla # carte}}",
         "openEmpty": "La coda è vuota",
         "search": "Cerca una carta",
-        "title": "Controlla prima di aggiungere",
-        "language": "Lingua di questo lotto",
-        "languageHint": "Archiviato nella lingua della tua collezione. Da cambiare qui per un lotto comprato in un’altra."
+        "title": "Controlla prima di aggiungere"
       },
       "title": "Scansiona carte",
       "unavailable": "La scansione non è disponibile",
@@ -873,11 +869,11 @@
       "collection": "Collezione",
       "decks": "Deck",
       "duel": "Duello",
+      "friends": "Amici",
+      "profile": "Profilo",
       "rules": "Regole",
       "suggestions": "Suggerimenti",
-      "wishlist": "Wishlist",
-      "friends": "Amici",
-      "profile": "Profilo"
+      "wishlist": "Wishlist"
     },
     "pages": {
       "catalog": "Catalogo",
@@ -885,13 +881,13 @@
       "deckNotFound": "Deck non trovato.",
       "decks": "Deck",
       "duel": "Simulatore di duello",
+      "friends": "Amici",
       "login": "Accedi",
+      "profile": "Profilo",
       "register": "Registrati",
       "rules": "Regole",
       "suggestions": "Suggerimenti",
-      "wishlist": "Wishlist",
-      "friends": "Amici",
-      "profile": "Profilo"
+      "wishlist": "Wishlist"
     }
   },
   "products": {
@@ -936,13 +932,27 @@
         "header": "{name} — {count, plural, one {# prodotto} other {# prodotti}}"
       }
     },
+    "filters": {
+      "allKinds": "Tutti i tipi",
+      "complete": "Solo completi",
+      "kind": "Tipo",
+      "searchPlaceholder": "Filtra i miei prodotti…",
+      "sort": "Ordina",
+      "sortOption": "Ordina: {label}",
+      "sorts": {
+        "added": "Aggiunti di recente",
+        "completeness": "I più incompleti",
+        "date": "Data di uscita",
+        "name": "Nome"
+      }
+    },
     "kinds": {
+      "BOOSTER": "Booster",
       "BOX": "Box set",
       "OTHER": "Prodotto",
       "STARTER": "Starter Deck",
       "STRUCTURE": "Structure Deck",
-      "TIN": "Tin",
-      "BOOSTER": "Booster"
+      "TIN": "Tin"
     },
     "tab": {
       "addProduct": "Aggiungi un prodotto",
@@ -951,94 +961,80 @@
       "deck": "Deck",
       "empty": {
         "description": "Aggiungi uno Structure Deck, una tin o un box set: comparirà qui con tutto il suo contenuto, più una guida di gioco per i deck.",
-        "title": "Ancora nessun prodotto",
-        "noMatch": "Nessun risultato"
+        "noMatch": "Nessun risultato",
+        "title": "Ancora nessun prodotto"
       },
       "missing": "{count, plural, one {# copia non è più} other {# copie non sono più}} nella tua collezione"
-    },
-    "filters": {
-      "searchPlaceholder": "Filtra i miei prodotti…",
-      "kind": "Tipo",
-      "allKinds": "Tutti i tipi",
-      "sort": "Ordina",
-      "sortOption": "Ordina: {label}",
-      "complete": "Solo completi",
-      "sorts": {
-        "added": "Aggiunti di recente",
-        "name": "Nome",
-        "date": "Data di uscita",
-        "completeness": "I più incompleti"
-      }
     }
   },
   "releases": {
-    "title": "Espansione",
-    "searchPlaceholder": "Trova un’espansione: nome, codice (BETB)…",
-    "count": "{count, plural, one {# espansione} other {# espansioni}}",
-    "noDate": "Data sconosciuta",
-    "today": "Esce oggi",
-    "inDays": "{count, plural, one {tra # giorno} other {tra # giorni}}",
-    "sealed": "Sigillato",
-    "unrevealed": "Lista delle carte non ancora svelata",
-    "unrevealedHint": "Questa espansione è annunciata; le sue carte compariranno qui appena saranno note.",
-    "elsewhere": "Già presente",
-    "elsewhereHint": "Hai questa carta, ma in un’altra espansione",
-    "noCardsShown": "Niente corrisponde a questi filtri",
     "anyEdition": "Tutte le edizioni",
     "anyEditionHint": "Conta una carta come ottenuta anche se la possiedi in un’altra espansione",
-    "spotlight": {
-      "upcoming": "In arrivo",
-      "upcomingEmpty": "Nessuna uscita annunciata per ora.",
-      "recent": "Appena uscito",
-      "recentEmpty": "Niente è uscito negli ultimi due mesi."
+    "count": "{count, plural, one {# espansione} other {# espansioni}}",
+    "elsewhere": "Già presente",
+    "elsewhereHint": "Hai questa carta, ma in un’altra espansione",
+    "empty": {
+      "description": "Cambia i filtri, o prova un altro nome o codice.",
+      "title": "Nessuna espansione trovata"
     },
-    "status": {
-      "UPCOMING": "In arrivo",
-      "RECENT": "Nuovo",
-      "RELEASED": "Uscito"
+    "filters": {
+      "allKinds": "Tutti i tipi",
+      "allProgress": "Tutti gli avanzamenti",
+      "allRarities": "Tutte le rarità",
+      "allStatuses": "Tutti gli stati",
+      "allYears": "Tutti gli anni",
+      "kind": "Tipo",
+      "ownedProduct": "Sigillato posseduto",
+      "progress": "Avanzamento",
+      "rarity": "Rarità",
+      "sort": "Ordina",
+      "status": "Stato",
+      "year": "Anno"
     },
+    "inDays": "{count, plural, one {tra # giorno} other {tra # giorni}}",
+    "noCardsShown": "Niente corrisponde a questi filtri",
+    "noDate": "Data sconosciuta",
     "progress": {
+      "COMPLETE": "Completa",
       "NONE": "Non iniziata",
       "STARTED": "In corso",
-      "COMPLETE": "Completa",
-      "labelPrints": "Stampe ottenute",
-      "labelCards": "Carte possedute"
+      "labelCards": "Carte possedute",
+      "labelPrints": "Stampe ottenute"
     },
+    "sealed": "Sigillato",
+    "searchPlaceholder": "Trova un’espansione: nome, codice (BETB)…",
     "shown": {
       "all": "Tutto",
-      "owned": "Ottenute",
-      "missing": "Da ottenere"
+      "missing": "Da ottenere",
+      "owned": "Ottenute"
+    },
+    "sort": {
+      "cards": "Numero di carte",
+      "date": "Data di uscita",
+      "name": "Nome",
+      "option": "Ordina: {label}",
+      "progress": "Avanzamento"
+    },
+    "spotlight": {
+      "recent": "Appena uscito",
+      "recentEmpty": "Niente è uscito negli ultimi due mesi.",
+      "upcoming": "In arrivo",
+      "upcomingEmpty": "Nessuna uscita annunciata per ora."
     },
     "stats": {
       "copies": "Copie",
-      "ownedValue": "Valore posseduto",
-      "missingValue": "Ancora da comprare"
+      "missingValue": "Ancora da comprare",
+      "ownedValue": "Valore posseduto"
     },
-    "filters": {
-      "status": "Stato",
-      "allStatuses": "Tutti gli stati",
-      "kind": "Tipo",
-      "allKinds": "Tutti i tipi",
-      "year": "Anno",
-      "allYears": "Tutti gli anni",
-      "progress": "Avanzamento",
-      "allProgress": "Tutti gli avanzamenti",
-      "rarity": "Rarità",
-      "allRarities": "Tutte le rarità",
-      "sort": "Ordina",
-      "ownedProduct": "Sigillato posseduto"
+    "status": {
+      "RECENT": "Nuovo",
+      "RELEASED": "Uscito",
+      "UPCOMING": "In arrivo"
     },
-    "sort": {
-      "option": "Ordina: {label}",
-      "date": "Data di uscita",
-      "progress": "Avanzamento",
-      "name": "Nome",
-      "cards": "Numero di carte"
-    },
-    "empty": {
-      "title": "Nessuna espansione trovata",
-      "description": "Cambia i filtri, o prova un altro nome o codice."
-    }
+    "title": "Espansione",
+    "today": "Esce oggi",
+    "unrevealed": "Lista delle carte non ancora svelata",
+    "unrevealedHint": "Questa espansione è annunciata; le sue carte compariranno qui appena saranno note."
   },
   "rules": {
     "description": "Le regole ufficiali del GCC Yu-Gi-Oh! secondo la Master Rule attuale, dalla preparazione di un duello alla risoluzione delle Catene.",
@@ -1091,76 +1087,76 @@
     },
     "glossary": [
       {
-        "term": "Attivazione",
-        "definition": "Il momento in cui annunci una carta o un effetto e ne paghi il costo. Un’attivazione annullata ti costa comunque quello che hai pagato."
+        "definition": "Il momento in cui annunci una carta o un effetto e ne paghi il costo. Un’attivazione annullata ti costa comunque quello che hai pagato.",
+        "term": "Attivazione"
       },
       {
-        "term": "Annullare",
-        "definition": "Impedire che un’attivazione o un effetto si applichi. Annullare non è distruggere: una carta annullata può restare sul Terreno."
+        "definition": "Impedire che un’attivazione o un effetto si applichi. Annullare non è distruggere: una carta annullata può restare sul Terreno.",
+        "term": "Annullare"
       },
       {
-        "term": "Bandire",
-        "definition": "Rimuovere una carta dal gioco, tenendola separata dal Cimitero. Alcune carte bandiscono coperta: in quel caso nessuno può guardarla."
+        "definition": "Rimuovere una carta dal gioco, tenendola separata dal Cimitero. Alcune carte bandiscono coperta: in quel caso nessuno può guardarla.",
+        "term": "Bandire"
       },
       {
-        "term": "Catena",
-        "definition": "La pila delle carte e degli effetti attivati in risposta uno all’altro. L’ultimo attivato si risolve per primo."
+        "definition": "La pila delle carte e degli effetti attivati in risposta uno all’altro. L’ultimo attivato si risolve per primo.",
+        "term": "Catena"
       },
       {
-        "term": "Bersagliare",
-        "definition": "Designare una carta precisa all’attivazione. Una carta che «non può essere bersagliata» non può essere scelta, anche se l’effetto potrebbe colpirla."
+        "definition": "Designare una carta precisa all’attivazione. Una carta che «non può essere bersagliata» non può essere scelta, anche se l’effetto potrebbe colpirla.",
+        "term": "Bersagliare"
       },
       {
-        "term": "Segnalino",
-        "definition": "Un contrassegno che un effetto mette su una carta e che sparisce insieme a lei."
+        "definition": "Un contrassegno che un effetto mette su una carta e che sparisce insieme a lei.",
+        "term": "Segnalino"
       },
       {
-        "term": "Costo",
-        "definition": "Ciò che paghi all’attivazione: scartare, pagare LP, offrire un Tributo, staccare un Materiale. Un costo non viene mai restituito."
+        "definition": "Ciò che paghi all’attivazione: scartare, pagare LP, offrire un Tributo, staccare un Materiale. Un costo non viene mai restituito.",
+        "term": "Costo"
       },
       {
-        "term": "Effetto Continuo",
-        "definition": "Un effetto che si applica in permanenza finché la carta è sul Terreno, senza attivazione e senza Anello di Catena."
+        "definition": "Un effetto che si applica in permanenza finché la carta è sul Terreno, senza attivazione e senza Anello di Catena.",
+        "term": "Effetto Continuo"
       },
       {
-        "term": "Effetto a Innesco",
-        "definition": "Un effetto che si attiva quando avviene un evento preciso, per esempio «Quando questa carta viene Evocata»."
+        "definition": "Un effetto che si attiva quando avviene un evento preciso, per esempio «Quando questa carta viene Evocata».",
+        "term": "Effetto a Innesco"
       },
       {
-        "term": "Effetto ad Attivazione Manuale",
-        "definition": "Un effetto che attivi tu, durante la tua Main Phase."
+        "definition": "Un effetto che attivi tu, durante la tua Main Phase.",
+        "term": "Effetto ad Attivazione Manuale"
       },
       {
-        "term": "Effetto Rapido",
-        "definition": "Un effetto di Velocità di Magia 2, che puoi attivare durante il turno dell’avversario o in risposta a un’attivazione."
+        "definition": "Un effetto di Velocità di Magia 2, che puoi attivare durante il turno dell’avversario o in risposta a un’attivazione.",
+        "term": "Effetto Rapido"
       },
       {
-        "term": "Effetto SCOPRI",
-        "definition": "Un effetto che si attiva quando il mostro passa da coperto a scoperto."
+        "definition": "Un effetto che si attiva quando il mostro passa da coperto a scoperto.",
+        "term": "Effetto SCOPRI"
       },
       {
-        "term": "Hand trap",
-        "definition": "Un mostro il cui effetto si attiva dalla mano, spesso scartandolo, per disturbare l’avversario durante il suo turno."
+        "definition": "Un mostro il cui effetto si attiva dalla mano, spesso scartandolo, per disturbare l’avversario durante il suo turno.",
+        "term": "Hand trap"
       },
       {
-        "term": "Segna-Mostro",
-        "definition": "Un mostro creato da un effetto, che non è una carta e svanisce appena lascia il Terreno."
+        "definition": "Un mostro creato da un effetto, che non è una carta e svanisce appena lascia il Terreno.",
+        "term": "Segna-Mostro"
       },
       {
-        "term": "Materiale",
-        "definition": "Le carte usate per un’Evocazione dall’Extra Deck: Fusion, Synchro, Xyz o Link."
+        "definition": "Le carte usate per un’Evocazione dall’Extra Deck: Fusion, Synchro, Xyz o Link.",
+        "term": "Materiale"
       },
       {
-        "term": "Tributo",
-        "definition": "Mandare al Cimitero un mostro che controlli per pagare un’Evocazione o un costo."
+        "definition": "Mandare al Cimitero un mostro che controlli per pagare un’Evocazione o un costo.",
+        "term": "Tributo"
       },
       {
-        "term": "Tempismo perso",
-        "definition": "Un effetto facoltativo «Quando… puoi» non può più attivarsi se il suo evento non è stata l’ultima cosa accaduta."
+        "definition": "Un effetto facoltativo «Quando… puoi» non può più attivarsi se il suo evento non è stata l’ultima cosa accaduta.",
+        "term": "Tempismo perso"
       },
       {
-        "term": "Velocità di Magia",
-        "definition": "La priorità di un effetto in una Catena: solo un effetto di Velocità uguale o superiore può rispondere."
+        "definition": "La priorità di un effetto in una Catena: solo un effetto di Velocità uguale o superiore può rispondere.",
+        "term": "Velocità di Magia"
       }
     ],
     "groups": {
@@ -1182,34 +1178,30 @@
       "points": "Da ricordare",
       "search": "Cerca una regola, una parola…",
       "video": "Tutorial video",
-      "videoConsent": "Il video viene caricato da YouTube solo quando fai clic.",
-      "videoLoad": "Avvia il video",
       "videoOpen": "Apri su YouTube"
     },
     "links": [
       {
-        "label": "Regolamento ufficiale (PDF, in inglese)",
         "description": "Le regole complete pubblicate da Konami, Evocazione Link inclusa.",
+        "label": "Regolamento ufficiale (PDF, in inglese)",
         "url": "https://img.yugioh-card.com/en/downloads/rulebook/SD_RuleBook_EN_10.pdf"
       },
       {
-        "label": "Tutorial video (in inglese)",
         "description": "La serie ufficiale: come si svolge un duello, la battaglia, le Catene e ogni tipo di Evocazione.",
+        "label": "Tutorial video (in inglese)",
         "url": "https://www.yugioh-card.com/eu/videotutorials/"
       },
       {
-        "label": "Yu-Gi-Oh! per principianti",
         "description": "Lo spazio ufficiale in italiano per chi inizia, con tutorial e consigli di partenza.",
+        "label": "Yu-Gi-Oh! per principianti",
         "url": "https://www.yugioh-card.com/eu/it/perprincipianti/"
       }
     ],
     "sections": [
       {
-        "id": "basics",
         "group": "basics",
         "icon": "BookOpen",
-        "title": "Le basi",
-        "summary": "Due duellanti, 8000 LP ciascuno: vinci portando a 0 quelli dell’avversario.",
+        "id": "basics",
         "paragraphs": [
           "Yu-Gi-Oh! è un duello tra due giocatori. Ogni giocatore inizia con 8000 Life Points (LP) e pesca 5 carte. Il tuo obiettivo è portare a 0 i LP del tuo avversario usando mostri, Magie e Trappole.",
           "Prima del primo duello, decidete a caso (per esempio lanciando una moneta) quale giocatore sceglie se iniziare per primo o per secondo. In un Match, il perdente del duello precedente fa questa scelta per il duello successivo."
@@ -1221,15 +1213,15 @@
           "Main Deck: da 40 a 60 carte. Extra Deck: da 0 a 15 carte. Side Deck: da 0 a 15 carte.",
           "Puoi avere al massimo 3 copie di una carta con lo stesso nome tra Main Deck, Extra Deck e Side Deck messi insieme.",
           "La Lista delle carte Proibite e Limitate restringe ulteriormente alcune carte: Proibita (0 copie), Limitata (1 copia), Semi-Limitata (2 copie)."
-        ]
+        ],
+        "summary": "Due duellanti, 8000 LP ciascuno: vinci portando a 0 quelli dell’avversario.",
+        "title": "Le basi"
       },
       {
-        "id": "field",
+        "diagram": "field",
         "group": "basics",
         "icon": "LayoutGrid",
-        "title": "Il Terreno",
-        "summary": "5 Zone Mostri, 5 Zone Magie & Trappole e 1 Zona Terreno per giocatore; le 2 Zone Mostri Extra sono condivise.",
-        "diagram": "field",
+        "id": "field",
         "paragraphs": [
           "La tua metà del Terreno ha 5 Zone Mostri Principali, 5 Zone Magie & Trappole e 1 Zona Terreno. Le 2 Zone Mostri Extra si trovano tra i due giocatori e sono condivise.",
           "Puoi usare una sola Zona Mostri Extra alla volta, a meno che l’effetto di una carta ti permetta di usare l’altra. Quando il tuo mostro la lascia, puoi di nuovo usare l’una o l’altra.",
@@ -1241,15 +1233,15 @@
           "Cimitero: pila scoperta delle carte usate e distrutte; entrambi i giocatori possono guardarla in qualsiasi momento.",
           "Le carte bandite sono rimosse dal gioco, di solito scoperte, e tenute separate dal Cimitero.",
           "I mostri sono in Posizione di Attacco (verticale) o in Posizione di Difesa (orizzontale). Un mostro coperto è sempre in Posizione di Difesa, e puoi guardare le tue carte coperte."
-        ]
+        ],
+        "summary": "5 Zone Mostri, 5 Zone Magie & Trappole e 1 Zona Terreno per giocatore; le 2 Zone Mostri Extra sono condivise.",
+        "title": "Il Terreno"
       },
       {
-        "id": "turn",
+        "diagram": "turn",
         "group": "basics",
         "icon": "Clock",
-        "title": "Struttura del turno",
-        "summary": "Sei fasi in ordine, tra cui la Battle Phase — facoltativa e vietata nel primo turno.",
-        "diagram": "turn",
+        "id": "turn",
         "paragraphs": [
           "Ogni turno attraversa le fasi qui sotto, in quest’ordine. Il giocatore di cui è il turno è il «giocatore di turno».",
           "Il primo turno del duello ha due restrizioni: il giocatore che inizia non pesca, e nessuno può effettuare la Battle Phase."
@@ -1261,18 +1253,19 @@
           "Battle Phase: facoltativa. Attacca con i tuoi mostri. Non può essere effettuata nel primo turno del duello.",
           "Main Phase 2: solo se hai effettuato la Battle Phase. Puoi fare le stesse cose della Main Phase 1.",
           "End Phase: gli effetti che avvengono «durante la End Phase» vengono applicati. Se hai più di 6 carte in mano, scartane finché ne hai 6."
-        ]
+        ],
+        "summary": "Sei fasi in ordine, tra cui la Battle Phase — facoltativa e vietata nel primo turno.",
+        "title": "Struttura del turno"
       },
       {
-        "id": "normal-summon",
-        "group": "summons",
-        "icon": "ArrowUp",
-        "title": "Evocazione Normale e Posizionamento",
-        "summary": "Una sola Evocazione Normale o un Posizionamento per turno, con Tributi dal Livello 5 in su.",
-        "diagram": "tributes",
         "cards": [
           "Summoned Skull"
         ],
+        "diagram": "tributes",
+        "example": "Controlli 1 mostro. Per Evocare Normalmente un mostro di Livello 6, lo offri come Tributo. Questo usa la tua Evocazione Normale del turno, quindi non puoi Posizionare un altro mostro.",
+        "group": "summons",
+        "icon": "ArrowUp",
+        "id": "normal-summon",
         "paragraphs": [
           "Una volta per turno, durante la tua Main Phase, puoi Evocare Normalmente un mostro dalla tua mano in Posizione di Attacco scoperta oppure Posizionarlo in Posizione di Difesa coperta. Entrambe le azioni usano la tua unica Evocazione Normale del turno.",
           "I mostri di Livello più alto richiedono Tributi: mandi al Cimitero mostri che controlli. È un’Evocazione Tramite Offerta (o un Posizionamento Tramite Offerta), che è una forma di Evocazione Normale.",
@@ -1285,18 +1278,18 @@
           "Evocazione di Scoperta: durante la tua Main Phase, cambia un mostro coperto in Posizione di Difesa in Posizione di Attacco scoperta. Non puoi farlo nel turno in cui quel mostro è stato Posizionato.",
           "Durante la tua Main Phase puoi cambiare la posizione di battaglia di ogni mostro una volta per turno, ma non nel turno in cui è stato Evocato o Posizionato, né dopo che ha attaccato in quel turno. Un’Evocazione di Scoperta conta come quel cambio."
         ],
-        "example": "Controlli 1 mostro. Per Evocare Normalmente un mostro di Livello 6, lo offri come Tributo. Questo usa la tua Evocazione Normale del turno, quindi non puoi Posizionare un altro mostro."
+        "summary": "Una sola Evocazione Normale o un Posizionamento per turno, con Tributi dal Livello 5 in su.",
+        "title": "Evocazione Normale e Posizionamento"
       },
       {
-        "id": "special-summon",
-        "group": "summons",
-        "icon": "Sparkles",
-        "title": "Evocazione Speciale",
-        "summary": "Tante Evocazioni Speciali quante le tue carte ne permettono, ognuna secondo il proprio testo.",
         "cards": [
           "Monster Reborn",
           "Cyber Dragon"
         ],
+        "example": "Un mostro dice «Non può essere Evocato Normalmente/Posizionato. Deve prima essere Evocato Specialmente dalla tua mano bandendo 2 mostri dal tuo Cimitero.» Se lo Evochi in quel modo e viene distrutto, una carta di rianimazione può riportarlo indietro. Se è stato solo scartato dalla tua mano, non può essere rianimato.",
+        "group": "summons",
+        "icon": "Sparkles",
+        "id": "special-summon",
         "paragraphs": [
           "Un’Evocazione Speciale non usa la tua Evocazione Normale. Puoi effettuarne quante le tue carte ne permettono, anche durante il turno del tuo avversario se un effetto lo consente.",
           "Alcuni mostri hanno una propria procedura, come «Non può essere Evocato Normalmente/Posizionato. Deve prima essere Evocato Specialmente…» o «Puoi Evocare Specialmente questa carta dalla tua mano…». Questa procedura non avvia una Catena, ma le carte che annullano un’Evocazione possono fermarla.",
@@ -1307,20 +1300,20 @@
           "I mostri dell’Extra Deck, i Mostri Rituali e i mostri che «devono prima essere Evocati Specialmente» devono essere Evocati correttamente prima che un altro effetto possa Evocarli Specialmente dal Cimitero o da tra le carte bandite.",
           "Se il testo di un mostro dice che «non può essere Evocato Specialmente in altri modi», può essere Evocato solo con la propria procedura."
         ],
-        "example": "Un mostro dice «Non può essere Evocato Normalmente/Posizionato. Deve prima essere Evocato Specialmente dalla tua mano bandendo 2 mostri dal tuo Cimitero.» Se lo Evochi in quel modo e viene distrutto, una carta di rianimazione può riportarlo indietro. Se è stato solo scartato dalla tua mano, non può essere rianimato."
+        "summary": "Tante Evocazioni Speciali quante le tue carte ne permettono, ognuna secondo il proprio testo.",
+        "title": "Evocazione Speciale"
       },
       {
-        "id": "fusion",
-        "group": "summons",
-        "icon": "Combine",
-        "title": "Evocazione Fusion",
-        "summary": "I Materiali indicati vanno al Cimitero e il Mostro Fusion arriva dall’Extra Deck.",
-        "diagram": "fusion",
         "cards": [
           "Polymerization",
           "Blue-Eyes White Dragon",
           "Blue-Eyes Ultimate Dragon"
         ],
+        "diagram": "fusion",
+        "example": "«Polimerizzazione» ti permette di Evocare tramite Fusione usando mostri dalla tua mano o dal tuo Terreno. Mandi al Cimitero dalla tua mano i due mostri indicati sul Mostro Fusion, poi Evochi Specialmente quel Mostro Fusion.",
+        "group": "summons",
+        "icon": "Combine",
+        "id": "fusion",
         "paragraphs": [
           "I Mostri Fusion si trovano nel tuo Extra Deck. Il loro testo indica i Materiali da Fusione richiesti, per esempio due mostri per nome o «1 mostro OSCURITÀ + 1 mostro Guerriero».",
           "La maggior parte delle Evocazioni Fusion usa una carta come «Polimerizzazione»: manda al Cimitero i materiali indicati dalla tua mano o dal tuo Terreno, poi Evoca Specialmente il Mostro Fusion dal tuo Extra Deck. La carta di Fusione stabilisce da dove possono provenire i materiali.",
@@ -1331,19 +1324,19 @@
           "I materiali vengono mandati al Cimitero, a meno che la carta usata dica altrimenti, per esempio di bandirli o di rimescolarli nel Deck.",
           "Se l’Evocazione Fusion viene annullata, i materiali restano usati e il Mostro Fusion viene distrutto."
         ],
-        "example": "«Polimerizzazione» ti permette di Evocare tramite Fusione usando mostri dalla tua mano o dal tuo Terreno. Mandi al Cimitero dalla tua mano i due mostri indicati sul Mostro Fusion, poi Evochi Specialmente quel Mostro Fusion."
+        "summary": "I Materiali indicati vanno al Cimitero e il Mostro Fusion arriva dall’Extra Deck.",
+        "title": "Evocazione Fusion"
       },
       {
-        "id": "ritual",
-        "group": "summons",
-        "icon": "Flame",
-        "title": "Evocazione Rituale",
-        "summary": "Una Magia Rituale più Tributi i cui Livelli totali corrispondono al mostro che stai Evocando.",
-        "diagram": "ritual",
         "cards": [
           "Black Luster Ritual",
           "Black Luster Soldier"
         ],
+        "diagram": "ritual",
+        "example": "Il tuo Mostro Rituale è di Livello 8 e la Magia Rituale richiede Livelli totali uguali o superiori a 8. Offri come Tributo un mostro di Livello 4 dalla tua mano e un mostro di Livello 5 dal tuo Terreno (totale 9), poi Evochi Specialmente il Mostro Rituale.",
+        "group": "summons",
+        "icon": "Flame",
+        "id": "ritual",
         "paragraphs": [
           "I Mostri Rituali si trovano nel tuo Main Deck e di solito vengono Evocati dalla tua mano. Ti serve una Magia Rituale in grado di Evocarli; le due carte di solito si nominano a vicenda.",
           "Attiva la Magia Rituale, poi offri come Tributo mostri dalla tua mano e/o dal tuo Terreno i cui Livelli totali soddisfano la condizione scritta sulla Magia Rituale, ed Evoca Specialmente il Mostro Rituale."
@@ -1354,19 +1347,19 @@
           "I Mostri Rituali non possono essere Evocati Normalmente né Posizionati.",
           "Alcune carte usano altre fonti, come mandare mostri dal Deck o bandirli dal Cimitero; segui il testo."
         ],
-        "example": "Il tuo Mostro Rituale è di Livello 8 e la Magia Rituale richiede Livelli totali uguali o superiori a 8. Offri come Tributo un mostro di Livello 4 dalla tua mano e un mostro di Livello 5 dal tuo Terreno (totale 9), poi Evochi Specialmente il Mostro Rituale."
+        "summary": "Una Magia Rituale più Tributi i cui Livelli totali corrispondono al mostro che stai Evocando.",
+        "title": "Evocazione Rituale"
       },
       {
-        "id": "synchro",
-        "group": "summons",
-        "icon": "Zap",
-        "title": "Evocazione Synchro",
-        "summary": "1 Tuner più non-Tuner i cui Livelli sommati danno esattamente il Livello del Mostro Synchro.",
-        "diagram": "synchro",
         "cards": [
           "Junk Synchron",
           "Stardust Dragon"
         ],
+        "diagram": "synchro",
+        "example": "Un Tuner di Livello 3 più un non-Tuner di Livello 4 fanno 7: puoi Evocare tramite Synchro un Mostro Synchro di Livello 7.",
+        "group": "summons",
+        "icon": "Zap",
+        "id": "synchro",
         "paragraphs": [
           "I Mostri Synchro si trovano nel tuo Extra Deck. Durante la tua Main Phase, manda al Cimitero 1 Tuner e 1 o più mostri non-Tuner scoperti che controlli. I loro Livelli devono sommarsi esattamente al Livello del Mostro Synchro. Poi Evocalo Specialmente.",
           "Il testo del Mostro Synchro indica i suoi materiali, per esempio «1 Tuner + 1+ mostri non-Tuner». Alcuni richiedono un Tuner o un non-Tuner specifico, oppure più di un Tuner."
@@ -1377,18 +1370,18 @@
           "I Mostri Xyz e Link non hanno Livello, quindi normalmente non possono essere Materiali Synchro.",
           "Un’Evocazione Synchro non avvia una Catena, ma le carte che annullano un’Evocazione possono fermarla."
         ],
-        "example": "Un Tuner di Livello 3 più un non-Tuner di Livello 4 fanno 7: puoi Evocare tramite Synchro un Mostro Synchro di Livello 7."
+        "summary": "1 Tuner più non-Tuner i cui Livelli sommati danno esattamente il Livello del Mostro Synchro.",
+        "title": "Evocazione Synchro"
       },
       {
-        "id": "xyz",
-        "group": "summons",
-        "icon": "Layers",
-        "title": "Evocazione Xyz",
-        "summary": "Due o più mostri dello stesso Livello si attaccano sotto un mostro di Rango uguale.",
-        "diagram": "xyz",
         "cards": [
           "Number 39: Utopia"
         ],
+        "diagram": "xyz",
+        "example": "Due mostri di Livello 4 che controlli possono essere usati per Evocare tramite Xyz un Mostro Xyz di Rango 4 che richiede «2 mostri di Livello 4».",
+        "group": "summons",
+        "icon": "Layers",
+        "id": "xyz",
         "paragraphs": [
           "I Mostri Xyz si trovano nel tuo Extra Deck. Durante la tua Main Phase, sovrapponi i mostri scoperti che controlli richiesti dal Mostro Xyz (di solito 2 o più con lo stesso Livello), poi metti il Mostro Xyz sopra di essi. I mostri sotto diventano Materiali Xyz.",
           "I Mostri Xyz hanno un Rango, non un Livello. Gli effetti che fanno riferimento ai Livelli non si applicano a loro, e normalmente non possono essere usati per un’Evocazione Synchro.",
@@ -1399,18 +1392,17 @@
           "I Segna-Mostro non possono essere usati come Materiali Xyz.",
           "Un Mostro Xyz senza materiali resta sul Terreno; semplicemente non può pagare costi che richiedono di staccare materiali."
         ],
-        "example": "Due mostri di Livello 4 che controlli possono essere usati per Evocare tramite Xyz un Mostro Xyz di Rango 4 che richiede «2 mostri di Livello 4»."
+        "summary": "Due o più mostri dello stesso Livello si attaccano sotto un mostro di Rango uguale.",
+        "title": "Evocazione Xyz"
       },
       {
-        "id": "pendulum",
-        "group": "summons",
-        "icon": "Scale",
-        "title": "Evocazione Pendulum",
-        "summary": "Due Scale nelle tue Zone Pendulum aprono un’Evocazione multipla tra i due valori.",
-        "diagram": "pendulum",
         "cards": [
           "Performapal Hip Hippo"
         ],
+        "diagram": "pendulum",
+        "group": "summons",
+        "icon": "Scale",
+        "id": "pendulum",
         "paragraphs": [
           "I Mostri Pendulum si trovano nel tuo Main Deck. Oltre a essere Evocati come mostri, possono essere attivati come Magie nelle tue Zone Pendulum (la tua Zona Magie & Trappole più a sinistra e quella più a destra). Lì sono Carte Magia e usano la loro Scala Pendulum e il loro Effetto Pendulum.",
           "Una volta per turno, durante la tua Main Phase, se hai una carta in entrambe le Zone Pendulum, puoi effettuare un’Evocazione Pendulum: Evoca Specialmente, contemporaneamente, un qualsiasi numero di mostri dalla tua mano e/o di Mostri Pendulum scoperti dal tuo Extra Deck, il cui Livello è strettamente compreso tra le due Scale.",
@@ -1420,18 +1412,19 @@
           "Con Scale 1 e 8, puoi Evocare tramite Pendulum mostri dal Livello 2 al Livello 7.",
           "I mostri dalla tua mano vanno nelle Zone Mostri Principali. I Mostri Pendulum scoperti dal tuo Extra Deck vanno in una Zona Mostri Extra o in una Zona Mostri Principale indicata da un Mostro Link.",
           "Un’Evocazione Pendulum non avvia una Catena, ma le carte che annullano un’Evocazione possono fermarla."
-        ]
+        ],
+        "summary": "Due Scale nelle tue Zone Pendulum aprono un’Evocazione multipla tra i due valori.",
+        "title": "Evocazione Pendulum"
       },
       {
-        "id": "link",
-        "group": "summons",
-        "icon": "Link",
-        "title": "Evocazione Link",
-        "summary": "I Materiali vanno al Cimitero e le frecce aprono zone per gli altri tuoi mostri.",
-        "diagram": "link",
         "cards": [
           "Decode Talker"
         ],
+        "diagram": "link",
+        "example": "Un Mostro LINK-3 richiede 3 materiali: puoi usare 3 mostri, oppure un Mostro LINK-2 che conta come 2 materiali più 1 altro mostro.",
+        "group": "summons",
+        "icon": "Link",
+        "id": "link",
         "paragraphs": [
           "I Mostri Link si trovano nel tuo Extra Deck. Durante la tua Main Phase, manda al Cimitero come Materiali Link mostri scoperti che controlli e che soddisfano i requisiti indicati, poi Evoca Specialmente il Mostro Link.",
           "Il numero di materiali deve essere uguale alla Valutazione Link (LINK-1, LINK-2…). Un Mostro Link usato come materiale può contare come 1 materiale o come un numero di materiali pari alla sua Valutazione Link.",
@@ -1443,15 +1436,15 @@
           "I Segna-Mostro possono essere usati come Materiali Link.",
           "Da una Zona Mostri Extra, le Frecce Link possono indicare Zone Mostri Principali su entrambi i lati del Terreno."
         ],
-        "example": "Un Mostro LINK-3 richiede 3 materiali: puoi usare 3 mostri, oppure un Mostro LINK-2 che conta come 2 materiali più 1 altro mostro."
+        "summary": "I Materiali vanno al Cimitero e le frecce aprono zone per gli altri tuoi mostri.",
+        "title": "Evocazione Link"
       },
       {
-        "id": "extra-deck-zones",
+        "diagram": "emz",
+        "example": "Il tuo Terreno è vuoto. Evochi tramite Synchro in una Zona Mostri Principale, lasciando libera la Zona Mostri Extra. Poi Evochi tramite Link nella Zona Mostri Extra un Mostro LINK-2 con frecce in basso a sinistra e in basso a destra. Quelle frecce indicano due tue Zone Mostri Principali, quindi il tuo prossimo Mostro Link o i Mostri Pendulum scoperti dal tuo Extra Deck possono essere messi lì.",
         "group": "summons",
         "icon": "LayoutDashboard",
-        "title": "Extra Deck e Zone Mostri Extra",
-        "summary": "I Mostri Link passano da una Zona Mostri Extra; gli altri possono usare anche le tue zone principali.",
-        "diagram": "emz",
+        "id": "extra-deck-zones",
         "paragraphs": [
           "Dalla revisione della Master Rule di aprile 2020, la zona che può occupare un mostro Evocato dall’Extra Deck dipende dal suo tipo di carta.",
           "I Mostri Fusion, Synchro e Xyz, inclusi i Mostri Pendulum di questi tipi Evocati mentre erano coperti nell’Extra Deck, possono andare in qualsiasi tua Zona Mostri Principale libera o in una Zona Mostri Extra.",
@@ -1462,18 +1455,18 @@
           "Mettere un Mostro Fusion, Synchro o Xyz in una Zona Mostri Principale lascia libera la Zona Mostri Extra per un Mostro Link.",
           "Queste restrizioni valgono solo per i mostri Evocati dall’Extra Deck; i mostri dalla mano, dal Deck o dal Cimitero vanno nelle Zone Mostri Principali."
         ],
-        "example": "Il tuo Terreno è vuoto. Evochi tramite Synchro in una Zona Mostri Principale, lasciando libera la Zona Mostri Extra. Poi Evochi tramite Link nella Zona Mostri Extra un Mostro LINK-2 con frecce in basso a sinistra e in basso a destra. Quelle frecce indicano due tue Zone Mostri Principali, quindi il tuo prossimo Mostro Link o i Mostri Pendulum scoperti dal tuo Extra Deck possono essere messi lì."
+        "summary": "I Mostri Link passano da una Zona Mostri Extra; gli altri possono usare anche le tue zone principali.",
+        "title": "Extra Deck e Zone Mostri Extra"
       },
       {
-        "id": "tokens",
-        "group": "summons",
-        "icon": "Shapes",
-        "title": "Segna-Mostro",
-        "summary": "Un Segna-Mostro non è una carta: occupa una Zona Mostri e svanisce nell’istante in cui lascia il Terreno.",
-        "diagram": "tokens",
         "cards": [
           "Scapegoat"
         ],
+        "diagram": "tokens",
+        "example": "Una carta Evoca Specialmente 4 Segna-Mostro Pecora in Posizione di Difesa scoperta. Riempiono 4 delle tue 5 Zone Mostri: puoi usarli come Materiali Link, ma ti resta una sola zona per Evocare altro.",
+        "group": "summons",
+        "icon": "Shapes",
+        "id": "tokens",
         "paragraphs": [
           "Un Segna-Mostro è un mostro creato dall’effetto di una carta. Non esiste nel tuo Deck: nome, Tipo, Attributo, Livello, ATK e DEF vengono tutti dall’effetto che lo crea. Lo rappresenti con un contrassegno riconoscibile: una carta Segna-Mostro ufficiale, una moneta, un dado.",
           "Sul Terreno un Segna-Mostro si comporta come un mostro: occupa una Zona Mostri, può attaccare, essere distrutto in battaglia, cambiare posizione di battaglia, essere offerto come Tributo o essere usato come Materiale. Se non c’è nessuna Zona Mostri libera, non può nemmeno essere Evocato.",
@@ -1486,19 +1479,19 @@
           "Più Segna-Mostro possono avere lo stesso nome, e ognuno occupa la propria Zona Mostri.",
           "Un Segna-Mostro appare solo se una carta lo crea: non puoi mai Evocarne uno di tua iniziativa."
         ],
-        "example": "Una carta Evoca Specialmente 4 Segna-Mostro Pecora in Posizione di Difesa scoperta. Riempiono 4 delle tue 5 Zone Mostri: puoi usarli come Materiali Link, ma ti resta una sola zona per Evocare altro."
+        "summary": "Un Segna-Mostro non è una carta: occupa una Zona Mostri e svanisce nell’istante in cui lascia il Terreno.",
+        "title": "Segna-Mostro"
       },
       {
-        "id": "chains",
-        "group": "playing",
-        "icon": "ListOrdered",
-        "title": "Catene e Velocità di Magia",
-        "summary": "Le risposte si impilano e si risolvono in ordine inverso, seguendo la Velocità di Magia.",
-        "diagram": "chain",
         "cards": [
           "Mystical Space Typhoon",
           "Solemn Judgment"
         ],
+        "diagram": "chain",
+        "example": "Attivi una Magia Normale (Anello 1). Il tuo avversario risponde con una Trappola Normale (Anello 2). Tu rispondi con una Contro-Trappola che la annulla (Anello 3). La Contro-Trappola si risolve per prima e annulla la Trappola, poi si risolve la tua Magia.",
+        "group": "playing",
+        "icon": "ListOrdered",
+        "id": "chains",
         "paragraphs": [
           "Quando una carta o un effetto viene attivato, diventa l’Anello di Catena 1. I giocatori possono rispondere con Velocità di Magia 2 o superiore, uguale o superiore a quella dell’ultimo Anello, aggiungendo altri Anelli. Quando entrambi i giocatori passano, la Catena si risolve in ordine inverso: prima l’ultimo Anello.",
           "I costi (scartare, pagare LP, staccare, offrire come Tributo…) si pagano all’attivazione e non vengono restituiti se l’attivazione viene annullata. Nel testo di una carta, ciò che precede i due punti (:) è una condizione, ciò che precede il punto e virgola (;) è un costo o un bersaglio, e il resto è l’effetto."
@@ -1512,18 +1505,18 @@
           "Le Trappole Posizionate e le Magie Rapide Posizionate non possono essere attivate nel turno in cui sono state Posizionate, a meno che una carta lo permetta.",
           "«Una volta per turno»: ogni copia una volta per turno, azzerato se lascia il Terreno. «Puoi usare questo effetto di [carta] solo una volta per turno»: una volta per turno per tutte le copie."
         ],
-        "example": "Attivi una Magia Normale (Anello 1). Il tuo avversario risponde con una Trappola Normale (Anello 2). Tu rispondi con una Contro-Trappola che la annulla (Anello 3). La Contro-Trappola si risolve per prima e annulla la Trappola, poi si risolve la tua Magia."
+        "summary": "Le risposte si impilano e si risolvono in ordine inverso, seguendo la Velocità di Magia.",
+        "title": "Catene e Velocità di Magia"
       },
       {
-        "id": "counters",
-        "group": "playing",
-        "icon": "Hash",
-        "title": "Segnalini",
-        "summary": "Un contrassegno che un effetto mette su una carta e che sparisce insieme a lei.",
-        "diagram": "counters",
         "cards": [
           "Royal Magical Library"
         ],
+        "diagram": "counters",
+        "example": "Un mostro guadagna 1 Segnalino Magia ogni volta che una Magia viene attivata, poi rimuovi 3 di quei segnalini per pescare una carta. I segnalini spariscono già all’attivazione, anche se la pescata viene poi annullata.",
+        "group": "playing",
+        "icon": "Hash",
+        "id": "counters",
         "paragraphs": [
           "Alcune carte mettono segnalini — Segnalini Magia, Segnalini Bushido e molti altri — su se stesse o su altre carte. Un segnalino non è una carta: è un contrassegno che metti sulla carta interessata.",
           "Un segnalino può essere messo solo se il testo di una carta lo dice, e solo su una carta che può riceverlo. Se quella carta lascia il Terreno o viene girata coperta, i suoi segnalini vengono rimossi e non tornano con lei.",
@@ -1535,15 +1528,15 @@
           "Una carta può portarne più di uno; alcuni testi fissano un massimo.",
           "I Materiali Xyz non sono segnalini: sono vere carte attaccate, che entrambi i giocatori possono guardare in qualsiasi momento."
         ],
-        "example": "Un mostro guadagna 1 Segnalino Magia ogni volta che una Magia viene attivata, poi rimuovi 3 di quei segnalini per pescare una carta. I segnalini spariscono già all’attivazione, anche se la pescata viene poi annullata."
+        "summary": "Un contrassegno che un effetto mette su una carta e che sparisce insieme a lei.",
+        "title": "Segnalini"
       },
       {
-        "id": "battle",
+        "diagram": "battle",
+        "example": "Il tuo mostro da 2000 ATK attacca un mostro da 1500 ATK in Posizione di Attacco: viene distrutto e il tuo avversario subisce 500 danni. Contro un mostro da 2500 DEF in Posizione di Difesa, niente viene distrutto e tu subisci 500 danni.",
         "group": "playing",
         "icon": "Swords",
-        "title": "Battaglia",
-        "summary": "Gli attacchi confrontano l’ATK, o la DEF se il mostro che difende è in Posizione di Difesa.",
-        "diagram": "battle",
+        "id": "battle",
         "paragraphs": [
           "La Battle Phase comprende Start Step, Battle Step, Damage Step ed End Step. Ogni mostro scoperto in Posizione di Attacco che controlli può attaccare una volta per Battle Phase.",
           "Battle Step: scegli uno dei tuoi mostri e dichiara un attacco a un mostro avversario. Se il tuo avversario non controlla mostri, puoi attaccare direttamente e subisce danni pari all’ATK del tuo mostro. Se il numero di mostri controllati dal tuo avversario cambia prima del Damage Step, avviene un «replay»: scegli un nuovo bersaglio, attacca direttamente se ora non ne ha, oppure interrompi l’attacco.",
@@ -1555,17 +1548,16 @@
           "Un mostro coperto che viene attaccato viene scoperto; il suo effetto SCOPRI si attiva dopo il calcolo dei danni.",
           "I mostri distrutti in battaglia vengono mandati al Cimitero alla fine del Damage Step."
         ],
-        "example": "Il tuo mostro da 2000 ATK attacca un mostro da 1500 ATK in Posizione di Attacco: viene distrutto e il tuo avversario subisce 500 danni. Contro un mostro da 2500 DEF in Posizione di Difesa, niente viene distrutto e tu subisci 500 danni."
+        "summary": "Gli attacchi confrontano l’ATK, o la DEF se il mostro che difende è in Posizione di Difesa.",
+        "title": "Battaglia"
       },
       {
-        "id": "spells-traps",
-        "group": "playing",
-        "icon": "Wand",
-        "title": "Magie e Trappole",
-        "summary": "Le Magie si attivano dalla mano; le Trappole vanno Posizionate almeno un turno prima.",
         "cards": [
           "Mirror Force"
         ],
+        "group": "playing",
+        "icon": "Wand",
+        "id": "spells-traps",
         "paragraphs": [
           "Attiva le Magie dalla tua mano durante la tua Main Phase, oppure Posizionale per attivarle più tardi. Le Trappole devono prima essere Posizionate e possono essere attivate dal turno successivo, durante il turno di qualsiasi giocatore. Le Magie Normali e le Trappole Normali vanno al Cimitero dopo la risoluzione; le carte Continue, Equipaggiamento e Terreno restano sul Terreno.",
           "Le «hand trap» sono mostri il cui effetto attivi dalla tua mano, spesso scartandoli, di solito come Effetti Rapidi durante il turno di qualsiasi giocatore."
@@ -1580,14 +1572,15 @@
           "Trappola Normale: effetto singolo, Velocità di Magia 2.",
           "Trappola Continua: resta sul Terreno, Velocità di Magia 2.",
           "Contro-Trappola: Velocità di Magia 3, di solito annulla un’attivazione o un’Evocazione."
-        ]
+        ],
+        "summary": "Le Magie si attivano dalla mano; le Trappole vanno Posizionate almeno un turno prima.",
+        "title": "Magie e Trappole"
       },
       {
-        "id": "match",
+        "example": "Perdi il primo duello contro un deck pieno di Magie. Tra i due duelli aggiungi 2 carte anti-Magia dal tuo Side Deck e togli 2 carte poco utili in questo match-up.",
         "group": "advanced",
         "icon": "Trophy",
-        "title": "Match, Side Deck e lista limitativa",
-        "summary": "I tornei si giocano a Match: due duelli vinti, il Side Deck tra le partite, una lista limitativa.",
+        "id": "match",
         "paragraphs": [
           "Nei tornei si giocano Match: il primo giocatore che vince due duelli vince il Match. Chi ha perso un duello sceglie chi inizia quello successivo.",
           "Tra due duelli dello stesso Match puoi scambiare carte tra il tuo Deck e il tuo Side Deck (da 0 a 15 carte). Quando hai finito, il tuo Main Deck deve avere ancora da 40 a 60 carte, l’Extra Deck al massimo 15, e il Side Deck deve tornare alla sua dimensione iniziale.",
@@ -1599,7 +1592,8 @@
           "Il tempo per cambiare il Side Deck tra due duelli è limitato, spesso a pochi minuti.",
           "Se il tempo scade durante un Match, una procedura di fine tempo determina il vincitore, di solito il giocatore con più LP."
         ],
-        "example": "Perdi il primo duello contro un deck pieno di Magie. Tra i due duelli aggiungi 2 carte anti-Magia dal tuo Side Deck e togli 2 carte poco utili in questo match-up."
+        "summary": "I tornei si giocano a Match: due duelli vinti, il Side Deck tra le partite, una lista limitativa.",
+        "title": "Match, Side Deck e lista limitativa"
       }
     ],
     "source": "Questa pagina riassume il regolamento ufficiale (Master Rule attuale); quando il testo di una carta o una decisione ufficiale dicono altrimenti, prevalgono la carta e la decisione.",
@@ -1607,91 +1601,91 @@
     "tocLabel": "In questa pagina"
   },
   "social": {
-    "profile": {
-      "title": "Profilo",
-      "myTitle": "Il mio profilo",
-      "edit": "Modifica profilo",
-      "username": "Nome utente",
-      "usernameHint": "Lettere, cifre, punto, trattino e trattino basso. È così che ti trovano gli amici.",
-      "save": "Salva",
-      "avatar": "Immagine del profilo",
-      "banner": "Banner",
-      "upload": "Carica un'immagine",
-      "replace": "Sostituisci",
-      "remove": "Rimuovi",
-      "imageHint": "PNG, JPEG o WebP, fino a 8 MB. Ridimensionata e convertita automaticamente.",
-      "memberSince": "Iscritto dal {date}",
-      "friendsSince": "Amici dal {date}",
-      "friendCount": "{count, plural, =0 {Nessun amico} one {# amico} other {# amici}}",
-      "openFriends": "Amici",
-      "hidden": {
-        "title": "Questo profilo è privato",
-        "description": "Tu e {username} non siete ancora amici. Invia una richiesta per vedere questo profilo e confrontare i vostri set.",
-        "sent": "Richiesta inviata. Vedrai questo profilo appena sarà accettata.",
-        "received": "{username} ti ha inviato una richiesta di amicizia."
-      },
-      "stats": {
-        "distinctCards": "Carte distinte",
-        "copies": "Copie",
-        "sets": "Set iniziati",
-        "completedSets": "Set completati"
-      },
-      "showcase": {
-        "title": "Carte in vetrina",
-        "empty": "Nessuna carta in vetrina",
-        "emptyHint": "Scegli qualche carta dalla tua collezione per mostrarla qui.",
-        "emptyOther": "{username} non ha ancora scelto nessuna carta",
-        "choose": "Scegli le carte",
-        "dialogTitle": "Carte in vetrina",
-        "dialogHint": "Fino a {max} carte, scelte dalla tua collezione. Clicca per aggiungere o togliere; l'ordine viene mantenuto.",
-        "search": "Cerca nella tua collezione…",
-        "selected": "{count} su {max} scelte",
-        "noResults": "Nessuna carta della tua collezione corrisponde",
-        "done": "Fatto"
-      }
-    },
     "friends": {
-      "title": "Amici",
-      "description": "Gli amici vedono il tuo profilo e i tuoi progressi su ogni set.",
-      "search": {
-        "label": "Trova qualcuno",
-        "placeholder": "Nome utente…",
-        "hint": "Almeno 2 caratteri",
-        "noResults": "Nessun account corrisponde a «{q}»"
-      },
-      "requests": {
-        "incoming": "Richieste ricevute",
-        "outgoing": "Richieste inviate",
-        "accept": "Accetta",
-        "decline": "Rifiuta",
-        "cancel": "Annulla richiesta"
-      },
-      "list": {
-        "title": "I tuoi amici",
-        "empty": "Ancora nessun amico",
-        "emptyDescription": "Cerca un nome utente qui sopra per inviare la tua prima richiesta."
-      },
       "actions": {
         "add": "Aggiungi come amico",
-        "remove": "Rimuovi amico",
         "confirmRemove": "Rimuovere {username} dai tuoi amici?",
+        "remove": "Rimuovi amico",
         "view": "Vedi il profilo"
+      },
+      "description": "Gli amici vedono il tuo profilo e i tuoi progressi su ogni set.",
+      "list": {
+        "empty": "Ancora nessun amico",
+        "emptyDescription": "Cerca un nome utente qui sopra per inviare la tua prima richiesta.",
+        "title": "I tuoi amici"
+      },
+      "requests": {
+        "accept": "Accetta",
+        "cancel": "Annulla richiesta",
+        "decline": "Rifiuta",
+        "incoming": "Richieste ricevute",
+        "outgoing": "Richieste inviate"
+      },
+      "search": {
+        "hint": "Almeno 2 caratteri",
+        "label": "Trova qualcuno",
+        "noResults": "Nessun account corrisponde a «{q}»",
+        "placeholder": "Nome utente…"
       },
       "state": {
         "FRIENDS": "Amici",
-        "REQUEST_SENT": "Richiesta inviata",
-        "REQUEST_RECEIVED": "Vuole essere tuo amico"
-      }
+        "REQUEST_RECEIVED": "Vuole essere tuo amico",
+        "REQUEST_SENT": "Richiesta inviata"
+      },
+      "title": "Amici"
+    },
+    "profile": {
+      "avatar": "Immagine del profilo",
+      "banner": "Banner",
+      "edit": "Modifica profilo",
+      "friendCount": "{count, plural, =0 {Nessun amico} one {# amico} other {# amici}}",
+      "friendsSince": "Amici dal {date}",
+      "hidden": {
+        "description": "Tu e {username} non siete ancora amici. Invia una richiesta per vedere questo profilo e confrontare i vostri set.",
+        "received": "{username} ti ha inviato una richiesta di amicizia.",
+        "sent": "Richiesta inviata. Vedrai questo profilo appena sarà accettata.",
+        "title": "Questo profilo è privato"
+      },
+      "imageHint": "PNG, JPEG o WebP, fino a 8 MB. Ridimensionata e convertita automaticamente.",
+      "memberSince": "Iscritto dal {date}",
+      "myTitle": "Il mio profilo",
+      "openFriends": "Amici",
+      "remove": "Rimuovi",
+      "replace": "Sostituisci",
+      "save": "Salva",
+      "showcase": {
+        "choose": "Scegli le carte",
+        "dialogHint": "Fino a {max} carte, scelte dalla tua collezione. Clicca per aggiungere o togliere; l'ordine viene mantenuto.",
+        "dialogTitle": "Carte in vetrina",
+        "done": "Fatto",
+        "empty": "Nessuna carta in vetrina",
+        "emptyHint": "Scegli qualche carta dalla tua collezione per mostrarla qui.",
+        "emptyOther": "{username} non ha ancora scelto nessuna carta",
+        "noResults": "Nessuna carta della tua collezione corrisponde",
+        "search": "Cerca nella tua collezione…",
+        "selected": "{count} su {max} scelte",
+        "title": "Carte in vetrina"
+      },
+      "stats": {
+        "completedSets": "Set completati",
+        "copies": "Copie",
+        "distinctCards": "Carte distinte",
+        "sets": "Set iniziati"
+      },
+      "title": "Profilo",
+      "upload": "Carica un'immagine",
+      "username": "Nome utente",
+      "usernameHint": "Lettere, cifre, punto, trattino e trattino basso. È così che ti trovano gli amici."
     },
     "releases": {
       "friends": "Amici",
+      "legend": "Un punto accanto a una carta significa che un amico la possiede. Tocca una carta per i dettagli.",
+      "nobody": "Nessun amico ha questa carta",
+      "nobodyStarted": "Nessun amico ha iniziato questo set",
       "none": "Aggiungi amici per confrontare i progressi",
       "onThisSet": "I tuoi amici su questo set",
-      "nobodyStarted": "Nessun amico ha iniziato questo set",
       "ownedBy": "{count, plural, one {# amico la ha} other {# amici la hanno}}",
-      "ownedElsewhere": "{count, plural, one {# amico la ha in un'altra edizione} other {# amici la hanno in un'altra edizione}}",
-      "nobody": "Nessun amico ha questa carta",
-      "legend": "Un punto accanto a una carta significa che un amico la possiede. Tocca una carta per i dettagli."
+      "ownedElsewhere": "{count, plural, one {# amico la ha in un'altra edizione} other {# amici la hanno in un'altra edizione}}"
     }
   },
   "suggestions": {
@@ -1795,19 +1789,19 @@
       "archetypeStats": "{cards, plural, one {# carta} other {# carte}} · {copies, plural, one {# copia} other {# copie}}",
       "archetypesEmpty": "Aggiungi carte alla tua collezione per vedere gli archetipi che puoi costruire.",
       "description": "I top deck del momento, quello che la tua collezione ti permette già di costruire e deck costruiti per te.",
+      "sectionHints": {
+        "archetypes": "Un deck per archetipo che puoi già schierare",
+        "meta": "Quelli più alla tua portata",
+        "official": "Structure deck, starter e liste di box da rifare",
+        "playable": "Montati interamente con le tue carte"
+      },
       "sections": {
         "archetypes": "Dalla tua collezione",
         "meta": "Deck del meta",
         "official": "Deck ufficiali",
         "playable": "Pronti da giocare"
       },
-      "title": "Suggerimenti",
-      "sectionHints": {
-        "playable": "Montati interamente con le tue carte",
-        "meta": "Quelli più alla tua portata",
-        "official": "Structure deck, starter e liste di box da rifare",
-        "archetypes": "Un deck per archetipo che puoi già schierare"
-      }
+      "title": "Suggerimenti"
     },
     "playable": {
       "best": "Scelta migliore",
@@ -1854,25 +1848,25 @@
     }
   },
   "tags": {
-    "title": "Etichette",
-    "empty": "Nessuna etichetta. Creane una per ordinare a modo tuo.",
-    "newPlaceholder": "Nuova etichetta…",
-    "create": "Crea",
-    "color": "Colore",
     "clear": "Azzera",
-    "manage": "Gestisci le etichette",
-    "done": "Fatto",
-    "confirmDelete": "Eliminare l’etichetta « {name} »?",
+    "color": "Colore",
     "colors": {
-      "slate": "Grigio",
-      "red": "Rosso",
       "amber": "Ambra",
-      "green": "Verde",
-      "teal": "Turchese",
       "blue": "Blu",
-      "violet": "Viola",
-      "pink": "Rosa"
-    }
+      "green": "Verde",
+      "pink": "Rosa",
+      "red": "Rosso",
+      "slate": "Grigio",
+      "teal": "Turchese",
+      "violet": "Viola"
+    },
+    "confirmDelete": "Eliminare l’etichetta « {name} »?",
+    "create": "Crea",
+    "done": "Fatto",
+    "empty": "Nessuna etichetta. Creane una per ordinare a modo tuo.",
+    "manage": "Gestisci le etichette",
+    "newPlaceholder": "Nuova etichetta…",
+    "title": "Etichette"
   },
   "wishlist": {
     "priorities": {

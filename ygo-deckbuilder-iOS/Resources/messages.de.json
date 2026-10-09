@@ -33,10 +33,6 @@
   },
   "cards": {
     "ban": {
-      "Banned": "Verboten",
-      "Forbidden": "Verboten",
-      "Limited": "Limitiert",
-      "Semi-Limited": "Semi-Limitiert",
       "FORBIDDEN": "Verboten",
       "LIMITED": "Limitiert",
       "SEMI_LIMITED": "Semi-Limitiert"
@@ -60,14 +56,14 @@
       "POOR": "Poor"
     },
     "detail": {
+      "banOcg": "OCG: {status}",
       "banTcg": "TCG: {status}",
       "fallbackTitle": "Karte",
       "level": "Stufe {level}",
       "ownedPrice": "Im Besitz: <strong>{owned}</strong> · Cardmarket ab <strong>{price}</strong>",
       "printUnspecified": "Druck nicht angegeben",
       "prints": "Drucke ({count})",
-      "scale": "Skala {scale}",
-      "banOcg": "OCG: {status}"
+      "scale": "Skala {scale}"
     },
     "interactions": {
       "byTraits": "(über ihre Eigenschaften)",
@@ -149,6 +145,30 @@
       "PLAYED": "Played",
       "POOR": "Poor"
     },
+    "filters": {
+      "allArchetypes": "Alle Archetypen",
+      "allCategories": "Alle Kategorien",
+      "allConditions": "Alle Zustände",
+      "allLanguages": "Alle Sprachen",
+      "allRarities": "Alle Seltenheiten",
+      "allSets": "Alle Editionen",
+      "archetype": "Archetyp",
+      "category": "Kategorie",
+      "condition": "Zustand",
+      "firstEdition": "1. Auflage",
+      "language": "Sprache",
+      "rarity": "Seltenheit",
+      "set": "Edition",
+      "sort": "Sortierung",
+      "sortOption": "Sortierung: {label}",
+      "sorts": {
+        "name": "Name",
+        "newest": "Kürzlich hinzugefügt",
+        "quantity": "Exemplare",
+        "rarity": "Seltenheit",
+        "value": "Wert"
+      }
+    },
     "import": {
       "cardCount": "{count, plural, one {# Karte} other {# Karten}}",
       "confirm": {
@@ -162,17 +182,31 @@
       },
       "kinds": {
         "ALL": "Alle",
+        "BOOSTER": "Booster",
         "BOX": "Box-Sets",
         "OTHER": "Andere Produkte",
         "STARTER": "Starter Decks",
         "STRUCTURE": "Structure Decks",
-        "TIN": "Tins",
-        "BOOSTER": "Booster"
+        "TIN": "Tins"
       },
       "kindsLabel": "Produkttyp",
       "noResults": "Keine Produkte gefunden. Versuch einen anderen Typ, ein Stichwort oder den Code, der auf deinen Karten steht.",
       "searchPlaceholder": "Filter: „Drache“, „2022“, Set-Code (SDBE)…",
       "title": "Ganzes Produkt hinzufügen"
+    },
+    "language": {
+      "alreadyUniform": "Alles ist bereits auf {language}.",
+      "breakdown": "Verteilung",
+      "copies": "{count} in {piles, plural, one {# Stapel} other {# Stapeln}}",
+      "done": "{count, plural, one {# Stapel umgestellt} other {# Stapel umgestellt}}{merged, plural, =0 {} other {, # zusammengelegt}}.",
+      "label": "Einsortierungssprache",
+      "neverChosen": "Nie gewählt — neue Karten folgen der Sprache der Oberfläche.",
+      "normalize": "Alles auf {language} umstellen ({count})",
+      "onlyFuture": "Nur für neue Karten",
+      "saved": "Neue Karten werden auf {language} einsortiert.",
+      "title": "Sprache der Sammlung",
+      "willMerge": "{count, plural, one {# Stapel geht in einem anderen auf} other {# Stapel gehen in anderen auf}} — die Exemplare werden addiert, nichts geht verloren.",
+      "willRetag": "{count, plural, one {# Stapel wechselt die Sprache} other {# Stapel wechseln die Sprache}}."
     },
     "row": {
       "addCopy": "Ein Exemplar hinzufügen",
@@ -201,44 +235,6 @@
         "releases": "Editionen"
       },
       "title": "Meine Sammlung"
-    },
-    "filters": {
-      "category": "Kategorie",
-      "allCategories": "Alle Kategorien",
-      "archetype": "Archetyp",
-      "allArchetypes": "Alle Archetypen",
-      "rarity": "Seltenheit",
-      "allRarities": "Alle Seltenheiten",
-      "language": "Sprache",
-      "allLanguages": "Alle Sprachen",
-      "condition": "Zustand",
-      "allConditions": "Alle Zustände",
-      "set": "Edition",
-      "allSets": "Alle Editionen",
-      "sort": "Sortierung",
-      "sortOption": "Sortierung: {label}",
-      "firstEdition": "1. Auflage",
-      "sorts": {
-        "name": "Name",
-        "quantity": "Exemplare",
-        "value": "Wert",
-        "rarity": "Seltenheit",
-        "newest": "Kürzlich hinzugefügt"
-      }
-    },
-    "language": {
-      "alreadyUniform": "Alles ist bereits auf {language}.",
-      "copies": "{count} in {piles, plural, one {# Stapel} other {# Stapeln}}",
-      "done": "{count, plural, one {# Stapel umgestellt} other {# Stapel umgestellt}}{merged, plural, =0 {} other {, # zusammengelegt}}.",
-      "label": "Einsortierungssprache",
-      "neverChosen": "Nie gewählt — neue Karten folgen der Sprache der Oberfläche.",
-      "normalize": "Alles auf {language} umstellen ({count})",
-      "onlyFuture": "Nur für neue Karten",
-      "saved": "Neue Karten werden auf {language} einsortiert.",
-      "title": "Sprache der Sammlung",
-      "willMerge": "{count, plural, one {# Stapel geht in einem anderen auf} other {# Stapel gehen in anderen auf}} — die Exemplare werden addiert, nichts geht verloren.",
-      "willRetag": "{count, plural, one {# Stapel wechselt die Sprache} other {# Stapel wechseln die Sprache}}.",
-      "breakdown": "Verteilung"
     }
   },
   "common": {
@@ -292,12 +288,15 @@
       "zoneCount": "{count}/{max} Karten"
     },
     "add": {
+      "atLimit": "Bereits {count}",
+      "atLimitBan": "{status} · bereits {count}",
       "extraDeckMonster": "Dieses Monster gehört ins Extra Deck",
       "maxCopies": "{limit, plural, one {Maximal # Exemplar} other {Maximal # Exemplare}}",
       "notExtraDeck": "Nur Fusions-, Synchro-, Xyz- und Link-Monster gehören ins Extra Deck",
-      "zoneFull": "{zone} ist voll",
-      "atLimit": "Bereits {count}",
-      "atLimitBan": "{status} · bereits {count}"
+      "zoneFull": "{zone} ist voll"
+    },
+    "banlist": {
+      "updated": "Die Banlist hat sich geändert — dieses Deck wurde neu geprüft."
     },
     "header": {
       "guide": "Guide",
@@ -306,14 +305,14 @@
       "nameLabel": "Deckname"
     },
     "issues": {
+      "fix": "Von der Banlist Verbotenes entfernen",
+      "fixed": "{count, plural, one {# Exemplar entfernt} other {# Exemplare entfernt}}",
+      "forbidden": "{name} ist verboten ({count, plural, one {# Exemplar} other {# Exemplare}} im Deck)",
       "title": "Deck nicht legal",
       "tooManyCopies": "{name}: {count, plural, one {# Exemplar} other {# Exemplare}} (max. {limit})",
       "wrongZone": "{name} gehört nicht ins {zone}",
       "zoneTooLarge": "{zone}: {count, plural, one {# Karte} other {# Karten}} (maximal {limit})",
-      "zoneTooSmall": "{zone}: {count, plural, one {# Karte} other {# Karten}} (mindestens {limit})",
-      "forbidden": "{name} ist verboten ({count, plural, one {# Exemplar} other {# Exemplare}} im Deck)",
-      "fix": "Von der Banlist Verbotenes entfernen",
-      "fixed": "{count, plural, one {# Exemplar entfernt} other {# Exemplare entfernt}}"
+      "zoneTooSmall": "{zone}: {count, plural, one {# Karte} other {# Karten}} (mindestens {limit})"
     },
     "missing": {
       "addAll": "Alle auf die Wunschliste",
@@ -328,8 +327,8 @@
       "suggestionsCount": "Vorschläge ({count})",
       "suggestionsEmpty": "Füge ein paar Karten ins Deck ein: Die Vorschläge basieren auf seinen Archetypen.",
       "suggestionsHint": "Karten aus deiner Sammlung, die einen Archetyp mit deinem Deck teilen oder von ihm erwähnt werden.",
-      "tileTitle": "{name}\nKlick: Details · Strg/⌘+Klick: hinzufügen · Umschalt+Klick: ins Side Deck",
-      "tileBlocked": "{name}\n{reason} — kann nicht hinzugefügt werden"
+      "tileBlocked": "{name}\n{reason} — kann nicht hinzugefügt werden",
+      "tileTitle": "{name}\nKlick: Details · Strg/⌘+Klick: hinzufügen · Umschalt+Klick: ins Side Deck"
     },
     "save": {
       "dirty": "Ungespeicherte Änderungen",
@@ -343,9 +342,6 @@
       "empty": "Klick links auf eine Karte, um ihre Details zu sehen und sie hinzuzufügen",
       "emptySide": "Öffne eine Karte und füge sie dem Side Deck hinzu – oder direkt per Umschalt+Klick",
       "missingBadge": "FEHLT"
-    },
-    "banlist": {
-      "updated": "Die Banlist hat sich geändert — dieses Deck wurde neu geprüft."
     }
   },
   "decks": {
@@ -782,16 +778,16 @@
     },
     "errors": {
       "decoding": "Unerwartete Serverantwort ({detail}). Ist der Server aktuell?",
-      "noServer": "Kein Server eingerichtet.",
-      "imageUnreadable": "Dieses Bild konnte nicht gelesen werden"
+      "imageUnreadable": "Dieses Bild konnte nicht gelesen werden",
+      "noServer": "Kein Server eingerichtet."
     },
     "more": {
       "catalog": "Den gesamten Katalog durchsuchen",
       "duel": "Ein Deck gegen den Simulator testen",
-      "rules": "Alle offiziellen Regeln, illustriert",
-      "wishlist": "Die Karten, die dir noch fehlen",
+      "friends": "Vergleiche deine Sets mit Freunden",
       "profile": "Dein Profil und deine hervorgehobenen Karten",
-      "friends": "Vergleiche deine Sets mit Freunden"
+      "rules": "Alle offiziellen Regeln, illustriert",
+      "wishlist": "Die Karten, die dir noch fehlen"
     },
     "nav": {
       "more": "Mehr"
@@ -800,15 +796,15 @@
       "removeWithCards": "Mit seinen Karten entfernen"
     },
     "releases": {
+      "byPrint": "Nach genauem Druck",
       "legend": {
-        "owned": "Du hast genau diesen Druck — die Zahl sagt wie viele.",
         "elsewhere": "Du hast die Karte, aber aus einer anderen Edition oder Seltenheit.",
-        "missing": "Diese Karte hast du gar nicht."
+        "missing": "Diese Karte hast du gar nicht.",
+        "owned": "Du hast genau diesen Druck — die Zahl sagt wie viele."
       },
       "meter": "{owned} von {total}",
-      "spotlightMeta": "{date} · {owned}/{total}",
-      "byPrint": "Nach genauem Druck",
-      "shownLabel": "Angezeigte Karten"
+      "shownLabel": "Angezeigte Karten",
+      "spotlightMeta": "{date} · {owned}/{total}"
     },
     "scan": {
       "alreadyOwned": "Du besitzt schon {count}",
@@ -823,13 +819,13 @@
         "empty": "Noch keine Karte gescannt",
         "emptyHint": "Richte die Kamera auf den Code unter dem Artwork oder füge eine Karte von Hand hinzu.",
         "failures": "Nicht hinzugefügte Karten",
+        "language": "Sprache dieses Stapels",
+        "languageHint": "In der Sprache deiner Sammlung einsortiert. Hier ändern, wenn ein Stapel in einer anderen gekauft wurde.",
         "noPrints": "Keine bekannte Auflage für diese Karte.",
         "open": "{count, plural, one {# Karte prüfen} other {# Karten prüfen}}",
         "openEmpty": "Die Liste ist leer",
         "search": "Karte suchen",
-        "title": "Vor dem Hinzufügen prüfen",
-        "language": "Sprache dieses Stapels",
-        "languageHint": "In der Sprache deiner Sammlung einsortiert. Hier ändern, wenn ein Stapel in einer anderen gekauft wurde."
+        "title": "Vor dem Hinzufügen prüfen"
       },
       "title": "Karten scannen",
       "unavailable": "Scannen ist nicht verfügbar",
@@ -873,11 +869,11 @@
       "collection": "Sammlung",
       "decks": "Decks",
       "duel": "Duell",
+      "friends": "Freunde",
+      "profile": "Profil",
       "rules": "Regeln",
       "suggestions": "Vorschläge",
-      "wishlist": "Wunschliste",
-      "friends": "Freunde",
-      "profile": "Profil"
+      "wishlist": "Wunschliste"
     },
     "pages": {
       "catalog": "Katalog",
@@ -885,13 +881,13 @@
       "deckNotFound": "Deck nicht gefunden.",
       "decks": "Decks",
       "duel": "Duell-Simulator",
+      "friends": "Freunde",
       "login": "Anmelden",
+      "profile": "Profil",
       "register": "Registrieren",
       "rules": "Regeln",
       "suggestions": "Vorschläge",
-      "wishlist": "Wunschliste",
-      "friends": "Freunde",
-      "profile": "Profil"
+      "wishlist": "Wunschliste"
     }
   },
   "products": {
@@ -936,13 +932,27 @@
         "header": "{name} – {count, plural, one {# Produkt} other {# Produkte}}"
       }
     },
+    "filters": {
+      "allKinds": "Alle Typen",
+      "complete": "Nur vollständige",
+      "kind": "Typ",
+      "searchPlaceholder": "Meine Produkte filtern…",
+      "sort": "Sortierung",
+      "sortOption": "Sortierung: {label}",
+      "sorts": {
+        "added": "Kürzlich hinzugefügt",
+        "completeness": "Am meisten angebrochen",
+        "date": "Erscheinungsdatum",
+        "name": "Name"
+      }
+    },
     "kinds": {
+      "BOOSTER": "Booster",
       "BOX": "Box-Set",
       "OTHER": "Produkt",
       "STARTER": "Starter Deck",
       "STRUCTURE": "Structure Deck",
-      "TIN": "Tin",
-      "BOOSTER": "Booster"
+      "TIN": "Tin"
     },
     "tab": {
       "addProduct": "Produkt hinzufügen",
@@ -951,94 +961,80 @@
       "deck": "Deck",
       "empty": {
         "description": "Füge ein Structure Deck, eine Tin oder ein Box-Set hinzu: Es erscheint hier mit seinem kompletten Inhalt, bei Decks auch mit einem Spiel-Guide.",
-        "title": "Noch keine Produkte",
-        "noMatch": "Keine Treffer"
+        "noMatch": "Keine Treffer",
+        "title": "Noch keine Produkte"
       },
       "missing": "{count, plural, one {# Exemplar ist} other {# Exemplare sind}} nicht mehr in deiner Sammlung"
-    },
-    "filters": {
-      "searchPlaceholder": "Meine Produkte filtern…",
-      "kind": "Typ",
-      "allKinds": "Alle Typen",
-      "sort": "Sortierung",
-      "sortOption": "Sortierung: {label}",
-      "complete": "Nur vollständige",
-      "sorts": {
-        "added": "Kürzlich hinzugefügt",
-        "name": "Name",
-        "date": "Erscheinungsdatum",
-        "completeness": "Am meisten angebrochen"
-      }
     }
   },
   "releases": {
-    "title": "Edition",
-    "searchPlaceholder": "Edition finden: Name, Code (BETB)…",
-    "count": "{count, plural, one {# Edition} other {# Editionen}}",
-    "noDate": "Datum unbekannt",
-    "today": "Erscheint heute",
-    "inDays": "{count, plural, one {in # Tag} other {in # Tagen}}",
-    "sealed": "Versiegelt",
-    "unrevealed": "Kartenliste noch nicht bekannt",
-    "unrevealedHint": "Diese Edition ist angekündigt; ihre Karten erscheinen hier, sobald sie bekannt sind.",
-    "elsewhere": "Vorhanden",
-    "elsewhereHint": "Du besitzt diese Karte aus einer anderen Edition",
-    "noCardsShown": "Nichts passt zu diesen Filtern",
     "anyEdition": "Alle Ausgaben",
     "anyEditionHint": "Eine Karte auch dann als gezogen zählen, wenn du sie aus einer anderen Edition besitzt",
-    "spotlight": {
-      "upcoming": "Kommt bald",
-      "upcomingEmpty": "Noch keine angekündigte Veröffentlichung.",
-      "recent": "Gerade erschienen",
-      "recentEmpty": "In den letzten zwei Monaten ist nichts erschienen."
+    "count": "{count, plural, one {# Edition} other {# Editionen}}",
+    "elsewhere": "Vorhanden",
+    "elsewhereHint": "Du besitzt diese Karte aus einer anderen Edition",
+    "empty": {
+      "description": "Ändere die Filter oder versuche einen anderen Namen oder Code.",
+      "title": "Keine Edition gefunden"
     },
-    "status": {
-      "UPCOMING": "Kommt",
-      "RECENT": "Neu",
-      "RELEASED": "Erschienen"
+    "filters": {
+      "allKinds": "Alle Typen",
+      "allProgress": "Jeder Fortschritt",
+      "allRarities": "Alle Seltenheiten",
+      "allStatuses": "Alle Status",
+      "allYears": "Alle Jahre",
+      "kind": "Typ",
+      "ownedProduct": "Versiegelt vorhanden",
+      "progress": "Fortschritt",
+      "rarity": "Seltenheit",
+      "sort": "Sortierung",
+      "status": "Status",
+      "year": "Jahr"
     },
+    "inDays": "{count, plural, one {in # Tag} other {in # Tagen}}",
+    "noCardsShown": "Nichts passt zu diesen Filtern",
+    "noDate": "Datum unbekannt",
     "progress": {
+      "COMPLETE": "Vollständig",
       "NONE": "Nicht begonnen",
       "STARTED": "Angefangen",
-      "COMPLETE": "Vollständig",
-      "labelPrints": "Gezogene Drucke",
-      "labelCards": "Besessene Karten"
+      "labelCards": "Besessene Karten",
+      "labelPrints": "Gezogene Drucke"
     },
+    "sealed": "Versiegelt",
+    "searchPlaceholder": "Edition finden: Name, Code (BETB)…",
     "shown": {
       "all": "Alle",
-      "owned": "Gezogen",
-      "missing": "Fehlt"
+      "missing": "Fehlt",
+      "owned": "Gezogen"
+    },
+    "sort": {
+      "cards": "Kartenanzahl",
+      "date": "Erscheinungsdatum",
+      "name": "Name",
+      "option": "Sortierung: {label}",
+      "progress": "Fortschritt"
+    },
+    "spotlight": {
+      "recent": "Gerade erschienen",
+      "recentEmpty": "In den letzten zwei Monaten ist nichts erschienen.",
+      "upcoming": "Kommt bald",
+      "upcomingEmpty": "Noch keine angekündigte Veröffentlichung."
     },
     "stats": {
       "copies": "Exemplare",
-      "ownedValue": "Besitzwert",
-      "missingValue": "Noch zu kaufen"
+      "missingValue": "Noch zu kaufen",
+      "ownedValue": "Besitzwert"
     },
-    "filters": {
-      "status": "Status",
-      "allStatuses": "Alle Status",
-      "kind": "Typ",
-      "allKinds": "Alle Typen",
-      "year": "Jahr",
-      "allYears": "Alle Jahre",
-      "progress": "Fortschritt",
-      "allProgress": "Jeder Fortschritt",
-      "rarity": "Seltenheit",
-      "allRarities": "Alle Seltenheiten",
-      "sort": "Sortierung",
-      "ownedProduct": "Versiegelt vorhanden"
+    "status": {
+      "RECENT": "Neu",
+      "RELEASED": "Erschienen",
+      "UPCOMING": "Kommt"
     },
-    "sort": {
-      "option": "Sortierung: {label}",
-      "date": "Erscheinungsdatum",
-      "progress": "Fortschritt",
-      "name": "Name",
-      "cards": "Kartenanzahl"
-    },
-    "empty": {
-      "title": "Keine Edition gefunden",
-      "description": "Ändere die Filter oder versuche einen anderen Namen oder Code."
-    }
+    "title": "Edition",
+    "today": "Erscheint heute",
+    "unrevealed": "Kartenliste noch nicht bekannt",
+    "unrevealedHint": "Diese Edition ist angekündigt; ihre Karten erscheinen hier, sobald sie bekannt sind."
   },
   "rules": {
     "description": "Die offiziellen Regeln des Yu-Gi-Oh! TCG nach der aktuellen Master Rule, vom Aufbau eines Duells bis zur Abhandlung von Ketten.",
@@ -1091,76 +1087,76 @@
     },
     "glossary": [
       {
-        "term": "Aktivierung",
-        "definition": "Der Moment, in dem du eine Karte oder einen Effekt ankündigst und die Kosten zahlst. Eine annullierte Aktivierung kostet dich trotzdem, was du gezahlt hast."
+        "definition": "Der Moment, in dem du eine Karte oder einen Effekt ankündigst und die Kosten zahlst. Eine annullierte Aktivierung kostet dich trotzdem, was du gezahlt hast.",
+        "term": "Aktivierung"
       },
       {
-        "term": "Annullieren",
-        "definition": "Verhindern, dass eine Aktivierung oder ein Effekt wirkt. Annullieren ist nicht Zerstören: Eine annullierte Karte kann auf dem Spielfeld bleiben."
+        "definition": "Verhindern, dass eine Aktivierung oder ein Effekt wirkt. Annullieren ist nicht Zerstören: Eine annullierte Karte kann auf dem Spielfeld bleiben.",
+        "term": "Annullieren"
       },
       {
-        "term": "Verbannen",
-        "definition": "Eine Karte aus dem Spiel entfernen, getrennt vom Friedhof. Manche Karten verbannen verdeckt, dann darf sie niemand ansehen."
+        "definition": "Eine Karte aus dem Spiel entfernen, getrennt vom Friedhof. Manche Karten verbannen verdeckt, dann darf sie niemand ansehen.",
+        "term": "Verbannen"
       },
       {
-        "term": "Kette",
-        "definition": "Der Stapel der Karten und Effekte, die als Antwort aufeinander aktiviert wurden. Der zuletzt aktivierte wird zuerst abgehandelt."
+        "definition": "Der Stapel der Karten und Effekte, die als Antwort aufeinander aktiviert wurden. Der zuletzt aktivierte wird zuerst abgehandelt.",
+        "term": "Kette"
       },
       {
-        "term": "Als Ziel wählen",
-        "definition": "Bei der Aktivierung eine bestimmte Karte bestimmen. Eine Karte, die „nicht als Ziel gewählt werden kann“, darf nicht ausgewählt werden, auch wenn der Effekt sie treffen könnte."
+        "definition": "Bei der Aktivierung eine bestimmte Karte bestimmen. Eine Karte, die „nicht als Ziel gewählt werden kann“, darf nicht ausgewählt werden, auch wenn der Effekt sie treffen könnte.",
+        "term": "Als Ziel wählen"
       },
       {
-        "term": "Zählmarke",
-        "definition": "Eine Marke, die ein Effekt auf eine Karte legt und die mit ihr verschwindet."
+        "definition": "Eine Marke, die ein Effekt auf eine Karte legt und die mit ihr verschwindet.",
+        "term": "Zählmarke"
       },
       {
-        "term": "Kosten",
-        "definition": "Was du bei der Aktivierung zahlst: abwerfen, LP zahlen, als Tribut anbieten, ein Material abhängen. Kosten werden nie zurückgegeben."
+        "definition": "Was du bei der Aktivierung zahlst: abwerfen, LP zahlen, als Tribut anbieten, ein Material abhängen. Kosten werden nie zurückgegeben.",
+        "term": "Kosten"
       },
       {
-        "term": "Permanenter Effekt",
-        "definition": "Ein Effekt, der dauerhaft wirkt, solange die Karte auf dem Spielfeld liegt, ohne Aktivierung und ohne Kettenglied."
+        "definition": "Ein Effekt, der dauerhaft wirkt, solange die Karte auf dem Spielfeld liegt, ohne Aktivierung und ohne Kettenglied.",
+        "term": "Permanenter Effekt"
       },
       {
-        "term": "Trigger-Effekt",
-        "definition": "Ein Effekt, der aktiviert wird, wenn ein bestimmtes Ereignis eintritt, etwa „Wenn diese Karte beschworen wird“."
+        "definition": "Ein Effekt, der aktiviert wird, wenn ein bestimmtes Ereignis eintritt, etwa „Wenn diese Karte beschworen wird“.",
+        "term": "Trigger-Effekt"
       },
       {
-        "term": "Zündeffekt",
-        "definition": "Ein Effekt, den du selbst während deiner eigenen Main Phase aktivierst."
+        "definition": "Ein Effekt, den du selbst während deiner eigenen Main Phase aktivierst.",
+        "term": "Zündeffekt"
       },
       {
-        "term": "Schnelleffekt",
-        "definition": "Ein Effekt mit Zaubergeschwindigkeit 2, den du im Spielzug des Gegners oder als Antwort auf eine Aktivierung aktivieren kannst."
+        "definition": "Ein Effekt mit Zaubergeschwindigkeit 2, den du im Spielzug des Gegners oder als Antwort auf eine Aktivierung aktivieren kannst.",
+        "term": "Schnelleffekt"
       },
       {
-        "term": "FLIPP-Effekt",
-        "definition": "Ein Effekt, der aktiviert wird, wenn das Monster von verdeckt auf offen gedreht wird."
+        "definition": "Ein Effekt, der aktiviert wird, wenn das Monster von verdeckt auf offen gedreht wird.",
+        "term": "FLIPP-Effekt"
       },
       {
-        "term": "Hand Trap",
-        "definition": "Ein Monster, dessen Effekt du von der Hand aktivierst, oft indem du es abwirfst, um den Gegner in seinem Spielzug zu stören."
+        "definition": "Ein Monster, dessen Effekt du von der Hand aktivierst, oft indem du es abwirfst, um den Gegner in seinem Spielzug zu stören.",
+        "term": "Hand Trap"
       },
       {
-        "term": "Spielmarke",
-        "definition": "Ein Monster, das ein Effekt erzeugt, keine Karte ist und verschwindet, sobald es das Spielfeld verlässt."
+        "definition": "Ein Monster, das ein Effekt erzeugt, keine Karte ist und verschwindet, sobald es das Spielfeld verlässt.",
+        "term": "Spielmarke"
       },
       {
-        "term": "Material",
-        "definition": "Die Karten, die du für eine Beschwörung aus dem Extra Deck nutzt: Fusion, Synchro, Xyz oder Link."
+        "definition": "Die Karten, die du für eine Beschwörung aus dem Extra Deck nutzt: Fusion, Synchro, Xyz oder Link.",
+        "term": "Material"
       },
       {
-        "term": "Tribut",
-        "definition": "Ein Monster, das du kontrollierst, auf den Friedhof legen, um eine Beschwörung oder Kosten zu bezahlen."
+        "definition": "Ein Monster, das du kontrollierst, auf den Friedhof legen, um eine Beschwörung oder Kosten zu bezahlen.",
+        "term": "Tribut"
       },
       {
-        "term": "Verpasstes Timing",
-        "definition": "Ein optionaler Effekt „Wenn… kannst du“ kann nicht mehr aktiviert werden, wenn sein Ereignis nicht das Letzte war, was passiert ist."
+        "definition": "Ein optionaler Effekt „Wenn… kannst du“ kann nicht mehr aktiviert werden, wenn sein Ereignis nicht das Letzte war, was passiert ist.",
+        "term": "Verpasstes Timing"
       },
       {
-        "term": "Zaubergeschwindigkeit",
-        "definition": "Der Rang eines Effekts in einer Kette: Nur ein Effekt mit gleicher oder höherer Zaubergeschwindigkeit darf antworten."
+        "definition": "Der Rang eines Effekts in einer Kette: Nur ein Effekt mit gleicher oder höherer Zaubergeschwindigkeit darf antworten.",
+        "term": "Zaubergeschwindigkeit"
       }
     ],
     "groups": {
@@ -1182,34 +1178,30 @@
       "points": "Wichtig",
       "search": "Regel oder Begriff suchen…",
       "video": "Video-Tutorial",
-      "videoConsent": "Das Video wird erst beim Klicken von YouTube geladen.",
-      "videoLoad": "Video abspielen",
       "videoOpen": "Auf YouTube öffnen"
     },
     "links": [
       {
-        "label": "Offizielles Regelbuch (PDF, englisch)",
         "description": "Die vollständigen Regeln von Konami, Linkbeschwörung inklusive.",
+        "label": "Offizielles Regelbuch (PDF, englisch)",
         "url": "https://img.yugioh-card.com/en/downloads/rulebook/SD_RuleBook_EN_10.pdf"
       },
       {
-        "label": "Video-Tutorials (englisch)",
         "description": "Die offizielle Reihe: Ablauf eines Duells, Kampf, Ketten und jede Art von Beschwörung.",
+        "label": "Video-Tutorials (englisch)",
         "url": "https://www.yugioh-card.com/eu/videotutorials/"
       },
       {
-        "label": "Yu-Gi-Oh! für Anfänger",
         "description": "Der offizielle Einstiegsbereich auf Deutsch, mit Tutorials und Tipps für den Start.",
+        "label": "Yu-Gi-Oh! für Anfänger",
         "url": "https://www.yugioh-card.com/eu/de/fuer_anfaenger/"
       }
     ],
     "sections": [
       {
-        "id": "basics",
         "group": "basics",
         "icon": "BookOpen",
-        "title": "Grundlagen",
-        "summary": "Zwei Duellanten mit je 8000 LP: Du gewinnst, wenn die LP deines Gegners auf 0 fallen.",
+        "id": "basics",
         "paragraphs": [
           "Yu-Gi-Oh! ist ein Duell zwischen zwei Spielern. Jeder Spieler beginnt mit 8000 Lebenspunkten (LP) und zieht 5 Karten. Dein Ziel ist es, die LP deines Gegners mit Monstern, Zaubern und Fallen auf 0 zu bringen.",
           "Vor dem ersten Duell wird zufällig bestimmt (zum Beispiel per Münzwurf), welcher Spieler entscheidet, ob er beginnt oder als Zweiter spielt. In einem Match trifft der Verlierer des vorherigen Duells diese Wahl für das nächste."
@@ -1221,15 +1213,15 @@
           "Main Deck: 40 bis 60 Karten. Extra Deck: 0 bis 15 Karten. Side Deck: 0 bis 15 Karten.",
           "Von einer Karte mit demselben Namen darfst du in Main Deck, Extra Deck und Side Deck zusammen höchstens 3 Exemplare haben.",
           "Die Liste verbotener und limitierter Karten schränkt manche Karten weiter ein: Verboten (0 Exemplare), Limitiert (1 Exemplar), Semi-Limitiert (2 Exemplare)."
-        ]
+        ],
+        "summary": "Zwei Duellanten mit je 8000 LP: Du gewinnst, wenn die LP deines Gegners auf 0 fallen.",
+        "title": "Grundlagen"
       },
       {
-        "id": "field",
+        "diagram": "field",
         "group": "basics",
         "icon": "LayoutGrid",
-        "title": "Das Spielfeld",
-        "summary": "Je 5 Monsterzonen, 5 Zauber- & Fallenzonen und 1 Spielfeldzone; die 2 Extra-Monsterzonen werden geteilt.",
-        "diagram": "field",
+        "id": "field",
         "paragraphs": [
           "Deine Spielfeldseite hat 5 Hauptmonsterzonen, 5 Zauber- & Fallenzonen und 1 Spielfeldzone. Die 2 Extra-Monsterzonen liegen zwischen beiden Spielern und werden geteilt.",
           "Du kannst immer nur eine Extra-Monsterzone benutzen, außer ein Karteneffekt erlaubt dir die andere. Wenn dein Monster sie verlässt, kannst du wieder eine der beiden benutzen.",
@@ -1241,15 +1233,15 @@
           "Friedhof: offener Stapel benutzter und zerstörter Karten; beide Spieler dürfen ihn jederzeit ansehen.",
           "Verbannte Karten sind aus dem Spiel entfernt, meist offen, und werden getrennt vom Friedhof abgelegt.",
           "Monster sind in Angriffsposition (senkrecht) oder Verteidigungsposition (waagerecht). Ein verdecktes Monster ist immer in Verteidigungsposition, und du darfst dir deine eigenen verdeckten Karten ansehen."
-        ]
+        ],
+        "summary": "Je 5 Monsterzonen, 5 Zauber- & Fallenzonen und 1 Spielfeldzone; die 2 Extra-Monsterzonen werden geteilt.",
+        "title": "Das Spielfeld"
       },
       {
-        "id": "turn",
+        "diagram": "turn",
         "group": "basics",
         "icon": "Clock",
-        "title": "Ablauf eines Spielzugs",
-        "summary": "Sechs Phasen in fester Reihenfolge, darunter die Battle Phase — optional und im ersten Spielzug verboten.",
-        "diagram": "turn",
+        "id": "turn",
         "paragraphs": [
           "Jeder Spielzug durchläuft die folgenden Phasen in dieser Reihenfolge. Der Spieler, der am Zug ist, ist der „Spieler am Zug“.",
           "Für den ersten Spielzug des Duells gelten zwei Einschränkungen: Der beginnende Spieler zieht keine Karte, und niemand kann eine Battle Phase durchführen."
@@ -1261,18 +1253,19 @@
           "Battle Phase: optional. Greife mit deinen Monstern an. Sie kann im ersten Spielzug des Duells nicht durchgeführt werden.",
           "Main Phase 2: nur, wenn du eine Battle Phase durchgeführt hast. Du kannst dasselbe tun wie in der Main Phase 1.",
           "End Phase: Effekte, die „während der End Phase“ stattfinden, werden angewendet. Hast du mehr als 6 Karten auf der Hand, wirf ab, bis du 6 hast."
-        ]
+        ],
+        "summary": "Sechs Phasen in fester Reihenfolge, darunter die Battle Phase — optional und im ersten Spielzug verboten.",
+        "title": "Ablauf eines Spielzugs"
       },
       {
-        "id": "normal-summon",
-        "group": "summons",
-        "icon": "ArrowUp",
-        "title": "Normalbeschwörung und Setzen",
-        "summary": "Eine Normalbeschwörung oder ein Setzen pro Spielzug, ab Stufe 5 mit Tributen.",
-        "diagram": "tributes",
         "cards": [
           "Summoned Skull"
         ],
+        "diagram": "tributes",
+        "example": "Du kontrollierst 1 Monster. Um ein Monster der Stufe 6 als Normalbeschwörung zu beschwören, biete es als Tribut an. Damit ist deine Normalbeschwörung des Spielzugs verbraucht, du kannst also kein weiteres Monster setzen.",
+        "group": "summons",
+        "icon": "ArrowUp",
+        "id": "normal-summon",
         "paragraphs": [
           "Einmal pro Spielzug kannst du während deiner Main Phase ein Monster von deiner Hand entweder als Normalbeschwörung in offene Angriffsposition beschwören oder es verdeckt in Verteidigungsposition setzen. Beides verbraucht deine einzige Normalbeschwörung des Spielzugs.",
           "Monster höherer Stufe benötigen Tribute: Du legst Monster, die du kontrollierst, auf den Friedhof. Das ist eine Tributbeschwörung (oder ein Tributsetzen), eine Form der Normalbeschwörung.",
@@ -1285,18 +1278,18 @@
           "Flippbeschwörung: Ändere während deiner Main Phase ein verdecktes Monster in Verteidigungsposition in offene Angriffsposition. Das ist nicht in dem Spielzug möglich, in dem das Monster gesetzt wurde.",
           "Während deiner Main Phase kannst du die Kampfposition jedes Monsters einmal pro Spielzug ändern, aber nicht in dem Spielzug, in dem es beschworen oder gesetzt wurde, und nicht, nachdem es in diesem Spielzug angegriffen hat. Eine Flippbeschwörung zählt als diese Änderung."
         ],
-        "example": "Du kontrollierst 1 Monster. Um ein Monster der Stufe 6 als Normalbeschwörung zu beschwören, biete es als Tribut an. Damit ist deine Normalbeschwörung des Spielzugs verbraucht, du kannst also kein weiteres Monster setzen."
+        "summary": "Eine Normalbeschwörung oder ein Setzen pro Spielzug, ab Stufe 5 mit Tributen.",
+        "title": "Normalbeschwörung und Setzen"
       },
       {
-        "id": "special-summon",
-        "group": "summons",
-        "icon": "Sparkles",
-        "title": "Spezialbeschwörung",
-        "summary": "So viele Spezialbeschwörungen, wie deine Karten erlauben, jede nach ihrem eigenen Text.",
         "cards": [
           "Monster Reborn",
           "Cyber Dragon"
         ],
+        "example": "Ein Monster sagt: „Kann nicht als Normalbeschwörung beschworen/gesetzt werden. Muss zuerst als Spezialbeschwörung von deiner Hand beschworen werden, indem du 2 Monster von deinem Friedhof verbannst.“ Hast du es so beschworen und wird es zerstört, kann eine Wiederbelebungskarte es zurückholen. Wurde es nur von der Hand abgeworfen, kann es nicht wiederbelebt werden.",
+        "group": "summons",
+        "icon": "Sparkles",
+        "id": "special-summon",
         "paragraphs": [
           "Eine Spezialbeschwörung verbraucht nicht deine Normalbeschwörung. Du kannst so viele durchführen, wie deine Karten erlauben, auch im Spielzug deines Gegners, wenn ein Effekt es zulässt.",
           "Manche Monster haben ein eigenes Verfahren, etwa „Kann nicht als Normalbeschwörung beschworen/gesetzt werden. Muss zuerst als Spezialbeschwörung beschworen werden…“ oder „Du kannst diese Karte als Spezialbeschwörung von deiner Hand beschwören, indem…“. Dieses Verfahren startet keine Kette, kann aber von Karten annulliert werden, die Beschwörungen annullieren.",
@@ -1307,20 +1300,20 @@
           "Extra-Deck-Monster, Ritualmonster und Monster, die „zuerst als Spezialbeschwörung beschworen werden müssen“, müssen ordnungsgemäß beschworen worden sein, bevor ein anderer Effekt sie vom Friedhof oder aus dem Verbannten als Spezialbeschwörung beschwören kann.",
           "Steht im Text eines Monsters, dass es „nicht auf andere Weise als Spezialbeschwörung beschworen werden kann“, kann es nur mit seinem eigenen Verfahren beschworen werden."
         ],
-        "example": "Ein Monster sagt: „Kann nicht als Normalbeschwörung beschworen/gesetzt werden. Muss zuerst als Spezialbeschwörung von deiner Hand beschworen werden, indem du 2 Monster von deinem Friedhof verbannst.“ Hast du es so beschworen und wird es zerstört, kann eine Wiederbelebungskarte es zurückholen. Wurde es nur von der Hand abgeworfen, kann es nicht wiederbelebt werden."
+        "summary": "So viele Spezialbeschwörungen, wie deine Karten erlauben, jede nach ihrem eigenen Text.",
+        "title": "Spezialbeschwörung"
       },
       {
-        "id": "fusion",
-        "group": "summons",
-        "icon": "Combine",
-        "title": "Fusionsbeschwörung",
-        "summary": "Die genannten Materialien gehen auf den Friedhof, das Fusionsmonster kommt aus dem Extra Deck.",
-        "diagram": "fusion",
         "cards": [
           "Polymerization",
           "Blue-Eyes White Dragon",
           "Blue-Eyes Ultimate Dragon"
         ],
+        "diagram": "fusion",
+        "example": "Mit „Polymerisation“ kannst du eine Fusionsbeschwörung mit Monstern von deiner Hand oder deinem Spielfeld durchführen. Du legst die zwei auf dem Fusionsmonster genannten Monster von deiner Hand auf den Friedhof und beschwörst dann dieses Fusionsmonster als Spezialbeschwörung.",
+        "group": "summons",
+        "icon": "Combine",
+        "id": "fusion",
         "paragraphs": [
           "Fusionsmonster liegen in deinem Extra Deck. Ihr Text nennt die benötigten Fusionsmaterialien, zum Beispiel zwei Monster mit Namen oder „1 FINSTERNIS-Monster + 1 Krieger-Monster“.",
           "Die meisten Fusionsbeschwörungen nutzen eine Karte wie „Polymerisation“: Lege die genannten Materialien von deiner Hand oder deinem Spielfeld auf den Friedhof und beschwöre dann das Fusionsmonster als Spezialbeschwörung aus deinem Extra Deck. Die Fusionskarte legt fest, woher die Materialien kommen dürfen.",
@@ -1331,19 +1324,19 @@
           "Die Materialien werden auf den Friedhof gelegt, außer die benutzte Karte sagt etwas anderes, zum Beispiel sie zu verbannen oder ins Deck zu mischen.",
           "Wird die Fusionsbeschwörung annulliert, bleiben die Materialien verbraucht und das Fusionsmonster wird zerstört."
         ],
-        "example": "Mit „Polymerisation“ kannst du eine Fusionsbeschwörung mit Monstern von deiner Hand oder deinem Spielfeld durchführen. Du legst die zwei auf dem Fusionsmonster genannten Monster von deiner Hand auf den Friedhof und beschwörst dann dieses Fusionsmonster als Spezialbeschwörung."
+        "summary": "Die genannten Materialien gehen auf den Friedhof, das Fusionsmonster kommt aus dem Extra Deck.",
+        "title": "Fusionsbeschwörung"
       },
       {
-        "id": "ritual",
-        "group": "summons",
-        "icon": "Flame",
-        "title": "Ritualbeschwörung",
-        "summary": "Ein Ritualzauber und Tribute, deren Stufen zu dem Monster passen, das du beschwörst.",
-        "diagram": "ritual",
         "cards": [
           "Black Luster Ritual",
           "Black Luster Soldier"
         ],
+        "diagram": "ritual",
+        "example": "Dein Ritualmonster hat Stufe 8 und der Ritualzauber verlangt Stufen, die zusammen gleich oder höher als 8 sind. Du bietest ein Monster der Stufe 4 von deiner Hand und ein Monster der Stufe 5 von deinem Spielfeld als Tribut an (zusammen 9) und beschwörst dann das Ritualmonster als Spezialbeschwörung.",
+        "group": "summons",
+        "icon": "Flame",
+        "id": "ritual",
         "paragraphs": [
           "Ritualmonster liegen in deinem Main Deck und werden meist von deiner Hand beschworen. Du brauchst einen Ritualzauber, der sie beschwören kann; die beiden Karten nennen sich meist gegenseitig.",
           "Aktiviere den Ritualzauber, biete dann Monster von deiner Hand und/oder deinem Spielfeld als Tribut an, deren Stufen zusammen die Bedingung auf dem Ritualzauber erfüllen, und beschwöre das Ritualmonster als Spezialbeschwörung."
@@ -1354,19 +1347,19 @@
           "Ritualmonster können nicht als Normalbeschwörung beschworen oder gesetzt werden.",
           "Manche Karten nutzen andere Quellen, etwa Monster vom Deck auf den Friedhof zu legen oder vom Friedhof zu verbannen; folge dem Text."
         ],
-        "example": "Dein Ritualmonster hat Stufe 8 und der Ritualzauber verlangt Stufen, die zusammen gleich oder höher als 8 sind. Du bietest ein Monster der Stufe 4 von deiner Hand und ein Monster der Stufe 5 von deinem Spielfeld als Tribut an (zusammen 9) und beschwörst dann das Ritualmonster als Spezialbeschwörung."
+        "summary": "Ein Ritualzauber und Tribute, deren Stufen zu dem Monster passen, das du beschwörst.",
+        "title": "Ritualbeschwörung"
       },
       {
-        "id": "synchro",
-        "group": "summons",
-        "icon": "Zap",
-        "title": "Synchrobeschwörung",
-        "summary": "1 Empfänger plus Nicht-Empfänger, deren Stufen zusammen genau die Stufe des Synchromonsters ergeben.",
-        "diagram": "synchro",
         "cards": [
           "Junk Synchron",
           "Stardust Dragon"
         ],
+        "diagram": "synchro",
+        "example": "Ein Empfänger der Stufe 3 und ein Nicht-Empfänger der Stufe 4 ergeben 7: Du kannst ein Synchromonster der Stufe 7 als Synchrobeschwörung beschwören.",
+        "group": "summons",
+        "icon": "Zap",
+        "id": "synchro",
         "paragraphs": [
           "Synchromonster liegen in deinem Extra Deck. Lege während deiner Main Phase 1 Empfänger und 1 oder mehr offene Nicht-Empfänger-Monster, die du kontrollierst, auf den Friedhof. Ihre Stufen müssen zusammen genau der Stufe des Synchromonsters entsprechen. Beschwöre es dann als Spezialbeschwörung.",
           "Der Text des Synchromonsters nennt seine Materialien, zum Beispiel „1 Empfänger + 1+ Nicht-Empfänger-Monster“. Manche verlangen einen bestimmten Empfänger oder Nicht-Empfänger oder mehr als einen Empfänger."
@@ -1377,18 +1370,18 @@
           "Xyz- und Linkmonster haben keine Stufe und können daher normalerweise kein Synchromaterial sein.",
           "Eine Synchrobeschwörung startet keine Kette, kann aber von Karten annulliert werden, die Beschwörungen annullieren."
         ],
-        "example": "Ein Empfänger der Stufe 3 und ein Nicht-Empfänger der Stufe 4 ergeben 7: Du kannst ein Synchromonster der Stufe 7 als Synchrobeschwörung beschwören."
+        "summary": "1 Empfänger plus Nicht-Empfänger, deren Stufen zusammen genau die Stufe des Synchromonsters ergeben.",
+        "title": "Synchrobeschwörung"
       },
       {
-        "id": "xyz",
-        "group": "summons",
-        "icon": "Layers",
-        "title": "Xyz-Beschwörung",
-        "summary": "Zwei oder mehr Monster derselben Stufe liegen unter einem Monster mit gleichem Rang.",
-        "diagram": "xyz",
         "cards": [
           "Number 39: Utopia"
         ],
+        "diagram": "xyz",
+        "example": "Zwei Monster der Stufe 4, die du kontrollierst, können für die Xyz-Beschwörung eines Xyz-Monsters mit Rang 4 verwendet werden, das „2 Monster der Stufe 4“ verlangt.",
+        "group": "summons",
+        "icon": "Layers",
+        "id": "xyz",
         "paragraphs": [
           "Xyz-Monster liegen in deinem Extra Deck. Staple während deiner Main Phase die offenen Monster, die du kontrollierst und die das Xyz-Monster verlangt (meist 2 oder mehr mit derselben Stufe), und lege das Xyz-Monster darauf. Die Monster darunter werden zu Xyz-Material.",
           "Xyz-Monster haben einen Rang, keine Stufe. Effekte, die sich auf Stufen beziehen, gelten nicht für sie, und sie können normalerweise nicht für eine Synchrobeschwörung verwendet werden.",
@@ -1399,18 +1392,17 @@
           "Spielmarken können nicht als Xyz-Material verwendet werden.",
           "Ein Xyz-Monster ohne Material bleibt auf dem Spielfeld; es kann nur keine Abhängkosten mehr zahlen."
         ],
-        "example": "Zwei Monster der Stufe 4, die du kontrollierst, können für die Xyz-Beschwörung eines Xyz-Monsters mit Rang 4 verwendet werden, das „2 Monster der Stufe 4“ verlangt."
+        "summary": "Zwei oder mehr Monster derselben Stufe liegen unter einem Monster mit gleichem Rang.",
+        "title": "Xyz-Beschwörung"
       },
       {
-        "id": "pendulum",
-        "group": "summons",
-        "icon": "Scale",
-        "title": "Pendelbeschwörung",
-        "summary": "Zwei Bereiche in deinen Pendelzonen öffnen eine Beschwörung mehrerer Monster dazwischen.",
-        "diagram": "pendulum",
         "cards": [
           "Performapal Hip Hippo"
         ],
+        "diagram": "pendulum",
+        "group": "summons",
+        "icon": "Scale",
+        "id": "pendulum",
         "paragraphs": [
           "Pendelmonster liegen in deinem Main Deck. Sie können nicht nur als Monster beschworen, sondern auch als Zauber in deinen Pendelzonen aktiviert werden (deiner äußersten linken und äußersten rechten Zauber- & Fallenzone). Dort sind sie Zauberkarten und nutzen ihren Pendelbereich und ihren Pendeleffekt.",
           "Einmal pro Spielzug kannst du während deiner Main Phase, wenn in beiden Pendelzonen eine Karte liegt, eine Pendelbeschwörung durchführen: Beschwöre gleichzeitig beliebig viele Monster von deiner Hand und/oder offene Pendelmonster aus deinem Extra Deck als Spezialbeschwörung, deren Stufe echt zwischen den beiden Bereichen liegt.",
@@ -1420,18 +1412,19 @@
           "Mit den Bereichen 1 und 8 kannst du Monster der Stufen 2 bis 7 als Pendelbeschwörung beschwören.",
           "Monster von deiner Hand kommen in Hauptmonsterzonen. Offene Pendelmonster aus deinem Extra Deck kommen in eine Extra-Monsterzone oder in eine Hauptmonsterzone, auf die ein Linkmonster zeigt.",
           "Eine Pendelbeschwörung startet keine Kette, kann aber von Karten annulliert werden, die Beschwörungen annullieren."
-        ]
+        ],
+        "summary": "Zwei Bereiche in deinen Pendelzonen öffnen eine Beschwörung mehrerer Monster dazwischen.",
+        "title": "Pendelbeschwörung"
       },
       {
-        "id": "link",
-        "group": "summons",
-        "icon": "Link",
-        "title": "Linkbeschwörung",
-        "summary": "Die Materialien gehen auf den Friedhof, und die Pfeile öffnen Zonen für deine anderen Monster.",
-        "diagram": "link",
         "cards": [
           "Decode Talker"
         ],
+        "diagram": "link",
+        "example": "Ein LINK-3-Monster braucht 3 Materialien: Du kannst 3 Monster verwenden oder ein LINK-2-Monster, das als 2 Materialien zählt, plus 1 weiteres Monster.",
+        "group": "summons",
+        "icon": "Link",
+        "id": "link",
         "paragraphs": [
           "Linkmonster liegen in deinem Extra Deck. Lege während deiner Main Phase offene Monster, die du kontrollierst und die die genannten Anforderungen erfüllen, als Linkmaterial auf den Friedhof und beschwöre dann das Linkmonster als Spezialbeschwörung.",
           "Die Anzahl der Materialien muss der Link-Bewertung entsprechen (LINK-1, LINK-2…). Ein Linkmonster, das als Material verwendet wird, kann als 1 Material oder als so viele Materialien zählen, wie seine Link-Bewertung beträgt.",
@@ -1443,15 +1436,15 @@
           "Spielmarken können als Linkmaterial verwendet werden.",
           "Aus einer Extra-Monsterzone können Linkpfeile auf Hauptmonsterzonen auf beiden Seiten des Spielfelds zeigen."
         ],
-        "example": "Ein LINK-3-Monster braucht 3 Materialien: Du kannst 3 Monster verwenden oder ein LINK-2-Monster, das als 2 Materialien zählt, plus 1 weiteres Monster."
+        "summary": "Die Materialien gehen auf den Friedhof, und die Pfeile öffnen Zonen für deine anderen Monster.",
+        "title": "Linkbeschwörung"
       },
       {
-        "id": "extra-deck-zones",
+        "diagram": "emz",
+        "example": "Dein Spielfeld ist leer. Du führst eine Synchrobeschwörung in eine Hauptmonsterzone durch und hältst die Extra-Monsterzone frei. Danach beschwörst du per Linkbeschwörung ein LINK-2-Monster mit Pfeilen nach unten links und unten rechts in die Extra-Monsterzone. Diese Pfeile zeigen auf zwei deiner Hauptmonsterzonen, also kannst du dort dein nächstes Linkmonster oder offene Pendelmonster aus deinem Extra Deck platzieren.",
         "group": "summons",
         "icon": "LayoutDashboard",
-        "title": "Extra Deck und Extra-Monsterzonen",
-        "summary": "Linkmonster brauchen eine Extra-Monsterzone; die anderen dürfen auch in deine Hauptzonen.",
-        "diagram": "emz",
+        "id": "extra-deck-zones",
         "paragraphs": [
           "Seit der Überarbeitung der Master Rule im April 2020 hängt die Zone, die ein aus dem Extra Deck beschworenes Monster nutzen kann, von seinem Kartentyp ab.",
           "Fusions-, Synchro- und Xyz-Monster, einschließlich Pendelmonster dieser Typen, die verdeckt aus dem Extra Deck beschworen werden, können in jede deiner freien Hauptmonsterzonen oder in eine Extra-Monsterzone.",
@@ -1462,18 +1455,18 @@
           "Legst du ein Fusions-, Synchro- oder Xyz-Monster in eine Hauptmonsterzone, bleibt die Extra-Monsterzone für ein Linkmonster frei.",
           "Diese Einschränkungen gelten nur für Monster, die aus dem Extra Deck beschworen werden; Monster von der Hand, aus dem Deck oder vom Friedhof kommen in Hauptmonsterzonen."
         ],
-        "example": "Dein Spielfeld ist leer. Du führst eine Synchrobeschwörung in eine Hauptmonsterzone durch und hältst die Extra-Monsterzone frei. Danach beschwörst du per Linkbeschwörung ein LINK-2-Monster mit Pfeilen nach unten links und unten rechts in die Extra-Monsterzone. Diese Pfeile zeigen auf zwei deiner Hauptmonsterzonen, also kannst du dort dein nächstes Linkmonster oder offene Pendelmonster aus deinem Extra Deck platzieren."
+        "summary": "Linkmonster brauchen eine Extra-Monsterzone; die anderen dürfen auch in deine Hauptzonen.",
+        "title": "Extra Deck und Extra-Monsterzonen"
       },
       {
-        "id": "tokens",
-        "group": "summons",
-        "icon": "Shapes",
-        "title": "Spielmarken",
-        "summary": "Eine Spielmarke ist keine Karte: Sie belegt eine Monsterzone und verschwindet, sobald sie das Spielfeld verlässt.",
-        "diagram": "tokens",
         "cards": [
           "Scapegoat"
         ],
+        "diagram": "tokens",
+        "example": "Eine Karte beschwört 4 Schaf-Spielmarken als Spezialbeschwörung in offene Verteidigungsposition. Sie füllen 4 deiner 5 Monsterzonen: Du kannst sie als Linkmaterial verwenden, aber es bleibt nur eine Zone, um noch etwas anderes zu beschwören.",
+        "group": "summons",
+        "icon": "Shapes",
+        "id": "tokens",
         "paragraphs": [
           "Eine Spielmarke ist ein Monster, das von einem Karteneffekt erzeugt wird. Sie liegt nicht in deinem Deck: Name, Typ, Attribut, Stufe, ATK und DEF kommen alle von dem Effekt, der sie erzeugt. Du stellst sie mit einem erkennbaren Marker dar — einer offiziellen Spielmarken-Karte, einer Münze, einem Würfel.",
           "Auf dem Spielfeld verhält sich eine Spielmarke wie ein Monster: Sie belegt eine Monsterzone, kann angreifen, im Kampf zerstört werden, ihre Kampfposition ändern, als Tribut angeboten oder als Material verwendet werden. Ist keine Monsterzone frei, kann sie gar nicht beschworen werden.",
@@ -1486,19 +1479,19 @@
           "Mehrere Spielmarken können denselben Namen tragen, und jede belegt ihre eigene Monsterzone.",
           "Eine Spielmarke erscheint nur, wenn eine Karte sie erzeugt: Du kannst sie nie aus eigenem Antrieb beschwören."
         ],
-        "example": "Eine Karte beschwört 4 Schaf-Spielmarken als Spezialbeschwörung in offene Verteidigungsposition. Sie füllen 4 deiner 5 Monsterzonen: Du kannst sie als Linkmaterial verwenden, aber es bleibt nur eine Zone, um noch etwas anderes zu beschwören."
+        "summary": "Eine Spielmarke ist keine Karte: Sie belegt eine Monsterzone und verschwindet, sobald sie das Spielfeld verlässt.",
+        "title": "Spielmarken"
       },
       {
-        "id": "chains",
-        "group": "playing",
-        "icon": "ListOrdered",
-        "title": "Ketten und Zaubergeschwindigkeit",
-        "summary": "Antworten stapeln sich und werden in umgekehrter Reihenfolge abgehandelt, nach Zaubergeschwindigkeit.",
-        "diagram": "chain",
         "cards": [
           "Mystical Space Typhoon",
           "Solemn Judgment"
         ],
+        "diagram": "chain",
+        "example": "Du aktivierst einen normalen Zauber (Kettenglied 1). Dein Gegner antwortet mit einer normalen Falle (Kettenglied 2). Du antwortest mit einer Konterfalle, die sie annulliert (Kettenglied 3). Die Konterfalle wird zuerst abgehandelt und annulliert die Falle, danach wird dein Zauber abgehandelt.",
+        "group": "playing",
+        "icon": "ListOrdered",
+        "id": "chains",
         "paragraphs": [
           "Wird eine Karte oder ein Effekt aktiviert, wird daraus Kettenglied 1. Die Spieler können mit Zaubergeschwindigkeit 2 oder höher antworten, gleich oder höher als das letzte Kettenglied, und so weitere Glieder hinzufügen. Passen beide Spieler, wird die Kette in umgekehrter Reihenfolge abgehandelt: das letzte Glied zuerst.",
           "Kosten (abwerfen, LP zahlen, abhängen, als Tribut anbieten…) werden bei der Aktivierung gezahlt und nicht zurückgegeben, wenn die Aktivierung annulliert wird. Im Kartentext ist, was vor einem Doppelpunkt (:) steht, eine Bedingung, was vor einem Semikolon (;) steht, Kosten oder ein Ziel, und der Rest ist der Effekt."
@@ -1512,18 +1505,18 @@
           "Gesetzte Fallen und gesetzte Schnellzauber können nicht in dem Spielzug aktiviert werden, in dem sie gesetzt wurden, außer eine Karte erlaubt es.",
           "„Einmal pro Spielzug“: jedes Exemplar einmal pro Spielzug, zurückgesetzt, wenn es das Spielfeld verlässt. „Du kannst diesen Effekt von [Karte] nur einmal pro Spielzug verwenden“: einmal pro Spielzug für alle Exemplare."
         ],
-        "example": "Du aktivierst einen normalen Zauber (Kettenglied 1). Dein Gegner antwortet mit einer normalen Falle (Kettenglied 2). Du antwortest mit einer Konterfalle, die sie annulliert (Kettenglied 3). Die Konterfalle wird zuerst abgehandelt und annulliert die Falle, danach wird dein Zauber abgehandelt."
+        "summary": "Antworten stapeln sich und werden in umgekehrter Reihenfolge abgehandelt, nach Zaubergeschwindigkeit.",
+        "title": "Ketten und Zaubergeschwindigkeit"
       },
       {
-        "id": "counters",
-        "group": "playing",
-        "icon": "Hash",
-        "title": "Zählmarken",
-        "summary": "Eine Marke, die ein Effekt auf eine Karte legt und die mit ihr verschwindet.",
-        "diagram": "counters",
         "cards": [
           "Royal Magical Library"
         ],
+        "diagram": "counters",
+        "example": "Ein Monster erhält jedes Mal 1 Zauber-Zählmarke, wenn ein Zauber aktiviert wird, und du entfernst dann 3 dieser Zählmarken, um eine Karte zu ziehen. Die Zählmarken sind schon bei der Aktivierung weg, selbst wenn das Ziehen danach annulliert wird.",
+        "group": "playing",
+        "icon": "Hash",
+        "id": "counters",
         "paragraphs": [
           "Manche Karten legen Zählmarken — Zauber-Zählmarken, Bushido-Zählmarken und viele andere — auf sich selbst oder auf andere Karten. Eine Zählmarke ist keine Karte: Sie ist ein Marker, den du auf die betroffene Karte legst.",
           "Eine Zählmarke darf nur gelegt werden, wenn der Text einer Karte das sagt, und nur auf eine Karte, die sie aufnehmen kann. Verlässt diese Karte das Spielfeld oder wird sie verdeckt gedreht, werden ihre Zählmarken entfernt und kommen nicht mit ihr zurück.",
@@ -1535,15 +1528,15 @@
           "Eine Karte kann mehrere Zählmarken tragen; manche Texte legen ein Maximum fest.",
           "Xyz-Material sind keine Zählmarken: Es sind echte angelegte Karten, die beide Spieler jederzeit ansehen dürfen."
         ],
-        "example": "Ein Monster erhält jedes Mal 1 Zauber-Zählmarke, wenn ein Zauber aktiviert wird, und du entfernst dann 3 dieser Zählmarken, um eine Karte zu ziehen. Die Zählmarken sind schon bei der Aktivierung weg, selbst wenn das Ziehen danach annulliert wird."
+        "summary": "Eine Marke, die ein Effekt auf eine Karte legt und die mit ihr verschwindet.",
+        "title": "Zählmarken"
       },
       {
-        "id": "battle",
+        "diagram": "battle",
+        "example": "Dein Monster mit 2000 ATK greift ein Monster mit 1500 ATK in Angriffsposition an: Es wird zerstört und dein Gegner erhält 500 Schaden. Gegen ein Monster mit 2500 DEF in Verteidigungsposition wird nichts zerstört und du erhältst 500 Schaden.",
         "group": "playing",
         "icon": "Swords",
-        "title": "Kampf",
-        "summary": "Angriffe vergleichen die ATK, oder die DEF, wenn das verteidigende Monster in Verteidigungsposition ist.",
-        "diagram": "battle",
+        "id": "battle",
         "paragraphs": [
           "Die Battle Phase besteht aus Start Step, Battle Step, Damage Step und End Step. Jedes offene Monster in Angriffsposition, das du kontrollierst, kann einmal pro Battle Phase angreifen.",
           "Battle Step: Wähle eines deiner Monster und erkläre einen Angriff auf ein Monster deines Gegners. Kontrolliert dein Gegner keine Monster, kannst du direkt angreifen, und er erhält Schaden in Höhe der ATK deines Monsters. Ändert sich die Anzahl der Monster deines Gegners vor dem Damage Step, kommt es zu einer Wiederholung (Replay): Wähle ein neues Ziel, greife direkt an, falls er nun keine Monster mehr hat, oder brich den Angriff ab.",
@@ -1555,17 +1548,16 @@
           "Ein angegriffenes verdecktes Monster wird aufgedeckt; sein FLIPP-Effekt wird nach der Schadensberechnung aktiviert.",
           "Durch Kampf zerstörte Monster werden am Ende des Damage Step auf den Friedhof gelegt."
         ],
-        "example": "Dein Monster mit 2000 ATK greift ein Monster mit 1500 ATK in Angriffsposition an: Es wird zerstört und dein Gegner erhält 500 Schaden. Gegen ein Monster mit 2500 DEF in Verteidigungsposition wird nichts zerstört und du erhältst 500 Schaden."
+        "summary": "Angriffe vergleichen die ATK, oder die DEF, wenn das verteidigende Monster in Verteidigungsposition ist.",
+        "title": "Kampf"
       },
       {
-        "id": "spells-traps",
-        "group": "playing",
-        "icon": "Wand",
-        "title": "Zauber und Fallen",
-        "summary": "Zauber aktivierst du von der Hand; Fallen müssen mindestens einen Spielzug vorher gesetzt werden.",
         "cards": [
           "Mirror Force"
         ],
+        "group": "playing",
+        "icon": "Wand",
+        "id": "spells-traps",
         "paragraphs": [
           "Aktiviere Zauber während deiner Main Phase von deiner Hand oder setze sie, um sie später zu aktivieren. Fallen müssen zuerst gesetzt werden und können ab dem nächsten Spielzug aktiviert werden, im Spielzug jedes Spielers. Normale Zauber und normale Fallen werden nach der Abhandlung auf den Friedhof gelegt; permanente, Ausrüstungs- und Spielfeldkarten bleiben auf dem Spielfeld.",
           "„Hand Traps“ sind Monster, deren Effekt du von deiner Hand aktivierst, oft indem du sie abwirfst, meist als Schnelleffekt im Spielzug jedes Spielers."
@@ -1580,14 +1572,15 @@
           "Normale Falle: einmaliger Effekt, Zaubergeschwindigkeit 2.",
           "Permanente Falle: bleibt auf dem Spielfeld, Zaubergeschwindigkeit 2.",
           "Konterfalle: Zaubergeschwindigkeit 3, annulliert meist eine Aktivierung oder eine Beschwörung."
-        ]
+        ],
+        "summary": "Zauber aktivierst du von der Hand; Fallen müssen mindestens einen Spielzug vorher gesetzt werden.",
+        "title": "Zauber und Fallen"
       },
       {
-        "id": "match",
+        "example": "Du verlierst das erste Duell gegen ein Deck voller Zauber. Zwischen den Duellen nimmst du 2 Anti-Zauber-Karten aus deinem Side Deck hinein und 2 Karten heraus, die in diesem Match-up wenig bringen.",
         "group": "advanced",
         "icon": "Trophy",
-        "title": "Match, Side Deck und Limitierungsliste",
-        "summary": "Turniere werden als Match gespielt: zwei gewonnene Duelle, Side Deck zwischen den Duellen, Limitierungsliste.",
+        "id": "match",
         "paragraphs": [
           "Turniere werden als Match gespielt: Wer zuerst zwei Duelle gewinnt, gewinnt das Match. Der Verlierer eines Duells entscheidet, wer im nächsten beginnt.",
           "Zwischen zwei Duellen desselben Matches darfst du Karten zwischen deinem Deck und deinem Side Deck tauschen (0 bis 15 Karten). Danach muss dein Main Deck weiterhin 40 bis 60 Karten enthalten, dein Extra Deck höchstens 15, und dein Side Deck muss wieder seine ursprüngliche Größe haben.",
@@ -1599,7 +1592,8 @@
           "Die Zeit zum Tauschen des Side Decks zwischen zwei Duellen ist begrenzt, oft auf wenige Minuten.",
           "Läuft während eines Matches die Zeit ab, bestimmt ein Verfahren am Zeitende den Sieger, meist den Spieler mit den meisten LP."
         ],
-        "example": "Du verlierst das erste Duell gegen ein Deck voller Zauber. Zwischen den Duellen nimmst du 2 Anti-Zauber-Karten aus deinem Side Deck hinein und 2 Karten heraus, die in diesem Match-up wenig bringen."
+        "summary": "Turniere werden als Match gespielt: zwei gewonnene Duelle, Side Deck zwischen den Duellen, Limitierungsliste.",
+        "title": "Match, Side Deck und Limitierungsliste"
       }
     ],
     "source": "Diese Seite fasst das offizielle Regelbuch (aktuelle Master Rule) zusammen; wenn der Text einer Karte oder ein offizielles Ruling etwas anderes sagt, haben Karte und Ruling Vorrang.",
@@ -1607,91 +1601,91 @@
     "tocLabel": "Auf dieser Seite"
   },
   "social": {
-    "profile": {
-      "title": "Profil",
-      "myTitle": "Mein Profil",
-      "edit": "Profil bearbeiten",
-      "username": "Benutzername",
-      "usernameHint": "Buchstaben, Zahlen, Punkt, Bindestrich und Unterstrich. So finden dich Freunde.",
-      "save": "Speichern",
-      "avatar": "Profilbild",
-      "banner": "Banner",
-      "upload": "Bild hochladen",
-      "replace": "Ersetzen",
-      "remove": "Entfernen",
-      "imageHint": "PNG, JPEG oder WebP, bis 8 MB. Wird automatisch verkleinert und umgewandelt.",
-      "memberSince": "Mitglied seit {date}",
-      "friendsSince": "Freunde seit {date}",
-      "friendCount": "{count, plural, =0 {Keine Freunde} one {# Freund} other {# Freunde}}",
-      "openFriends": "Freunde",
-      "hidden": {
-        "title": "Dieses Profil ist privat",
-        "description": "{username} und du seid noch keine Freunde. Sende eine Anfrage, um dieses Profil zu sehen und eure Sets zu vergleichen.",
-        "sent": "Anfrage gesendet. Du siehst dieses Profil, sobald sie angenommen wird.",
-        "received": "{username} hat dir eine Freundschaftsanfrage gesendet."
-      },
-      "stats": {
-        "distinctCards": "Verschiedene Karten",
-        "copies": "Exemplare",
-        "sets": "Begonnene Sets",
-        "completedSets": "Vollständige Sets"
-      },
-      "showcase": {
-        "title": "Hervorgehobene Karten",
-        "empty": "Noch keine hervorgehobene Karte",
-        "emptyHint": "Wähle einige Karten aus deiner Sammlung, um sie hier zu zeigen.",
-        "emptyOther": "{username} hat noch keine Karte gewählt",
-        "choose": "Karten wählen",
-        "dialogTitle": "Hervorgehobene Karten",
-        "dialogHint": "Bis zu {max} Karten aus deiner Sammlung. Klicken zum Hinzufügen oder Entfernen; die Reihenfolge bleibt erhalten.",
-        "search": "In deiner Sammlung suchen…",
-        "selected": "{count} von {max} gewählt",
-        "noResults": "Keine Karte deiner Sammlung passt",
-        "done": "Fertig"
-      }
-    },
     "friends": {
-      "title": "Freunde",
-      "description": "Freunde sehen dein Profil und deinen Fortschritt in jedem Set.",
-      "search": {
-        "label": "Jemanden finden",
-        "placeholder": "Benutzername…",
-        "hint": "Mindestens 2 Zeichen",
-        "noResults": "Kein Konto passt zu „{q}“"
-      },
-      "requests": {
-        "incoming": "Erhaltene Anfragen",
-        "outgoing": "Gesendete Anfragen",
-        "accept": "Annehmen",
-        "decline": "Ablehnen",
-        "cancel": "Anfrage zurückziehen"
-      },
-      "list": {
-        "title": "Deine Freunde",
-        "empty": "Noch keine Freunde",
-        "emptyDescription": "Suche oben einen Benutzernamen, um deine erste Anfrage zu senden."
-      },
       "actions": {
         "add": "Als Freund hinzufügen",
-        "remove": "Freund entfernen",
         "confirmRemove": "{username} aus deinen Freunden entfernen?",
+        "remove": "Freund entfernen",
         "view": "Profil ansehen"
+      },
+      "description": "Freunde sehen dein Profil und deinen Fortschritt in jedem Set.",
+      "list": {
+        "empty": "Noch keine Freunde",
+        "emptyDescription": "Suche oben einen Benutzernamen, um deine erste Anfrage zu senden.",
+        "title": "Deine Freunde"
+      },
+      "requests": {
+        "accept": "Annehmen",
+        "cancel": "Anfrage zurückziehen",
+        "decline": "Ablehnen",
+        "incoming": "Erhaltene Anfragen",
+        "outgoing": "Gesendete Anfragen"
+      },
+      "search": {
+        "hint": "Mindestens 2 Zeichen",
+        "label": "Jemanden finden",
+        "noResults": "Kein Konto passt zu „{q}“",
+        "placeholder": "Benutzername…"
       },
       "state": {
         "FRIENDS": "Freunde",
-        "REQUEST_SENT": "Anfrage gesendet",
-        "REQUEST_RECEIVED": "Möchte dein Freund sein"
-      }
+        "REQUEST_RECEIVED": "Möchte dein Freund sein",
+        "REQUEST_SENT": "Anfrage gesendet"
+      },
+      "title": "Freunde"
+    },
+    "profile": {
+      "avatar": "Profilbild",
+      "banner": "Banner",
+      "edit": "Profil bearbeiten",
+      "friendCount": "{count, plural, =0 {Keine Freunde} one {# Freund} other {# Freunde}}",
+      "friendsSince": "Freunde seit {date}",
+      "hidden": {
+        "description": "{username} und du seid noch keine Freunde. Sende eine Anfrage, um dieses Profil zu sehen und eure Sets zu vergleichen.",
+        "received": "{username} hat dir eine Freundschaftsanfrage gesendet.",
+        "sent": "Anfrage gesendet. Du siehst dieses Profil, sobald sie angenommen wird.",
+        "title": "Dieses Profil ist privat"
+      },
+      "imageHint": "PNG, JPEG oder WebP, bis 8 MB. Wird automatisch verkleinert und umgewandelt.",
+      "memberSince": "Mitglied seit {date}",
+      "myTitle": "Mein Profil",
+      "openFriends": "Freunde",
+      "remove": "Entfernen",
+      "replace": "Ersetzen",
+      "save": "Speichern",
+      "showcase": {
+        "choose": "Karten wählen",
+        "dialogHint": "Bis zu {max} Karten aus deiner Sammlung. Klicken zum Hinzufügen oder Entfernen; die Reihenfolge bleibt erhalten.",
+        "dialogTitle": "Hervorgehobene Karten",
+        "done": "Fertig",
+        "empty": "Noch keine hervorgehobene Karte",
+        "emptyHint": "Wähle einige Karten aus deiner Sammlung, um sie hier zu zeigen.",
+        "emptyOther": "{username} hat noch keine Karte gewählt",
+        "noResults": "Keine Karte deiner Sammlung passt",
+        "search": "In deiner Sammlung suchen…",
+        "selected": "{count} von {max} gewählt",
+        "title": "Hervorgehobene Karten"
+      },
+      "stats": {
+        "completedSets": "Vollständige Sets",
+        "copies": "Exemplare",
+        "distinctCards": "Verschiedene Karten",
+        "sets": "Begonnene Sets"
+      },
+      "title": "Profil",
+      "upload": "Bild hochladen",
+      "username": "Benutzername",
+      "usernameHint": "Buchstaben, Zahlen, Punkt, Bindestrich und Unterstrich. So finden dich Freunde."
     },
     "releases": {
       "friends": "Freunde",
+      "legend": "Ein Punkt neben einer Karte heißt, ein Freund hat sie. Für Details antippen.",
+      "nobody": "Kein Freund hat diese Karte",
+      "nobodyStarted": "Kein Freund hat dieses Set begonnen",
       "none": "Füge Freunde hinzu, um euren Fortschritt zu vergleichen",
       "onThisSet": "Freunde in diesem Set",
-      "nobodyStarted": "Kein Freund hat dieses Set begonnen",
       "ownedBy": "{count, plural, one {# Freund hat sie} other {# Freunde haben sie}}",
-      "ownedElsewhere": "{count, plural, one {# Freund hat sie in einer anderen Auflage} other {# Freunde haben sie in einer anderen Auflage}}",
-      "nobody": "Kein Freund hat diese Karte",
-      "legend": "Ein Punkt neben einer Karte heißt, ein Freund hat sie. Für Details antippen."
+      "ownedElsewhere": "{count, plural, one {# Freund hat sie in einer anderen Auflage} other {# Freunde haben sie in einer anderen Auflage}}"
     }
   },
   "suggestions": {
@@ -1795,19 +1789,19 @@
       "archetypeStats": "{cards, plural, one {# Karte} other {# Karten}} · {copies, plural, one {# Exemplar} other {# Exemplare}}",
       "archetypesEmpty": "Füge Karten zu deiner Sammlung hinzu, um Archetypen zu sehen, die du bauen kannst.",
       "description": "Die aktuellen Top-Decks, was deine Sammlung schon hergibt und Decks, die für dich gebaut wurden.",
+      "sectionHints": {
+        "archetypes": "Ein Deck je Archetyp, den du schon stellen kannst",
+        "meta": "Die für dich am leichtesten erreichbaren",
+        "official": "Structure Decks, Starter und Box-Listen zum Nachbauen",
+        "playable": "Komplett aus deinen eigenen Karten gebaut"
+      },
       "sections": {
         "archetypes": "Aus deiner Sammlung",
         "meta": "Meta-Decks",
         "official": "Offizielle Decks",
         "playable": "Spielbereit"
       },
-      "title": "Vorschläge",
-      "sectionHints": {
-        "playable": "Komplett aus deinen eigenen Karten gebaut",
-        "meta": "Die für dich am leichtesten erreichbaren",
-        "official": "Structure Decks, Starter und Box-Listen zum Nachbauen",
-        "archetypes": "Ein Deck je Archetyp, den du schon stellen kannst"
-      }
+      "title": "Vorschläge"
     },
     "playable": {
       "best": "Beste Wahl",
@@ -1854,25 +1848,25 @@
     }
   },
   "tags": {
-    "title": "Etiketten",
-    "empty": "Noch keine Etiketten. Erstelle eines, um nach eigenem System zu ordnen.",
-    "newPlaceholder": "Neues Etikett…",
-    "create": "Erstellen",
-    "color": "Farbe",
     "clear": "Zurücksetzen",
-    "manage": "Etiketten verwalten",
-    "done": "Fertig",
-    "confirmDelete": "Etikett „{name}“ löschen?",
+    "color": "Farbe",
     "colors": {
-      "slate": "Grau",
-      "red": "Rot",
       "amber": "Bernstein",
-      "green": "Grün",
-      "teal": "Türkis",
       "blue": "Blau",
-      "violet": "Violett",
-      "pink": "Rosa"
-    }
+      "green": "Grün",
+      "pink": "Rosa",
+      "red": "Rot",
+      "slate": "Grau",
+      "teal": "Türkis",
+      "violet": "Violett"
+    },
+    "confirmDelete": "Etikett „{name}“ löschen?",
+    "create": "Erstellen",
+    "done": "Fertig",
+    "empty": "Noch keine Etiketten. Erstelle eines, um nach eigenem System zu ordnen.",
+    "manage": "Etiketten verwalten",
+    "newPlaceholder": "Neues Etikett…",
+    "title": "Etiketten"
   },
   "wishlist": {
     "priorities": {
