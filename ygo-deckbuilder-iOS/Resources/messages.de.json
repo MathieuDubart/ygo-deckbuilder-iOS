@@ -355,6 +355,30 @@
       "OCG": "OCG",
       "TCG": "TCG"
     },
+    "matchups": {
+      "hint": "Wo dieses Deck gewinnt und wo es leidet, nach dem was es spielt.",
+      "none": "Noch zu wenige Karten, um dieses Deck zu beurteilen.",
+      "reasons": {
+        "BALANCED": "Nichts gibt den Ausschlag.",
+        "BREAKERS": "Genug Massenentfernung, um ihr Feld zu räumen.",
+        "DISRUPTION": "Genug Interaktion, um rechtzeitig zu antworten.",
+        "FRAGILE_SETUP": "Dein Plan braucht ein Feld, und ihrer verhindert es.",
+        "HAND_TRAPS": "Genug Handkarten, um sie in ihrem Zug zu stoppen.",
+        "LOCK": "Deine Sperren legen ihren Plan lahm.",
+        "NO_BREAKERS": "Nichts, um ein aufgebautes Feld zu brechen.",
+        "NO_DISRUPTION": "Keine Interaktion: nichts antwortet ihnen.",
+        "NO_HAND_TRAPS": "Zu wenige Handkarten: sie spielen ihren Zug ungestört.",
+        "RESILIENCE": "Du kommst zurück, was sie dir auch nehmen."
+      },
+      "strengthTitle": "Stärke",
+      "title": "Matchups",
+      "verdicts": {
+        "BAD": "Im Nachteil",
+        "EVEN": "Ausgeglichen",
+        "GOOD": "Im Vorteil"
+      },
+      "vsStyle": "gegen {style}"
+    },
     "new": {
       "file": ".ydk-Datei",
       "fileHint": "Wähle eine Datei oder füge ihren Inhalt ein.",
@@ -369,6 +393,20 @@
         "ydk": "Importieren"
       },
       "title": "Neues Deck"
+    },
+    "styleHints": {
+      "BEATDOWN": "Schlägt früh zu und hört nicht auf.",
+      "COMBO": "Verkettet Karten, um in einem Zug ein Feld aufzubauen.",
+      "CONTROL": "Lässt kommen und antwortet.",
+      "MIDRANGE": "Spielt sein Spiel, ohne alles auf einen Zug zu setzen.",
+      "STUN": "Sperrt die Partie, statt zu antworten."
+    },
+    "styles": {
+      "BEATDOWN": "Beatdown",
+      "COMBO": "Combo",
+      "CONTROL": "Kontrolle",
+      "MIDRANGE": "Midrange",
+      "STUN": "Stun"
     },
     "view": {
       "allFormats": "Alle Formate",
@@ -401,6 +439,7 @@
         "created": "Erstellung",
         "name": "Name",
         "size": "Größe",
+        "strength": "Stärke",
         "updated": "Bearbeitung"
       },
       "title": "Meine Decks",
@@ -791,6 +830,7 @@
     },
     "deck": {
       "addCards": "Karten hinzufügen",
+      "analyse": "Analysieren",
       "emptyZone": "Tippe auf „Karten hinzufügen“ und dann auf eine Karte, um Details zu sehen und sie hinzuzufügen.",
       "exportYdk": ".ydk exportieren",
       "moveToSide": "Eine ins Side Deck verschieben",

@@ -254,3 +254,91 @@ extension FilterChip where Content == Text {
         self.init(isOn: isOn, action: action) { Text(title) }
     }
 }
+
+/**
+ Contre quoi un deck tient, et contre quoi il souffre.
+
+ L'ordre est celui du serveur, du plus favorable au moins favorable : on lit d'abord ce
+ qu'on sait battre. Chaque ligne porte sa raison, parce qu'un verdict sans cause ne se
+ corrige pas — « défavorable » n'apprend rien, « trop peu de cartes de main » se joue.
+ */
+struct MatchupList: View {
+    let matchups: [Matchup]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Spacing.xs) {
+            ForEach(Array(matchups.enumerated()), id: \.offset) { _, m in
+                HStack(alignment: .top, spacing: Spacing.s) {
+                    Image(systemName: Self.symbol(m.verdict))
+                        .font(.caption)
+                        .foregroundStyle(Self.tint(m.verdict))
+                        .frame(width: 16)
+                    VStack(alignment: .leading, spacing: 1) {
+                        // Un nom de deck du meta quand on le connaît, une forme de jeu sinon
+                        Text(m.opponent ?? t("decks.matchups.vsStyle",
+                                             ["style": t("decks.styles.\(m.against.rawValue)")]))
+                            .font(.caption.weight(.medium))
+                        Text(t("decks.matchups.reasons.\(m.reason)"))
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer(minLength: 0)
+                    Text(t("decks.matchups.verdicts.\(m.verdict.rawValue)"))
+                        .font(.caption2.weight(.medium))
+                        .foregroundStyle(Self.tint(m.verdict))
+                }
+                .padding(.vertical, 2)
+            }
+        }
+    }
+
+    private static func symbol(_ v: MatchupVerdict) -> String {
+        switch v {
+        case .good: "hand.thumbsup.fill"
+        case .even: "minus"
+        case .bad: "hand.thumbsdown.fill"
+        }
+    }
+
+    private static func tint(_ v: MatchupVerdict) -> Color {
+        switch v {
+        case .good: Theme.success
+        case .even: .secondary
+        case .bad: Theme.warning
+        }
+    }
+}
+
+/// La force complète d'un deck : sa note, sa forme, ses pronostics.
+struct DeckStrengthPanel: View {
+    let strength: DeckStrength?
+
+    var body: some View {
+        if let strength {
+            VStack(alignment: .leading, spacing: Spacing.m) {
+                HStack(alignment: .top, spacing: Spacing.m) {
+                    ScoreBadge(score: strength.score.score)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Pill(text: t("decks.styles.\(strength.profile.style.rawValue)"),
+                             tint: .accentColor)
+                        Text(t("decks.styleHints.\(strength.profile.style.rawValue)"))
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer(minLength: 0)
+                }
+                ScoreBreakdown(score: strength.score)
+                VStack(alignment: .leading, spacing: Spacing.xs) {
+                    SectionHeader(t("decks.matchups.title"), hint: t("decks.matchups.hint"))
+                    MatchupList(matchups: strength.matchups)
+                }
+            }
+        } else {
+            Text(t("decks.matchups.none"))
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+    }
+}

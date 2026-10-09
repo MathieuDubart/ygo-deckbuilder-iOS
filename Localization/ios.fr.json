@@ -15,7 +15,8 @@
     "emptyZone": "Touche « Ajouter des cartes », puis une carte pour voir son détail et l'ajouter.",
     "exportYdk": "Exporter en .ydk",
     "moveToSide": "En passer une au Side Deck",
-    "testInDuel": "Tester en duel"
+    "testInDuel": "Tester en duel",
+    "analyse": "Analyser"
   },
   "errors": {
     "decoding": "Réponse inattendue du serveur ({detail}). Le serveur est-il à jour ?",

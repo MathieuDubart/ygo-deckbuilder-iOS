@@ -355,6 +355,30 @@
       "OCG": "OCG",
       "TCG": "TCG"
     },
+    "matchups": {
+      "hint": "Where this deck wins and where it struggles, from what it plays.",
+      "none": "Not enough cards yet to judge this deck.",
+      "reasons": {
+        "BALANCED": "Nothing decides it either way.",
+        "BREAKERS": "Enough mass removal to clear what they set up.",
+        "DISRUPTION": "Enough interaction to answer them in time.",
+        "FRAGILE_SETUP": "Your plan needs a board, and theirs stops you building one.",
+        "HAND_TRAPS": "Enough hand traps to stop them on their turn.",
+        "LOCK": "Your floodgates shut their plan down.",
+        "NO_BREAKERS": "Nothing to clear an established board.",
+        "NO_DISRUPTION": "No interaction: nothing answers them.",
+        "NO_HAND_TRAPS": "Too few hand traps: they play their turn untouched.",
+        "RESILIENCE": "You come back from what they take away."
+      },
+      "strengthTitle": "Strength",
+      "title": "Matchups",
+      "verdicts": {
+        "BAD": "Unfavoured",
+        "EVEN": "Even",
+        "GOOD": "Favoured"
+      },
+      "vsStyle": "vs {style}"
+    },
     "new": {
       "file": ".ydk file",
       "fileHint": "Pick a file or paste its contents.",
@@ -369,6 +393,20 @@
         "ydk": "Import"
       },
       "title": "New deck"
+    },
+    "styleHints": {
+      "BEATDOWN": "Hits early and keeps hitting.",
+      "COMBO": "Chains plays to set a board in one turn.",
+      "CONTROL": "Lets the opponent come, and answers.",
+      "MIDRANGE": "Plays its game without betting everything on one turn.",
+      "STUN": "Locks the game down rather than answering it."
+    },
+    "styles": {
+      "BEATDOWN": "Beatdown",
+      "COMBO": "Combo",
+      "CONTROL": "Control",
+      "MIDRANGE": "Midrange",
+      "STUN": "Stun"
     },
     "view": {
       "allFormats": "All formats",
@@ -401,6 +439,7 @@
         "created": "Newest",
         "name": "Name",
         "size": "Size",
+        "strength": "Strength",
         "updated": "Last edited"
       },
       "title": "My decks",
@@ -791,6 +830,7 @@
     },
     "deck": {
       "addCards": "Add cards",
+      "analyse": "Analyse",
       "emptyZone": "Tap “Add cards”, then a card to see its details and add it.",
       "exportYdk": "Export .ydk",
       "moveToSide": "Move one to the Side Deck",

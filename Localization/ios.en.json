@@ -15,7 +15,8 @@
     "emptyZone": "Tap “Add cards”, then a card to see its details and add it.",
     "exportYdk": "Export .ydk",
     "moveToSide": "Move one to the Side Deck",
-    "testInDuel": "Test in a duel"
+    "testInDuel": "Test in a duel",
+    "analyse": "Analyse"
   },
   "errors": {
     "decoding": "Unexpected server response ({detail}). Is the server up to date?",
