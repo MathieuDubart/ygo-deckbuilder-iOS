@@ -1004,8 +1004,8 @@
       "labelCards": "Besessene Karten",
       "labelPrints": "Gezogene Drucke"
     },
-    "sameCode": "Seltenheit",
-    "sameCodeHint": "Du hast diese Nummer in einer anderen Seltenheit: das Feld zählt als erhalten.",
+    "sameCode": "✓",
+    "sameCodeHint": "Du hast diese Karte aus dieser Edition — unter einer anderen Nummer oder Seltenheit. Das Feld zählt als erhalten.",
     "sealed": "Versiegelt",
     "searchPlaceholder": "Edition finden: Name, Code (BETB)…",
     "shown": {

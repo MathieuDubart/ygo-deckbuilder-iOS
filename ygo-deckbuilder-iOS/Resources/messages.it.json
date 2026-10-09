@@ -1004,8 +1004,8 @@
       "labelCards": "Carte possedute",
       "labelPrints": "Stampe ottenute"
     },
-    "sameCode": "Rarità",
-    "sameCodeHint": "Hai questo numero, in un’altra rarità: la casella conta come ottenuta.",
+    "sameCode": "✓",
+    "sameCodeHint": "Hai questa carta da questa espansione — con un altro numero o un’altra rarità. La casella conta come ottenuta.",
     "sealed": "Sigillato",
     "searchPlaceholder": "Trova un’espansione: nome, codice (BETB)…",
     "shown": {

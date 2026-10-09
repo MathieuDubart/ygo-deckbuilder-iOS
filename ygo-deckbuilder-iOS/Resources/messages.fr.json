@@ -1004,8 +1004,8 @@
       "labelCards": "Cartes possédées",
       "labelPrints": "Impressions tirées"
     },
-    "sameCode": "Rareté",
-    "sameCodeHint": "Tu as ce numéro, dans une autre rareté : la case compte comme obtenue.",
+    "sameCode": "✓",
+    "sameCodeHint": "Tu as cette carte dans cette extension — sous un autre numéro ou une autre rareté. La case compte comme obtenue.",
     "sealed": "Scellé",
     "searchPlaceholder": "Trouver une extension : nom, code (BETB)…",
     "shown": {

@@ -266,9 +266,10 @@ private struct PrintTile: View {
         if card.owned > 0 {
             Pill(text: "×\(card.owned)", tint: Theme.success).padding(3)
         } else if card.sameCode > 0 {
-            // Le même numéro dans une autre rareté : la case est cochée, ce n'est
-            // simplement pas cette ligne-ci qu'on possède. Étiquette courte : `Pill` est en
-            // `fixedSize`, et un libellé long déborderait d’une vignette de 96 pt.
+            // La case est cochée par un exemplaire acheté ici, mais pas par cette ligne :
+            // une autre rareté du même numéro, ou un autre numéro de la même carte — un
+            // structure deck contient trois Dragon Blanc sous trois numéros. Une coche plutôt
+            // qu'un mot : `Pill` est en `fixedSize`, un libellé déborderait des 96 pt.
             Pill(text: t("releases.sameCode"), tint: Theme.success).padding(3)
         } else if card.ownedElsewhere > 0 {
             // Possédée, mais pas dans cette extension : utile à savoir avant de racheter
