@@ -56,6 +56,21 @@ nonisolated enum ProductKind: String, Codable, Hashable, Sendable, CaseIterable,
     }
 }
 
+/**
+ Ce produit est-il susceptible de contenir une ou plusieurs decklists officielles ?
+
+ Portage de `mayContainDecks` (packages/shared/src/domain/enums.ts) : à ne pas confondre avec
+ « jouable tel quel » — un coffret à deux decks n'est pas un deck, mais il en contient deux.
+ Sert uniquement à décider si on propose de créer les decks à l'import ; se tromper ne coûte
+ rien, le serveur ne crée que ce qu'il trouve.
+ */
+nonisolated func mayContainDecks(_ set: CardSet) -> Bool {
+    if set.kind == .structure || set.kind == .starter || set.kind == .box { return true }
+    let name = set.name.lowercased()
+    guard name.range(of: #"\bdecks?\b"#, options: .regularExpression) != nil else { return false }
+    return name.range(of: #"booster|pack"#, options: .regularExpression) == nil
+}
+
 nonisolated enum OfficialDeckKind: String, Codable, Hashable, Sendable, CaseIterable, Identifiable {
     case structure = "STRUCTURE", starter = "STARTER", box = "BOX"
     var id: String { rawValue }

@@ -2,8 +2,10 @@ import SwiftUI
 
 /// Ajout d'un produit entier : galerie filtrable par type, puis confirmation (exemplaires, langue).
 struct ImportProductView: View {
-    /// Produit ajouté (id de l'OwnedProduct) : la collection ouvre sa fiche.
-    var onImported: (String) -> Void
+    /// Import terminé. C'est la collection qui décide quoi ouvrir, et seulement une fois la
+    /// feuille refermée : demandée dans la même transaction que la fermeture, la destination
+    /// est avalée par SwiftUI (même piège que dans `DecksScreen` et `SuggestionsScreen`).
+    var onImported: (ImportSetResult) -> Void
 
     @Environment(AppState.self) private var app
     @Environment(\.dismiss) private var dismiss
@@ -56,9 +58,12 @@ struct ImportProductView: View {
                 await load()
             }
             .sheet(item: $chosen) { set in
-                ImportConfirmSheet(set: set) { productId in
+                ImportConfirmSheet(set: set) { result in
+                    onImported(result)
+                    // La feuille de confirmation d'abord : démonter la mère en laissant la
+                    // fille présentée est le genre d'empilement dont SwiftUI se venge.
+                    chosen = nil
                     dismiss()
-                    onImported(productId)
                 }
                 .presentationDetents([.medium, .large])
             }
@@ -99,7 +104,7 @@ private struct ProductTile: View {
 
 private struct ImportConfirmSheet: View {
     let set: CardSet
-    let onDone: (String) -> Void
+    let onDone: (ImportSetResult) -> Void
 
     @Environment(AppState.self) private var app
     @State private var copies = 1
@@ -107,6 +112,8 @@ private struct ImportConfirmSheet: View {
     /// dans la mauvaise langue est le plus gros dégât possible.
     @State private var language: CardLanguage = L10n.shared.current.cardLanguage
     @State private var languageSet = false
+    /// Coché d'avance : c'est ce qu'on veut dans presque tous les cas.
+    @State private var createDecks = true
     @State private var saving = false
     @State private var error: String?
 
@@ -135,6 +142,15 @@ private struct ImportConfirmSheet: View {
                     }
                     Picker(t("collection.import.confirm.language"), selection: $language) {
                         ForEach(CardLanguage.allCases) { Text($0.rawValue).tag($0) }
+                    }
+                }
+                // Seulement pour un produit susceptible de contenir une liste : un booster
+                // n'en a pas. Se tromper ne coûte rien, le serveur ne crée que ce qu'il trouve.
+                if mayContainDecks(set) {
+                    Section {
+                        Toggle(t("collection.import.confirm.createDecks"), isOn: $createDecks)
+                    } footer: {
+                        Text(t("collection.import.confirm.createDecksHint"))
                     }
                 }
                 if let error {
@@ -169,9 +185,12 @@ private struct ImportConfirmSheet: View {
         saving = true
         defer { saving = false }
         do {
-            let result = try await app.api.importSet(ImportSetBody(setName: set.name, copies: copies, language: language))
+            let result = try await app.api.importSet(
+                ImportSetBody(
+                    setName: set.name, copies: copies, language: language,
+                    createDecks: mayContainDecks(set) && createDecks))
             app.collectionChanged()
-            onDone(result.productId)
+            onDone(result)
         } catch {
             self.error = error.localizedDescription
         }

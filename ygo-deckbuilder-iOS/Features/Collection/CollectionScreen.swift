@@ -17,6 +17,8 @@ struct CollectionScreen: View {
     @State private var refreshToken = 0
     /// Partagé entre la liste des extensions et leurs fiches : les deux doivent compter pareil.
     @State private var anyEdition = false
+    /// Résultat du dernier import, consommé à la fermeture de la feuille par `openImported`.
+    @State private var imported: ImportSetResult?
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -63,11 +65,8 @@ struct CollectionScreen: View {
             stats = await .fetch(stats) { try await app.api.collectionStats() }
         }
         .cardDetailSheet($selected)
-        .sheet(isPresented: $importing) {
-            ImportProductView { productId in
-                tab = .products
-                path.append(ProductRoute(id: productId))
-            }
+        .sheet(isPresented: $importing, onDismiss: openImported) {
+            ImportProductView { imported = $0 }
         }
         .sheet(isPresented: $choosingLanguage) { CollectionLanguageView() }
         .fullScreenCover(isPresented: $scanning) {
@@ -75,6 +74,21 @@ struct CollectionScreen: View {
         }
         .onChange(of: app.rootTaps) {
             if app.selectedTab == .collection { path = NavigationPath() }
+        }
+    }
+
+    /// Où atterrir après un import, une fois la feuille refermée. Un deck monté est la seule
+    /// preuve visible que la case « ajouter aussi son deck » a servi : on l'ouvre, comme le
+    /// fait déjà « créer le deck » sur la fiche produit. Plusieurs listes (coffret à deux
+    /// decks) : aucune n'est « la » bonne, on reste donc sur le produit, qui les porte toutes.
+    private func openImported() {
+        guard let result = imported else { return }
+        imported = nil
+        if result.decks.count == 1, let deck = result.decks.first {
+            app.openDeck(deck.id)
+        } else {
+            tab = .products
+            path.append(ProductRoute(id: result.productId))
         }
     }
 

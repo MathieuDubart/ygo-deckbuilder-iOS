@@ -174,6 +174,9 @@
       "confirm": {
         "add": "Adicionar este produto",
         "copiesEach": "Cópias de cada",
+        "createDecks": "Adicionar também o seu deck aos meus",
+        "createDecksHint": "A versão de três caixas: as cartas-chave em triplo, o enchimento cortado. O que te falta aparece no builder.",
+        "decksToast": "{count, plural, one {Deck adicionado: {name}} other {# decks adicionados}}",
         "description": "Os <strong>{count, plural, one {# card} other {# cards}}</strong> dele serão adicionados à sua coleção, com as quantidades oficiais do produto quando a gente as encontra (lista da Yugipedia); senão, 1 cópia de cada. O produto vai aparecer na aba “Produtos” da sua coleção.",
         "language": "Idioma",
         "releasedOn": "lançado em {date}",
@@ -798,7 +801,7 @@
     "releases": {
       "byPrint": "Por impressão exata",
       "legend": {
-        "elsewhere": "Você tem a carta, mas de outra edição ou outra raridade.",
+        "elsewhere": "Você tem a carta, mas de outra edição.",
         "missing": "Você não tem esta carta.",
         "owned": "Você tem esta impressão exata — o número diz quantas."
       },
@@ -1001,6 +1004,8 @@
       "labelCards": "Cartas possuídas",
       "labelPrints": "Impressões obtidas"
     },
+    "sameCode": "Raridade",
+    "sameCodeHint": "Tens este número, noutra raridade: a casa conta como obtida.",
     "sealed": "Lacrado",
     "searchPlaceholder": "Encontrar uma edição: nome, código (BETB)…",
     "shown": {

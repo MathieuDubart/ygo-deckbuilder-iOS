@@ -64,14 +64,26 @@ nonisolated struct ReleaseCard: Decodable, Hashable, Sendable, Identifiable {
     let price: Double?
     /// Exemplaires de cette impression précise.
     let owned: Int
-    /// Exemplaires de la même carte venus d'une autre impression.
+    /**
+     Exemplaires du MÊME numéro, dans une autre rareté. La case de la checklist est alors
+     cochée même si ce n'est pas cette ligne-ci qu'on possède : une carte éditée en Ultra et
+     en Secret reste la carte n° 1 de l'extension.
+     */
+    let ownedSameCode: Int?
+    /// Exemplaires de la même carte venus d'une AUTRE extension.
     let ownedElsewhere: Int
 
     var id: String { printId }
+    /// Serveur antérieur à la distinction : on ne compte alors rien de ce côté.
+    var sameCode: Int { ownedSameCode ?? 0 }
 
-    /// Compte-t-elle comme tirée ? Avec « toutes éditions », la posséder ailleurs suffit.
+    /**
+     Compte-t-elle comme tirée ? La case suit le NUMÉRO : l'avoir dans une autre rareté
+     suffit, exactement comme dans le pourcentage d'avancement. Avec « toutes éditions », la
+     posséder dans une autre extension suffit aussi.
+     */
     func isOwned(anyEdition: Bool) -> Bool {
-        owned > 0 || (anyEdition && ownedElsewhere > 0)
+        owned > 0 || sameCode > 0 || (anyEdition && ownedElsewhere > 0)
     }
 }
 

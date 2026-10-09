@@ -39,7 +39,7 @@
   "releases": {
     "legend": {
       "owned": "Você tem esta impressão exata — o número diz quantas.",
-      "elsewhere": "Você tem a carta, mas de outra edição ou outra raridade.",
+      "elsewhere": "Você tem a carta, mas de outra edição.",
       "missing": "Você não tem esta carta."
     },
     "meter": "{owned} de {total}",

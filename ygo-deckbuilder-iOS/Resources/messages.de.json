@@ -174,6 +174,9 @@
       "confirm": {
         "add": "Produkt hinzufügen",
         "copiesEach": "Exemplare von jeder",
+        "createDecks": "Sein Deck zu meinen Decks hinzufügen",
+        "createDecksHint": "Die Drei-Boxen-Variante: Schlüsselkarten dreifach, Füllmaterial gestrichen. Was dir fehlt, zeigt der Builder.",
+        "decksToast": "{count, plural, one {Deck hinzugefügt: {name}} other {# Decks hinzugefügt}}",
         "description": "Die <strong>{count, plural, one {# Karte} other {# Karten}}</strong> werden deiner Sammlung hinzugefügt – mit den offiziellen Mengen des Produkts, wenn wir sie finden (Yugipedia-Liste), sonst 1 Exemplar pro Karte. Das Produkt erscheint im Tab „Produkte“ deiner Sammlung.",
         "language": "Sprache",
         "releasedOn": "erschienen am {date}",
@@ -798,7 +801,7 @@
     "releases": {
       "byPrint": "Nach genauem Druck",
       "legend": {
-        "elsewhere": "Du hast die Karte, aber aus einer anderen Edition oder Seltenheit.",
+        "elsewhere": "Du hast die Karte, aber aus einer anderen Edition.",
         "missing": "Diese Karte hast du gar nicht.",
         "owned": "Du hast genau diesen Druck — die Zahl sagt wie viele."
       },
@@ -1001,6 +1004,8 @@
       "labelCards": "Besessene Karten",
       "labelPrints": "Gezogene Drucke"
     },
+    "sameCode": "Seltenheit",
+    "sameCodeHint": "Du hast diese Nummer in einer anderen Seltenheit: das Feld zählt als erhalten.",
     "sealed": "Versiegelt",
     "searchPlaceholder": "Edition finden: Name, Code (BETB)…",
     "shown": {
