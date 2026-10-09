@@ -52,8 +52,41 @@ nonisolated struct DeckListItem: Decodable, Hashable, Sendable, Identifiable {
     let extraCount: Int
     let sideCount: Int
     let coverImageUrl: String?
+    /// Étiquettes posées dessus. Serveur antérieur : la clé est absente, pas vide.
+    let tagIds: [String]?
+    /// Monté depuis la liste officielle d'un produit, et non écrit à la main.
+    let fromProduct: Bool?
 
     var coverURL: URL? { coverImageUrl.flatMap(URL.init(string:)) }
+    var tags: [String] { tagIds ?? [] }
+    var isFromProduct: Bool { fromProduct ?? false }
+}
+
+/// Filtres de « Mes decks ». Mêmes outils que la collection : recherche, étiquettes
+/// cumulées (ET, pas OU) et tri.
+nonisolated struct DecksQuery: Hashable, Sendable {
+    nonisolated enum Sort: String, Hashable, Sendable, CaseIterable, Identifiable {
+        case updated, created, name, size
+        var id: String { rawValue }
+    }
+
+    var q: String = ""
+    var tagIds: [String] = []
+    var format: DeckFormat?
+    var sort: Sort = .updated
+
+    var items: [URLQueryItem] {
+        var out: [URLQueryItem] = [.init(name: "sort", value: sort.rawValue)]
+        let text = q.trimmingCharacters(in: .whitespaces)
+        if !text.isEmpty { out.append(.init(name: "q", value: text)) }
+        if let format { out.append(.init(name: "format", value: format.rawValue)) }
+        if !tagIds.isEmpty { out.append(.init(name: "tagIds", value: tagIds.joined(separator: ","))) }
+        return out
+    }
+
+    var isFiltering: Bool {
+        !q.trimmingCharacters(in: .whitespaces).isEmpty || format != nil || !tagIds.isEmpty
+    }
 }
 
 nonisolated struct CreateDeckBody: Encodable, Sendable {

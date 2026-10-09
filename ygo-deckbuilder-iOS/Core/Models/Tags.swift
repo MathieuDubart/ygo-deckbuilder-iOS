@@ -22,6 +22,10 @@ nonisolated struct Tag: Codable, Hashable, Sendable, Identifiable {
     let cardCount: Int
     /// Extensions portant cette étiquette.
     let setCount: Int
+    /// Decks portant cette étiquette. Serveur antérieur : la clé est absente.
+    let deckCount: Int?
+
+    var decks: Int { deckCount ?? 0 }
 }
 
 nonisolated struct CreateTagBody: Encodable, Sendable {

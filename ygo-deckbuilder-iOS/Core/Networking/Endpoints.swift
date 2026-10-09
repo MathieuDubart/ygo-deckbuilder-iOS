@@ -128,6 +128,12 @@ extension APIClient {
         try await send(on ? .put : .delete, "tags/\(tagId)/sets/\(setId)")
     }
 
+    /// Pose ou retire l'étiquette sur un deck.
+    @discardableResult
+    func tagDeck(_ tagId: String, deckId: String, on: Bool) async throws -> Tag {
+        try await send(on ? .put : .delete, "tags/\(tagId)/decks/\(deckId)")
+    }
+
     // MARK: Langue de la collection
 
     /// Réglage et aperçu. `target` chiffre une langue qu'on envisage sans l'avoir choisie.
@@ -167,7 +173,9 @@ extension APIClient {
 
     // MARK: Decks
 
-    func decks() async throws -> [DeckListItem] { try await get("decks") }
+    func decks(_ query: DecksQuery = .init()) async throws -> [DeckListItem] {
+        try await get("decks", query: query.items)
+    }
 
     func deck(_ id: String) async throws -> Deck { try await get("decks/\(id)") }
 
