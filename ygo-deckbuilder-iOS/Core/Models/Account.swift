@@ -1,5 +1,7 @@
 import Foundation
 
+/// `Codable` et non `Decodable` : c'est l'encodage synthétisé qui fournit les `CodingKeys`
+/// dont l'init manuel ci-dessous a besoin.
 nonisolated struct PublicUser: Codable, Hashable, Sendable {
     nonisolated enum Role: String, Codable, Sendable { case user = "USER", admin = "ADMIN" }
 
@@ -10,8 +12,30 @@ nonisolated struct PublicUser: Codable, Hashable, Sendable {
     let createdAt: String
     /// Chemin servi par l'API (`/uploads/…`), absent des versions antérieures du serveur.
     let avatarUrl: String?
+    /**
+     Langue dans laquelle l'utilisateur range sa collection, indépendante de celle de
+     l'interface. `nil` tant qu'il n'a rien choisi — ou si le serveur est antérieur au
+     réglage : la distinction compte, on ne propose pas de normaliser une collection vers
+     une langue que personne n'a demandée.
+     */
+    let collectionLanguage: CardLanguage?
 
     var isAdmin: Bool { role == .admin }
+
+    /// Une langue qu'on ne connaît pas encore vaut « pas de choix » : elle ne doit pas faire
+    /// échouer le décodage de la session, c'est-à-dire empêcher de se connecter.
+    init(from decoder: any Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(String.self, forKey: .id)
+        email = try c.decode(String.self, forKey: .email)
+        username = try c.decode(String.self, forKey: .username)
+        role = try c.decode(Role.self, forKey: .role)
+        createdAt = try c.decode(String.self, forKey: .createdAt)
+        avatarUrl = try c.decodeIfPresent(String.self, forKey: .avatarUrl)
+        // Absente, nulle, ou d'une valeur qu'on ne connaît pas encore : dans les trois cas
+        // « pas de choix », jamais une erreur de décodage.
+        collectionLanguage = try? c.decode(CardLanguage.self, forKey: .collectionLanguage)
+    }
 }
 
 /// Réponse de /auth/login, /auth/register et /auth/refresh avec `X-Auth-Mode: token`.

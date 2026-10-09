@@ -225,6 +225,20 @@
         "rarity": "Raridade",
         "newest": "Adicionadas recentemente"
       }
+    },
+    "language": {
+      "alreadyUniform": "Já está tudo em {language}.",
+      "copies": "{count} em {piles, plural, one {# pilha} other {# pilhas}}",
+      "done": "{count, plural, one {# pilha movida} other {# pilhas movidas}}{merged, plural, =0 {} other {, # fundidas}}.",
+      "label": "Idioma de arrumação",
+      "neverChosen": "Nunca escolhido — as cartas novas seguem o idioma da interface.",
+      "normalize": "Passar tudo para {language} ({count})",
+      "onlyFuture": "Só para as próximas",
+      "saved": "As próximas cartas serão arrumadas em {language}.",
+      "title": "Idioma da coleção",
+      "willMerge": "{count, plural, one {# pilha junta-se a outra} other {# pilhas juntam-se a outras}} — os exemplares somam-se, nada se perde.",
+      "willRetag": "{count, plural, one {# pilha muda de idioma} other {# pilhas mudam de idioma}}.",
+      "breakdown": "Repartição"
     }
   },
   "common": {
@@ -813,12 +827,16 @@
         "open": "{count, plural, one {Conferir # carta} other {Conferir # cartas}}",
         "openEmpty": "A fila está vazia",
         "search": "Procurar uma carta",
-        "title": "Confere antes de adicionar"
+        "title": "Confere antes de adicionar",
+        "language": "Idioma deste lote",
+        "languageHint": "Arrumado no idioma da tua coleção. Muda aqui para um lote comprado noutro."
       },
       "title": "Digitalizar cartas",
       "unavailable": "A digitalização não está disponível",
       "unavailableHint": "Permite o acesso à câmara nas Definições ou usa um dispositivo com câmara.",
-      "undo": "Desfazer a última leitura"
+      "undo": "Desfazer a última leitura",
+      "unknownNumber": "A expansão é conhecida, mas não o número {code}.",
+      "unknownSet": "A expansão de {code} ainda não está no catálogo — e não foi possível obtê-la."
     },
     "server": {
       "change": "Mudar de servidor",

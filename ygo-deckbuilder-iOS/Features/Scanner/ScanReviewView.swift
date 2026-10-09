@@ -13,6 +13,7 @@ struct ScanReviewView: View {
 
     var body: some View {
         List {
+            if !batch.isEmpty { languageSection }
             ForEach(batch.drafts) { draft in
                 NavigationLink {
                     ScanDraftEditor(draft: draft)
@@ -81,6 +82,44 @@ struct ScanReviewView: View {
         }
         .padding(Spacing.l)
         .background(.bar)
+    }
+
+    /// Les langues présentes dans la file, la plus représentée d'abord.
+    private var languages: [(language: CardLanguage, count: Int)] {
+        Dictionary(grouping: batch.drafts, by: \.language)
+            .map { (language: $0.key, count: $0.value.count) }
+            .sorted { ($0.count, $0.language.rawValue) > ($1.count, $1.language.rawValue) }
+    }
+
+    /**
+     La langue du lot. Le scan range tout dans la langue de collection ; ici on corrige
+     l'exception — un lot acheté dans une autre langue — sans reprendre chaque carte. Les
+     cartes déjà corrigées une à une sont écrasées, d'où la mention du compte par langue.
+     */
+    @ViewBuilder
+    private var languageSection: some View {
+        let rows = languages
+        Section {
+            Picker(t("ios.scan.review.language"), selection: languageBinding) {
+                ForEach(CardLanguage.allCases) { Text($0.rawValue).tag($0) }
+            }
+        } footer: {
+            Text(
+                rows.count > 1
+                    ? rows.map { "\($0.language.rawValue) × \($0.count)" }
+                        .joined(separator: " · ")
+                    : t("ios.scan.review.languageHint"))
+        }
+    }
+
+    /// Montre la langue du lot quand il n'en a qu'une, et l'impose à tous quand on la change.
+    private var languageBinding: Binding<CardLanguage> {
+        Binding(
+            // Sur un lot mélangé on montre la langue dominante, pas celle de la collection :
+            // afficher une valeur qu'on ne peut pas re-sélectionner enfermerait l'utilisateur,
+            // SwiftUI ne considérant pas comme un changement le choix de la valeur affichée.
+            get: { languages.first?.language ?? app.collectionLanguage },
+            set: { batch.setLanguage($0) })
     }
 }
 
@@ -190,7 +229,9 @@ private struct ScanManualAddView: View {
         busy = card.id
         defer { busy = nil }
         let detail = try? await app.api.card(card.id)
-        batch.add(card: detail?.summary ?? card, prints: detail?.prints ?? [])
+        batch.add(
+            card: detail?.summary ?? card, prints: detail?.prints ?? [],
+            language: app.collectionLanguage)
         added += 1
     }
 }

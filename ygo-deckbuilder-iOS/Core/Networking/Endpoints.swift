@@ -128,6 +128,34 @@ extension APIClient {
         try await send(on ? .put : .delete, "tags/\(tagId)/sets/\(setId)")
     }
 
+    // MARK: Langue de la collection
+
+    /// Réglage et aperçu. `target` chiffre une langue qu'on envisage sans l'avoir choisie.
+    func collectionLanguage(target: CardLanguage? = nil) async throws -> CollectionLanguageState {
+        try await get(
+            "collection/language",
+            query: target.map { [URLQueryItem(name: "target", value: $0.rawValue)] } ?? [])
+    }
+
+    @discardableResult
+    func setCollectionLanguage(_ body: CollectionLanguageBody) async throws
+        -> CollectionLanguageResult
+    {
+        try await send(.put, "collection/language", body: body)
+    }
+
+    /**
+     Un code imprimé → la carte, en une requête. Le serveur rattrape au passage une extension
+     absente de son catalogue : une sortie récente ne doit pas être une impasse pour le scan.
+     */
+    func cardByPrintCode(_ code: String) async throws -> PrintLookup {
+        // Surtout pas de pourcent-encodage : le tiret est légal dans un chemin, et le `%`
+        // d'un `%2D` serait ré-encodé par `URL.appending(path:)` — le serveur recevrait un
+        // code qui ne correspond à rien. Un code lu ne contient de toute façon que des
+        // lettres, des chiffres et un tiret ; on écarte seulement ce qui le découperait.
+        try await get("cards/by-print/\(code.replacingOccurrences(of: "/", with: ""))")
+    }
+
     // MARK: Banlist
 
     /**

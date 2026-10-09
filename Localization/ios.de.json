@@ -64,12 +64,16 @@
       "open": "{count, plural, one {# Karte prüfen} other {# Karten prüfen}}",
       "openEmpty": "Die Liste ist leer",
       "search": "Karte suchen",
-      "title": "Vor dem Hinzufügen prüfen"
+      "title": "Vor dem Hinzufügen prüfen",
+      "language": "Sprache dieses Stapels",
+      "languageHint": "In der Sprache deiner Sammlung einsortiert. Hier ändern, wenn ein Stapel in einer anderen gekauft wurde."
     },
     "title": "Karten scannen",
     "unavailable": "Scannen ist nicht verfügbar",
     "unavailableHint": "Erlaube den Kamerazugriff in den Einstellungen oder nutze ein Gerät mit Kamera.",
-    "undo": "Letzten Scan rückgängig machen"
+    "undo": "Letzten Scan rückgängig machen",
+    "unknownNumber": "Die Edition ist bekannt, die Nummer {code} nicht.",
+    "unknownSet": "Die Edition von {code} ist noch nicht im Katalog — und konnte nicht geholt werden."
   },
   "server": {
     "change": "Server wechseln",
