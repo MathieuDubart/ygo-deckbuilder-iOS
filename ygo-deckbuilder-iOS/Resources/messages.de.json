@@ -1,4 +1,81 @@
 {
+  "admin": {
+    "counts": {
+      "cards": "Katalog",
+      "copies": "Karten im Besitz",
+      "decks": "Decks",
+      "prints": "Drucke",
+      "products": "Produkte",
+      "sets": "Editionen",
+      "uploads": "Bilder",
+      "users": "Konten"
+    },
+    "denied": {
+      "hint": "Dein Konto hat keinen Zugriff auf diese Seite.",
+      "title": "Dem Administrator der Instanz vorbehalten"
+    },
+    "description": "Wer ein Konto hat, ob die Synchronisierungen laufen, wie es dem Server geht.",
+    "health": {
+      "database": "Datenbank erreichbar",
+      "duel": "Duell-Daten",
+      "duelData": {
+        "DISABLED": "Simulator aus",
+        "MISSING": "Fehlen",
+        "READY": "Heruntergeladen"
+      },
+      "node": "Node",
+      "uploads": "Bildordner beschreibbar",
+      "uptime": "Online seit"
+    },
+    "roles": {
+      "ADMIN": "Admin",
+      "USER": "Mitglied"
+    },
+    "syncs": {
+      "count": "{count} Einträge",
+      "done": "{id} abgeschlossen",
+      "failed": "Fehlgeschlagen",
+      "lastRun": "Zuletzt am {date}",
+      "never": "Nie gelaufen",
+      "neverHint": "Ist auf dieser Instanz nie gelaufen",
+      "none": "Noch keine Synchronisierung erfasst",
+      "run": "Starten",
+      "runHint": "Kann mehrere Minuten dauern: das Ergebnis kommt erst am Ende."
+    },
+    "tabs": {
+      "instance": "Instanz",
+      "label": "Bereich",
+      "syncs": "Synchros",
+      "users": "Konten"
+    },
+    "title": "Verwaltung",
+    "users": {
+      "allRoles": "Alle Rollen",
+      "cannotDemoteEnv": "Dieses Konto ist das aus ADMIN_EMAIL: es würde die Rolle bei der nächsten Anmeldung zurückbekommen.",
+      "cannotDemoteSelf": "Du kannst dir deine eigene Administratorrolle nicht entziehen.",
+      "copies": "Karten",
+      "decks": "Decks",
+      "demote": "Admin entziehen",
+      "demoted": "{name} ist kein Administrator mehr",
+      "fromEnv": "ADMIN_EMAIL",
+      "joined": "Dabei seit {date}",
+      "lastSeen": "Gesehen am {date}",
+      "neverSeen": "Nie angemeldet",
+      "none": "Kein Konto passt",
+      "noneHint": "Nimm einen Filter weg und versuch es nochmal.",
+      "products": "Produkte",
+      "promote": "Zum Admin machen",
+      "promoted": "{name} ist jetzt Administrator",
+      "role": "Rolle",
+      "search": "Benutzernamen oder E-Mail suchen…",
+      "sorts": {
+        "cards": "Karten",
+        "decks": "Decks",
+        "name": "Name",
+        "recent": "Registrierung"
+      }
+    }
+  },
   "auth": {
     "errors": {
       "email": "Gib eine gültige E-Mail-Adresse ein",
@@ -925,6 +1002,7 @@
     "metaDescription": "Deine Yu-Gi-Oh!-Sammlung, deine Decks und was dir fehlt, um Meta zu spielen.",
     "metaTitle": "YGO Deck Builder",
     "nav": {
+      "admin": "Admin",
       "catalog": "Katalog",
       "collection": "Sammlung",
       "decks": "Decks",
@@ -936,6 +1014,7 @@
       "wishlist": "Wunschliste"
     },
     "pages": {
+      "admin": "Verwaltung",
       "catalog": "Katalog",
       "collection": "Sammlung",
       "deckNotFound": "Deck nicht gefunden.",
