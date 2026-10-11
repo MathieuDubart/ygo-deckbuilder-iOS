@@ -1063,6 +1063,16 @@
         "unverifiedHint": "Liste officielle introuvable : 1 exemplaire compté par carte",
         "verified": "Quantités officielles"
       },
+      "officialDecks": {
+        "confirmForce": "{count, plural, one {Remonter ce deck} other {Remonter ces # decks}} depuis la liste officielle ? Les cartes que tu as ajoutées ou retirées toi-même seront perdues — le nom et les notes restent.",
+        "deleted": "Absent de tes decks",
+        "done": "{count, plural, one {# deck remonté} other {# decks remontés}}.",
+        "hint": "Vendu complet : sa liste est le deck.",
+        "hintTripled": "Un structure deck est monté dans sa version à trois boîtes.",
+        "rebuildAll": "Remonter à neuf",
+        "rebuildMissing": "{count, plural, one {Remonter le deck} other {Remonter les # decks}}",
+        "title": "Decks de ce produit"
+      },
       "tabs": {
         "content": "Contenu",
         "guide": "Comment le jouer"

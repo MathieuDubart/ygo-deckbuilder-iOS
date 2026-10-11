@@ -82,6 +82,11 @@ extension APIClient {
 
     func ownedProduct(_ id: String) async throws -> OwnedProductDetail { try await get("collection/products/\(id)") }
 
+    /// Repose les decks officiels du produit. `force` remonte aussi ceux qui sont encore là.
+    func rebuildProductDecks(_ id: String, force: Bool = false) async throws -> RebuildProductDecksResult {
+        try await send(.post, "collection/products/\(id)/decks", body: RebuildProductDecksBody(force: force))
+    }
+
     func removeProduct(_ id: String, removeCards: Bool) async throws {
         try await perform(.delete, "collection/products/\(id)", query: [.init(name: "removeCards", value: String(removeCards))])
     }

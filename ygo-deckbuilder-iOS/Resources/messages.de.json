@@ -1063,6 +1063,16 @@
         "unverifiedHint": "Offizielle Liste nicht gefunden: 1 Exemplar pro Karte gezählt",
         "verified": "Offizielle Mengen"
       },
+      "officialDecks": {
+        "confirmForce": "{count, plural, one {Dieses Deck} other {Diese # Decks}} aus der offiziellen Liste neu bauen? Karten, die du selbst hinzugefügt oder entfernt hast, gehen verloren – Name und Notizen bleiben.",
+        "deleted": "Nicht in deinen Decks",
+        "done": "{count, plural, one {# Deck neu gebaut} other {# Decks neu gebaut}}.",
+        "hint": "Komplett verkauft: seine Liste ist das Deck.",
+        "hintTripled": "Ein Structure Deck wird in der Drei-Boxen-Variante gebaut.",
+        "rebuildAll": "Von Grund auf neu bauen",
+        "rebuildMissing": "{count, plural, one {Deck neu bauen} other {# Decks neu bauen}}",
+        "title": "Decks aus diesem Produkt"
+      },
       "tabs": {
         "content": "Inhalt",
         "guide": "So spielst du es"

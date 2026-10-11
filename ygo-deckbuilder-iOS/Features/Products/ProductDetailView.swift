@@ -18,12 +18,17 @@ struct ProductDetailView: View {
     @State private var copied = false
     @State private var actionError: String?
     @State private var creating = false
+    @State private var confirmRebuild = false
+    @State private var rebuilding = false
+    /// Decks remontés par le dernier appui, pour le dire sans occuper l'écran après coup.
+    @State private var rebuilt = 0
 
     var body: some View {
         ScrollView {
             LoadableView(state: product, retry: load) { product in
                 VStack(alignment: .leading, spacing: Spacing.xl) {
                     header(product)
+                    officialDecks(product)
                     if product.isDeck {
                         Picker("", selection: $tab) {
                             Label(t("products.dialog.tabs.content"), systemImage: "checklist").tag(Tab.content)
@@ -46,7 +51,11 @@ struct ProductDetailView: View {
         }
         .navigationTitle(product.value?.set.name ?? t("products.dialog.fallbackTitle"))
         .navigationBarTitleDisplayMode(.inline)
-        .task(id: app.collectionVersion) { await load() }
+        .task(id: app.collectionVersion) {
+            // Le compte rendu du remontage appartient à l'appui qui l'a produit, pas à la fiche
+            rebuilt = 0
+            await load()
+        }
         .cardDetailSheet($selected)
         .confirmationDialog(
             t("products.dialog.header.confirmRemove", ["name": product.value?.set.name ?? ""]),
@@ -140,6 +149,95 @@ struct ProductDetailView: View {
         }
     }
 
+    // MARK: - Decks du produit
+
+    /// Les decks officiels du produit, et de quoi les remonter. Supprimer un deck est définitif
+    /// partout ailleurs ; celui-ci n'est que le résultat d'un calcul sur une liste connue, donc
+    /// il n'y a aucune raison de devoir retirer puis réimporter le produit pour le récupérer.
+    @ViewBuilder
+    private func officialDecks(_ p: OwnedProductDetail) -> some View {
+        let decks = p.decks
+        if !decks.isEmpty {
+            let missing = decks.count { $0.deckId == nil }
+            VStack(alignment: .leading, spacing: Spacing.s) {
+                SectionHeader(
+                    t("products.dialog.officialDecks.title"),
+                    hint: decks.contains { $0.copies > 1 }
+                        ? t("products.dialog.officialDecks.hintTripled")
+                        : t("products.dialog.officialDecks.hint"))
+                ForEach(decks) { deck in officialDeckRow(deck) }
+
+                HStack(spacing: Spacing.s) {
+                    if missing > 0 {
+                        Button {
+                            Task { await rebuildDecks(force: false) }
+                        } label: {
+                            Label(
+                                t("products.dialog.officialDecks.rebuildMissing", ["count": missing]),
+                                systemImage: "arrow.clockwise")
+                        }
+                        .buttonStyle(.glassProminent)
+                    } else {
+                        Button {
+                            confirmRebuild = true
+                        } label: {
+                            Label(t("products.dialog.officialDecks.rebuildAll"), systemImage: "arrow.clockwise")
+                        }
+                        .buttonStyle(.glass)
+                    }
+                    if rebuilding { ProgressView().controlSize(.small) }
+                    if rebuilt > 0 && !rebuilding {
+                        Text(t("products.dialog.officialDecks.done", ["count": rebuilt]))
+                            .font(.caption)
+                            .foregroundStyle(Theme.success)
+                    }
+                }
+                .disabled(rebuilding)
+            }
+            .confirmationDialog(
+                t("products.dialog.officialDecks.title"),
+                isPresented: $confirmRebuild
+            ) {
+                Button(t("products.dialog.officialDecks.rebuildAll"), role: .destructive) {
+                    Task { await rebuildDecks(force: true) }
+                }
+            } message: {
+                Text(t("products.dialog.officialDecks.confirmForce", ["count": decks.count]))
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func officialDeckRow(_ deck: ProductOfficialDeck) -> some View {
+        if let deckId = deck.deckId {
+            Button { app.openDeck(deckId) } label: { officialDeckLabel(deck) }
+                .buttonStyle(.plain)
+        } else {
+            officialDeckLabel(deck)
+        }
+    }
+
+    private func officialDeckLabel(_ deck: ProductOfficialDeck) -> some View {
+        let present = deck.deckId != nil
+        return HStack(spacing: Spacing.s) {
+            Image(systemName: present ? "checkmark.circle.fill" : "circle.dashed")
+                .foregroundStyle(present ? Theme.success : .secondary)
+            Text(deck.name)
+                .font(.subheadline)
+                .foregroundStyle(present ? Color.primary : .secondary)
+                .fixedSize(horizontal: false, vertical: true)
+            Spacer(minLength: Spacing.s)
+            if present {
+                Image(systemName: "chevron.right").font(.caption).foregroundStyle(.tertiary)
+            } else {
+                Text(t("products.dialog.officialDecks.deleted"))
+                    .font(.caption)
+                    .foregroundStyle(Theme.warning)
+            }
+        }
+        .contentShape(.rect)
+    }
+
     // MARK: - Contenu
 
     private static let groups: [(key: String, match: (OwnedProductCard) -> Bool)] = [
@@ -224,6 +322,23 @@ struct ProductDetailView: View {
         do {
             let deck = try await app.api.createDeck(CreateDeckBody(name: String(p.set.name.prefix(80)), cards: deckCards(p)))
             app.openDeck(deck.id)
+        } catch {
+            actionError = error.localizedDescription
+        }
+    }
+
+    /// Repose les decks du produit. La fiche est rechargée : c'est elle qui dit lesquels sont
+    /// là, et la réponse vient de la rendre fausse.
+    private func rebuildDecks(force: Bool) async {
+        rebuilding = true
+        actionError = nil
+        rebuilt = 0
+        defer { rebuilding = false }
+        do {
+            let result = try await app.api.rebuildProductDecks(productId, force: force)
+            rebuilt = result.total
+            app.decksChanged()
+            await load()
         } catch {
             actionError = error.localizedDescription
         }

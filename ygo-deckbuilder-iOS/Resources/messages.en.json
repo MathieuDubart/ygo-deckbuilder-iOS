@@ -1063,6 +1063,16 @@
         "unverifiedHint": "Official list not found: 1 copy counted per card",
         "verified": "Official quantities"
       },
+      "officialDecks": {
+        "confirmForce": "{count, plural, one {Rebuild this deck} other {Rebuild these # decks}} from the official list? Any card you added or removed yourself will be lost — the name and the notes stay.",
+        "deleted": "Not in your decks",
+        "done": "{count, plural, one {# deck rebuilt} other {# decks rebuilt}}.",
+        "hint": "Sold complete: its list is the deck.",
+        "hintTripled": "A structure deck is built in its three-box version.",
+        "rebuildAll": "Rebuild from scratch",
+        "rebuildMissing": "{count, plural, one {Rebuild the deck} other {Rebuild the # decks}}",
+        "title": "Decks from this product"
+      },
       "tabs": {
         "content": "Contents",
         "guide": "How to play it"

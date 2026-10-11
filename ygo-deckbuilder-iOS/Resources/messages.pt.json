@@ -1063,6 +1063,16 @@
         "unverifiedHint": "Lista oficial não encontrada: 1 cópia contada por card",
         "verified": "Quantidades oficiais"
       },
+      "officialDecks": {
+        "confirmForce": "{count, plural, one {Remontar este deck} other {Remontar estes # decks}} a partir da lista oficial? As cartas que adicionaste ou removeste serão perdidas — o nome e as notas ficam.",
+        "deleted": "Ausente dos teus decks",
+        "done": "{count, plural, one {# deck remontado} other {# decks remontados}}.",
+        "hint": "Vendido completo: a lista dele é o deck.",
+        "hintTripled": "Um structure deck é montado na versão de três caixas.",
+        "rebuildAll": "Remontar de novo",
+        "rebuildMissing": "{count, plural, one {Remontar o deck} other {Remontar os # decks}}",
+        "title": "Decks deste produto"
+      },
       "tabs": {
         "content": "Conteúdo",
         "guide": "Como jogar"
