@@ -184,6 +184,33 @@ nonisolated struct OwnedProductCard: Decodable, Hashable, Sendable {
     let zone: DeckZone
 }
 
+/// Un deck officiel du produit, et son état dans « Mes decks ». `deckId` nul = supprimé, donc
+/// à remonter : c'est la seule chose que la fiche a besoin de savoir.
+nonisolated struct ProductOfficialDeck: Decodable, Hashable, Sendable, Identifiable {
+    /// Identifiant de la liste officielle, pas du deck.
+    let listId: String
+    let name: String
+    /// Boîtes dont la liste est montée : 3 pour un structure deck, 1 pour tout le reste.
+    let copies: Int
+    let deckId: String?
+
+    var id: String { listId }
+}
+
+nonisolated struct RebuildProductDecksBody: Encodable, Sendable {
+    /// Remonter aussi les decks encore présents : leur liste de cartes est remplacée.
+    var force: Bool = false
+}
+
+nonisolated struct RebuildProductDecksResult: Decodable, Sendable {
+    /// Decks reposés parce qu'ils manquaient.
+    let created: [CreatedDeck]
+    /// Decks déjà présents dont la liste de cartes a été remplacée.
+    let rebuilt: [CreatedDeck]
+
+    var total: Int { created.count + rebuilt.count }
+}
+
 nonisolated struct OwnedProductDetail: Decodable, Sendable, Identifiable {
     let id: String
     let set: CardSet
@@ -198,8 +225,11 @@ nonisolated struct OwnedProductDetail: Decodable, Sendable, Identifiable {
     let isDeck: Bool
     let tagIds: [String]?
     let cards: [OwnedProductCard]
+    /// Optionnel : une app plus récente que son serveur doit continuer à ouvrir une fiche.
+    let officialDecks: [ProductOfficialDeck]?
 
     var tags: [String] { tagIds ?? [] }
+    var decks: [ProductOfficialDeck] { officialDecks ?? [] }
 }
 
 // MARK: - Wishlist
