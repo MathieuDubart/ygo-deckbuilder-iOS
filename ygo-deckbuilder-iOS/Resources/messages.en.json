@@ -1,4 +1,81 @@
 {
+  "admin": {
+    "counts": {
+      "cards": "Catalogue",
+      "copies": "Cards owned",
+      "decks": "Decks",
+      "prints": "Prints",
+      "products": "Products",
+      "sets": "Sets",
+      "uploads": "Images",
+      "users": "Accounts"
+    },
+    "denied": {
+      "hint": "Your account does not have access to this page.",
+      "title": "Reserved for the instance administrator"
+    },
+    "description": "Who has an account, whether the syncs run, how the server is doing.",
+    "health": {
+      "database": "Database reachable",
+      "duel": "Duel data",
+      "duelData": {
+        "DISABLED": "Simulator off",
+        "MISSING": "Missing",
+        "READY": "Downloaded"
+      },
+      "node": "Node",
+      "uploads": "Image folder writable",
+      "uptime": "Uptime"
+    },
+    "roles": {
+      "ADMIN": "Admin",
+      "USER": "Member"
+    },
+    "syncs": {
+      "count": "{count} entries",
+      "done": "{id} finished",
+      "failed": "Failed",
+      "lastRun": "Last run {date}",
+      "never": "Never run",
+      "neverHint": "Has never run on this instance",
+      "none": "No sync recorded yet",
+      "run": "Run",
+      "runHint": "Can take several minutes: the result only comes back at the end."
+    },
+    "tabs": {
+      "instance": "Instance",
+      "label": "Section",
+      "syncs": "Syncs",
+      "users": "Accounts"
+    },
+    "title": "Administration",
+    "users": {
+      "allRoles": "All roles",
+      "cannotDemoteEnv": "This account is the one set in ADMIN_EMAIL: it would take the role back on its next sign-in.",
+      "cannotDemoteSelf": "You cannot remove your own admin role.",
+      "copies": "cards",
+      "decks": "decks",
+      "demote": "Remove admin",
+      "demoted": "{name} is no longer an admin",
+      "fromEnv": "ADMIN_EMAIL",
+      "joined": "Joined {date}",
+      "lastSeen": "Seen {date}",
+      "neverSeen": "Never signed in",
+      "none": "No account matches",
+      "noneHint": "Drop a filter and try again.",
+      "products": "products",
+      "promote": "Make admin",
+      "promoted": "{name} is now an admin",
+      "role": "Role",
+      "search": "Search a username or an email…",
+      "sorts": {
+        "cards": "Cards",
+        "decks": "Decks",
+        "name": "Name",
+        "recent": "Newest"
+      }
+    }
+  },
   "auth": {
     "errors": {
       "email": "Enter a valid email address",
@@ -925,6 +1002,7 @@
     "metaDescription": "Your Yu-Gi-Oh! collection, your decks, and what you're missing to play the meta.",
     "metaTitle": "YGO Deck Builder",
     "nav": {
+      "admin": "Admin",
       "catalog": "Catalog",
       "collection": "Collection",
       "decks": "Decks",
@@ -936,6 +1014,7 @@
       "wishlist": "Wishlist"
     },
     "pages": {
+      "admin": "Administration",
       "catalog": "Catalog",
       "collection": "Collection",
       "deckNotFound": "Deck not found.",
