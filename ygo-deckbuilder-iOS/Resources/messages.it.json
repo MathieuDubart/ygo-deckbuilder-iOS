@@ -397,6 +397,19 @@
     "missing": {
       "addAll": "Metti tutto in wishlist",
       "added": "{count, plural, one {# carta aggiunta alla wishlist} other {# carte aggiunte alla wishlist}}",
+      "buy": {
+        "action": "Compra le mancanti",
+        "copied": "Lista copiata",
+        "copy": "Copia la lista",
+        "noEditionHint": "La lista porta solo nomi e quantità. Cardmarket chiama le sue espansioni diversamente dal nostro catalogo, e una riga con un'espansione sconosciuta viene scartata del tutto — scegli l'edizione sulla loro pagina, dove sono elencate tutte le stampe.",
+        "one": "Compra questa carta",
+        "oneByOne": "Carta per carta",
+        "openWants": "Apri Cardmarket",
+        "step1": "Copia la lista qui sotto.",
+        "step2": "Apri le tue liste dei desideri su Cardmarket.",
+        "step3": "Incollala in una lista, poi lascia che il loro assistente trovi i venditori più economici.",
+        "title": "Compra le carte mancanti"
+      },
       "summary": "<strong>{count, plural, one {# copia} other {# copie}}</strong> non {count, plural, one {posseduta} other {possedute}} · circa <strong>{cost}</strong>"
     },
     "picker": {
@@ -1798,6 +1811,14 @@
         "title": "Questo profilo è privato"
       },
       "imageHint": "PNG, JPEG o WebP, fino a 8 MB. Ridimensionata e convertita automaticamente.",
+      "market": {
+        "condition": "Condizione minima",
+        "conditionAny": "Qualsiasi condizione",
+        "hint": "Applicate a ogni link Cardmarket: le imposti una volta, non a ogni clic.",
+        "language": "Lingua",
+        "languageDefault": "Come la mia collezione",
+        "title": "Preferenze d'acquisto"
+      },
       "memberSince": "Iscritto dal {date}",
       "myTitle": "Il mio profilo",
       "openFriends": "Amici",
@@ -2029,6 +2050,7 @@
       "acquired": "Presa",
       "acquiredToast": "Aggiunta alla tua collezione 🎉",
       "budget": "budget {price}",
+      "buy": "Compra su Cardmarket",
       "priority": "Priorità",
       "remove": "Togli"
     },

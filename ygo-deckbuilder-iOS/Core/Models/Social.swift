@@ -180,8 +180,31 @@ nonisolated struct FriendRequestBody: Encodable, Sendable {
     let username: String
 }
 
+/**
+ Réglages du compte. Le serveur laisse tel quel tout champ absent du corps, et seul un `null`
+ explicite efface une préférence — d'où les doubles optionnels : `nil` veut dire « ne touche
+ pas », `.some(nil)` veut dire « efface ».
+ */
 nonisolated struct UpdateProfileBody: Encodable, Sendable {
-    let username: String
+    // Défauts explicites : l'init mémberwise doit permettre de ne fournir qu'un seul champ.
+    var username: String? = nil
+    var marketLanguage: CardLanguage?? = nil
+    var marketMinCondition: CardCondition?? = nil
+
+    func encode(to encoder: any Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encodeIfPresent(username, forKey: .username)
+        // `encodeIfPresent` traiterait un double optionnel comme une simple absence : on
+        // distingue donc à la main « ne touche pas » de « écris null ».
+        if let language = marketLanguage { try c.encode(language, forKey: .marketLanguage) }
+        if let condition = marketMinCondition {
+            try c.encode(condition, forKey: .marketMinCondition)
+        }
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case username, marketLanguage, marketMinCondition
+    }
 }
 
 nonisolated struct ProfileCardsBody: Encodable, Sendable {

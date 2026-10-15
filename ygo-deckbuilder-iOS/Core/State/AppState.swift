@@ -68,6 +68,24 @@ final class AppState {
         user?.collectionLanguage ?? L10n.shared.current.cardLanguage
     }
 
+    /**
+     Les préférences d'achat telles qu'un lien doit les appliquer. Une langue d'achat non
+     réglée suit celle de la collection : c'est déjà un choix assumé, et en redemander un
+     second obligerait à le tenir à jour à deux endroits.
+     */
+    var marketPreferences: Cardmarket.Preferences {
+        .init(
+            language: user?.marketLanguage ?? user?.collectionLanguage,
+            minCondition: user?.marketMinCondition)
+    }
+
+    /// Lien d'achat d'une carte, avec les préférences du compte et la langue de l'interface.
+    func marketURL(for card: CardSummary) -> URL? {
+        Cardmarket.searchURL(
+            card.marketName, preferences: marketPreferences,
+            locale: L10n.shared.current.rawValue)
+    }
+
     /// Après un changement de réglage : le serveur fait foi, on relit l'utilisateur.
     func refreshUser() async {
         guard let user = try? await api.me() else { return }

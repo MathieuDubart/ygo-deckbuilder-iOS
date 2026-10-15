@@ -312,6 +312,7 @@ private struct MissingView: View {
     @Binding var message: String?
     @Environment(AppState.self) private var app
     @State private var adding = false
+    @State private var buying = false
 
     var body: some View {
         let missing = model.missing
@@ -326,13 +327,21 @@ private struct MissingView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .lineLimit(3)
-                Button {
-                    Task { await addAll(missing) }
-                } label: {
-                    Label(t("deckBuilder.missing.addAll"), systemImage: "heart")
+                HStack(spacing: Spacing.s) {
+                    Button {
+                        Task { await addAll(missing) }
+                    } label: {
+                        Label(t("deckBuilder.missing.addAll"), systemImage: "heart")
+                    }
+                    .buttonStyle(.glass)
+                    .disabled(adding)
+                    Button {
+                        buying = true
+                    } label: {
+                        Label(t("deckBuilder.missing.buy.action"), systemImage: "cart")
+                    }
+                    .buttonStyle(.glass)
                 }
-                .buttonStyle(.glass)
-                .disabled(adding)
                 if let message {
                     Text(message).font(.footnote).foregroundStyle(Theme.success)
                 }
@@ -343,6 +352,7 @@ private struct MissingView: View {
                 RoundedRectangle(cornerRadius: Radius.s, style: .continuous)
                     .strokeBorder(Theme.danger.opacity(0.35))
             }
+            .sheet(isPresented: $buying) { BuyMissingView(missing: missing) }
         }
     }
 
