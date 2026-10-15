@@ -12,7 +12,12 @@ nonisolated struct Paginated<T: Decodable & Sendable>: Decodable, Sendable {
 
 nonisolated struct CardSummary: Codable, Hashable, Sendable, Identifiable {
     let id: Int
+    /// Nom dans la langue de la requête.
     let name: String
+    /// Nom anglais, et seulement s'il diffère de `name` : c'est le seul que les places
+    /// de marché indexent. Son absence veut donc dire « `name` EST déjà l'anglais »,
+    /// pas « on ne sait pas » — `marketName` tranche entre les deux.
+    let nameEn: String?
     let category: CardCategory
     let type: String
     let frameType: String
@@ -53,6 +58,8 @@ nonisolated struct CardPrint: Codable, Hashable, Sendable, Identifiable {
 nonisolated struct CardDetail: Codable, Hashable, Sendable, Identifiable {
     let id: Int
     let name: String
+    /// Voir `CardSummary.nameEn` : même règle, et il doit arriver jusqu'au deck builder.
+    let nameEn: String?
     let category: CardCategory
     let type: String
     let frameType: String
@@ -81,7 +88,8 @@ nonisolated struct CardDetail: Codable, Hashable, Sendable, Identifiable {
     /// Résumé (pour le deck builder, qui manipule des CardSummary).
     var summary: CardSummary {
         CardSummary(
-            id: id, name: name, category: category, type: type, frameType: frameType,
+            id: id, name: name, nameEn: nameEn, category: category, type: type,
+            frameType: frameType,
             archetype: archetype, attribute: attribute, race: race, level: level, atk: atk,
             def: def, imageUrl: imageUrl, imageUrlSmall: imageUrlSmall, isExtraDeck: isExtraDeck,
             banTcg: banTcg, banOcg: banOcg, priceCardmarket: priceCardmarket,

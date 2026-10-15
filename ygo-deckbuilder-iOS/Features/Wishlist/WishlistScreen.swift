@@ -69,9 +69,12 @@ struct WishlistScreen: View {
 
     private func row(_ item: WishlistItem) -> some View {
         CardRow(card: item.card, subtitle: subtitle(item)) {
-            VStack(alignment: .trailing, spacing: 2) {
-                Text("×\(item.quantity)").font(.subheadline.bold().monospacedDigit())
-                Text(L10n.shared.price(item.unitPrice)).font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+            HStack(spacing: Spacing.s) {
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("×\(item.quantity)").font(.subheadline.bold().monospacedDigit())
+                    Text(L10n.shared.price(item.unitPrice)).font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+                }
+                buyLink(item.card)
             }
         }
         .onTapGesture { selected = CardLink(cardId: item.card.id) }
@@ -96,7 +99,34 @@ struct WishlistScreen: View {
                     }
                 }
             }
+            if let url = app.marketURL(for: item.card) {
+                Link(t("wishlist.row.buy"), destination: url)
+            }
             Button(t("wishlist.row.remove"), systemImage: "trash", role: .destructive) { Task { await remove(item) } }
+        }
+    }
+
+    /**
+     Un lien, pas un bouton : il ouvre Cardmarket dans le navigateur, où l'utilisateur est
+     déjà connecté. L'app n'achète rien et ne parle jamais à la boutique elle-même.
+
+     Le lien est un contrôle à part entière, donc il prend les touches qui tombent dans sa
+     zone avant le `.onTapGesture` de la ligne, qui ouvre la fiche de la carte ; c'est le
+     `.contentShape` qui fixe cette zone aux 32 points, et `.buttonStyle(.plain)` ne règle
+     que l'apparence.
+     */
+    @ViewBuilder
+    private func buyLink(_ card: CardSummary) -> some View {
+        if let url = app.marketURL(for: card) {
+            Link(destination: url) {
+                Image(systemName: "cart")
+                    .font(.body)
+                    .foregroundStyle(Color.accentColor)
+                    .frame(width: 32, height: 32)
+                    .contentShape(.rect)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(t("wishlist.row.buy"))
         }
     }
 

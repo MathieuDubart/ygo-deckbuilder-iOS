@@ -397,6 +397,19 @@
     "missing": {
       "addAll": "Add all to wishlist",
       "added": "{count, plural, one {# card added to your wishlist} other {# cards added to your wishlist}}",
+      "buy": {
+        "action": "Buy the missing cards",
+        "copied": "List copied",
+        "copy": "Copy the list",
+        "noEditionHint": "The list carries card names and quantities only. Cardmarket names its expansions differently from our catalogue, and a line with an unknown expansion is dropped whole — pick the edition on their page, where every printing is listed.",
+        "one": "Buy this card",
+        "oneByOne": "One by one",
+        "openWants": "Open Cardmarket",
+        "step1": "Copy the list below.",
+        "step2": "Open your Cardmarket wants lists.",
+        "step3": "Paste it into a list, then let their shopping wizard find the cheapest sellers.",
+        "title": "Buy the missing cards"
+      },
       "summary": "<strong>{count, plural, one {# copy} other {# copies}}</strong> not owned · about <strong>{cost}</strong>"
     },
     "picker": {
@@ -1798,6 +1811,14 @@
         "title": "This profile is private"
       },
       "imageHint": "PNG, JPEG or WebP, up to 8 MB. Resized and converted automatically.",
+      "market": {
+        "condition": "Minimum condition",
+        "conditionAny": "Any condition",
+        "hint": "Applied to every Cardmarket link: you set them once, not at every click.",
+        "language": "Language",
+        "languageDefault": "Same as my collection",
+        "title": "Buying preferences"
+      },
       "memberSince": "Member since {date}",
       "myTitle": "My profile",
       "openFriends": "Friends",
@@ -2029,6 +2050,7 @@
       "acquired": "Got it",
       "acquiredToast": "Added to your collection 🎉",
       "budget": "budget {price}",
+      "buy": "Buy on Cardmarket",
       "priority": "Priority",
       "remove": "Remove"
     },

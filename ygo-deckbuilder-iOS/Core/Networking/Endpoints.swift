@@ -277,6 +277,11 @@ extension APIClient {
         try await perform(.patch, "me/profile", body: UpdateProfileBody(username: username))
     }
 
+    /// Réglages du compte. Seuls les champs fournis sont modifiés (voir `UpdateProfileBody`).
+    func updateSettings(_ body: UpdateProfileBody) async throws {
+        try await perform(.patch, "me/profile", body: body)
+    }
+
     func setProfileCards(_ printIds: [String]) async throws -> [ProfileCard] {
         try await send(.put, "me/profile/cards", body: ProfileCardsBody(printIds: printIds))
     }

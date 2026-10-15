@@ -397,6 +397,19 @@
     "missing": {
       "addAll": "Pôr tudo na wishlist",
       "added": "{count, plural, one {# card adicionado à sua wishlist} other {# cards adicionados à sua wishlist}}",
+      "buy": {
+        "action": "Comprar as que faltam",
+        "copied": "Lista copiada",
+        "copy": "Copiar a lista",
+        "noEditionHint": "A lista leva apenas nomes e quantidades. O Cardmarket nomeia as suas expansões de forma diferente do nosso catálogo, e uma linha com expansão desconhecida é descartada inteira — escolhe a edição na página deles, onde estão todas as impressões.",
+        "one": "Comprar esta carta",
+        "oneByOne": "Carta a carta",
+        "openWants": "Abrir o Cardmarket",
+        "step1": "Copia a lista abaixo.",
+        "step2": "Abre as tuas listas de desejos no Cardmarket.",
+        "step3": "Cola-a numa lista e deixa o assistente de compras encontrar os vendedores mais baratos.",
+        "title": "Comprar as cartas em falta"
+      },
       "summary": "<strong>{count, plural, one {# cópia} other {# cópias}}</strong> que você não tem · cerca de <strong>{cost}</strong>"
     },
     "picker": {
@@ -1798,6 +1811,14 @@
         "title": "Este perfil é privado"
       },
       "imageHint": "PNG, JPEG ou WebP, até 8 MB. Redimensionada e convertida automaticamente.",
+      "market": {
+        "condition": "Condição mínima",
+        "conditionAny": "Qualquer condição",
+        "hint": "Aplicadas a todos os links do Cardmarket: defines uma vez, não a cada clique.",
+        "language": "Idioma",
+        "languageDefault": "Como a minha coleção",
+        "title": "Preferências de compra"
+      },
       "memberSince": "Membro desde {date}",
       "myTitle": "O meu perfil",
       "openFriends": "Amigos",
@@ -2029,6 +2050,7 @@
       "acquired": "Consegui",
       "acquiredToast": "Adicionado à sua coleção 🎉",
       "budget": "orçamento {price}",
+      "buy": "Comprar no Cardmarket",
       "priority": "Prioridade",
       "remove": "Remover"
     },

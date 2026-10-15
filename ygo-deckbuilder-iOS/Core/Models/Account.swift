@@ -19,6 +19,13 @@ nonisolated struct PublicUser: Codable, Hashable, Sendable {
      une langue que personne n'a demandée.
      */
     let collectionLanguage: CardLanguage?
+    /**
+     Préférences d'achat, appliquées aux liens vers une place de marché. `nil` pour la
+     langue veut dire « comme ma collection » ; `nil` pour l'état veut dire « aucun
+     filtre ». Un serveur antérieur au réglage n'envoie ni l'un ni l'autre.
+     */
+    let marketLanguage: CardLanguage?
+    let marketMinCondition: CardCondition?
 
     var isAdmin: Bool { role == .admin }
 
@@ -35,6 +42,10 @@ nonisolated struct PublicUser: Codable, Hashable, Sendable {
         // Absente, nulle, ou d'une valeur qu'on ne connaît pas encore : dans les trois cas
         // « pas de choix », jamais une erreur de décodage.
         collectionLanguage = try? c.decode(CardLanguage.self, forKey: .collectionLanguage)
+        // Même indulgence pour les préférences d'achat : absentes d'un serveur plus ancien,
+        // elles ne doivent pas empêcher de se connecter.
+        marketLanguage = try? c.decode(CardLanguage.self, forKey: .marketLanguage)
+        marketMinCondition = try? c.decode(CardCondition.self, forKey: .marketMinCondition)
     }
 }
 

@@ -30,6 +30,8 @@ struct SettingsView: View {
                     Text(t("ios.settings.languageHint"))
                 }
 
+                if app.user != nil { MarketSection() }
+
                 Section(t("ios.settings.server")) {
                     LabeledContent(t("ios.server.current"), value: app.server.url?.absoluteString ?? "—")
                     Button(t("ios.server.change"), role: .destructive) {
@@ -115,6 +117,71 @@ struct SettingsView: View {
             app.collectionChanged()
         } catch {
             syncMessage = error.localizedDescription
+        }
+    }
+}
+
+/**
+ Ce que les liens d'achat doivent montrer. Réglé une fois ici plutôt que redemandé à chaque
+ clic : on achète presque toujours dans la même langue et au même état.
+
+ Le serveur fait foi — on envoie, puis on relit l'utilisateur — et seul le champ touché part
+ dans la requête, pour ne pas écraser l'autre préférence au passage.
+ */
+private struct MarketSection: View {
+    @Environment(AppState.self) private var app
+    @State private var saving = false
+    @State private var failure: String?
+
+    var body: some View {
+        Section {
+            Picker(
+                t("social.profile.market.language"),
+                selection: Binding(
+                    get: { app.user?.marketLanguage },
+                    set: { save(.init(marketLanguage: .some($0))) })
+            ) {
+                Text(t("social.profile.market.languageDefault")).tag(CardLanguage?.none)
+                // Seulement celles sur lesquelles Cardmarket sait filtrer : proposer le
+                // japonais donnerait un choix sans effet.
+                ForEach(Cardmarket.languages) { language in
+                    Text(language.rawValue).tag(CardLanguage?.some(language))
+                }
+            }
+            Picker(
+                t("social.profile.market.condition"),
+                selection: Binding(
+                    get: { app.user?.marketMinCondition },
+                    set: { save(.init(marketMinCondition: .some($0))) })
+            ) {
+                Text(t("social.profile.market.conditionAny")).tag(CardCondition?.none)
+                ForEach(CardCondition.allCases) { condition in
+                    Text(t("cards.conditions.\(condition.rawValue)"))
+                        .tag(CardCondition?.some(condition))
+                }
+            }
+        } header: {
+            Text(t("social.profile.market.title"))
+        } footer: {
+            // L'échec ne doit pas être muet : sinon le sélecteur revient tout seul à son
+            // ancienne valeur après la relecture, sans que personne sache pourquoi.
+            Text(failure ?? t("social.profile.market.hint"))
+                .foregroundStyle(failure == nil ? Color.secondary : Theme.danger)
+        }
+        .disabled(saving)
+    }
+
+    private func save(_ body: UpdateProfileBody) {
+        saving = true
+        failure = nil
+        Task {
+            defer { saving = false }
+            do {
+                try await app.api.updateSettings(body)
+            } catch {
+                failure = error.localizedDescription
+            }
+            await app.refreshUser()
         }
     }
 }
