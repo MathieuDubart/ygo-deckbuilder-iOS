@@ -245,11 +245,29 @@ struct CardScannerView: View {
     }
 }
 
-/// Extraction des codes imprimés dans le texte lu par la caméra (tolère O/0 et I/1).
+/**
+ Extraction des codes imprimés dans le texte lu par la caméra (tolère O/0 et I/1).
+
+ Deux précautions valent une explication, parce que les retirer produit un bug silencieux.
+
+ On ne replie que les espaces **autour du tiret** — l'artefact OCR qu'on voulait rattraper —
+ et surtout pas tous les espaces du texte : sur « ULTRA RARE SDBE-FR001 1st », tout coller
+ donne « ULTRARARESDBE-FR0011ST », d'où le lecteur tire « ESDBE-FR0011 ». Ce faux code est
+ assez bien formé pour passer `PrintCode`, donc le scan va demander au serveur une carte qui
+ n'existe pas et annonce « introuvable » sur une carte parfaitement lisible.
+
+ Et le motif est bordé des deux côtés : une frontière de mot avant le préfixe, rien qui
+ ressemble à un chiffre après le numéro. Sans ces bornes, un mot voisin déborde dans le code
+ même avec les espaces conservés. Même formulation que le portage Kotlin.
+
+ Le `\s*` entre la région et le numéro garde ce que la suppression globale rattrapait au
+ passage : l'OCR coupe parfois après la région, « SDBE-FR 001 », et ce code-là est bon.
+ */
 nonisolated enum PrintCodeReader {
     static func codes(in text: String) -> [String] {
-        let upper = text.uppercased().replacingOccurrences(of: " ", with: "")
-        let pattern = #/([A-Z0-9]{2,5})-([A-Z]{0,2})([0-9OIL]{3,4})/#
+        // Seuls les blancs qui collent au tiret disparaissent, pas les autres.
+        let upper = text.uppercased().replacing(#/\s*-\s*/#, with: "-")
+        let pattern = #/\b([A-Z0-9]{2,5})-([A-Z]{0,2})\s*([0-9OIL]{3,4})(?![0-9OIL])/#
         return upper.matches(of: pattern).compactMap { match in
             let digits = String(match.3)
                 .replacingOccurrences(of: "O", with: "0")
